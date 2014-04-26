@@ -23,13 +23,13 @@ class Presentation
   embeds_many :slides
   embeds_many :comments, :as => :commentable
 
-  index(
-    [
-      [ :slug, Mongo::DESCENDING ],
-      [ :published ]
-    ],
-    :unique => true
-  )
+  #index(
+  #  [
+  #    [ :slug, Mongo::DESCENDING ],
+  #    [ :published ]
+  #  ],
+  #  :unique => true
+  #)
 
   # validations
   validates_presence_of   :title
@@ -37,7 +37,7 @@ class Presentation
   validates_uniqueness_of :slug
 
   validates_format_of :tags, 
-                      :with => /^([^,]+,)*[^,]+$/i,
+                      :with => /\A([^,]+,)*[^,]+\z/i,
                       :allow_blank => true
 
   # Callbacks

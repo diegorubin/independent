@@ -5,12 +5,12 @@ class Tag
 
   embeds_many :list_contents, :as => :listable
 
-  index(
-    [
-      [:name, Mongo::DESCENDING]
-    ],
-    :unique => true
-  )
+  #index(
+  #  [
+  #    [:name, Mongo::DESCENDING]
+  #  ],
+  #  :unique => true
+  #)
 
   # Scopes
   scope :ordered_by_name, lambda {

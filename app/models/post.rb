@@ -31,14 +31,14 @@ class Post
   
   accepts_nested_attributes_for :post_links
 
-  index(
-    [
-      [ :date, Mongo::DESCENDING ],
-      [ :slug, Mongo::DESCENDING ],
-      [ :published ]
-    ],
-    :unique => true
-  )
+  #index(
+  #  [
+  #    [ :date, Mongo::DESCENDING ],
+  #    [ :slug, Mongo::DESCENDING ],
+  #    [ :published ]
+  #  ],
+  #  :unique => true
+  #)
 
   # Validates
   validates_presence_of :title
@@ -46,7 +46,7 @@ class Post
   validates_presence_of :slug
 
   validates_format_of :tags, 
-                      :with => /^([^,]+,)*[^,]+$/i,
+                      :with => /\A([^,]+,)*[^,]+\z/i,
                       :allow_blank => true
 
   # Callbacks

@@ -4,7 +4,7 @@ describe Snippet do
 
   context "persist" do
     before(:each) do
-      @valid_attrs = Factory.attributes_for :snippet
+      @valid_attrs = FactoryGirl.attributes_for :snippet
       @snippet= Snippet.new(@valid_attrs)
     end
 
@@ -20,7 +20,7 @@ describe Snippet do
   end
 
   it "should render in html" do
-    snippet = Snippet.new(Factory.attributes_for :snippet)
+    snippet = Snippet.new(FactoryGirl.attributes_for :snippet)
     snippet.code = "#include<stdio.h>\nint main(){\n return 0;\n}"
     snippet.language = "c"
 

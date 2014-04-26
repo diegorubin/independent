@@ -44,7 +44,7 @@ describe Post do
     context "on get resources" do
 
       it "should get post by date and slug" do
-        post = Factory(:post)
+        post = FactoryGirl(:post)
         date = Time.current.strftime("%Y/%m/%d")
 
         Post.find_by_slug(date,post.slug).size.should == 1
@@ -58,18 +58,18 @@ describe Post do
     
     it "should get a pageview" do
 
-      post = Factory(:post, :pageviews => 15)
+      post = FactoryGirl(:post, :pageviews => 15)
       post.get_pageviews.should == 15
 
     end
 
     it "should increment pageviews" do
-      post = Factory(:post, :pageviews => 15)
+      post = FactoryGirl(:post, :pageviews => 15)
       post.increment_pageviews.should be_true
     end
 
     it "should get pageviews from redis" do
-      post = Factory(:post, :pageviews => 15)
+      post = FactoryGirl(:post, :pageviews => 15)
       p = post.get_pageviews
       post.increment_pageviews
 

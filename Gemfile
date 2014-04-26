@@ -51,6 +51,8 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'quiet_assets'
+
+  gem 'sqlite3'
 end
 
 
