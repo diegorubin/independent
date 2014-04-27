@@ -1,6 +1,8 @@
 class Post
   include Mongoid::Document
+
   include Rankable
+  include Slugable
 
   paginates_per 10
 
@@ -47,7 +49,7 @@ class Post
                       :allow_blank => true
 
   # Callbacks
-  before_validation :sanitize_texts, :generate_slug
+  before_validation :sanitize_texts
   before_save :generate_date, :generate_updated_date
 
   # Scopes
@@ -76,17 +78,6 @@ class Post
   def sanitize_texts
     write_attribute(:title, title.sanitize) if title
     write_attribute(:resume, resume.sanitize) if resume
-  end
-
-  def generate_slug
-    return if title.blank? || !slug.blank?
-
-    slug = title.no_accent
-    slug.downcase!
-    slug.gsub!(/[\s_]/,'-')
-    slug.gsub!(/[^A-Za-z-]/,'')
-
-    write_attribute(:slug, slug)
   end
 
   def generate_date

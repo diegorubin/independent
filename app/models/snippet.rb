@@ -1,6 +1,8 @@
 class Snippet
   include Mongoid::Document
+
   include Rankable
+  include Slugable
 
   paginates_per 10
 
@@ -31,7 +33,6 @@ class Snippet
   validates_presence_of :slug
 
   # Callbacks
-  before_validation :generate_slug
   before_save :generate_updated_date
 
   # Scopes
@@ -60,17 +61,6 @@ class Snippet
   end
 
   private
-  def generate_slug
-    return if title.blank? || !slug.blank?
-
-    slug = title.no_accent
-    slug.downcase!
-    slug.gsub!(/[\s_]/,'-')
-    slug.gsub!(/[^A-Za-z-]/,'')
-
-    write_attribute(:slug, slug)
-  end
-
   def generate_updated_date
     write_attribute(:updated_at, Time.current)
   end
