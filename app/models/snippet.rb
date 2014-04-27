@@ -33,7 +33,6 @@ class Snippet
   # Callbacks
   before_validation :generate_slug
   before_save :generate_updated_date
-  after_save :generate_list
 
   # Scopes
   scope :by_slug, lambda { |slug|
@@ -76,8 +75,5 @@ class Snippet
     write_attribute(:updated_at, Time.current)
   end
 
-  def generate_list
-    Tag.delay.generate_list
-  end
-
 end
+

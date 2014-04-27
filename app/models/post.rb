@@ -27,10 +27,7 @@ class Post
   field :metadescription,  :type => String
 
   embeds_many :comments, :as => :commentable
-  embeds_many :post_links
   
-  accepts_nested_attributes_for :post_links
-
   #index(
   #  [
   #    [ :date, Mongo::DESCENDING ],
@@ -52,8 +49,6 @@ class Post
   # Callbacks
   before_validation :sanitize_texts, :generate_slug
   before_save :generate_date, :generate_updated_date
-  after_save :generate_widget, :clear_links
-  after_destroy :generate_widget
 
   # Scopes
   scope :find_by_slug, lambda { |date, slug|
@@ -69,10 +64,6 @@ class Post
   end
 
   private
-  def clear_links
-    post_links.each{|pl| pl.destroy if pl.removed}
-  end
-
   def check_comments(comments,comment_id)
     comments.each do |comment|
       c = check_comments(comment.child_comments,comment_id)
@@ -109,7 +100,5 @@ class Post
     write_attribute(:updated_at, Time.current)
   end
 
-  def generate_widget
-    LatestPosts.generate
-  end
 end
+

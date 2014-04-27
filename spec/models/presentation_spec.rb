@@ -38,7 +38,7 @@ describe Presentation do
     context "on get resources" do
 
       it "should get presentation by date and slug" do
-        presentation = FactoryGirl(:presentation)
+        presentation = FactoryGirl.create(:presentation)
 
         Presentation.find_by_slug(presentation.slug).size.should == 1
       end
@@ -48,7 +48,7 @@ describe Presentation do
     context "export pdf to images" do
 
       it "should create slides" do
-        presentation = FactoryGirl(:presentation)
+        presentation = FactoryGirl.create(:presentation)
         presentation.file = File.open(File.dirname(__FILE__) + "/examples/presentation.pdf")
         presentation.export = true
         presentation.save

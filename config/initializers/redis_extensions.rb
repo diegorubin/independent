@@ -1,13 +1,15 @@
-class Redis
-  def self.get_connection
-    # Por enquanto será utilizado apenas no localhost
+module RedisConnectionExtensions
+  def get_connection
     unless defined? @@connection
-      @@connection = Redis.new(:host => "localhost", 
-                               :port => 6379)
+      configfile = File.join([Rails.root.to_s, 'config', 'redis.yml'])
+      config = YAML::load(File.read(configfile))
+      @@connection = Redis.new(config[Rails.env])
     end
     @@connection
   end
+end
 
+module RedisExtensions
   def increment_pageview(set, identifier)
     Redis.get_connection.zincrby(set, 1, identifier)
   end
@@ -20,3 +22,7 @@ class Redis
     Redis.get_connection.zadd(set,value,identifier)
   end
 end
+
+Redis.send(:include, RedisExtensions)
+Redis.send(:extend, RedisConnectionExtensions)
+

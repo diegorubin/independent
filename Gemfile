@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+# Core
 gem 'rails', '4.1.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -12,30 +12,31 @@ gem 'spring',        group: :development
 
 gem 'unicorn'
 
-#file upload
+# file upload
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'rmagick'
 
-#pagination
+# pagination
 gem 'kaminari'
 
-#session
+# session
 gem 'devise'
 
-#database
+# database
 gem 'mysql'
 gem 'mongoid', '~> 4.0.0.beta1'
 gem 'mongo'
 
-#view
+# view
 gem 'haml'
 gem 'cells'
 gem 'bluecloth'
 gem 'gravtastic'
 
-#xml parse
+# xml parse
 gem 'nokogiri'
 
-#pdf manipulation
+# pdf manipulation
 gem 'rghost'
 
 group :development, :test do
@@ -54,5 +55,4 @@ group :development, :test do
 
   gem 'sqlite3'
 end
-
 
