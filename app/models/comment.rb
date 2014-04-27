@@ -24,7 +24,6 @@ class Comment
 
   # Callbacks
   before_save    :generate_created_at
-  after_save     :generate_alert
 
   def publish
     write_attribute(:published, true)
@@ -38,17 +37,5 @@ class Comment
     end
   end
 
-  def generate_alert
-    return if removed
-    _post = commentable
-    _parent_comment = parent_comment
-
-    until _post
-      _post = _parent_comment.commentable
-      _parent_comment = _parent_comment.parent_comment
-    end
-
-    CommentAlert.generate(id, _post, name, body) unless published
-  end
-
 end
+

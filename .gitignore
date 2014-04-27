@@ -12,6 +12,7 @@
 
 /config/database.yml
 /config/mongoid.yml
+/config/redis.yml
 
 /public/uploads
 

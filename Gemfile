@@ -26,6 +26,7 @@ gem 'devise'
 gem 'mysql'
 gem 'mongoid', '~> 4.0.0.beta1'
 gem 'mongo'
+gem 'redis'
 
 # view
 gem 'haml'
