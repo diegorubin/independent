@@ -24,6 +24,8 @@ module Independent
 
     config.enconding = 'utf-8'
 
+    config.filter_parameters += [:password, :password_confirmation]
+
   end
 end
 

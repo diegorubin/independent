@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'debugger'
   gem 'rspec-rails'
+  gem 'mongoid-rspec'
   gem 'simplecov'
   gem 'simplecov-rcov'
   gem 'autotest'
@@ -54,6 +55,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
 
+  gem 'database_cleaner'
+
   gem 'sqlite3'
+
+  gem 'coveralls', require: false
 end
 
