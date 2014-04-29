@@ -14,5 +14,7 @@
 /config/mongoid.yml
 /config/redis.yml
 
+/coverage
+
 /public/uploads
 
