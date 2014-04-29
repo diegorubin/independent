@@ -1,6 +1,7 @@
 class Post
   include Mongoid::Document
 
+  include Commentable
   include Rankable
   include Slugable
 
@@ -28,7 +29,6 @@ class Post
   # Field for SEO
   field :metadescription,  :type => String
 
-  embeds_many :comments, :as => :commentable
   
   #index(
   #  [
@@ -61,20 +61,7 @@ class Post
     order_by([["published_at", "desc"]])
   }
 
-  def find_comment_by_id(comment_id)
-    check_comments(comments,comment_id)
-  end
-
   private
-  def check_comments(comments,comment_id)
-    comments.each do |comment|
-      c = check_comments(comment.child_comments,comment_id)
-      return c if c
-      return comment if comment_id == comment.id.to_s
-    end
-    nil
-  end
-
   def sanitize_texts
     write_attribute(:title, title.sanitize) if title
     write_attribute(:resume, resume.sanitize) if resume

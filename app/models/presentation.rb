@@ -1,6 +1,7 @@
 class Presentation
   include Mongoid::Document
 
+  include Commentable
   include Rankable
   include Slugable
 
@@ -55,9 +56,7 @@ class Presentation
     order_by([["published_at", "desc"]])
   }
 
-  def find_comment_by_id(comment_id)
-    check_comments(comments,comment_id)
-  end
+
 
   def self.export_images(presentation_id)
     p = Presentation.find(presentation_id)
@@ -93,15 +92,6 @@ class Presentation
     if published? && !published_at
       write_attribute(:published_at, Time.current)
     end
-  end
-
-  def check_comments(comments,comment_id)
-    comments.each do |comment|
-      c = check_comments(comment.child_comments,comment_id)
-      return c if c
-      return comment if comment_id == comment.id.to_s
-    end
-    nil
   end
 
 end
