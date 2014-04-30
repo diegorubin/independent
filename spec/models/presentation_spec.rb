@@ -39,8 +39,9 @@ describe Presentation do
 
       it "should get presentation by date and slug" do
         presentation = FactoryGirl.create(:presentation)
+        date = Time.current.strftime("%Y/%m/%d")
 
-        Presentation.find_by_slug(presentation.slug).size.should == 1
+        Presentation.find_by_slug(date, presentation.slug).size.should == 1
       end
 
     end

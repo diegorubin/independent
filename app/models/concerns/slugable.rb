@@ -2,7 +2,15 @@ module Slugable
   extend ActiveSupport::Concern
 
   included do
+    field :slug,         :type => String
+    validates_presence_of :slug
+
     before_validation :generate_slug
+
+    # Scope
+    scope :find_by_slug, lambda { |date, slug|
+      where(:date => date, :slug => slug) 
+    }
   end
 
   def generate_slug

@@ -2,6 +2,7 @@ class Presentation
   include Mongoid::Document
 
   include Commentable
+  include Publishable
   include Rankable
   include Slugable
 
@@ -9,7 +10,6 @@ class Presentation
 
   field :title,        :type => String
   field :resume,       :type => String
-  field :slug,         :type => String
   field :published,    :type => Boolean
   field :published_at, :type => DateTime
   field :updated_at,   :type => DateTime
@@ -45,18 +45,6 @@ class Presentation
 
   # Callbacks
   before_validation :sanitize_texts
-  before_save :generate_updated_date, :generate_date
-
-  # Scopes
-  scope :find_by_slug, lambda { |slug|
-    where(:slug => slug) 
-  }
-
-  scope :ordered_by_published_at, lambda {
-    order_by([["published_at", "desc"]])
-  }
-
-
 
   def self.export_images(presentation_id)
     p = Presentation.find(presentation_id)
@@ -82,16 +70,6 @@ class Presentation
   def sanitize_texts
     write_attribute(:title, title.sanitize) if title
     write_attribute(:resume, resume.sanitize) if resume
-  end
-
-  def generate_updated_date
-    write_attribute(:updated_at, Time.current)
-  end
-
-  def generate_date
-    if published? && !published_at
-      write_attribute(:published_at, Time.current)
-    end
   end
 
 end

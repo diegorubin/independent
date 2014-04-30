@@ -2,6 +2,7 @@ class Snippet
   include Mongoid::Document
 
   include Rankable
+  include Publishable
   include Slugable
 
   paginates_per 10
@@ -21,8 +22,6 @@ class Snippet
   field :language,   :type => String
   field :tags,       :type => String
 
-  field :slug,       :type => String
-
   field :updated_at, :type => DateTime
   field :pageviews,  :type => Integer, :default => 0
 
@@ -30,16 +29,8 @@ class Snippet
   validates_presence_of :title
   validates_presence_of :code
   validates_presence_of :language
-  validates_presence_of :slug
-
-  # Callbacks
-  before_save :generate_updated_date
 
   # Scopes
-  scope :by_slug, lambda { |slug|
-    where(:slug => slug) 
-  }
-
   scope :ordered_by_published_at, lambda {
     order_by([["published_at", "desc"]])
   }
@@ -58,11 +49,6 @@ class Snippet
 
   def resume
     "Linguagem: #{language_name}"
-  end
-
-  private
-  def generate_updated_date
-    write_attribute(:updated_at, Time.current)
   end
 
 end

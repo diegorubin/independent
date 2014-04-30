@@ -42,17 +42,22 @@ gem 'rghost'
 
 group :development, :test do
   gem 'thin'
+
   gem 'capistrano-rails'
+
   gem 'debugger'
+
   gem 'rspec-rails'
   gem 'mongoid-rspec'
+  gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'simplecov-rcov'
-  gem 'autotest'
-  gem 'autotest-fsevent'
-  gem 'factory_girl_rails'
+  gem 'tork'
+
+
   gem 'pry'
   gem 'pry-rails'
+
   gem 'quiet_assets'
 
   gem 'database_cleaner'
