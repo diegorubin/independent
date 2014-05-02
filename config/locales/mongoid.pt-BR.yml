@@ -1,0 +1,20 @@
+pt-BR:
+
+  mongoid:
+    attributes:
+      post:
+        body: Corpo
+        resume: Resumo
+        title: Título
+    
+    errors:
+      models:
+        post:
+          attributes:
+            body:
+              blank: 'não pode ser vazio'
+            slug:
+              blank: 'não pode ser vazio'
+            title:
+              blank: 'não pode ser vazio'
+

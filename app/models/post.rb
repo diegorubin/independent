@@ -50,7 +50,7 @@ class Post
   }
 
   def self.admin_attributes
-    [:title, :resume, :author, :body, :tags, :metadescription]
+    [:title, :resume, :author, :body, :tags, :metadescription, :slug]
   end
 
   private

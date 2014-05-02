@@ -1,0 +1,15 @@
+pt-BR:
+  formtastic:
+    hints:
+      post:
+        title: "O título também será utilizado no slug."
+    placeholders:
+      post:
+        slug: "Deixe em branco para ser gerado automaticamente"
+    actions:
+      cancel: "Cancelar"
+      create: "Criar"
+      reset: "Limpar"
+      required: "Campo requirido"
+      update: "Salvar"
+
