@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    sequence(:name) { |n| "Name-#{n}"}
-    sequence(:email) { |n| "email_#{n}@example.com" }
+    email {(0..5).map{('a'..'z').to_a[rand(26)]}.join+"@example.com" }
+    name {(0..5).map{('a'..'z').to_a[rand(26)]}.join }
+    password "queroentrar"
   end
+
 end

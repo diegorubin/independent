@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # admin
   namespace :admin do
     resources :posts
+    resources :users
     root :to => "welcome#index"
   end
 

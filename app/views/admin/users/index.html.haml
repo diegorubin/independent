@@ -1,0 +1,29 @@
+= content_for :title, :title.t(:scope => [:admin, :users, :index])
+
+%h1= :h1.t(:scope => [:admin, :users, :index])
+
+= render 'menu'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :name.t(:scope => [:mongoid, :attributes, :user])
+      %td
+        = :email.t(:scope => [:mongoid, :attributes, :user])
+      %td
+        &nbsp;
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          = user.name
+        %td
+          = user.email
+        %td
+          .btn-group
+            = menu_button(:edit.t(:scope => [:admin, :users, :menu]), edit_admin_user_path(user), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, :users, :menu]), admin_user_path(user), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :users, :destroy])}})
+

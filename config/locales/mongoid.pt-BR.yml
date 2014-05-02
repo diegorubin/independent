@@ -8,9 +8,15 @@ pt-BR:
         resume: Resumo
         title: Título
         slug: Slug
-    
+
+      user:
+        email: E-mail
+        email_confirmation: Confirmação do E-mail
+        name: Nome
+   
     errors:
       models:
+
         post:
           attributes:
             body:
@@ -18,5 +24,15 @@ pt-BR:
             slug:
               blank: 'não pode ser vazio'
             title:
+              blank: 'não pode ser vazio'
+
+        user:
+          attributes:
+            email:
+              blank: 'não pode ser vazio'
+              invalid: 'não é válido'
+            email_confirmation:
+              confirmation: 'e-mails informados não são iguais'
+            name:
               blank: 'não pode ser vazio'
 

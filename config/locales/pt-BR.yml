@@ -2,6 +2,11 @@ pt-BR:
 
   admin:
 
+    navebar:
+      home: Home
+      posts: Posts
+      users: Usuários
+
     posts:
       destroy:
         confirm: Tem certeza que deseja remover o post?
@@ -19,6 +24,24 @@ pt-BR:
       new:
         h1: Novo Post
         title: Novo Post
+
+    users:
+      destroy:
+        confirm: Tem certeza que deseja remover o usuário?
+      edit:
+        h1: Editar Usuário
+        title: Editar Usuário
+      index:
+        h1: Lista de Usuários
+        title: Usuários 
+      menu:
+        destroy: Remover Usuário
+        edit: Editar
+        list: Listar Usuários
+        new: Novo Usuário
+      new:
+        h1: Novo Usuário
+        title: Novo Usuário
 
     welcome:
       index: 
