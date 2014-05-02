@@ -20,7 +20,7 @@ module Independent
       #{Rails.root}/lib/behaviours
     }
 
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = 'pt-BR'
 
     config.enconding = 'utf-8'
 
