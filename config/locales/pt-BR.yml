@@ -2,7 +2,19 @@ pt-BR:
 
   admin:
 
+    posts:
+      index:
+        h1: Lista de Posts
+        title: Posts 
+      menu:
+        new: Novo Post
+        list: Listar Posts
+      new:
+        h1: Novo Post
+        title: Novo Post
+
     welcome:
       index: 
         h1: Painel
+        title: Painel
 
