@@ -49,6 +49,10 @@ class Post
   scope :admin_list, lambda {
   }
 
+  def self.admin_attributes
+    [:title, :resume, :author, :body, :tags, :metadescription]
+  end
+
   private
   def sanitize_texts
     write_attribute(:title, title.sanitize) if title
