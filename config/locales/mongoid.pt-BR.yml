@@ -3,9 +3,11 @@ pt-BR:
   mongoid:
     attributes:
       post:
+        author: Autor
         body: Corpo
         resume: Resumo
         title: Título
+        slug: Slug
     
     errors:
       models:

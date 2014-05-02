@@ -4,3 +4,30 @@
 
 = render 'menu'
 
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :title.t(:scope => [:mongoid, :attributes, :post])
+      %td
+        = :resume.t(:scope => [:mongoid, :attributes, :post])
+      %td
+        = :author.t(:scope => [:mongoid, :attributes, :post])
+      %td
+        &nbsp;
+
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td
+          = post.title
+        %td
+          = post.resume
+        %td
+          = post.author
+        %td
+          .btn-group
+            = menu_button(:edit.t(:scope => [:admin, :posts, :menu]), edit_admin_post_path(post), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :posts, :destroy])}})
+

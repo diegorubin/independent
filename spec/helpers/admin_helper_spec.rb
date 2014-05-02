@@ -9,6 +9,12 @@ describe WelcomeHelper do
         .to eql("<a class=\"btn btn-primary\" href=\"#\">Title</a>")
     end
 
+    it 'generate destroy button' do
+      expect(helper.menu_button("Title", "#", "btn-danger", {'data-method' => 'destroy', 'confirm' => 'sure?'}))
+        .to eql("<a class=\"btn btn-danger\" confirm=\"sure?\" data-method=\"destroy\" href=\"#\">Title</a>")
+
+    end
+
   end
 
   context 'current action' do

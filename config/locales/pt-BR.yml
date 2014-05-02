@@ -3,12 +3,19 @@ pt-BR:
   admin:
 
     posts:
+      destroy:
+        confirm: Tem certeza que deseja remover o post?
+      edit:
+        h1: Editar Post
+        title: Editar Post
       index:
         h1: Lista de Posts
         title: Posts 
       menu:
-        new: Novo Post
+        destroy: Remover Post
+        edit: Editar
         list: Listar Posts
+        new: Novo Post
       new:
         h1: Novo Post
         title: Novo Post

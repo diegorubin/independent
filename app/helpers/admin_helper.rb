@@ -8,8 +8,8 @@ module AdminHelper
     controller.controller_name == controller_name
   end
 
-  def menu_button(title, path, klass)
-    link_to(title, path, {class: "btn #{klass}"})
+  def menu_button(title, path, klass, options = {})
+    link_to(title, path, {class: "btn #{klass}"}.merge(options))
   end
 
   def set_active(controller_name)
