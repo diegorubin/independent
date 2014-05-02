@@ -33,6 +33,8 @@ gem 'haml'
 gem 'cells'
 gem 'bluecloth'
 gem 'gravtastic'
+gem 'formtastic-bootstrap', '~> 3.0.0'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 # xml parse
 gem 'nokogiri'

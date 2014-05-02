@@ -1,0 +1,9 @@
+/*
+ *= require bootstrap
+ *= require formtastic-bootstrap
+ */
+
+body {
+  padding-top: 50px;
+}
+

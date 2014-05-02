@@ -32,6 +32,8 @@ GEM
     binman (3.3.2)
       opener (>= 0.1.0, < 1)
     bluecloth (2.2.0)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     bson (2.2.2)
     builder (3.2.2)
     capistrano (3.2.1)
@@ -98,6 +100,10 @@ GEM
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     ffi (1.9.3)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
+    formtastic-bootstrap (3.0.0)
+      formtastic (>= 2.2)
     gravtastic (3.2.6)
     haml (4.0.5)
       tilt
@@ -271,6 +277,7 @@ PLATFORMS
 
 DEPENDENCIES
   bluecloth
+  bootstrap-sass (~> 3.1.1)
   capistrano-rails
   carrierwave-mongoid
   cells
@@ -280,6 +287,7 @@ DEPENDENCIES
   debugger
   devise
   factory_girl_rails
+  formtastic-bootstrap (~> 3.0.0)
   gravtastic
   haml
   jquery-rails

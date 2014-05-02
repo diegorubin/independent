@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-  root :to => "welcome#index"
   devise_for :users
 
   # admin
   namespace :admin do
     resources :posts
+    root :to => "welcome#index"
   end
+
+  root :to => "welcome#index"
   
 end
 
