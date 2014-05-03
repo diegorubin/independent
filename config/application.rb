@@ -26,6 +26,11 @@ module Independent
 
     config.filter_parameters += [:password, :password_confirmation]
 
+    # Devise
+    config.to_prepare do
+      Devise::SessionsController.layout "login"
+    end
+
   end
 end
 

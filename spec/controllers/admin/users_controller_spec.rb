@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Admin::UsersController do
 
+  before(:each) {@user = authenticate_user}
+
   let(:user_created) {FactoryGirl.create(:user)}
 
   context 'on list users' do

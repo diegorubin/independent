@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Admin::PostsController do
 
+  before(:each) {@user = authenticate_user}
+
   let(:post_created) {FactoryGirl.create(:post)}
 
   context 'on list posts' do
