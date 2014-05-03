@@ -5,4 +5,18 @@
     = stylesheet_link_tag    'login', media: 'all'
     = csrf_meta_tags
   %body
-    = yield
+    .container
+      .login-wrap
+
+        - if flash[:notice]
+          .alert.alert-success=flash[:notice]
+
+        - if flash[:alert]
+          .alert.alert-warning=flash[:alert]
+
+        - if flash[:error]
+          .alert.alert-danger=flash[:error]
+        
+
+        = yield
+

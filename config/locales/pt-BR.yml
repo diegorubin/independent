@@ -47,4 +47,8 @@ pt-BR:
       index: 
         h1: Painel
         title: Painel
+        welcome_message: Olá, %s
 
+  login:
+    sign_in: Entrar
+    submit: Entrar

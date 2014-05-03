@@ -29,6 +29,7 @@ module Independent
     # Devise
     config.to_prepare do
       Devise::SessionsController.layout "login"
+      Devise::PasswordsController.layout "login"
     end
 
   end
