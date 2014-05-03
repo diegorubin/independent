@@ -33,7 +33,7 @@ class User
   # Hack for devise + mongoid session
   class << self
     def serialize_from_session(key, salt)
-      if key.respond_to?(:[])
+      if key.respond_to?(:[]) && key[0].respond_to?(:[])
         record = to_adapter.get(key[0]['$oid'])
         record if record && record.authenticatable_salt == salt
       else

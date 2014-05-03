@@ -44,7 +44,7 @@ describe Post do
     context "on get resources" do
 
       it "should get post by date and slug" do
-        post = FactoryGirl.create(:post)
+        post = FactoryGirl.create(:post, published: true)
         date = Time.current.strftime("%Y/%m/%d")
 
         Post.find_by_slug(date,post.slug).size.should == 1

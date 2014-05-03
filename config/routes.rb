@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     root :to => "welcome#index"
   end
 
-  root :to => "welcome#index"
+  root :to => "posts#index"
   
 end
 

@@ -2,17 +2,22 @@ module Publishable
   extend ActiveSupport::Concern
 
   included do
-    field :published_at, :type => DateTime
-    field :published,    :type => Boolean
+    field :published_at, type: DateTime
+    field :published,    type: Boolean, default: false
 
     # Field used in slug
-    field :date,         :type => String
+    field :date,         type: String
 
     before_save :generate_date, :generate_updated_date
 
-    scope :ordered_by_published_at, lambda {
-      order_by([["published_at", "desc"]])
+    scope :publisheds, -> {
+      where(published: true)
     }
+
+    scope :ordered_by_published_at, -> {
+      order([["published_at", "desc"]])
+    }
+
   end
 
   def generate_date

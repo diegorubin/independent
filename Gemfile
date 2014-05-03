@@ -33,6 +33,7 @@ gem 'haml'
 gem 'cells'
 gem 'bluecloth'
 gem 'gravtastic'
+gem 'formtastic', '2.2.1'
 gem 'formtastic-bootstrap', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 
