@@ -1,9 +1,57 @@
 !!!
-%html
+%html{:lang => "pt-BR"}
   %head
-    %title Independent
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title Blog - Business Casual Template for Bootstrap
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'default', media: 'all'
     = csrf_meta_tags
   %body
-    = yield
+    .brand Business Casual
+    .address-bar The Plaza | 5483 Start Bootstrap Ave. | Beverly Hills, California 26892 | 555.519.2013
+    %nav.navbar.navbar-default{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "index.html"} Business Casual
+        / Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{:href => "index.html"} Home
+            %li
+              %a{:href => "about.html"} About
+            %li
+              %a{:href => "blog.html"} Blog
+            %li
+              %a{:href => "contact.html"} Contact
+        / /.navbar-collapse
+      / /.container
+    .container
+      .row
+        .box
+          .col-lg-12
+            %hr/
+            %h2.intro-text.text-center
+              Company
+              %strong blog
+            %hr/
+          .col-lg-12.text-center
+            = yield
+
+    %footer
+      .container
+        .row
+          .col-lg-12.text-center
+            %p Copyright &copy; Company 2013
+
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'default'
+
