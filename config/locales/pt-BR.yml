@@ -6,6 +6,7 @@ pt-BR:
       home: Home
       posts: Posts
       users: Usuários
+      logout: Sair
 
     posts:
       destroy:

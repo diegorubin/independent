@@ -18,6 +18,14 @@
               %a{:href => admin_posts_path}= :posts.t(scope: [:admin, :navebar])
             %li{class: set_active('users')}
               %a{:href => admin_users_path}= :users.t(scope: [:admin, :navebar])
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle{href: "#", 'data-toggle' => :dropdown}
+                  Usuário
+                  %b.caret
+                %ul.dropdown-menu
+                  %li.divider
+                    %li=link_to(:logout.t(scope: [:admin, :navebar]), destroy_user_session_path, {method: 'delete'})
         / /.nav-collapse
     .container
       .starter-template
