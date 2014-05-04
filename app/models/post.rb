@@ -24,16 +24,6 @@ class Post
   # Field for SEO
   field :metadescription,  :type => String
 
-  
-  #index(
-  #  [
-  #    [ :date, Mongo::DESCENDING ],
-  #    [ :slug, Mongo::DESCENDING ],
-  #    [ :published ]
-  #  ],
-  #  :unique => true
-  #)
-
   # Validates
   validates_presence_of :title
   validates_presence_of :body

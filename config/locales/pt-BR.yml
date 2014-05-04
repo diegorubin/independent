@@ -5,6 +5,7 @@ pt-BR:
     navebar:
       home: Home
       posts: Posts
+      settings: Configurações
       users: Usuários
       logout: Sair
 
@@ -25,6 +26,11 @@ pt-BR:
       new:
         h1: Novo Post
         title: Novo Post
+
+    settings:
+      index:
+        h1: Configurações
+        title: Configurações
 
     users:
       destroy:

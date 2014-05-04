@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # admin
   namespace :admin do
     resources :posts
+    resources :settings, only: ['index', 'update']
     resources :users
     root :to => "welcome#index"
   end
