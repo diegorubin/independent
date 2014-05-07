@@ -27,17 +27,18 @@ describe Setting do
     context 'on map of settings' do
       before(:each) do
         Setting.destroy_all
-        @t1 = (0..5).map{('a'..'z').to_a[rand(26)]}.join
-        @t2 = (0..5).map{('a'..'z').to_a[rand(26)]}.join
-        @title = FactoryGirl.create(:setting, title: 'title', theme: @t1)
-        @subtitle = FactoryGirl.create(:setting, title: 'subtitle', theme: @t1)
-        @about = FactoryGirl.create(:setting, title: 'about', theme: @t1)
-        @theme = FactoryGirl.create(:setting, title: 'title', theme: @t2)
+        @title = FactoryGirl.create(:setting, title: 'title', theme: 'global')
+        @subtitle = FactoryGirl.create(:setting, title: 'subtitle', theme: 'global')
+        @about = FactoryGirl.create(:setting, title: 'current_theme', theme: 'global', value: 'theme')
+        @theme = FactoryGirl.create(:setting, title: 'title', theme: 'theme')
       end
 
       it 'map settings by category' do
         expect(Setting.map_settings_by_category).to(
-          be_kind_of(Mongoid::Contextual::MapReduce)
+          eql({
+            "global"=>{"title"=>"value", "subtitle"=>"value", "current_theme"=>"theme"}, 
+            "theme"=>{"title"=>"value"}
+          })
         )
       end
 

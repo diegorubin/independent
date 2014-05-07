@@ -2,3 +2,8 @@
 
 %h1= :h1.t(:scope => [:admin, :settings, :index])
 
+- @settings.each do |category, settings|
+  %h2= category
+  - settings.each do |setting|
+    = setting.title
+

@@ -15,7 +15,7 @@ describe Admin::SettingsController do
     end
 
     it 'variable with list of settings' do
-      expect(assigns(:settings)).to be_kind_of(Mongoid::Criteria)
+      expect(assigns(:settings)).to be_kind_of(Hash)
     end
 
   end

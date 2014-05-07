@@ -12,29 +12,17 @@ class Setting
 
   # Scopes
   scope :admin_list, proc {|theme|
-    where(theme: theme).order([['category', 'asc']])
+    where(:theme.in => [theme, 'global']).order([['category', 'asc']])
   }
 
-  # XXX: Estudar o melhor a criação de mapreduce
-  # Deixando desta forma para não empacar
   def self.map_settings_by_category
-    map = %Q{
-      function() {
-        
-        var item = {};
-        item[this.title] = this.value;
+    settings = 
+      Setting.where(:theme.in => ['global',current_theme]).group_by{|t| t.theme}
+    settings.each {|k, v| settings[k] = v.collect{|s| [s.title, s.value]}.to_h }
+  end
 
-        emit(this.theme, item);
-      }
-    }
-    reduce = %Q{
-      function(theme, value) {
-        result = {};
-        result[theme] = value;
-        return result;
-      }
-    }
-    Setting.map_reduce(map, reduce).out(inline: true)
+  def self.current_theme
+    Setting.where({theme: 'global', title: 'current_theme'}).first.try(:value)
   end
 
 end
