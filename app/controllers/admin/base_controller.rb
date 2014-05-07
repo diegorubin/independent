@@ -28,13 +28,27 @@ class Admin::BaseController < AdminController
 
   def update
     if get_object_variable.update(object_params)
-      redirect_to :action => :index
-      flash[:notice] = 
-        :notice.t(:scope => [instance_variable_name, :admin, :udpate])
+      respond_to do |format|
+        format.html do
+          redirect_to action: :index
+          flash[:notice] = 
+            :notice.t(scope: [instance_variable_name, :admin, :udpate])
+        end
+        format.json do 
+          render json: get_object_variable
+        end
+      end
     else
-      render :action => :edit 
-      flash[:alert] = 
-        :alert.t(:scope => [instance_variable_name, :admin, :udpate])
+      respond_to do |format|
+        format.html do
+          render action: :edit 
+          flash[:alert] = 
+            :alert.t(scope: [instance_variable_name, :admin, :udpate])
+        end
+        format.json do
+          render json: {nothing: true}
+        end
+      end
     end
   end
 

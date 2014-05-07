@@ -12,8 +12,13 @@ class Setting
 
   # Scopes
   scope :admin_list, proc {|theme|
-    where(:theme.in => [theme, 'global']).order([['category', 'asc']])
+    where(:theme.in => [theme, 'global'])
+    .order([['category', 'asc'], ['title', 'asc']])
   }
+
+  def self.admin_attributes
+    [:value]
+  end
 
   def self.map_settings_by_category
     settings = 

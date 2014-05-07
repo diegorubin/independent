@@ -5,5 +5,8 @@
 - @settings.each do |category, settings|
   %h2= category
   - settings.each do |setting|
-    = setting.title
+    %p
+      %label= "#{setting.title}:"
+      %span.rest-in-place{'data-url' => admin_setting_path(setting), 'data-object' => "setting", 'data-attribute' => "value", 'data-placeholder' => "Não preenchido..."}
+        = setting.value
 

@@ -5,13 +5,14 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => get_setting_value('global.meta_description'), :name => "description"}/
     %meta{:content => get_setting_value('global.meta_author'), :name => "author"}/
-    %title=get_setting_value('global.blog_title')
+    %title
+      #{yield(:title)} | #{get_setting_value('global.blog_title')}
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'default', media: 'all'
     = csrf_meta_tags
   %body
-    .brand Business Casual
-    .address-bar The Plaza | 5483 Start Bootstrap Ave. | Beverly Hills, California 26892 | 555.519.2013
+    .brand= get_setting_value('theme.title')
+    .address-bar= get_setting_value('theme.subtitle')
     %nav.navbar.navbar-default{:role => "navigation"}
       .container
         .navbar-header
@@ -21,7 +22,7 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{:href => "index.html"} Business Casual
-        / Collect the nav links, forms, and other content for toggling
+
         .collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             %li
@@ -37,12 +38,6 @@
     .container
       .row
         .box
-          .col-lg-12
-            %hr/
-            %h2.intro-text.text-center
-              Company
-              %strong blog
-            %hr/
           .col-lg-12.text-center
             = yield
 

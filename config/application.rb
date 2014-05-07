@@ -32,6 +32,11 @@ module Independent
       Devise::PasswordsController.layout "login"
     end
 
+    # themes path
+    [:fonts, :images, :javascripts, :stylesheets].each do |d|
+      config.assets.paths << "#{Rails.root}/themes/#{d}"
+    end
+
   end
 end
 

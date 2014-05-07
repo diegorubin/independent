@@ -20,5 +20,13 @@ describe Admin::SettingsController do
 
   end
 
+  context 'on edit via ajax' do
+    it 'response with success' do
+      put :update, {id: setting_created.id, setting:{value: 'a'}, format: :json}
+      setting_created.value = 'a'
+      expect(response.body).to eql(setting_created.to_json)
+    end
+  end
+
 end
 

@@ -8,7 +8,7 @@ describe Setting do
 
     after (:each) { setting.valid?.should be_false }
 
-    it 'have an title' do
+    it 'have a title' do
       setting.title = ''
     end
 
