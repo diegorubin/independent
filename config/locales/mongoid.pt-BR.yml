@@ -12,6 +12,7 @@ pt-BR:
       theme:
         title: Título
         label: Rótulo
+        file: Arquivo
 
       user:
         email: E-mail
