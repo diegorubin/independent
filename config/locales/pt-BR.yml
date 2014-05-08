@@ -6,6 +6,7 @@ pt-BR:
       home: Home
       posts: Posts
       settings: Configurações
+      themes: Temas
       users: Usuários
       logout: Sair
 
@@ -31,6 +32,24 @@ pt-BR:
       index:
         h1: Configurações
         title: Configurações
+
+    themes:
+      destroy:
+        confirm: Tem certeza que deseja remover o tema?
+      edit:
+        h1: Editar Tema
+        title: Editar Tema
+      index:
+        h1: Lista de Temas
+        title: Temas 
+      menu:
+        destroy: Remover Tema
+        edit: Editar
+        list: Listar Temas
+        new: Novo Tema
+      new:
+        h1: Novo Tema
+        title: Novo Tema
 
     users:
       destroy:

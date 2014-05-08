@@ -18,6 +18,8 @@
               %a{:href => admin_posts_path}= :posts.t(scope: [:admin, :navebar])
             %li{class: set_active('users')}
               %a{:href => admin_users_path}= :users.t(scope: [:admin, :navebar])
+            %li{class: set_active('themes')}
+              %a{:href => admin_themes_path}= :themes.t(scope: [:admin, :navebar])
             %li{class: set_active('settings')}
               %a{:href => admin_settings_path}= :settings.t(scope: [:admin, :navebar])
             %ul.nav.navbar-nav.navbar-right

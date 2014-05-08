@@ -13,9 +13,7 @@ class Admin::BaseController < AdminController
   def create
     set_object_variable(klass.new(object_params))
     if get_object_variable.save
-      redirect_to :action => :index
-      flash[:notice] = 
-        :notice.t(:scope => [instance_variable_name, :admin, :create])
+      save_success_action
     else
       render :action => :new
       flash[:alert] = 
@@ -30,9 +28,7 @@ class Admin::BaseController < AdminController
     if get_object_variable.update(object_params)
       respond_to do |format|
         format.html do
-          redirect_to action: :index
-          flash[:notice] = 
-            :notice.t(scope: [instance_variable_name, :admin, :udpate])
+          save_success_action(:update)
         end
         format.json do 
           render json: get_object_variable
@@ -103,6 +99,11 @@ class Admin::BaseController < AdminController
 
   def get_object
     set_object_variable(klass.find(params[:id]))
+  end
+
+  def save_success_action(act = :create)
+    redirect_to action: :index
+    flash[:notice] = :notice.t(:scope => [instance_variable_name, :admin, act])
   end
 
 end

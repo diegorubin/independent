@@ -9,6 +9,10 @@ pt-BR:
         title: Título
         slug: Slug
 
+      theme:
+        title: Título
+        label: Rótulo
+
       user:
         email: E-mail
         email_confirmation: Confirmação do E-mail
@@ -22,6 +26,13 @@ pt-BR:
             body:
               blank: 'não pode ser vazio'
             slug:
+              blank: 'não pode ser vazio'
+            title:
+              blank: 'não pode ser vazio'
+
+        theme:
+          attributes:
+            label:
               blank: 'não pode ser vazio'
             title:
               blank: 'não pode ser vazio'
