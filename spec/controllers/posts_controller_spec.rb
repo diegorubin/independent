@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe PostsController do
 
+  before(:each) {clear_settings}
+
   describe "GET 'index'" do
 
     before(:each) {get 'index'}

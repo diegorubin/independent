@@ -1,10 +1,11 @@
 class Setting
   include Mongoid::Document
 
-  field :title,    type: String
-  field :category, type: String
-  field :value,    type: String
-  field :theme,    type: String
+  field :title,      type: String
+  field :category,   type: String
+  field :value,      type: String
+  field :input_type, type: String
+  field :theme,      type: String
 
   validates :title, presence: true, uniqueness: {scope: ['theme']}
   validates :category, presence: true

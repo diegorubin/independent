@@ -2,14 +2,11 @@
 
   .row
     .col-md-8
-      = f.inputs :title, :label
-
       = f.input :file
 
     .col-md-4
       .well
         = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
         = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
 

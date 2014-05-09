@@ -11,7 +11,7 @@ global = {
 }
 
 default = {
-  :header => ['title', 'subtitle']
+  :header => ['title', 'subtitle', 'analytics_code']
 }
 
 global.each do |category, settings|

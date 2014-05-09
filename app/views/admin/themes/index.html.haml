@@ -10,8 +10,6 @@
       %td
         = :title.t(:scope => [:mongoid, :attributes, :theme])
       %td
-        = :label.t(:scope => [:mongoid, :attributes, :theme])
-      %td
         &nbsp;
 
   %tbody
@@ -20,10 +18,10 @@
         %td
           = theme.title
         %td
-          = theme.label
-        %td
           .btn-group
-            = menu_button(:edit.t(:scope => [:admin, :themes, :menu]), edit_admin_theme_path(theme), 'btn-info')
+            = menu_button(:original.t(:scope => [:admin, :themes, :menu]), edit_admin_theme_path(theme), 'btn-info')
+
+            = menu_button(:exportar.t(:scope => [:admin, :themes, :menu]), edit_admin_theme_path(theme), 'btn-info')
 
             = menu_button(:destroy.t(:scope => [:admin, :themes, :menu]), admin_theme_path(theme), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :themes, :destroy])}})
 

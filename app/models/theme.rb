@@ -17,5 +17,9 @@ class Theme
     [:title, :label, :file]
   end
 
+  def self.path
+    Rails.root.join('themes')
+  end
+
 end
 

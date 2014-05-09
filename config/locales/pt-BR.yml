@@ -44,9 +44,10 @@ pt-BR:
         title: Temas 
       menu:
         destroy: Remover Tema
-        edit: Editar
+        export: Exportar
         list: Listar Temas
         new: Novo Tema
+        original: Baixar Original
       new:
         h1: Novo Tema
         title: Novo Tema
