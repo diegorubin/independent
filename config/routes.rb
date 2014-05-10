@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     root :to => "welcome#index"
   end
 
+  # Category
+  get "/categories/:title" => "categories#show", :as => "category"
+
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"
 

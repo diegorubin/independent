@@ -10,6 +10,8 @@
       %td
         = :title.t(:scope => [:mongoid, :attributes, :post])
       %td
+        = :category.t(:scope => [:mongoid, :attributes, :post])
+      %td
         = :resume.t(:scope => [:mongoid, :attributes, :post])
       %td
         = :author.t(:scope => [:mongoid, :attributes, :post])
@@ -23,6 +25,8 @@
       %tr
         %td
           = post.title
+        %td
+          = post.category
         %td
           = post.resume
         %td

@@ -2,7 +2,7 @@
 
   .row
     .col-md-8
-      = f.inputs :title, :slug, :author
+      = f.inputs :title, :slug, :category, :author
 
       = f.input :resume, as: 'text', input_html: {class: 'short-text'}
       = f.input :body, as: 'text'
@@ -16,6 +16,4 @@
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 
       = render "admin/shared/markdown_table"
-
-  
 

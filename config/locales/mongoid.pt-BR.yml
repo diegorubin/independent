@@ -11,6 +11,7 @@ pt-BR:
       post:
         author: Autor
         body: Corpo
+        category: Categoria
         published: Status
         resume: Resumo
         slug: Slug
@@ -42,6 +43,8 @@ pt-BR:
         post:
           attributes:
             body:
+              blank: 'não pode ser vazio'
+            category:
               blank: 'não pode ser vazio'
             slug:
               blank: 'não pode ser vazio'
