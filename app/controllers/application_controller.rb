@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
 
    def prepend_view_paths
      theme = current_theme
-     unless theme.blank? || theme == 'default'
-       prepend_view_path "/themes/views/#{theme}"
+     if !theme.blank? && theme != 'default'
+       prepend_view_path(Rails.root.join("themes/views/#{theme}"))
      end
    end
 
