@@ -2,12 +2,19 @@ pt-BR:
 
   mongoid:
     attributes:
+      page:
+        body: Corpo
+        published: Status
+        slug: Slug
+        title: Título
+
       post:
         author: Autor
         body: Corpo
+        published: Status
         resume: Resumo
-        title: Título
         slug: Slug
+        title: Título
 
       theme:
         title: Título
@@ -21,6 +28,15 @@ pt-BR:
    
     errors:
       models:
+
+        page:
+          attributes:
+            body:
+              blank: 'não pode ser vazio'
+            slug:
+              blank: 'não pode ser vazio'
+            title:
+              blank: 'não pode ser vazio'
 
         post:
           attributes:

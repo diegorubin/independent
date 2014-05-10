@@ -14,6 +14,8 @@
       %td
         = :author.t(:scope => [:mongoid, :attributes, :post])
       %td
+        = :published.t(:scope => [:mongoid, :attributes, :post])
+      %td
         &nbsp;
 
   %tbody
@@ -25,6 +27,8 @@
           = post.resume
         %td
           = post.author
+        %td
+          = post.published_str
         %td
           .btn-group
             = menu_button(:edit.t(:scope => [:admin, :posts, :menu]), edit_admin_post_path(post), 'btn-info')

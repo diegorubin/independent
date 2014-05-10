@@ -16,6 +16,8 @@
               %a{:href => admin_root_path}= :home.t(scope: [:admin, :navebar])
             %li{class: set_active('posts')}
               %a{:href => admin_posts_path}= :posts.t(scope: [:admin, :navebar])
+            %li{class: set_active('pages')}
+              %a{:href => admin_pages_path}= :pages.t(scope: [:admin, :navebar])
             %li{class: set_active('users')}
               %a{:href => admin_users_path}= :users.t(scope: [:admin, :navebar])
             %li{class: set_active('themes')}

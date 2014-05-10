@@ -20,6 +20,10 @@ module Publishable
 
   end
 
+  def published_str
+    published.to_s.to_sym.t(scope: ['options'])
+  end
+
   def generate_date
     if published? && !date
       write_attribute(:date,Time.current.strftime("%Y/%m/%d"))

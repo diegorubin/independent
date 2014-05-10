@@ -5,10 +5,29 @@ pt-BR:
     navebar:
       home: Home
       posts: Posts
+      pages: Páginas
       settings: Configurações
       themes: Temas
       users: Usuários
       logout: Sair
+
+    pages:
+      destroy:
+        confirm: Tem certeza que deseja remover a página?
+      edit:
+        h1: Editar Página
+        title: Editar Página
+      index:
+        h1: Lista de Páginas
+        title: Páginas 
+      menu:
+        destroy: Remover Página
+        edit: Editar
+        list: Listar Páginas
+        new: Novo Página
+      new:
+        h1: Novo Página
+        title: Novo Página
 
     posts:
       destroy:
@@ -79,3 +98,8 @@ pt-BR:
   login:
     sign_in: Entrar
     submit: Entrar
+
+  options:
+    'true': Sim
+    'false': Não
+

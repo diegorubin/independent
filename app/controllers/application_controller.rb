@@ -15,5 +15,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+   def prepend_view_paths
+     theme = current_theme
+     unless theme.blank? || theme == 'default'
+       prepend_view_path "/themes/views/#{theme}"
+     end
+   end
+
+
 end
 
