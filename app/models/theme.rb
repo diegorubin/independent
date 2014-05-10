@@ -48,6 +48,7 @@ class Theme
   end
 
   def copy_file(ziped_file)
+    return if ziped_file.name == 'manifest.yml'
     self.files << ziped_file.name
     ziped_file.extract(Theme.path.join(ziped_file.name))
   end

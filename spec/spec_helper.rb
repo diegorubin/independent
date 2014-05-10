@@ -27,10 +27,12 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
+
   end
 
   config.before(:each) do
     DatabaseCleaner.clean
+    Theme.stub(:path).and_return(Rails.root.join('tmp'))
   end
 
 end

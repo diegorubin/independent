@@ -22,7 +22,6 @@ describe Theme do
 
     before(:each) do
       Theme.destroy_all
-      Theme.stub(:path).and_return(Rails.root.join('tmp'))
       @file = File.open(File.dirname(__FILE__) + "/examples/test.zip")
     end
 

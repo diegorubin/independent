@@ -36,11 +36,11 @@ describe WelcomeHelper do
     before(:each) { controller.stub(:controller_name).and_return('posts')}
 
     it 'return true if current controller' do
-      expect(helper.set_active('welcome')).to be_blank
+      expect(helper.set_active('posts')).to eql('active')
     end
 
     it 'return false if not current controller' do
-      expect(helper.set_active('posts')).to eql('active')
+      expect(helper.set_active('welcome')).to be_blank
     end
 
   end

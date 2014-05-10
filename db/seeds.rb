@@ -7,11 +7,11 @@ User.create({
 
 # Configurações globais
 global = {
-  :system => ['current_theme', 'meta_description', 'meta_author', 'blog_title']
+  :system => ['current_theme', 'meta_description', 'meta_author', 'blog_title', 'analytics_code']
 }
 
 default = {
-  :header => ['title', 'subtitle', 'analytics_code']
+  :header => ['title', 'subtitle']
 }
 
 global.each do |category, settings|
