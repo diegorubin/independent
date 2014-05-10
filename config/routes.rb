@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
     resources :settings, only: ['index', 'update']
-    resources :themes
+    resources :themes, only: ['index', 'new', 'create', 'show', 'destroy']
     resources :users
     root :to => "welcome#index"
   end

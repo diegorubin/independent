@@ -7,6 +7,10 @@ FactoryGirl.define do
     factory :theme_invalid do
       title ''
     end
+
+    factory :theme_with_file do
+      file File.open(Rails.root.join("spec/models/examples/test.zip"))
+    end
   end
 
 end

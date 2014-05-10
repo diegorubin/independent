@@ -15,6 +15,21 @@ describe Admin::ThemesController do
 
   end
 
+  context 'on recover theme file' do
+
+    before(:each) do
+      Theme.destroy_all
+    end
+
+    let(:theme) {FactoryGirl.create(:theme_with_file)}
+
+    it 'get zip file' do
+      get :show, id: theme.id, format: 'zip'
+      expect(response).to be_success
+    end
+
+  end
+
   context 'on create theme' do
     let(:theme_attributes) {FactoryGirl.attributes_for(:theme)}
     let(:theme_attributes_invalid) {FactoryGirl.attributes_for(:theme_invalid)}
