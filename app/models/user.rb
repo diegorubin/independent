@@ -6,7 +6,8 @@ class User
   # Attributes
   field :email,              type: String
   field :name,               type: String
-  field :blocked, type: Boolean, default: false
+  field :username,           type: String
+  field :blocked,            type: Boolean, default: false
 
   # Devise attributes
   field :encrypted_password,   type: String
@@ -17,6 +18,7 @@ class User
   field :sign_in_count,        type: Integer
 
   # Validations
+  validates :username, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, 
                     confirmation: true,
@@ -27,7 +29,10 @@ class User
   }
 
   def self.admin_attributes
-    [:blocked, :email, :email_confirmation, :name]
+    [
+      :blocked, :email, :email_confirmation, :name, 
+      :password, :password_confirmation, :username
+    ]
   end
 
   # Hack for devise + mongoid session

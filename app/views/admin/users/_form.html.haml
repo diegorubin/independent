@@ -2,7 +2,10 @@
 
   .row
     .col-md-8
-      = f.inputs :name, :email, :email_confirmation
+      = f.inputs :name, :username, :email, :email_confirmation
+
+      - if @user == current_user || @user.new_record?
+        = f.inputs :password, :password_confirmation
 
     .col-md-4
       .well

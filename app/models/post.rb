@@ -27,6 +27,7 @@ class Post
   # Validates
   validates_presence_of :title
   validates_presence_of :body
+  validates_presence_of :author
 
   validates_format_of :tags, 
                       :with => /\A([^,]+,)*[^,]+\z/i,
@@ -49,7 +50,6 @@ class Post
   private
   def sanitize_texts
     write_attribute(:title, title.sanitize) if title
-    write_attribute(:resume, resume.sanitize) if resume
   end
 
 end

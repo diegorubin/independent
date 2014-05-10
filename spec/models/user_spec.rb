@@ -15,6 +15,10 @@ describe User do
       user.name = ''
     end
 
+    it 'have an username' do
+      user.username = ''
+    end
+
   end
   
 end

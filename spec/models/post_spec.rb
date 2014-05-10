@@ -5,8 +5,7 @@ describe Post do
   context "persist" do
 
     before(:each) do
-      @valid_attrs = {:title => "Teste de Post", :body => "um corpo"}
-      @post = Post.new(@valid_attrs)
+      @post = FactoryGirl.build(:post, title: 'teste de post')
     end
 
     it "should save and retrieve a valid post" do
@@ -14,8 +13,8 @@ describe Post do
 
       id = @post.id
       
-      @post = Post.find id
-      @post.title.should == @valid_attrs[:title]
+      post = Post.find id
+      post.title.should == @post.title
     end
     
     context "on slug" do

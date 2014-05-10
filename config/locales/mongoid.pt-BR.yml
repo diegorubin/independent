@@ -25,6 +25,7 @@ pt-BR:
         email: E-mail
         email_confirmation: Confirmação do E-mail
         name: Nome
+        username: Username
    
     errors:
       models:
@@ -63,4 +64,8 @@ pt-BR:
               confirmation: 'e-mails informados não são iguais'
             name:
               blank: 'não pode ser vazio'
+              taken: 'já está sendo utilizado'
+            username:
+              blank: 'não pode ser vazio'
+              taken: 'já está sendo utilizado'
 

@@ -12,7 +12,19 @@ Rails.application.routes.draw do
     root :to => "welcome#index"
   end
 
-  resources :posts, only: ['index', 'show']
+  # Pages
+  get "/pages/:slug" => "pages#show", :as => "page"
+
+  # Posts
+  get "/posts" => "posts#index", :as => "posts"
+  get "/posts/:page" => "posts#index"
+  get ":date" => "posts#index", 
+        :as => "post_date", 
+        :date => /\d{4}(\/\d{2}){0,2}/
+  get ":date/:slug" => "posts#show", 
+        :as => "post", 
+        :date => /\d{4}(\/\d{2}){2}/
+  
   root :to => "welcome#index"
   
 end

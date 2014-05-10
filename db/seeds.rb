@@ -1,7 +1,7 @@
 # Primeiro usuário
 User.create({
   name: 'Administrador', email: 'admin@independent.com',
-  email_confirmation: 'admin@independent.com',
+  username: 'admin', email_confirmation: 'admin@independent.com',
   password: 'removerusuario', password_confirmation: 'removerusuario'
 })
 
