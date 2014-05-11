@@ -41,6 +41,7 @@ class Post
 
   # Scopes
   scope :admin_list, lambda {
+    order([['published', 'desc'], ['title', 'asc']])
   }
 
   def self.admin_attributes

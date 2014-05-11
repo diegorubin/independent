@@ -28,7 +28,7 @@
         %td
           = post.category
         %td
-          = post.resume
+          = raw post.resume.from_markdown_to_html
         %td
           = post.author
         %td
