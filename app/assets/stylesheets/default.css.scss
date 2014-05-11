@@ -1,5 +1,9 @@
+/*
+ *= require_self
+ */
+
 body {
-  background: url(/assets/default/bg.jpg) no-repeat center center fixed; 
+  background: image-url('default/bg.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
