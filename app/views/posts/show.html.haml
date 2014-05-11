@@ -1,0 +1,6 @@
+- content_for(:title, @post.title)
+
+%h1= @post.title
+
+= raw(@post.body.from_markdown_to_html)
+

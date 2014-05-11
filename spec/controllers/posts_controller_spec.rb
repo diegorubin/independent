@@ -19,5 +19,19 @@ describe PostsController do
     end
   end
 
+  context 'on show' do
+    let(:published) {FactoryGirl.create(:post, published: true)}
+
+    it 'show published post' do
+
+      get 'show', date: published.date, slug: published.slug
+
+      expect(response).to be_success
+      expect(assigns(:post)).to eql(published)
+
+    end
+
+  end
+
 end
 

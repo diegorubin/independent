@@ -9,5 +9,9 @@ class PostsController < ApplicationController
       page(params.fetch(:page, 1))
   end
 
+  def show
+    @post = Post.find_by_slug(params[:date], params[:slug]).first
+  end
+
 end
 

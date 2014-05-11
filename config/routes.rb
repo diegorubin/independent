@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         :as => "post", 
         :date => /\d{4}(\/\d{2}){2}/
   
-  root :to => "welcome#index"
+  root :to => "posts#index"
   
 end
 

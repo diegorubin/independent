@@ -30,11 +30,6 @@ class Snippet
   validates_presence_of :code
   validates_presence_of :language
 
-  # Scopes
-  scope :ordered_by_published_at, lambda {
-    order_by([["published_at", "desc"]])
-  }
-
   def to_html
     result = code
     result.gsub!("<","&lt;")
