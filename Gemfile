@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Core
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -25,7 +25,7 @@ gem 'kaminari'
 gem 'devise'
 
 # database
-gem 'mysql'
+gem 'sqlite3'
 gem 'mongoid', '~> 4.0.0.beta1'
 gem 'mongo'
 gem 'redis'
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'thin'
 
   gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 
   gem 'debugger'
 
@@ -68,7 +69,6 @@ group :development, :test do
 
   gem 'database_cleaner'
 
-  gem 'sqlite3'
 
   gem 'coveralls', require: false
 end
