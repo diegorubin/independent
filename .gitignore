@@ -14,6 +14,8 @@
 /config/mongoid.yml
 /config/redis.yml
 
+/config/deploy/ragnarok.rb
+
 /coverage
 
 /public/uploads
