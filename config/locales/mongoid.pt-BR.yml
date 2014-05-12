@@ -26,6 +26,8 @@ pt-BR:
         email: E-mail
         email_confirmation: Confirmação do E-mail
         name: Nome
+        password: Senha
+        password_confirmation: Confirmação da Senha
         username: Username
    
     errors:

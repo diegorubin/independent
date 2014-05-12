@@ -6,3 +6,7 @@ def clear_settings
   Setting.destroy_all
 end
 
+def clear_pages
+  Page.destroy_all
+end
+

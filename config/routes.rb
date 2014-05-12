@@ -28,6 +28,8 @@ Rails.application.routes.draw do
         :as => "post", 
         :date => /\d{4}(\/\d{2}){2}/
   
+  # temporario
+  get '/welcome' => 'welcome#index', :as => 'welcome_path'
   root :to => "posts#index"
   
 end

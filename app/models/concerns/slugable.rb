@@ -11,6 +11,10 @@ module Slugable
     scope :find_by_slug, lambda { |date, slug|
       where(:date => date, :slug => slug) 
     }
+    scope :find_by_simple_slug, lambda { |slug|
+      where(:slug => slug) 
+    }
+
   end
 
   def generate_slug

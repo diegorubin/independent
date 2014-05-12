@@ -1,0 +1,6 @@
+- content_for(:title, @page.title)
+
+%h1= @page.title
+
+= raw(@page.body.from_markdown_to_html)
+
