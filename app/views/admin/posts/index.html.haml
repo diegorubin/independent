@@ -39,3 +39,5 @@
 
             = menu_button(:destroy.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :posts, :destroy])}})
 
+= paginate @posts
+

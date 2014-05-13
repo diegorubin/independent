@@ -103,3 +103,15 @@ pt-BR:
     'true': Sim
     'false': Não
 
+  will_paginate:
+    previous_label: Anterior
+    next_label: Próxima
+
+  views:
+    pagination:
+      previous: "&laquo; Anterior"
+      next: "Próxima &raquo;"
+      truncate: "..."
+      first: "Primeira"
+      last: "Última"
+

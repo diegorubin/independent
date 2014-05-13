@@ -27,3 +27,5 @@
 
             = menu_button(:destroy.t(:scope => [:admin, :users, :menu]), admin_user_path(user), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :users, :destroy])}})
 
+= paginate @users
+

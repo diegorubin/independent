@@ -16,7 +16,7 @@ module StringExtensions
   def from_markdown_to_html
     # Minha "extensao" do markdown
     r = self.gsub(/\[render_snippet (.+)\]/) do |snippet|
-      s = Snippet.by_slug($1).first
+      s = Snippet.find_by_simple_slug($1).first
       s ? s.to_html : "Snippet não encontrado"
     end
     BlueCloth::new(r).to_html
