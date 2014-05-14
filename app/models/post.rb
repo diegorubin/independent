@@ -5,6 +5,7 @@ class Post
   include Publishable
   include Rankable
   include Slugable
+  include Taggable
 
   paginates_per 10
 
@@ -19,10 +20,6 @@ class Post
 
   field :category,     type: String
 
-  field :tags,         type: String
-
-  field :pageviews,    type: Integer, default: 0
-
   # Field for SEO
   field :metadescription, type: String
 
@@ -31,10 +28,6 @@ class Post
   validates_presence_of :title
   validates_presence_of :body
   validates_presence_of :author
-
-  validates_format_of :tags, 
-                      :with => /\A([^,]+,)*[^,]+\z/i,
-                      :allow_blank => true
 
   # Callbacks
   before_validation :sanitize_texts

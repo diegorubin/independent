@@ -1,4 +1,10 @@
 module Rankable
+  extend ActiveSupport::Concern
+
+  included do
+    field :pageviews, type: Integer, default: 0
+  end
+
   def get_pageviews
     redis = Redis.get_connection
     p = redis.get_pageviews(self.class.to_s, slug)
@@ -15,4 +21,6 @@ module Rankable
     redis = Redis.get_connection
     redis.increment_pageview(self.class.to_s, slug)
   end
+
 end
+
