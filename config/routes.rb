@@ -6,19 +6,20 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :pages
     resources :posts
+    resources :presentations
     resources :settings, only: ['index', 'update']
+    resources :snippets
     resources :themes, only: ['index', 'new', 'create', 'show', 'destroy']
     resources :users
     root :to => "welcome#index"
   end
 
-  # Category
-  get "/categories/:title" => "categories#show", :as => "category"
-
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"
 
   # Posts
+  get "/category/:category" => "posts#index", :as => "category"
+
   get "/posts" => "posts#index", :as => "posts"
   get "/posts/:page" => "posts#index"
   get ":date" => "posts#index", 

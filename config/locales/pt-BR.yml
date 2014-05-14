@@ -6,7 +6,9 @@ pt-BR:
       home: Home
       posts: Posts
       pages: Páginas
+      presentations: Apresentaçãoes
       settings: Configurações
+      snippets: Snippets
       themes: Temas
       users: Usuários
       logout: Sair
@@ -31,21 +33,57 @@ pt-BR:
 
     posts:
       destroy:
-        confirm: Tem certeza que deseja remover o post?
+        confirm: Tem certeza que deseja remover o artigo?
       edit:
-        h1: Editar Post
-        title: Editar Post
+        h1: Editar Artigo
+        title: Editar Artigo
       index:
-        h1: Lista de Posts
-        title: Posts 
+        h1: Lista de Artigos
+        title: Artigos 
       menu:
-        destroy: Remover Post
+        destroy: Remover Artigo
         edit: Editar
-        list: Listar Posts
-        new: Novo Post
+        list: Listar Artigos
+        new: Novo Artigo
       new:
-        h1: Novo Post
-        title: Novo Post
+        h1: Novo Artigo
+        title: Novo Artigo
+
+    presentations:
+      destroy:
+        confirm: Tem certeza que deseja remover a apresentação?
+      edit:
+        h1: Editar Apresentação
+        title: Editar Apresentação
+      index:
+        h1: Lista de Apresentações
+        title: Apresentaçãos 
+      menu:
+        destroy: Remover Apresentação
+        edit: Editar
+        list: Listar Apresentaçãos
+        new: Nova Apresentação
+      new:
+        h1: Nova Apresentação
+        title: Nova Apresentação
+
+    snippets:
+      destroy:
+        confirm: Tem certeza que deseja remover o snippet?
+      edit:
+        h1: Editar Snippet
+        title: Editar Snippet
+      index:
+        h1: Lista de Snippets
+        title: Snippets 
+      menu:
+        destroy: Remover Snippet
+        edit: Editar
+        list: Listar Snippets
+        new: Novo Snippet
+      new:
+        h1: Novo Snippet
+        title: Novo Snippet
 
     settings:
       index:

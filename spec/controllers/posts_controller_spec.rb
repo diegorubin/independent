@@ -6,16 +6,30 @@ describe PostsController do
 
   describe "GET 'index'" do
 
-    before(:each) {get 'index'}
-
     it "returns http success" do
+      get 'index'
       expect(response).to be_success
     end
 
-    it 'list only published posts' do
-      published = FactoryGirl.create(:post, published: true)
-      unpublished = FactoryGirl.create(:post)
-      expect(assigns(:posts).first).to eql(published)
+    context 'on list' do
+      before(:each) {
+        category_test_list = 'test_list'
+        @published = FactoryGirl.create(
+          :post, published: true, category: category_test_list
+        )
+      }
+
+      it 'only published posts' do
+        get 'index'
+        unpublished = FactoryGirl.create(:post)
+        expect(assigns(:posts).first).to eql(@published)
+      end
+
+      it 'by category' do
+        get 'index', category: @published.category
+        expect(assigns(:posts).first).to eql(@published)
+      end
+
     end
   end
 

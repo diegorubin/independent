@@ -10,8 +10,6 @@ class Presentation
 
   field :title,        :type => String
   field :resume,       :type => String
-  field :published,    :type => Boolean
-  field :published_at, :type => DateTime
   field :updated_at,   :type => DateTime
   field :export,       :type => Boolean,  :default => false
   field :pageviews,    :type => Integer,  :default => 0
@@ -26,14 +24,6 @@ class Presentation
   embeds_many :slides
   embeds_many :comments, :as => :commentable
 
-  #index(
-  #  [
-  #    [ :slug, Mongo::DESCENDING ],
-  #    [ :published ]
-  #  ],
-  #  :unique => true
-  #)
-
   # validations
   validates_presence_of   :title
   validates_presence_of   :slug
@@ -45,6 +35,13 @@ class Presentation
 
   # Callbacks
   before_validation :sanitize_texts
+
+  # Scopes
+  scope :admin_list, lambda {}
+
+  def self.admin_attributes
+    [:title, :resume, :tags, :file]
+  end
 
   def self.export_images(presentation_id)
     p = Presentation.find(presentation_id)

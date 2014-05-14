@@ -22,13 +22,15 @@ class Snippet
   field :language,   :type => String
   field :tags,       :type => String
 
-  field :updated_at, :type => DateTime
   field :pageviews,  :type => Integer, :default => 0
 
   # Validates
   validates_presence_of :title
   validates_presence_of :code
   validates_presence_of :language
+
+  # Scopes
+  scope :admin_list, lambda {}
 
   def to_html
     result = code
@@ -44,6 +46,10 @@ class Snippet
 
   def resume
     "Linguagem: #{language_name}"
+  end
+
+  def self.admin_attributes
+    [:title, :code, :public, :language, :tags]
   end
 
 end

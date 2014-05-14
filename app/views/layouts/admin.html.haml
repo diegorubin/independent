@@ -16,6 +16,10 @@
               %a{:href => admin_root_path}= :home.t(scope: [:admin, :navebar])
             %li{class: set_active('posts')}
               %a{:href => admin_posts_path}= :posts.t(scope: [:admin, :navebar])
+            %li{class: set_active('presentations')}
+              %a{:href => admin_presentations_path}= :presentations.t(scope: [:admin, :navebar])
+            %li{class: set_active('snippets')}
+              %a{:href => admin_snippets_path}= :snippets.t(scope: [:admin, :navebar])
             %li{class: set_active('pages')}
               %a{:href => admin_pages_path}= :pages.t(scope: [:admin, :navebar])
             %li{class: set_active('users')}

@@ -17,10 +17,24 @@ pt-BR:
         slug: Slug
         title: Título
 
-      theme:
-        title: Título
-        label: Rótulo
+      presentation:
         file: Arquivo
+        published: Status
+        resume: Resumo
+        slug: Slug
+        title: Título
+
+      snippet:
+        code: Código
+        language: Linguagem
+        public: Público?
+        slug: Slug
+        title: Título
+
+      theme:
+        file: Arquivo
+        label: Rótulo
+        title: Título
 
       user:
         email: E-mail

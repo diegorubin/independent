@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.publisheds.ordered_by_published_at.
-      page(params.fetch(:page, 1))
+      filters(params).page(params.fetch(:page, 1))
   end
 
   def show

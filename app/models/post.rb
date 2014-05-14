@@ -44,6 +44,13 @@ class Post
     order([['published', 'desc'], ['title', 'asc']])
   }
 
+  scope :filters, lambda { |params|
+    options = {}
+    options[:category] = params[:category] if params[:category]
+
+    options.length > 0 ? where(options) : {}
+  }
+
   def self.admin_attributes
     [
       :title, :resume, :author, :body, :tags, :metadescription, 
