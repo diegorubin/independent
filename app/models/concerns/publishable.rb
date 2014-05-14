@@ -3,6 +3,7 @@ module Publishable
 
   included do
     field :published_at, type: DateTime
+    field :updated_at,   type: DateTime
     field :published,    type: Boolean, default: false
 
     # Field used in slug
@@ -26,8 +27,8 @@ module Publishable
 
   def generate_date
     if published? && !date
-      write_attribute(:date,Time.current.strftime("%Y/%m/%d"))
-      write_attribute(:published_at, Time.current)
+      self.date = Time.current.strftime("%Y/%m/%d")
+      self.published_at = Time.current
     end
   end
 

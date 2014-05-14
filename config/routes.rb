@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # Posts
   get "/category/:category" => "posts#index", :as => "category"
+  get "/tag/:tag" => "posts#index", :as => "tag"
 
   get "/posts" => "posts#index", :as => "posts"
   get "/posts/:page" => "posts#index"

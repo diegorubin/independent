@@ -10,7 +10,6 @@ class Presentation
 
   field :title,        :type => String
   field :resume,       :type => String
-  field :updated_at,   :type => DateTime
   field :export,       :type => Boolean,  :default => false
   field :pageviews,    :type => Integer,  :default => 0
 

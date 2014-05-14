@@ -77,5 +77,14 @@ describe Post do
 
   end
 
+  context 'on put in list' do
+
+    it 'create item' do
+      expect{FactoryGirl.create(:post, published:true)}.
+        to change(ListItem, :count).by(1)
+    end
+
+  end
+
 end
 

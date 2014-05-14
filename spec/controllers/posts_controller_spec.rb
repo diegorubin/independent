@@ -15,7 +15,8 @@ describe PostsController do
       before(:each) {
         category_test_list = 'test_list'
         @published = FactoryGirl.create(
-          :post, published: true, category: category_test_list
+          :post, published: true, category: category_test_list, 
+                 tags: 'inicio, meio, fim'
         )
       }
 
@@ -28,6 +29,25 @@ describe PostsController do
       it 'by category' do
         get 'index', category: @published.category
         expect(assigns(:posts).first).to eql(@published)
+      end
+
+      context 'by tag' do
+
+        it 'case 1' do
+          get 'index', tag: 'inicio'
+          expect(assigns(:posts).first).to eql(@published)
+        end
+
+        it 'case 2' do
+          get 'index', tag: 'meio'
+          expect(assigns(:posts).first).to eql(@published)
+        end
+
+        it 'case 3' do
+          get 'index', tag: 'fim'
+          expect(assigns(:posts).first).to eql(@published)
+        end
+
       end
 
     end

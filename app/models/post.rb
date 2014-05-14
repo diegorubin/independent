@@ -2,8 +2,10 @@ class Post
   include Mongoid::Document
 
   include Commentable
+  include Listable
   include Publishable
   include Rankable
+  include Searchable
   include Slugable
   include Taggable
 
@@ -13,7 +15,6 @@ class Post
   field :resume,       type: String
   field :author,       type: String
   field :body,         type: String
-  field :updated_at,   type: DateTime
 
   field :external_js,  type: String
   field :external_css, type: String
@@ -35,13 +36,6 @@ class Post
   # Scopes
   scope :admin_list, lambda {
     order([['published', 'desc'], ['title', 'asc']])
-  }
-
-  scope :filters, lambda { |params|
-    options = {}
-    options[:category] = params[:category] if params[:category]
-
-    options.length > 0 ? where(options) : {}
   }
 
   def self.admin_attributes
