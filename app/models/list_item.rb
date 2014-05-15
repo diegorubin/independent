@@ -2,6 +2,8 @@ class ListItem
   include Mongoid::Document
 
   include Searchable
+ 
+  paginates_per 10
 
   field :resource_type, type: String
   field :resource_id,   type: String
@@ -19,6 +21,11 @@ class ListItem
 
   validates_presence_of :resource_type, :resource_id, :published_at, 
                         :slug, :category
-                        
+
+  #Scopes
+  scope :ordered_by_published_at, -> {
+    order([["published_at", "desc"]])
+  }                     
+
 end
 

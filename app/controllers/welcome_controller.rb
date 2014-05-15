@@ -5,7 +5,8 @@ class WelcomeController < ApplicationController
   prepend_before_filter :prepend_view_paths
 
   def index
-    @list_items = ListItem.filters(params).page(params.fetch(:page, 1))
+    @list_items = ListItem.filters(params).ordered_by_published_at.
+      page(params.fetch(:page, 1))
   end
 
 end
