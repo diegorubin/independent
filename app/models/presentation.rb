@@ -39,7 +39,7 @@ class Presentation
   scope :admin_list, lambda {}
 
   def self.admin_attributes
-    [:title, :resume, :author, :category, :tags, :file]
+    [:title, :resume, :author, :category, :tags, :file, :published]
   end
 
   def export_images

@@ -1,0 +1,42 @@
+- content_for(:title, @presentation.title)
+
+#presentation.full
+  %img#presentation-image
+
+#loading-bar.full
+  #loading-current
+
+#pmenu.full
+  .commands
+    = link_to "Anterior", "#", {:id => "mPrevSlide",
+                                :class => "prevSlide"}
+
+    = link_to "Próximo", "#",  {:id => "mNextSlide",
+                                :class => "nextSlide"}
+
+  %a{:class => "download", 
+     :title => "Baixar apresentação em pdf",
+     :href => @presentation.file.url}
+    .download-presentation
+      &nbsp;
+
+
+  .pages
+    #slide-loading.hidden
+    %span#current_page
+    = "/"
+    %span#last_page
+      = @presentation.slides.size
+
+- content_for :javascript do
+  :javascript
+    var slides = 
+      #{@presentation.slides.collect{|s| s.file.full.url }.to_json};
+
+    var lenPresentation = 
+      #{@presentation.slides.size - 1};
+
+    var presentation = new Presentation(slides, lenPresentation);
+    presentation.setFullscreenMode();
+    presentation.setSlide(0);
+

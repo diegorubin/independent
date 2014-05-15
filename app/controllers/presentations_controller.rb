@@ -12,6 +12,10 @@ class PresentationsController < ApplicationController
   def show
     @presentation = Presentation.
       find_by_slug(params[:date], params[:slug]).first
+
+    if params[:fullscreen] == 'on'
+      render layout: 'presentation', template: 'presentations/fullscreen'
+    end
   end
 
 end

@@ -33,10 +33,10 @@ Rails.application.routes.draw do
    # Presentations
   get "/presentations" => "presentations#index", :as => "presentations"
   get "/presentations/:page" => "presentations#index"
-  get ":date" => "presentations#index", 
+  get "/presentations/:date" => "presentations#index", 
         :as => "presentation_date", 
         :date => /\d{4}(\/\d{2}){0,2}/
-  get ":date/:slug" => "presentations#show", 
+  get "/presentations/:date/:slug" => "presentations#show", 
         :as => "presentation", 
         :date => /\d{4}(\/\d{2}){2}/ 
 

@@ -1,0 +1,168 @@
+/*
+ *= require_self
+ */
+
+#presentation-full {
+  margin-top: -40px;
+  padding: 0px;
+  text-align: center;
+  background-color: #000;
+}
+
+#presentation {
+  border: 1px solid #aaa;
+  margin: 0px;
+  padding: 0px;
+  width: 550px;
+  height: 412px;
+  background-color: #000;
+}
+
+#presentation.full {
+  margin:0px;
+  width: 100%;
+}
+
+.presentation-nav {
+  width: 100%;
+  height: 100%;
+
+}
+
+#slide-loading {
+  margin-top: 2px;
+  margin-right: 3px;
+  width: 16px;
+  height: 16px;
+  background-image: image-url('loading.gif');
+  float:left;
+}
+
+div.prevSlide {
+
+  top: 0px;
+  left: 0px;
+  float: left;
+
+  position: relative;
+  height: 412px;
+  width: 274px;
+
+  cursor: pointer;
+}
+
+div.nextSlide {
+
+  top: 0px;
+  left: 274px;
+
+  position: relative;
+  height: 412px;
+  width: 274px;
+
+  cursor: pointer;
+}
+
+#pmenu {
+  color: #535459;
+
+  width: 537px;
+  height: 27px;
+  text-align: center;
+  padding: 0px 6px;
+
+  border-left: 1px #535459 solid;
+  border-right: 1px #535459 solid;
+  margin-left: 1px;
+
+  background: image-url("bg-presentation.png") repeat scroll 0 0 transparent;
+}
+
+#pmenu.full {
+  margin:0px;
+  padding:0px;
+  width: 100%;
+}
+
+#pmenu .commands {
+  margin-top: 2px;
+}
+
+#pmenu a {
+  color: #535459;
+}
+
+#pmenu a:hover {
+  color: #3b82be;
+  text-decoration: none;
+}
+
+.presentation-menu-hover {
+  color: #3b82be !important;
+}
+
+.download-presentation {
+  background: image-url("icons.png") repeat scroll -198px 0 transparent;
+
+  height: 27px;
+  width: 27px;
+
+  float: left;
+
+  margin: 0px 160px;
+}
+
+.download-presentation:hover {
+  background: image-url("icons.png") repeat scroll -224px 0 transparent;
+}
+
+.fullscreen-button {
+  background: image-url("icons.png") repeat scroll -198px -106px transparent;
+
+  height: 27px;
+  width: 27px;
+
+  float: right;
+
+  margin: 0px 0px 0px 6px;
+}
+
+.fullscreen-button:hover {
+  background: image-url("icons.png") repeat scroll -223px -106px transparent;
+}
+
+#pmenu .commands {
+  float: left;
+}
+
+#pmenu .pages {
+  float: right;
+}
+
+#pmenu.nextSlide {
+  float: right;
+}
+
+#loading-bar {
+  height: 4px;
+  width: 549px;
+
+  border-left: 1px #535459 solid;
+  border-right: 1px #535459 solid;
+  margin-left: 1px;
+
+}
+
+#loading-bar.full {
+  width: 100%;
+}
+
+#loading-current {
+  background-color: #0069D6;
+  height: 100%;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+
