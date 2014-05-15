@@ -5,6 +5,7 @@ describe Post do
   context "persist" do
 
     before(:each) do
+      clear_posts
       @post = FactoryGirl.build(:post, title: 'teste de post')
     end
 

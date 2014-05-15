@@ -5,8 +5,7 @@ describe Presentation do
   context "persist" do
 
     before(:each) do
-      @valid_attrs = {:title => (0..5).map{('a'..'z').to_a[rand(26)]}.join, 
-                      :resume => "um corpo"}
+      @valid_attrs = FactoryGirl.attributes_for(:presentation)
       @presentation = Presentation.new(@valid_attrs)
     end
 
@@ -49,14 +48,10 @@ describe Presentation do
     context "export pdf to images" do
 
       it "should create slides" do
-        presentation = FactoryGirl.create(:presentation)
+        presentation = FactoryGirl.build(:presentation)
         presentation.file = File.open(File.dirname(__FILE__) + "/examples/presentation.pdf")
-        presentation.export = true
         presentation.save
 
-        Presentation.export_images(presentation.id.to_s)
-
-        presentation = Presentation.find(presentation.id.to_s)
         presentation.slides.size.should == 2
       end
 

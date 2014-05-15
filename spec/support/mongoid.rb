@@ -10,7 +10,15 @@ def clear_settings
   Setting.destroy_all
 end
 
+def clear_posts
+  Post.destroy_all
+end
+
 def clear_pages
   Page.destroy_all
+end
+
+def clear_presentations
+  Presentation.destroy_all
 end
 

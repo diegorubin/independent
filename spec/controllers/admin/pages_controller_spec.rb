@@ -37,6 +37,8 @@ describe Admin::PagesController do
     let(:page_attributes) {FactoryGirl.attributes_for(:page)}
     let(:page_attributes_invalid) {FactoryGirl.attributes_for(:page_invalid)}
 
+    before(:each) {clear_pages}
+
     it 'variable for new page' do
       post :create, :page => page_attributes
       expect(assigns(:page)).to be_kind_of(Page)

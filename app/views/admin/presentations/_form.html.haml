@@ -2,9 +2,9 @@
 
   .row
     .col-md-8
-      = f.inputs :title, :slug
+      = f.inputs :title, :slug, :author, :category, :tags
 
-      = f.input :resume, as: 'text'
+      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
 
       = f.input :file, as: 'file'
 

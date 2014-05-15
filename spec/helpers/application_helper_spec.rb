@@ -18,5 +18,16 @@ describe ApplicationHelper do
 
   end
 
+  context 'on return correct link of item' do
+
+    it 'to post' do
+      item = FactoryGirl.create(:list_item, 
+        resource_type: 'Post', date: '01/01/2014', slug: 'item'
+      )
+      #expect(helper.item_path(item)).to eql('/posts/01/01/2014/item')
+    end
+
+  end
+
 end
 

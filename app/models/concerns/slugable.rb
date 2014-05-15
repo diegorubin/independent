@@ -3,7 +3,7 @@ module Slugable
 
   included do
     field :slug,         :type => String
-    validates_presence_of :slug
+    validates :slug, uniqueness: true, presence: true
 
     before_validation :generate_slug
 

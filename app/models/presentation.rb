@@ -2,19 +2,21 @@ class Presentation
   include Mongoid::Document
 
   include Commentable
+  include Listable
   include Publishable
   include Rankable
+  include Searchable
   include Slugable
+  include Taggable
 
   paginates_per 10
 
-  field :title,        :type => String
-  field :resume,       :type => String
-  field :export,       :type => Boolean,  :default => false
-  field :pageviews,    :type => Integer,  :default => 0
+  field :title,  :type => String
+  field :resume, :type => String
+  field :author, :type => String
 
-  field :tags,   :type => String
-  
+  field :category, :type => String
+
   # Field for SEO
   field :metadescription,  :type => String
 
@@ -24,48 +26,37 @@ class Presentation
   embeds_many :comments, :as => :commentable
 
   # validations
-  validates_presence_of   :title
-  validates_presence_of   :slug
-  validates_uniqueness_of :slug
+  validates_presence_of :title, :resume, :author, :category
 
   validates_format_of :tags, 
                       :with => /\A([^,]+,)*[^,]+\z/i,
                       :allow_blank => true
 
   # Callbacks
-  before_validation :sanitize_texts
+  after_create :export_images
 
   # Scopes
   scope :admin_list, lambda {}
 
   def self.admin_attributes
-    [:title, :resume, :tags, :file]
+    [:title, :resume, :author, :category, :tags, :file]
   end
 
-  def self.export_images(presentation_id)
-    p = Presentation.find(presentation_id)
-    return if not p.export
-
+  def export_images
+    return if file.current_path.blank?
     images = 
-      RGhost::Convert.new(p.file.current_path).to :jpeg, :multipage => true
+      RGhost::Convert.new(file.current_path).to :jpeg, :multipage => true
 
-    p.slides.destroy_all
+    self.slides.destroy_all
     images.sort.each_with_index do |image,i|
       slide = Slide.new
       slide.file = File.open(image)
       slide.position = i
 
-      p.slides << slide
+      self.slides << slide
     end
     
-    p.export = false
-    p.save
-  end
-
-  private
-  def sanitize_texts
-    write_attribute(:title, title.sanitize) if title
-    write_attribute(:resume, resume.sanitize) if resume
+    self.save
   end
 
 end

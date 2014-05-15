@@ -16,7 +16,7 @@ describe PostsController do
         category_test_list = 'test_list'
         @published = FactoryGirl.create(
           :post, published: true, category: category_test_list, 
-                 tags: 'inicio, meio, fim'
+                 tags: 'inicio,meio,fim'
         )
       }
 

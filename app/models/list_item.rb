@@ -18,7 +18,7 @@ class ListItem
   field :tags,          type: String
 
   validates_presence_of :resource_type, :resource_id, :published_at, 
-                        :slug, :date
+                        :slug, :category
                         
 end
 

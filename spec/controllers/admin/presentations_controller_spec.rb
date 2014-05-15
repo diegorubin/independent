@@ -34,8 +34,11 @@ describe Admin::PresentationsController do
   end
 
   context 'on create presentation' do
+
     let(:presentation_attributes) {FactoryGirl.attributes_for(:presentation)}
     let(:presentation_attributes_invalid) {FactoryGirl.attributes_for(:presentation_invalid)}
+
+    before(:each) { clear_presentations }
 
     it 'variable for new presentation' do
       post :create, :presentation => presentation_attributes
