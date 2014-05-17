@@ -8,7 +8,7 @@ set :linked_files, %w{
   config/mongoid.yml config/initializers/devise.rb config/initializers/setup_mail.rb
 }
 
-set :linked_dirs, %w{log public/uploads themes}
+set :linked_dirs, %w{log public/uploads themes uploads}
 
 namespace :deploy do
 
