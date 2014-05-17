@@ -3,6 +3,7 @@ pt-BR:
   admin:
 
     navebar:
+      assets: Arquivos
       home: Home
       posts: Posts
       pages: Páginas
@@ -13,6 +14,24 @@ pt-BR:
       users: Usuários
       logout: Sair
 
+    assets:
+      destroy:
+        confirm: Tem certeza que deseja remover o arquivo?
+      edit:
+        h1: Editar Arquivo
+        title: Editar Arquivo
+      index:
+        h1: Lista de Arquivos
+        title: Arquivos 
+      menu:
+        destroy: Remover Arquivo
+        edit: Editar
+        list: Listar Arquivos
+        new: Novo Arquivo
+        original: Baixar
+      new:
+        h1: Novo Arquivo
+        title: Novo Arquivo
     pages:
       destroy:
         confirm: Tem certeza que deseja remover a página?

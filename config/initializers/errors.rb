@@ -1,0 +1,3 @@
+class RecordNotFound < Exception; end
+
+

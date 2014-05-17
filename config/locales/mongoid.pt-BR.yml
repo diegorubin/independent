@@ -2,6 +2,13 @@ pt-BR:
 
   mongoid:
     attributes:
+
+      asset:
+        file: Arquivo
+        published: Status
+        slug: Slug
+        title: Título
+
       page:
         body: Corpo
         published: Status

@@ -1,0 +1,38 @@
+= content_for :title, :title.t(:scope => [:admin, :assets, :index])
+
+%h1= :h1.t(:scope => [:admin, :assets, :index])
+
+= render 'menu'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :title.t(:scope => [:mongoid, :attributes, :asset])
+      %td
+        = :slug.t(:scope => [:mongoid, :attributes, :asset])
+      %td
+        = :published.t(:scope => [:mongoid, :attributes, :asset])
+      %td
+        &nbsp;
+
+  %tbody
+    - @assets.each do |asset|
+      %tr
+        %td
+          = asset.title
+        %td
+          = asset.slug
+        %td
+          = asset.published_str
+          (#{link_to "Link", asset_path(asset.slug)})
+        %td
+          .btn-group
+            = menu_button(:original.t(:scope => [:admin, :assets, :menu]), admin_asset_path(asset), 'btn-info')
+
+            = menu_button(:edit.t(:scope => [:admin, :assets, :menu]), edit_admin_asset_path(asset), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, :assets, :menu]), admin_asset_path(asset), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :assets, :destroy])}})
+
+= paginate @assets
+

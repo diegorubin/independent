@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # admin
   namespace :admin do
+    resources :assets
     resources :pages
     resources :posts
     resources :presentations
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
 
   get "/category/:category" => "welcome#index", :as => "category"
   get "/tag/:tag" => "welcome#index", :as => "tag"
+
+  # Assets
+  get "/assets/:slug" => "assets#show", :as => "asset"
 
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"

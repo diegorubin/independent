@@ -41,7 +41,7 @@ class Post
   def self.admin_attributes
     [
       :title, :resume, :author, :body, :tags, :metadescription, 
-      :slug, :published, :category
+      :slug, :published, :category, :external_js, :external_css
     ]
   end
 
