@@ -7,7 +7,7 @@ class Theme
   field :files,    type: Array
   field :manifest, type: Hash
 
-  mount_uploader :file, ThemeUploader
+  mount_uploader :file, AssetUploader
 
   validates :title, presence: true
   validates :label, presence: true, uniqueness: true

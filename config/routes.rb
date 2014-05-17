@@ -44,6 +44,9 @@ Rails.application.routes.draw do
         :as => "presentation", 
         :date => /\d{4}(\/\d{2}){2}/ 
 
+  # feeds
+  get "/feed" => "feeds#index", :as => "feeds"
+
   root :to => "welcome#index"
   
 end
