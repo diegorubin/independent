@@ -16,7 +16,7 @@ module Independent
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Brasilia'
 
-    config.autoload_paths += %W{}
+    config.autoload_paths += %W{#{Rails.root}/themes/lib}
 
     config.i18n.enforce_available_locales = false
     config.i18n.available_locales = ["pt-BR"]
