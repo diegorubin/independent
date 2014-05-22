@@ -1,0 +1,42 @@
+= content_for :title, :title.t(:scope => [:admin, :images, :index])
+
+%h1= :h1.t(:scope => [:admin, :images, :index])
+
+= render 'menu'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :thumb.t(:scope => [:mongoid, :attributes, :image])
+      %td
+        = :title.t(:scope => [:mongoid, :attributes, :image])
+      %td
+        = :slug.t(:scope => [:mongoid, :attributes, :image])
+      %td
+        = :published.t(:scope => [:mongoid, :attributes, :image])
+      %td
+        &nbsp;
+
+  %tbody
+    - @images.each do |image|
+      %tr
+        %td
+          = image_tag image.file.url(:thumb)
+        %td
+          = image.title
+        %td
+          = image.slug
+        %td
+          = image.published_str
+          (#{link_to "Link", image_path(image.slug)})
+        %td
+          .btn-group
+            = menu_button(:original.t(:scope => [:admin, :images, :menu]), admin_image_path(image), 'btn-info')
+
+            = menu_button(:edit.t(:scope => [:admin, :images, :menu]), edit_admin_image_path(image), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, :images, :menu]), admin_image_path(image), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :images, :destroy])}})
+
+= paginate @images
+

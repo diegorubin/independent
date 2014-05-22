@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # admin
   namespace :admin do
     resources :assets
+    resources :images
     resources :pages
     resources :posts
     resources :presentations
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
 
   # Assets
   get "/assets/:slug" => "assets#show", :as => "asset"
+  get "/images/:slug" => "images#show", :as => "image"
 
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"

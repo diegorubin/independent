@@ -5,6 +5,7 @@ pt-BR:
     navebar:
       assets: Arquivos
       home: Home
+      images: Imagens
       posts: Posts
       pages: Páginas
       presentations: Apresentaçãoes
@@ -32,6 +33,26 @@ pt-BR:
       new:
         h1: Novo Arquivo
         title: Novo Arquivo
+
+    images:
+      destroy:
+        confirm: Tem certeza que deseja remover a imagem?
+      edit:
+        h1: Editar Imagem
+        title: Editar Imagem
+      index:
+        h1: Lista de Imagens
+        title: Imagens 
+      menu:
+        destroy: Remover Imagem
+        edit: Editar
+        list: Listar Imagens
+        new: Novo Imagem
+        original: Baixar
+      new:
+        h1: Novo Imagem
+        title: Novo Imagem
+
     pages:
       destroy:
         confirm: Tem certeza que deseja remover a página?

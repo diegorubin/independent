@@ -18,6 +18,8 @@
               %a{:href => admin_posts_path}= :posts.t(scope: [:admin, :navebar])
             %li{class: set_active('presentations')}
               %a{:href => admin_presentations_path}= :presentations.t(scope: [:admin, :navebar])
+            %li{class: set_active('images')}
+              %a{:href => admin_images_path}= :images.t(scope: [:admin, :navebar])
             %li{class: set_active('assets')}
               %a{:href => admin_assets_path}= :assets.t(scope: [:admin, :navebar])
             %li{class: set_active('snippets')}

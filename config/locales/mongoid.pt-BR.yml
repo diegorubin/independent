@@ -9,6 +9,13 @@ pt-BR:
         slug: Slug
         title: Título
 
+      image:
+        file: Imagem
+        published: Status
+        slug: Slug
+        title: Título
+        thumb: Thumb
+
       page:
         body: Corpo
         published: Status
