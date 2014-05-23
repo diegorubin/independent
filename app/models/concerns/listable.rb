@@ -5,6 +5,10 @@ module Listable
     after_save :create_or_update_item_in_list
   end
 
+  def resource_type
+    self.class.name
+  end
+
   def create_or_update_item_in_list
     return unless self.published
     item = ListItem.find_or_initialize_by(
