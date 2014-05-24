@@ -99,7 +99,7 @@ describe Post do
 
     it 'show footnotes' do
       expect(post.footnotes).to(
-        eql(["\"content\""])
+        eql(["<p>\"content\"</p>"])
       )
 
     end
