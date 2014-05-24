@@ -19,6 +19,13 @@ module StringExtensions
       s = Snippet.find_by_simple_slug($1).first
       s ? s.to_html : "Snippet não encontrado"
     end
+
+    # Citatao
+    r.gsub!(/\[cite (.+)\]/).with_index do |citation, i|
+      i += 1
+      "<a href='#citation-#{i}'>[#{i}]</a>"
+    end
+
     BlueCloth::new(r).to_html
   end
 

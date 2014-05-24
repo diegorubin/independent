@@ -87,5 +87,24 @@ describe Post do
 
   end
 
+  context 'on render article' do
+
+    let(:post) {FactoryGirl.create(:post, body: 'blablabla[cite "content"]. bla')}
+
+    it 'change citation to link' do
+      expect(post.body.from_markdown_to_html).to(
+        eql("<p>blablabla<a href='#citation-1'>[1]</a>. bla</p>")
+      )
+    end
+
+    it 'show footnotes' do
+      expect(post.footnotes).to(
+        eql(["\"content\""])
+      )
+
+    end
+    
+  end
+
 end
 

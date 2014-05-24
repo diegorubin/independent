@@ -29,5 +29,19 @@ describe ApplicationHelper do
 
   end
 
+  context 'on render footnotes' do
+
+    it 'empty footnotes' do
+      footnotes = helper.render_footnotes([])
+      expect(footnotes).to eql('<ul class="footnotes"></ul>')
+    end
+
+    it 'with simple text' do
+      footnotes = helper.render_footnotes(['foo bar'])
+      expect(footnotes).to eql('<ul class="footnotes"><li><a href="#" name="citation-1">[1]</a> foo bar</li></ul>')
+    end
+
+  end
+
 end
 

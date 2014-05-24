@@ -1,6 +1,8 @@
 class Post
   include Mongoid::Document
 
+  include ActAsDocument
+
   include Commentable
   include Listable
   include Publishable

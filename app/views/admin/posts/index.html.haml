@@ -35,6 +35,8 @@
           = post.published_str
         %td
           .btn-group
+            = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-info')
+
             = menu_button(:edit.t(:scope => [:admin, :posts, :menu]), edit_admin_post_path(post), 'btn-info')
 
             = menu_button(:destroy.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :posts, :destroy])}})
