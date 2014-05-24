@@ -15,13 +15,19 @@ module ApplicationHelper
   # Render helpers
   def render_footnotes(items)
 
-    result = content_tag :ul, class: 'footnotes' do
+    return '' if items.empty?
+
+    result = content_tag :h2 do :footnotes.t end
+
+    result += content_tag :dl, class: 'dl-horizontal footnotes' do
       list = items.collect.with_index do |item, i|
-        li = content_tag :li  do
-          l = link_to "[#{i+1}]", "#", name: "citation-#{i + 1}"
-          l + ' ' + item.to_s
+        dt = content_tag :dt  do
+          link_to "[#{i+1}]", "#", name: "citation-#{i + 1}"
         end
-        li
+        dd = content_tag :dd  do
+          raw(item.to_s)
+        end
+        dt + dd
       end
       raw(list.join(''))
     end

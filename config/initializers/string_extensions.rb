@@ -21,7 +21,7 @@ module StringExtensions
     end
 
     # Citatao
-    r.gsub!(/\[cite (.+)\]/).with_index do |citation, i|
+    r.gsub!(/\[cite ((.|\n)+?)\]/).with_index do |citation, i|
       i += 1
       "<a href='#citation-#{i}'>[#{i}]</a>"
     end
