@@ -27,10 +27,7 @@ class Post
   field :metadescription, type: String
 
   # Validates
-  validates_presence_of :category
-  validates_presence_of :title
-  validates_presence_of :body
-  validates_presence_of :author
+  validates_presence_of :category, :title, :body, :author
 
   # Callbacks
   before_validation :sanitize_texts
