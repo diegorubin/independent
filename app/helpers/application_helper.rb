@@ -1,5 +1,19 @@
 module ApplicationHelper
 
+  def render_gplus
+    raw %q{
+      <script type="text/javascript">
+        window.___gcfg = {lang: 'pt-br'};
+        (function() 
+        {var po = document.createElement("script");
+        po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(po, s);
+        })();
+      </script>
+    }
+  end
+
   # Links helpers
   def return_if_active(controller_name, klass)
     klass if controller.controller_name == controller_name
@@ -13,6 +27,25 @@ module ApplicationHelper
   end
 
   # Render helpers
+  def render_comment(comment)
+    comment = h(comment)
+    comment.gsub!(/[^\s]+\/[^\s]*/) do |link|
+      link =~ /(https?:\/\/)/i
+      href = $1 ? link : "http://" + link
+      link_to link, href
+    end
+    raw(comment.gsub(/\A/,'<p>').
+            gsub(/\n/,'</p><p>').
+            gsub(/\z/,'</p>'))
+  end
+
+  def render_name(name, site, email = "")
+    infos = name
+    infos += " - #{email}" if user_signed_in?
+    return infos if site.blank?
+    link_to infos, site, :target => "blank"
+  end
+
   def render_footnotes(items)
 
     return '' if items.empty?

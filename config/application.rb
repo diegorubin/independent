@@ -36,6 +36,7 @@ module Independent
     [:fonts, :images, :javascripts, :stylesheets].each do |d|
       config.assets.paths << "#{Rails.root}/themes/#{d}"
     end
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
   end
 end

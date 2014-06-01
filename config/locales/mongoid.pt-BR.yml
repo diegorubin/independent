@@ -9,6 +9,12 @@ pt-BR:
         slug: Slug
         title: Título
 
+      comment:
+        body: Mensagem
+        email: E-mail
+        name: Nome
+        site: Site
+
       image:
         file: Imagem
         published: Status

@@ -26,6 +26,8 @@ class Post
   # Field for SEO
   field :metadescription, type: String
 
+  embeds_many :comments, as: :commentable
+
   # Validates
   validates_presence_of :category, :title, :body, :author
 

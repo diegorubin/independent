@@ -1,5 +1,5 @@
-- @posts.each do |post|
-  %h1=post.title
+- @list_items.each do |item|
+  %h1=item.title
   %p
-    =post.resume
+    =raw item.resume.from_markdown_to_html
 

@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get "/assets/:slug" => "assets#show", :as => "asset"
   get "/images/:slug" => "images#show", :as => "image"
 
+  # Comments
+  resources :comments, only: [:create]
+
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"
 

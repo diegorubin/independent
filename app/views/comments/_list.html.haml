@@ -1,0 +1,31 @@
+- if nivel == 0
+  #comments
+    %h3.reply-title
+      Comentários
+
+%ul.comments
+  - comments.each do |comment|
+    - if !comment.removed && (comment.published || user_signed_in?)
+      %li{:class => "comment well"}
+        = hidden_field_tag "comment-id", comment.id
+        .comment-header
+          %div{:class => "left comment-image"}
+            = image_tag comment.gravatar_url 
+          %p
+            %i
+              = render_name comment.name, comment.site, comment.email
+            disse:
+          %p
+            = I18n.localize(comment.created_at, :format => :long)
+  
+        .comment-body
+          = render_comment comment.body
+  
+        .respond-options
+          - if user_signed_in?
+            = link_to "Remover Comentário", "#", :class => "red remove_comment"
+  
+          .comment-form
+  
+        = render 'comments/list', {nivel: nivel + 1, comments: comment.child_comments}
+  
