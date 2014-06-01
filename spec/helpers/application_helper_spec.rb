@@ -38,7 +38,7 @@ describe ApplicationHelper do
 
     it 'with simple text' do
       footnotes = helper.render_footnotes(['foo bar'])
-      expect(footnotes).to eql('<h2>Notas</h2><dl class="dl-horizontal footnotes"><dt><a href="#" name="citation-1">[1]</a></dt><dd>foo bar</dd></dl>')
+      expect(footnotes).to eql('<h2>Notas</h2><div class="footnotes"><p><span><a href="#" name="citation-1">[1]</a></span> foo bar</p></div>')
     end
 
   end

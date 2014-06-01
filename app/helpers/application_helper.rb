@@ -43,7 +43,7 @@ module ApplicationHelper
     infos = name
     infos += " - #{email}" if user_signed_in?
     return infos if site.blank?
-    link_to infos, site, :target => "blank"
+    link_to infos, site, target: "blank", rel: "external nofollow"
   end
 
   def render_footnotes(items)
@@ -52,15 +52,15 @@ module ApplicationHelper
 
     result = content_tag :h2 do :footnotes.t end
 
-    result += content_tag :dl, class: 'dl-horizontal footnotes' do
+    result += content_tag :div, class: 'footnotes' do
       list = items.collect.with_index do |item, i|
-        dt = content_tag :dt  do
-          link_to "[#{i+1}]", "#", name: "citation-#{i + 1}"
+        p = content_tag :p  do
+          span = content_tag :span  do
+            link_to "[#{i+1}]", "#", name: "citation-#{i + 1}"
+          end
+          span + " " + raw(item.to_s.gsub(/<\/?p>/,''))
         end
-        dd = content_tag :dd  do
-          raw(item.to_s)
-        end
-        dt + dd
+        p
       end
       raw(list.join(''))
     end
