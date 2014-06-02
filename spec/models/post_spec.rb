@@ -106,5 +106,26 @@ describe Post do
     
   end
 
+  context 'on recover comments' do
+
+    it 'execute map reduce functions' do
+      expect {Post.unpublished_comments}.to_not raise_error
+    end
+
+    it 'no comment' do
+      expect(Post.unpublished_comments.count).to eql(0)
+    end
+
+    it '1 unpublished comment' do
+
+      post = FactoryGirl.create(:post)
+      post.comments << FactoryGirl.build(:comment)
+      expect(post.save).to be_true
+
+      expect(Post.unpublished_comments.count).to eql(1)
+    end
+
+  end
+
 end
 

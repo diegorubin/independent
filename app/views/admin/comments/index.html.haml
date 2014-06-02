@@ -1,0 +1,11 @@
+= content_for :title, :title.t(scope: [:admin, :comments, :index])
+
+%h1= :h1.t(scope: [:admin, :comments, :index])
+
+- @comments.each do |content, comments|
+  %h2= content.underscore.to_sym.t(scope: [:admin, :comments, :index])
+  %ul.comments
+    = hidden_field_tag :content_type, content
+    - comments.each do |comment|
+      = render 'comment', comment: comment["value"]
+

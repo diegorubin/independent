@@ -1,0 +1,20 @@
+%li{:class => "comment well"}
+  = hidden_field_tag "comment_id", comment["_id"]
+  = hidden_field_tag "comment_parent_id", comment["parent_id"]
+  .comment-header
+    %div{:class => "left comment-image"}
+      = image_tag Comment.new(email: comment["email"]).gravatar_url 
+    %p
+      %i
+        = render_name comment["name"], comment["site"], comment["email"]
+      disse:
+    %p
+      = I18n.localize(comment["created_at"], :format => :long)
+
+  .comment-body
+    = render_comment comment["body"]
+
+  .respond-options
+    = link_to "Aprovar Comentário", "#", :class => "approve_comment"
+    = link_to "Remover Comentário", "#", :class => "red remove_comment"
+

@@ -34,6 +34,12 @@ pt-BR:
         h1: Novo Arquivo
         title: Novo Arquivo
 
+    comments:
+      index:
+        h1: Comentários Não Publicados
+        title: Comentários 
+        post: Artigos
+
     images:
       destroy:
         confirm: Tem certeza que deseja remover a imagem?

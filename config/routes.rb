@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # admin
   namespace :admin do
     resources :assets
+    resources :comments, only: [:index, :update, :destroy]
     resources :images
     resources :pages
     resources :posts

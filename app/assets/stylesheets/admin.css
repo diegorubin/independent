@@ -10,3 +10,58 @@ body {
 /* common form */
 textarea.short-text {height: 100px;}
 
+/* comments */
+h3.reply-title {
+  border-top: 1px #ddd solid;
+  margin-top: 40px;
+  padding-top: 10px;
+}
+
+#comment_body {
+  width: 532px;
+  height: 248px;
+}
+
+.hidden {
+  display: none;
+}
+
+.left {
+  float: left;
+  clear: both;
+}
+
+.right {
+  float: right;
+  clear: both;
+}
+
+.red {
+  color: red;
+}
+
+.clear {
+  clear: both;
+}
+
+#comment_body {
+  width: 480px;
+}
+
+.comment-header {
+  height: 80px;
+}
+
+.comment-image {
+  padding-right: 10px;
+}
+
+ul.comments {
+  list-style: none;
+  margin: 0px;
+}
+
+ul li.comment {
+  margin: 5px 0;
+}
+

@@ -1,6 +1,9 @@
 class Comment
   include Mongoid::Document
   include Gravtastic
+
+  COMMENTABLES = ['Post']
+
   gravtastic :size => 60
 
   field :name,       :type => String
@@ -27,6 +30,10 @@ class Comment
   def publish
     write_attribute(:published, true)
     save
+  end
+
+  def self.unpublisheds
+    Hash[COMMENTABLES.collect{|c| [c, c.constantize.unpublished_comments.to_a]}]
   end
 
   private
