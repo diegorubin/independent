@@ -59,6 +59,7 @@ h3.reply-title {
 ul.comments {
   list-style: none;
   margin: 0px;
+  padding: 0px;
 }
 
 ul li.comment {

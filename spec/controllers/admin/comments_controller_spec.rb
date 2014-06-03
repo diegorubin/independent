@@ -9,7 +9,7 @@ describe Admin::CommentsController do
 
     it 'unpublished' do
       get :index
-      expect(assigns(:comments)).to be_kind_of(Array)
+      expect(assigns(:comments)).to be_kind_of(Hash)
     end
 
   end

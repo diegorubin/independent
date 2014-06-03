@@ -1,5 +1,7 @@
 class Admin::CommentsController < Admin::BaseController
 
+  before_filter :get_objects, only: [:update, :destroy]
+
   def index
     @comments = Comment.unpublisheds
   end
@@ -22,8 +24,11 @@ class Admin::CommentsController < Admin::BaseController
 
   private
   def get_objects
-    object = params['content_type'].constantize.find(params['content_id'])
-    @comment = object.find_comment_by_id(params['id'])
+    @object = params[:content_type].constantize.find(params[:parent_id])
+    @comment = @object.find_comment_by_id(params[:id])
+  end
+
+  def get_object
   end
 
 end

@@ -3,6 +3,7 @@
 //= require bootstrap
 //= require rest_in_place
 //= require_self
+//
 
 $(document).ready(function(){ 
 
@@ -23,17 +24,17 @@ $(document).ready(function(){
 function modify_comment(link, method) {
   if(confirm("Você tem certeza?")) {
 
-    var content_type = link.closest("#content_type").val();
+    var content_type = link.closest(".comments").find("#content_type").val();
 
-    var parent_id = link.closest("#comment_parent_id").val();
-    var comment_id = link.closest("#comment_parent_id").val();
+    var comment_id = link.closest(".comment").find("#comment_id").val();
+    var parent_id = link.closest(".comment").find("#comment_parent_id").val();
   
     $.ajax({
       type: "PUT",
       url: "/admin/comments/"+ comment_id,
-      data: {content_type: content_type, parent_id: parent_id}
+      data: {content_type: content_type, parent_id: parent_id},
       success: function(data){
-        _parent.closest("li.comment").html(data);
+        link.closest(".comment").html(data);
       }
     });
   }

@@ -39,6 +39,7 @@ pt-BR:
         h1: Comentários Não Publicados
         title: Comentários 
         post: Artigos
+        presentation: Apresentações
 
     images:
       destroy:
