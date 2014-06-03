@@ -30,7 +30,7 @@ function modify_comment(link, method) {
     var parent_id = link.closest(".comment").find("#comment_parent_id").val();
   
     $.ajax({
-      type: "PUT",
+      type: method,
       url: "/admin/comments/"+ comment_id,
       data: {content_type: content_type, parent_id: parent_id},
       success: function(data){
