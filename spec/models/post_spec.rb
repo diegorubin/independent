@@ -85,6 +85,21 @@ describe Post do
         to change(ListItem, :count).by(1)
     end
 
+    it 'remove from list on remove item' do
+      post = FactoryGirl.create(:post, published:true)
+      expect{post.destroy}.to change(ListItem, :count).by(-1)
+    end
+
+    it 'update number of comments when new comment is published' do
+      post = FactoryGirl.create(:post, published:true)
+      post.comments << FactoryGirl.build(:comment)
+      post.save
+
+      post.comments.first.publish
+      item = ListItem.find_by({resource_type: 'Post', resource_id: post.id})
+      expect(item.number_of_comments).to eql(1)
+    end
+
   end
 
   context 'on render article' do
@@ -123,6 +138,22 @@ describe Post do
       expect(post.save).to be_true
 
       expect(Post.unpublished_comments.count).to eql(1)
+    end
+
+    context 'on count number of published comments' do
+
+      it 'return 0 if not has comment' do
+        post = FactoryGirl.create(:post)
+        expect(post.number_of_comments).to eql(0)
+      end
+
+      it 'return number of published comments' do
+        post = FactoryGirl.create(:post)
+        post.comments << FactoryGirl.build(:comment, published: true)
+        expect(post.save).to be_true
+
+        expect(post.number_of_comments).to eql(1)
+      end
     end
 
   end

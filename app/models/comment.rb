@@ -29,7 +29,7 @@ class Comment
 
   def publish
     write_attribute(:published, true)
-    save
+    update_item_list if save
   end
 
   def self.unpublisheds
@@ -41,6 +41,29 @@ class Comment
     unless created_at
       write_attribute(:created_at,Time.current)
     end
+  end
+
+  def update_item_list
+
+    parent = find_parent(self)
+
+    item = ListItem.where(
+      {resource_type: parent.class.name , resource_id: parent.id.to_s}
+    ).first
+
+    return unless item
+
+    item.update(number_of_comments: parent.number_of_comments)
+  end
+
+  def find_parent(comment)
+
+    if comment.commentable.class.name != 'Comment'
+      comment.commentable
+    else
+      find_parent(comment.commentable)
+    end
+
   end
 
 end

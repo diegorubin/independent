@@ -42,6 +42,10 @@ module Commentable
     check_comments(comments,comment_id)
   end
 
+  def number_of_comments
+    count_number_of_published_comments(comments)
+  end
+
   private
   def check_comments(comments,comment_id)
     comments.each do |comment|
@@ -50,6 +54,15 @@ module Commentable
       return comment if comment_id == comment.id.to_s
     end
     nil
+  end
+
+  def count_number_of_published_comments(comments)
+    total = 0
+    comments.each do |comment|
+      total += count_number_of_published_comments(comment.child_comments)
+      total += 1 if comment.published
+    end
+    total
   end
 
 end
