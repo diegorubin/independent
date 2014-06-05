@@ -36,6 +36,10 @@ class Comment
     Hash[COMMENTABLES.collect{|c| [c, c.constantize.unpublished_comments.to_a]}]
   end
 
+  def self.count_unpublisheds
+    unpublisheds.collect{|c| c[1].length}.inject(0, :+)
+  end
+
   private
   def generate_created_at
     unless created_at

@@ -3,3 +3,8 @@
 %h1= :h1.t(:scope => [:admin, :welcome, :index])
 %h2= :welcome_message.t(:scope => [:admin, :welcome, :index])%[current_user.name]
 
+- if @unpublished_comments > 0
+  %p
+    Existem #{@unpublished_comments} #{link_to "comentários", admin_comments_path} não publicados
+
+
