@@ -19,7 +19,8 @@ module Rankable
 
   def increment_pageviews
     redis = Redis.get_connection
-    redis.increment_pageview(self.class.to_s, slug)
+    redis.increment_pageview(self.class.name, slug)
+    redis.increment_pageview('ListItem', slug)
   end
 
 end

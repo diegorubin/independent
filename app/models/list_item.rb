@@ -1,6 +1,7 @@
 class ListItem
   include Mongoid::Document
 
+  include Rankable
   include Searchable
  
   paginates_per 10
@@ -11,6 +12,7 @@ class ListItem
   field :resume,             type: String
 
   field :number_of_comments, type: Integer
+  field :pageviews,          type: Integer
 
   field :published_at,       type: DateTime
   field :author,             type: String

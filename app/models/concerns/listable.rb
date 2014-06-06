@@ -17,7 +17,7 @@ module Listable
 
     [
       :title, :resume, :tags, :published_at, :slug, :date, :author,
-      :category, :number_of_comments
+      :category, :number_of_comments, :pageviews
     ].each do |attr|
       item.send("#{attr}=", self.send(attr))
     end

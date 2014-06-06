@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "/category/:category" => "welcome#index", :as => "category"
   get "/tag/:tag" => "welcome#index", :as => "tag"
 
+  resources :pageviews, only: ['create']
+
   # Assets
   get "/assets/:slug" => "assets#show", :as => "asset"
   get "/images/:slug" => "images#show", :as => "image"
