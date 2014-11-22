@@ -100,6 +100,17 @@ describe Post do
       expect(item.number_of_comments).to eql(1)
     end
 
+    context 'on generate index word list' do
+
+      it 'remove stopwords' do
+        FactoryGirl.create(:post, published:true, body: 'uma casa')
+
+        item = ListItem.last
+        expect(item.words_index).to eql(['casa'])
+      end
+
+    end
+
   end
 
   context 'on render article' do

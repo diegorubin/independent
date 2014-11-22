@@ -52,7 +52,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
 
-  gem 'debugger'
+  gem 'byebug'
 
   gem 'rspec-rails'
   gem 'mongoid-rspec'
@@ -60,7 +60,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'simplecov-rcov'
   gem 'tork'
-
 
   gem 'pry'
   gem 'pry-rails'

@@ -22,6 +22,7 @@ class ListItem
 
   field :category,           type: String
   field :tags,               type: String
+  field :words_index,        type: Array
 
   validates_presence_of :resource_type, :resource_id, :published_at, 
                         :slug, :category

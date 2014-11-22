@@ -10,6 +10,10 @@ module Searchable
         options[:tags] = Regexp.new("(,|\\A)#{params[:tag]}(,|\\z)") 
       end
 
+      if !params[:s].blank?
+        options[:words_index.in] = (params[:s].split.collect{|w| w.no_accent.downcase } - STOPWORDS)
+      end
+
       options.length > 0 ? where(options) : {}
     }
   end
