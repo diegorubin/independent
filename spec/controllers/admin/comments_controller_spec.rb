@@ -3,7 +3,13 @@ require 'spec_helper'
 describe Admin::CommentsController do
 
   let(:user_created) {FactoryGirl.create(:user)}
-  before(:each) {@user = authenticate_user}
+  before(:each) {
+
+    FactoryGirl.create(:post)
+    FactoryGirl.create(:presentation)
+
+    @user = authenticate_user
+  }
 
   context 'on list comments' do
 
