@@ -1,0 +1,8 @@
+widget:
+  name: LinkList
+  label: link_list
+
+  models:
+    - Link
+    - LinkList
+

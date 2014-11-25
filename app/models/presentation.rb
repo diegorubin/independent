@@ -36,7 +36,9 @@ class Presentation
   after_create :export_images
 
   # Scopes
-  scope :admin_list, lambda {}
+  scope :admin_list, lambda {
+    order([['published', 'desc'], ['published_at', 'desc']])
+  }
 
   def self.admin_attributes
     [:title, :resume, :author, :category, :tags, :slug, :file, :published]

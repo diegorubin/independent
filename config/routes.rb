@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :snippets
     resources :themes, only: ['index', 'new', 'create', 'show', 'destroy']
     resources :users
+    resources :widgets, only: ['index', 'new', 'create', 'show', 'destroy']
+
     root :to => "welcome#index"
   end
 

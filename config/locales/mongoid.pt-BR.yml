@@ -56,6 +56,11 @@ pt-BR:
         label: Rótulo
         title: Título
 
+      widget:
+        file: Arquivo
+        label: Rótulo
+        title: Título
+
       user:
         email: E-mail
         email_confirmation: Confirmação do E-mail

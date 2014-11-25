@@ -13,6 +13,7 @@ pt-BR:
       snippets: Snippets
       themes: Temas
       users: Usuários
+      widgets: Widgets
       logout: Sair
 
     assets:
@@ -174,6 +175,25 @@ pt-BR:
       new:
         h1: Novo Usuário
         title: Novo Usuário
+
+    widgets:
+      destroy:
+        confirm: Tem certeza que deseja remover o widget?
+      edit:
+        h1: Editar Widget
+        title: Editar Widget
+      index:
+        h1: Lista de Widgets
+        title: Widgets
+      menu:
+        destroy: Remover Widget
+        export: Exportar
+        list: Listar Widgets
+        new: Novo Widget
+        original: Baixar Original
+      new:
+        h1: Novo Widget
+        title: Novo Widget
 
     welcome:
       index: 
