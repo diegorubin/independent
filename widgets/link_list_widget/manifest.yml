@@ -2,6 +2,8 @@ widget:
   name: LinkList
   label: link_list
 
+  config_model: LinkList
+
   models:
     - Link
     - LinkList

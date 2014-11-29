@@ -1,0 +1,6 @@
+%h1
+  = @widget.title
+
+= semantic_form_for @config, url: admin_widget_path(@widget) do |f|
+  /= f.inputs :first_name, :last_name, :for => :author, :name => "Author" %>
+

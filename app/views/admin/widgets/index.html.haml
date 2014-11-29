@@ -19,9 +19,7 @@
           = widget.title
         %td
           .btn-group
-            = menu_button(:original.t(:scope => [:admin, :widgets, :menu]), admin_widget_path(widget, format: 'zip'), 'btn-info')
-
-            = menu_button(:destroy.t(:scope => [:admin, :widgets, :menu]), admin_widget_path(widget), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :widgets, :destroy])}})
+            = menu_button(:show.t(:scope => [:admin, :widgets, :menu]), admin_widget_path(widget), 'btn-default')
 
 = paginate @widgets
 
