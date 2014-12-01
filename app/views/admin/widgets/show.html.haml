@@ -2,5 +2,14 @@
   = @widget.title
 
 = semantic_form_for @config, url: admin_widget_path(@widget) do |f|
-  /= f.inputs :first_name, :last_name, :for => :author, :name => "Author" %>
+  - @config.fields.keys.each do |field|
+    - next if field == '_id'
+    = f.input field
+
+  - @config.relations.keys.each do |r|
+    - if @config.nested_attributes.keys.include?( r + "_attributes")
+      = f.semantic_fields_for r do |n|
+        = n.inputs n.object.fields.key.delete_if{|d| d == '_id'}
+
+  = f.actions :submit, :cancel
 
