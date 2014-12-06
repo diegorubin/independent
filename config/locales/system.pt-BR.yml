@@ -1,4 +1,6 @@
 pt-BR:
+  commands:
+    new_item: Novo Item
   date:
     abbr_day_names:
     - Dom

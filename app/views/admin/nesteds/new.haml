@@ -1,0 +1,6 @@
+- form = FormtasticBootstrap::FormBuilder.new("#{@owner}[#{@attrs}][#{@index}]", @object, self, {})
+
+- @object.fields.keys.each do |field|
+  - next if field == '_id'
+  = form.input field
+

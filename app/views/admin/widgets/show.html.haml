@@ -1,3 +1,5 @@
+= content_for :title, :title.t(:scope => [:admin, :widgets, :show])%([@widget.title])
+
 %h1
   = @widget.title
 
@@ -8,8 +10,13 @@
 
   - @config.relations.keys.each do |r|
     - if @config.nested_attributes.keys.include?( r + "_attributes")
-      = f.semantic_fields_for r do |n|
-        = n.inputs n.object.fields.key.delete_if{|d| d == '_id'}
+
+      .nested_form_content
+        = link_to :new_item.t(scope: [:commands]), "#", class: "widget-new-nested", data: {model: r}
+        = f.semantic_fields_for r do |n|
+          - n.object.fields.keys.each do |nested_field|
+            - next if nested_field == '_id'
+            = n.input nested_field
 
   = f.actions :submit, :cancel
 
