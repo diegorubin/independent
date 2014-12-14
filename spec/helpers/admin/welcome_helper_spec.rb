@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Admin::WelcomeHelper do
+describe Admin::WelcomeHelper, type: :helper do
 end
 

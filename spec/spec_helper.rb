@@ -32,7 +32,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.clean
-    Theme.stub(:path).and_return(Rails.root.join('tmp'))
+    allow(Theme).to receive_message_chain(:path).and_return(Rails.root.join('tmp'))
   end
 
 end

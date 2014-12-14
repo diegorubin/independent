@@ -12,7 +12,7 @@ describe Comment do
       c = Comment.new(@attrs)
       post = FactoryGirl.create(:post)
       post.comments << c
-      post.save.should be_true
+      post.save.should be_truthy
     end
     
   end

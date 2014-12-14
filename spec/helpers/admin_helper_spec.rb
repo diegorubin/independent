@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WelcomeHelper do
+describe WelcomeHelper, type: :helper do
   
   context 'menu helpers' do
 
@@ -22,11 +22,11 @@ describe WelcomeHelper do
     before(:each) { controller.stub(:action_name).and_return('new')}
 
     it 'return true if current action' do
-      expect(helper.in_action?('new')).to be_true
+      expect(helper.in_action?('new')).to be_truthy
     end
 
     it 'return false if not current action' do
-      expect(helper.in_action?('edit')).to be_false
+      expect(helper.in_action?('edit')).to be_falsey
     end
 
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::SnippetsController do
+describe Admin::SnippetsController, type: :controller do
 
   before(:each) {@user = authenticate_user}
 

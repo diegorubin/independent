@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::CommentsController do
+describe Admin::CommentsController, type: :controller do
 
   let(:user_created) {FactoryGirl.create(:user)}
   before(:each) {

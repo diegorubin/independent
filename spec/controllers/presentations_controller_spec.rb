@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PresentationsController do
+describe PresentationsController, type: :controller do
 
   before(:each) {clear_settings}
 

@@ -6,7 +6,7 @@ describe Theme do
 
   context 'on validation' do
 
-    after (:each) {theme.valid?.should be_false }
+    after (:each) {expect(theme.valid?).to be_falsey }
 
     it 'have a title' do
       theme.title = ''
@@ -49,10 +49,10 @@ describe Theme do
       end
 
       it 'copy theme files' do
-        expect(theme.files.include?('javascripts/test.js')).to be_true
+        expect(theme.files.include?('javascripts/test.js')).to be_truthy
         expect(
           File.exists?(Theme.path.join('javascripts/test.js').to_s)
-        ).to be_true
+        ).to be_truthy
       end
 
     end

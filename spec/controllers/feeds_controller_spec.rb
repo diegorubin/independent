@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FeedsController do
+describe FeedsController, type: :controller do
   before(:each) {clear_settings}
 
   describe "GET 'index'" do
@@ -14,7 +14,7 @@ describe FeedsController do
     it 'array of items' do
       clear_list
       FactoryGirl.create(:post, published: true)
-      expect(assigns(:list_items)).to  have(1).items
+      expect(assigns(:list_items).count).to  eql(1)
     end
 
   end

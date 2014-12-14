@@ -10,7 +10,7 @@ describe Presentation do
     end
 
     it "should save and retrieve a valid presentation" do
-      @presentation.save.should be_true
+      @presentation.save.should be_truthy
 
       id = @presentation.id
       
@@ -21,14 +21,14 @@ describe Presentation do
     context "on slug" do
 
       it "should create a slug" do
-        @presentation.save.should be_true
+        @presentation.save.should be_truthy
         @presentation.slug.should == @valid_attrs[:title]
       end
 
       it "should choose my slug" do
         slug = (0..5).map{('a'..'z').to_a[rand(26)]}.join
         @presentation.slug = slug
-        @presentation.save.should be_true
+        @presentation.save.should be_truthy
         @presentation.slug.should == slug
       end
 

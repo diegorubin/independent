@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::SettingsController do
+describe Admin::SettingsController, type: :controller do
 
   before(:each) {@user = authenticate_user}
 

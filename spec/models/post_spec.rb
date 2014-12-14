@@ -10,7 +10,7 @@ describe Post do
     end
 
     it "should save and retrieve a valid post" do
-      @post.save.should be_true
+      @post.save.should be_truthy
 
       id = @post.id
       
@@ -21,21 +21,21 @@ describe Post do
     context "on slug" do
 
       it "should create a slug" do
-        @post.save.should be_true
+        @post.save.should be_truthy
         @post.slug.should == "teste-de-post"
       end
 
       it "should choose my slug" do
         slug = "meu-slug-quero-assim"
         @post.slug = slug
-        @post.save.should be_true
+        @post.save.should be_truthy
         @post.slug.should == slug
       end
 
       it "should create a date index" do
         date = Time.current.strftime("%Y/%m/%d")
         @post.published = true
-        @post.save.should be_true
+        @post.save.should be_truthy
         @post.date.should == date
       end
       
@@ -65,7 +65,7 @@ describe Post do
 
     it "should increment pageviews" do
       post = FactoryGirl.create(:post, :pageviews => 15)
-      post.increment_pageviews.should be_true
+      post.increment_pageviews.should be_truthy
     end
 
     it "should get pageviews from redis" do
@@ -146,7 +146,7 @@ describe Post do
 
       post = FactoryGirl.create(:post)
       post.comments << FactoryGirl.build(:comment)
-      expect(post.save).to be_true
+      expect(post.save).to be_truthy
 
       expect(Post.unpublished_comments.count).to eql(1)
     end
@@ -161,7 +161,7 @@ describe Post do
       it 'return number of published comments' do
         post = FactoryGirl.create(:post)
         post.comments << FactoryGirl.build(:comment, published: true)
-        expect(post.save).to be_true
+        expect(post.save).to be_truthy
 
         expect(post.number_of_comments).to eql(1)
       end

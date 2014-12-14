@@ -6,7 +6,7 @@ describe Asset do
 
   context 'on validation' do
 
-    after (:each) {asset.valid?.should be_false }
+    after (:each) {asset.valid?.should be_falsey }
 
     it 'have a title' do
       asset.title = ''

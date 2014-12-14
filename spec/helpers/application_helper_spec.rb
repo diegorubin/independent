@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, type: :helper do
 
   context 'return class' do
 

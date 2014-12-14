@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::PresentationsController do
+describe Admin::PresentationsController, type: :controller do
 
   before(:each) {@user = authenticate_user}
 

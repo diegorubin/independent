@@ -1,14 +1,15 @@
 require 'spec_helper'
 
-describe Admin::WelcomeController do
+describe Admin::WelcomeController, type: :controller do
 
   before(:each) {@user = authenticate_user}
 
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
 end
+

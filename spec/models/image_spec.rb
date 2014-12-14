@@ -6,7 +6,7 @@ describe Image do
 
   context 'on validation' do
 
-    after (:each) {image.valid?.should be_false }
+    after (:each) {image.valid?.should be_falsey }
 
     it 'have a title' do
       image.title = ''

@@ -6,7 +6,7 @@ describe Page do
 
   context 'on validation' do
 
-    after (:each) {page.valid?.should be_false }
+    after (:each) {page.valid?.should be_falsey }
 
     it 'have a title' do
       page.title = ''

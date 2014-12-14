@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PageviewsController do
+describe PageviewsController, type: :controller do
 
   it 'increment pageviews' do
 

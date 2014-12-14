@@ -20,6 +20,14 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [100, 100]
   end
 
+  version :small do
+    process :resize_to_fit => [32, 32]
+  end
+
+  version :micro do
+    process :resize_to_fit => [16, 16]
+  end
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end

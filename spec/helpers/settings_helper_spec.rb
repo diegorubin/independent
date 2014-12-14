@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SettingsHelper do
+describe SettingsHelper, type: :helper do
 
   context 'on recover settings' do
     before(:each) do

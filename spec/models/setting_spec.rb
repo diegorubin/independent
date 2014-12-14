@@ -6,7 +6,7 @@ describe Setting do
 
   context 'on validation' do
 
-    after (:each) { setting.valid?.should be_false }
+    after (:each) { setting.valid?.should be_falsey }
 
     it 'have a title' do
       setting.title = ''

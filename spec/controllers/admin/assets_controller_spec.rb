@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::AssetsController do
+describe Admin::AssetsController, type: :controller do
 
   let(:user_created) {FactoryGirl.create(:user)}
   before(:each) {@user = authenticate_user}

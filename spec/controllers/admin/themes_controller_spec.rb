@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::ThemesController do
+describe Admin::ThemesController, type: :controller do
 
   let(:user_created) {FactoryGirl.create(:user)}
   before(:each) {@user = authenticate_user}

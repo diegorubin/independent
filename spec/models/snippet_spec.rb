@@ -9,7 +9,7 @@ describe Snippet do
     end
 
     it "should save and retrive a valid snippet" do
-      @snippet.save.should be_true
+      @snippet.save.should be_truthy
 
       id = @snippet.id
 
