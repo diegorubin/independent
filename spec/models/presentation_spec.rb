@@ -29,7 +29,7 @@ describe Presentation do
         slug = (0..5).map{('a'..'z').to_a[rand(26)]}.join
         @presentation.slug = slug
         expect(@presentation.save).to be_truthy
-        expect(@presentation.slug).to == slug
+        expect(@presentation.slug).to eql(slug)
       end
 
     end
