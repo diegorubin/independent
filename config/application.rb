@@ -34,6 +34,10 @@ module Independent
       Devise::PasswordsController.layout "login"
     end
 
+    # Mongoid
+    Mongoid.logger.level = Logger::DEBUG
+    Moped.logger.level = Logger::DEBUG
+
     # themes path
     [:fonts, :images, :javascripts, :stylesheets].each do |d|
       config.assets.paths << "#{Rails.root}/themes/#{d}"

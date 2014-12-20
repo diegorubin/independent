@@ -2,8 +2,10 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy]
 
   def create
+    content_type = params[:content_type]
+
     @commentable = 
-      params[:content_type].constantize.find(params[:content_id])
+      content_type.constantize.find(params[:content_id])
     
     @comment = Comment.new(comment_params)
 

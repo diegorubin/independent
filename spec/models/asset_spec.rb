@@ -6,7 +6,7 @@ describe Asset do
 
   context 'on validation' do
 
-    after (:each) {asset.valid?.should be_falsey }
+    after (:each) { expect(asset.valid?).to be_falsey }
 
     it 'have a title' do
       asset.title = ''

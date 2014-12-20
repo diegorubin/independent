@@ -9,45 +9,45 @@ describe Post do
       @post = FactoryGirl.build(:post, title: 'teste de post')
     end
 
-    it "should save and retrieve a valid post" do
-      @post.save.should be_truthy
+    it "save and retrieve a valid post" do
+      expect(@post.save).to be_truthy
 
       id = @post.id
       
       post = Post.find id
-      post.title.should == @post.title
+      expect(post.title).to eql(@post.title)
     end
     
     context "on slug" do
 
-      it "should create a slug" do
-        @post.save.should be_truthy
-        @post.slug.should == "teste-de-post"
+      it "create a slug" do
+        expect(@post.save).to be_truthy
+        expect(@post.slug).to eql("teste-de-post")
       end
 
-      it "should choose my slug" do
+      it "choose my slug" do
         slug = "meu-slug-quero-assim"
         @post.slug = slug
-        @post.save.should be_truthy
-        @post.slug.should == slug
+        expect(@post.save).to be_truthy
+        expect(@post.slug).to eql(slug)
       end
 
-      it "should create a date index" do
+      it "create a date index" do
         date = Time.current.strftime("%Y/%m/%d")
         @post.published = true
-        @post.save.should be_truthy
-        @post.date.should == date
+        expect(@post.save).to be_truthy
+        expect(@post.date).to eql(date)
       end
       
     end
 
     context "on get resources" do
 
-      it "should get post by date and slug" do
+      it "get post by date and slug" do
         post = FactoryGirl.create(:post, published: true)
         date = Time.current.strftime("%Y/%m/%d")
 
-        Post.find_by_slug(date,post.slug).size.should == 1
+        expect(Post.find_by_slug(date,post.slug).size).to eql(1)
       end
 
     end
@@ -56,24 +56,24 @@ describe Post do
 
   context "on calculate pageviews" do
     
-    it "should get a pageview" do
+    it "get a pageview" do
 
       post = FactoryGirl.create(:post, :pageviews => 15)
-      post.get_pageviews.should == 15
+      expect(post.get_pageviews).to eql(15)
 
     end
 
-    it "should increment pageviews" do
+    it "increment pageviews" do
       post = FactoryGirl.create(:post, :pageviews => 15)
-      post.increment_pageviews.should be_truthy
+      expect(post.increment_pageviews).to be_truthy
     end
 
-    it "should get pageviews from redis" do
+    it "get pageviews from redis" do
       post = FactoryGirl.create(:post, :pageviews => 15)
       p = post.get_pageviews
       post.increment_pageviews
 
-      post.get_pageviews.should == p+1
+      expect(post.get_pageviews).to eql(p+1)
     end
 
   end

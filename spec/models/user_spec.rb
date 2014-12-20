@@ -5,7 +5,7 @@ describe User do
 
   context 'on validation' do
 
-    after (:each) { user.valid?.should be_falsey }
+    after (:each) { expect(user.valid?).to be_falsey }
 
     it 'have an email' do
       user.email = ''

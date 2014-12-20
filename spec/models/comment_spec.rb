@@ -8,11 +8,11 @@ describe Comment do
       @attrs = FactoryGirl.attributes_for :comment
     end
 
-    it "should save a comment" do
+    it "save a comment" do
       c = Comment.new(@attrs)
       post = FactoryGirl.create(:post)
       post.comments << c
-      post.save.should be_truthy
+      expect(post.save).to be_truthy
     end
     
   end

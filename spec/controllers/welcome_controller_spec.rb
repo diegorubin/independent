@@ -14,7 +14,7 @@ describe WelcomeController, type: :controller do
     it 'array of items' do
       clear_list
       FactoryGirl.create(:post, published: true)
-      expect(assigns(:list_items).count).to  eql(1)
+      expect(assigns(:list_items).count).to eql(1)
     end
 
   end
