@@ -43,6 +43,8 @@ module Independent
       config.assets.paths << "#{Rails.root}/themes/#{d}"
     end
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+    config.assets.precompile << /\.(?:png|jpg|jpeg|gif)\z/
+
 
   end
 end

@@ -13,6 +13,7 @@ Vagrant.configure(2) do |config|
 
     chef.add_recipe "yum"
     chef.add_recipe "ruby_build"
+    chef.add_recipe "rvm"
     chef.add_recipe "mongodb"
     chef.add_recipe "vim"
 

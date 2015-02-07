@@ -19,7 +19,7 @@ cookbooks
 /config/mongoid.yml
 /config/redis.yml
 
-/config/deploy/ragnarok.rb
+/config/deploy
 
 /coverage
 

@@ -49,6 +49,7 @@ gem 'rghost'
 group :development, :test do
   gem 'thin'
 
+  gem 'capistrano', '3.2.1'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
 
