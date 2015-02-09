@@ -10,5 +10,9 @@ module Taggable
                         :allow_blank => true
   end
 
+  def tags_list
+    @tags_list ||= tags.split(',').collect{ |t| t.strip }
+  end
+
 end
 

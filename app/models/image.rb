@@ -2,6 +2,7 @@ class Image
   include Mongoid::Document
 
   include Publishable
+  include Taggable
   include Slugable
 
   # Attributes
@@ -16,7 +17,7 @@ class Image
   scope :admin_list, lambda {}
 
   def self.admin_attributes
-    [:title, :slug, :published, :file]
+    [:title, :slug, :published, :file, :tags]
   end
 
 end

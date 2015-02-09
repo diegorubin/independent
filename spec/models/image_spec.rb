@@ -14,5 +14,16 @@ describe Image do
 
   end
 
+  context 'on tags' do
+
+    let(:tags) { 'slider, test' }
+    let(:image) { FactoryGirl.build(:image, tags: tags) }
+
+    it 'get array of tags' do
+      expect(image.tags_list).to eql(['slider', 'test'])
+    end
+
+  end
+
 end
 
