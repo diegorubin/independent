@@ -23,6 +23,14 @@ describe Image do
       expect(image.tags_list).to eql(['slider', 'test'])
     end
 
+    it 'recover image for a tag' do
+      suffix = Image.count + 1
+      image.tags = "image-#{suffix}, tag"
+      image.save
+
+      expect(Image.for_tag("image-#{suffix}").last).to eql(image)
+    end
+
   end
 
 end

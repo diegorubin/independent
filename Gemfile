@@ -26,7 +26,7 @@ gem 'devise'
 
 # database
 gem 'sqlite3'
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid', '~> 4.0.1'
 gem 'mongo'
 gem 'redis'
 
@@ -60,7 +60,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'simplecov-rcov'
-  gem 'tork'
+  gem 'guard'
+  gem 'guard-rspec'
 
   gem 'pry'
   gem 'pry-rails'

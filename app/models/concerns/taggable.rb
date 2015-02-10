@@ -8,6 +8,11 @@ module Taggable
     validates_format_of :tags, 
                         :with => /\A([^,]+,)*[^,]+\z/i,
                         :allow_blank => true
+
+    def self.for_tag(tag)
+      where(tags: /\b#{tag}\b/i)
+    end
+
   end
 
   def tags_list
