@@ -1,0 +1,38 @@
+= content_for :title, :title.t(:scope => [:admin, :galleries, :index])
+
+%h1= :h1.t(:scope => [:admin, :galleries, :index])
+
+= render 'menu'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :title.t(:scope => [:mongoid, :attributes, :gallery])
+      %td
+        = :slug.t(:scope => [:mongoid, :attributes, :gallery])
+      %td
+        = :published.t(:scope => [:mongoid, :attributes, :gallery])
+      %td
+        &nbsp;
+
+  %tbody
+    - @galleries.each do |gallery|
+      %tr
+        %td
+          = gallery.title
+        %td
+          = gallery.slug
+        %td
+          = gallery.published_str
+          (#{link_to "Link", gallery_path(gallery.slug)})
+        %td
+          .btn-group
+            = menu_button(:original.t(:scope => [:admin, :galleries, :menu]), admin_gallery_path(gallery), 'btn-info')
+
+            = menu_button(:edit.t(:scope => [:admin, :galleries, :menu]), edit_admin_gallery_path(gallery), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, :galleries, :menu]), admin_gallery_path(gallery), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :galleries, :destroy])}})
+
+= paginate @galleries
+

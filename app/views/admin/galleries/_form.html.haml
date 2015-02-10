@@ -1,0 +1,14 @@
+= semantic_form_for([:admin, @gallery]) do |f|
+
+  .row
+    .col-md-8
+      = f.inputs :title, :slug
+      = f.input :tags
+
+    .col-md-4
+      .well
+        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+
+        = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
+
