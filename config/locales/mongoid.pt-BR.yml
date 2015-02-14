@@ -23,6 +23,7 @@ pt-BR:
         published: Status
         slug: Slug
         title: Título
+        add_image: Adicionar Imagem
 
       image:
         file: Imagem

@@ -7,6 +7,7 @@ class Gallery
 
   # Fields
   field :title, type: String
+  field :images, type: Array
 
   # Validations
   validates :title, presence: true

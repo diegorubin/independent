@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :images
     resources :pages
     resources :posts
+    resources :partials, only: [:index]
     resources :presentations
     resources :settings, only: ['index', 'update']
     resources :snippets
