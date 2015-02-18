@@ -1,0 +1,18 @@
+= semantic_form_for([:admin, @api_key]) do |f|
+
+  .row
+    .col-md-8
+      = f.input :program
+
+    .col-md-4
+      .well
+        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+
+        = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
+
+      = render "admin/shared/markdown_table"
+
+      = f.inputs :external_js, :external_css
+

@@ -1,0 +1,25 @@
+= content_for :title, :title.t(:scope => [:admin, :api_keys, :index])
+
+%h1= :h1.t(:scope => [:admin, :api_keys, :index])
+
+= render 'menu'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :program.t(:scope => [:mongoid, :attributes, :api_key])
+      %td
+        &nbsp;
+
+  %tbody
+    - @api_keys.each do |api_key|
+      %tr
+        %td
+          = api_key.title
+        %td
+          .btn-group
+            = menu_button(:destroy.t(:scope => [:admin, :api_keys, :menu]), admin_api_key_path(api_key), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :api_keys, :destroy])}})
+
+= paginate @api_keys
+

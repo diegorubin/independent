@@ -3,6 +3,7 @@ pt-BR:
   admin:
 
     navebar:
+      api_keys: Chaves
       assets: Arquivos
       home: Home
       images: Imagens
@@ -15,6 +16,20 @@ pt-BR:
       users: Usuários
       widgets: Widgets
       logout: Sair
+
+    api_keys:
+      destroy:
+        confirm: Tem certeza que deseja remover a chave?
+      index:
+        h1: Lista de Chaves
+        title: Chaves
+      menu:
+        destroy: Remover Chave 
+        list: Listar Chaves
+        new: Nova Chave
+      new:
+        h1: Nova Chave
+        title: Nova Chave
 
     assets:
       destroy:

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # admin
   namespace :admin do
+    resources :api_keys
     resources :assets
     resources :comments, only: [:index, :update, :destroy]
     resources :images

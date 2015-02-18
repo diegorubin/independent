@@ -3,6 +3,10 @@ pt-BR:
   mongoid:
     attributes:
 
+      api_key:
+        permissions: Permissões
+        program: Programa
+
       asset:
         file: Arquivo
         published: Status

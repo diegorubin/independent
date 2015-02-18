@@ -9,5 +9,12 @@ class ApiKey
   validates :permissions, presence: true
   validates :program, uniqueness: {scope: :user_id}, presence: true
 
+  # Scopes
+  scope :admin_list, lambda {}
+
+  def self.admin_attributes
+    [:permissions, :program]
+  end
+
 end
 
