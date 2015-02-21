@@ -31,5 +31,11 @@ describe ApiKey do
 
   end
 
+  context 'utils methods' do
+    it 'retrive user' do
+      expect(api_key.user).to be_kind_of(User)
+    end
+  end
+
 end
 

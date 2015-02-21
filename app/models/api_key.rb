@@ -19,10 +19,14 @@ class ApiKey
     [:permissions, :program]
   end
 
-  private
+  def user
+    @user ||= User.find(user_id)
+  end
 
+  private
   def generate_key
     self.key = SecureRandom.hex
   end
+
 end
 
