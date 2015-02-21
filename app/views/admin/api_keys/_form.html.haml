@@ -10,9 +10,3 @@
         = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
         = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
-        = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
-
-      = render "admin/shared/markdown_table"
-
-      = f.inputs :external_js, :external_css
-

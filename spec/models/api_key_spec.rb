@@ -22,5 +22,14 @@ describe ApiKey do
 
   end
 
+  context 'on create apit key' do
+
+    it 'generate key' do
+      api_key.save
+      expect(api_key.key).to_not be_blank
+    end
+
+  end
+
 end
 

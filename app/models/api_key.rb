@@ -4,10 +4,13 @@ class ApiKey
   field :user_id,     type: String
   field :program,     type: String
   field :permissions, type: Hash
+  field :key,         type: String
 
   validates :user_id, presence: true
   validates :permissions, presence: true
   validates :program, uniqueness: {scope: :user_id}, presence: true
+
+  before_create :generate_key
 
   # Scopes
   scope :admin_list, lambda {}
@@ -16,5 +19,10 @@ class ApiKey
     [:permissions, :program]
   end
 
+  private
+
+  def generate_key
+    self.key = SecureRandom.hex
+  end
 end
 

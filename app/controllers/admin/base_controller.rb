@@ -12,6 +12,7 @@ class Admin::BaseController < AdminController
 
   def create
     set_object_variable(klass.new(object_params))
+    yield(get_object_variable) if block_given?
     if get_object_variable.save
       save_success_action
     else
@@ -25,6 +26,7 @@ class Admin::BaseController < AdminController
   end
 
   def update
+    yield(get_object_variable) if block_given?
     if get_object_variable.update(object_params)
       respond_to do |format|
         format.html do
