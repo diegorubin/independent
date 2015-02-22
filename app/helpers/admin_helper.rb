@@ -16,5 +16,11 @@ module AdminHelper
     'active' if is_active?(controller_name)
   end
 
+  def system_resources
+    Object.constants.collect{ |sym| Object.const_get(sym) }.select do |constant| 
+        constant.class == Class && constant.include?(Mongoid::Document) 
+    end.collect{|c| c.name.underscore.pluralize}
+  end
+
 end
 

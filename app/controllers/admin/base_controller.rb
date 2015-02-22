@@ -66,10 +66,6 @@ class Admin::BaseController < AdminController
   
 
   protected
-  def klass
-    controller_name.classify.constantize
-  end
-
   def instance_variable_name_pluralized
     controller_name
   end

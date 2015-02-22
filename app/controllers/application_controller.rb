@@ -31,5 +31,9 @@ class ApplicationController < ActionController::Base
     render :template => 'error_pages/404', :status => :not_found
   end
 
+  def klass
+    controller_name.classify.constantize
+  end
+
 end
 

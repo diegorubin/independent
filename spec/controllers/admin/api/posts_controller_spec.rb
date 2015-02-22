@@ -20,6 +20,17 @@ describe Admin::Api::V1::PostsController, type: :controller do
   end
 
   context 'on have permission' do
+    let(:api_key) do 
+      FactoryGirl.create(:api_key, permissions: {posts: ['index']})
+    end
+
+
+    it 'list posts' do
+      get :index, api_key: api_key.key
+      expect(response.status).to eql(200)
+      expect(response).to match_response_list("post")
+    end
+
   end
 
 end

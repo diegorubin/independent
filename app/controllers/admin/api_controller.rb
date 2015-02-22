@@ -3,6 +3,7 @@ class Admin::ApiController < ApplicationController
   before_filter :check_api_key_pipeline
 
   def index
+    render json: klass.all
   end
 
   protected
