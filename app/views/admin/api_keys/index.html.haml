@@ -10,13 +10,17 @@
       %td
         = :program.t(:scope => [:mongoid, :attributes, :api_key])
       %td
+        = :permissions.t(:scope => [:mongoid, :attributes, :api_key])
+      %td
         &nbsp;
 
   %tbody
     - @api_keys.each do |api_key|
       %tr
         %td
-          = api_key.title
+          = api_key.program
+        %td
+          = api_key.permissions
         %td
           .btn-group
             = menu_button(:destroy.t(:scope => [:admin, :api_keys, :menu]), admin_api_key_path(api_key), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :api_keys, :destroy])}})

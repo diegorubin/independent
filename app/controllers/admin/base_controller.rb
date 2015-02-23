@@ -90,8 +90,7 @@ class Admin::BaseController < AdminController
 
   def object_params
     if params.has_key?(instance_variable_name)
-      params.require(instance_variable_name)
-        .permit(klass.admin_attributes)
+      params.require(instance_variable_name).permit!
     end
   end
 

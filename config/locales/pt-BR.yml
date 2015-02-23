@@ -5,10 +5,12 @@ pt-BR:
     navebar:
       api_keys: Chaves
       assets: Arquivos
+      comments: Comentários
       home: Home
       images: Imagens
       links: Links
       link_lists: Lista de Links
+      list_items: Lista de Itens
       posts: Posts
       pages: Páginas
       presentations: Apresentaçãoes
