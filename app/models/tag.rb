@@ -1,9 +1,9 @@
 class Tag
   include Mongoid::Document
 
-  field :name, :type => String
+  field :name, type: String
 
-  embeds_many :list_contents, :as => :listable
+  embeds_many :list_contents, as: :listable
 
   # Scopes
   scope :ordered_by_name, lambda {

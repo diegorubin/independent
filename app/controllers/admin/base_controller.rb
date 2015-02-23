@@ -12,6 +12,7 @@ class Admin::BaseController < AdminController
 
   def create
     set_object_variable(klass.new(object_params))
+    yield(get_object_variable) if block_given?
     if get_object_variable.save
       save_success_action
     else
@@ -25,6 +26,7 @@ class Admin::BaseController < AdminController
   end
 
   def update
+    yield(get_object_variable) if block_given?
     if get_object_variable.update(object_params)
       respond_to do |format|
         format.html do
@@ -64,10 +66,6 @@ class Admin::BaseController < AdminController
   
 
   protected
-  def klass
-    controller_name.classify.constantize
-  end
-
   def instance_variable_name_pluralized
     controller_name
   end
@@ -92,8 +90,7 @@ class Admin::BaseController < AdminController
 
   def object_params
     if params.has_key?(instance_variable_name)
-      params.require(instance_variable_name)
-        .permit(klass.admin_attributes)
+      params.require(instance_variable_name).permit!
     end
   end
 

@@ -4,6 +4,13 @@ Rails.application.routes.draw do
 
   # admin
   namespace :admin do
+    namespace :api do
+      namespace :v1 do
+        resources :posts, only: [:index, :create, :update, :destroy]
+      end
+    end
+
+    resources :api_keys
     resources :assets
     resources :comments, only: [:index, :update, :destroy]
     resources :images

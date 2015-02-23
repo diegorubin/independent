@@ -35,8 +35,8 @@ module Independent
     end
 
     # Mongoid
-    Mongoid.logger.level = Logger::DEBUG
-    Moped.logger.level = Logger::DEBUG
+    Moped.logger = Logger.new(StringIO.new)
+    Mongoid.logger = Logger.new(StringIO.new)
 
     # themes path
     [:fonts, :images, :javascripts, :stylesheets].each do |d|

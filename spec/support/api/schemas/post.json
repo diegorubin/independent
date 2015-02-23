@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required" : [
+    "id",
+    "title",
+    "slug"
+  ],
+  "properties" : {
+    "id" : { "type" : "string" },
+    "title" : { "type" : "string" },
+    "slug" : { "type" : "string" }
+  }
+}
+

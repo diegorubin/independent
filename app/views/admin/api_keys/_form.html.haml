@@ -1,0 +1,21 @@
+= semantic_form_for([:admin, @api_key]) do |f|
+
+  .row
+    .col-md-8
+      = f.input :program
+      
+      - system_resources.sort.each do |resource|
+        %p
+          %label
+            = resource.to_sym.t(scope: ['admin', 'navebar'])
+          - ['index', 'create', 'update', 'destroy'].each do |action|
+            = check_box_tag "api_key[permissions][#{resource}][]", action, 
+              ((f.object.permissions || {}).with_indifferent_access[resource] || []).include?(action)
+            = action
+
+    .col-md-4
+      .well
+        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+
