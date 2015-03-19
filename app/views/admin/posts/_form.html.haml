@@ -1,11 +1,11 @@
-= semantic_form_for([:admin, @post]) do |f|
+= semantic_form_for([:admin, @post], html: {id: 'post'}) do |f|
 
   .row
     .col-md-8
-      = f.inputs :title, :slug, :category, :tags, :author
-
-      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+      = f.inputs :title, :slug
       = f.input :body, as: 'text'
+      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+      = f.inputs :category, :tags, :author
 
     .col-md-4
       .well
