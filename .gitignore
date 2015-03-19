@@ -8,6 +8,8 @@
 .vagrant
 cookbooks
 
+lib/assets/bower_components
+
 /db/*.sqlite3
 /db/*.sqlite3-journal
 

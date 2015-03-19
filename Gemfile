@@ -40,6 +40,9 @@ gem 'formtastic-bootstrap', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'rest_in_place', '~> 2.5.0'
 
+# javascript dependences control
+gem 'bower-rails'
+
 # xml parse
 gem 'nokogiri'
 

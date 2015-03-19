@@ -1,6 +1,31 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require codemirror
+//
+//= require codemirror/mode/clike/clike
+//= require codemirror/mode/clojure/clojure
+//= require codemirror/mode/commonlisp/commonlisp
+//= require codemirror/mode/d/d
+//= require codemirror/mode/erlang/erlang
+//= require codemirror/mode/fortran/fortran
+//= require codemirror/mode/go/go
+//= require codemirror/mode/haml/haml
+//= require codemirror/mode/javascript/javascript
+//= require codemirror/mode/lua/lua
+//= require codemirror/mode/markdown/markdown
+//= require codemirror/mode/pascal/pascal
+//= require codemirror/mode/perl/perl
+//= require codemirror/mode/php/php
+//= require codemirror/mode/python/python
+//= require codemirror/mode/ruby/ruby
+//= require codemirror/mode/rust/rust
+//= require codemirror/mode/shell/shell
+//= require codemirror/mode/sql/sql
+//= require codemirror/mode/tcl/tcl
+//= require codemirror/mode/xml/xml
+//= require codemirror/mode/yaml/yaml
+//
 //= require rest_in_place
 //= require_tree ./admin
 //= require_self
