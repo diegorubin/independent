@@ -1,4 +1,5 @@
 var PostForm = function() {
+
 }
 
 PostForm.prototype = new BaseForm();
@@ -14,6 +15,12 @@ PostForm.prototype.init = function(form) {
     CodeMirror.fromTextArea(textarea, _this.getOptions());
   });
 
+  // [TODO] - could be better
+  var data_session = $('*[data-preview-session]');
+  if(data_session.length > 0) {
+    this.connection = new PreviewForm();
+    connection.connect(data_session.attr('data-preview-session'));
+  }
 }
 
 PostForm.prototype.getOptions = function() {

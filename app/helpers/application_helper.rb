@@ -22,7 +22,7 @@ module ApplicationHelper
   # Url helpers
   def item_path(item, options = {})
     resource_path = item.resource_type.underscore
-    args = [item.date, item.slug]
+    args = [item.date || '0000/00/00', item.slug || 'preview']
     send("#{resource_path}_path", *args, options)
   end
 

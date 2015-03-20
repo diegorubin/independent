@@ -1,5 +1,5 @@
 = semantic_form_for([:admin, @post], 
-  html: {id: 'post', data: {'preview-session' => 'dois'}}) do |f|
+  html: {id: 'post', data: {'preview-session' => generate_preview_session}}) do |f|
 
   .row
     .col-md-8
