@@ -12,9 +12,5 @@ PreviewForm.prototype.connect = function(session) {
     _this.connection.send(message);  
   }
 
-  this.on('change', function(event){
-    console.log($(this).val());
-    _this.connection.send($(this).val());
-  });
 }
 

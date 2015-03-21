@@ -19,7 +19,7 @@ PostForm.prototype.init = function(form) {
   var data_session = $('*[data-preview-session]');
   if(data_session.length > 0) {
     this.connection = new PreviewForm();
-    connection.connect(data_session.attr('data-preview-session'));
+    this.connection.connect(data_session.attr('data-preview-session'));
   }
 }
 
