@@ -11,7 +11,7 @@
 
     .col-md-4
       .well
-        = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path(@post.id || 'preview', preview_session: preview_session), 'btn-info', target: 'blank')
+        = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path((@post.new_record? ? 'preview' : @post.id), preview_session: preview_session), 'btn-info', target: 'blank')
         = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
         = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
         = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }

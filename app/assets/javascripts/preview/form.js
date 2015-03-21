@@ -14,3 +14,10 @@ PreviewForm.prototype.connect = function(session) {
 
 }
 
+PreviewForm.prototype.send = function(content) {
+  var _this = this;
+  var object = {'event': 'update', 'session': _this.session};
+  object.content = content;
+  _this.connection.send(JSON.stringify(object));  
+}
+

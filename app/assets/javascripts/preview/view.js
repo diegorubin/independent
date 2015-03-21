@@ -11,9 +11,15 @@ PreviewView.prototype.connect = function(session) {
     _this.connection.send(message);  
   }
 
-}
+  this.connection.onmessage = function(message) {
+    var content = JSON.parse(message.data);
 
-PreviewView.prototype.render = function() {
+    //render
+    $.each(content, function(attr, value) {
+      $("[data-preview-attribute='" + attr + "']").html(value);
+    });
+  }
+
 }
 
 // load preview socket

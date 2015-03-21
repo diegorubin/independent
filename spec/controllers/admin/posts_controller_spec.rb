@@ -89,14 +89,19 @@ describe Admin::PostsController, type: :controller do
   end
 
   context 'on show post' do
-    before(:each) {get :show, :id => post_created.id}
 
-    it 'render template' do
-      expect(response).to be_success
+    context 'on persisted' do
+      before(:each) {get :show, :id => post_created.id}
+      it('render template') { expect(response).to be_success }
+      it('variable for post') { expect(assigns(:post)).to be_kind_of(Post) }
+      it('post saved') { expect(assigns(:post)).to_not be_new_record }
     end
 
-    it 'variable for post' do
-      expect(assigns(:post)).to be_kind_of(Post)
+    context 'on preview' do
+      before(:each) {get :show, :id => 'preview'}
+      it('render template') { expect(response).to be_success }
+      it('variable for post') { expect(assigns(:post)).to be_kind_of(Post) }
+      it('post not saved') { expect(assigns(:post)).to be_new_record }
     end
    
   end
