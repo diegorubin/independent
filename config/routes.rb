@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     namespace :api do
       namespace :v1 do
+        resources :markdown, only: [:create]
         resources :posts, only: [:index, :create, :update, :destroy]
       end
     end
