@@ -8,7 +8,7 @@ class Page
   paginates_per 10
 
   field :title,     type: String
-  field :body,      type: String
+  field :body,      type: String,  default: ''
   field :pageviews, type: Integer, default: 0
 
   # Validates
