@@ -7,12 +7,13 @@ PostForm.prototype.constructor = PostForm;
 PostForm.prototype.init = function(form) {
   var _this = this;
 
-  this.form = $(form);
-  var textareas = this.form.find('textarea');
+  _this.content = {};
+  _this.form = $(form);
 
-  $.each(textareas, function(index, textarea) {
-    CodeMirror.fromTextArea(textarea, _this.getOptions());
-  });
+  _this.loadFields();
+
+  _this.loadCodeMirror();
+  _this.connectPreviewServer();
 
 }
 
@@ -20,8 +21,14 @@ PostForm.prototype.getOptions = function() {
   return {lineNumbers: true, mode: 'markdown'};
 }
 
+// fields form
+PostForm.prototype.fieldIds = function() {
+  return ['post_title', 'post_category', 'post_tags'];
+}
+
 //load PostForm
 loadForm('form#post', function(formElem){
   var form = new PostForm();
   form.init(formElem);
 });
+

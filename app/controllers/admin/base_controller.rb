@@ -1,6 +1,6 @@
 class Admin::BaseController < AdminController
 
-  before_filter :get_object, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_object, :only => [:edit, :update, :destroy]
 
   def index
     set_object_variable(klass.admin_list.page(params.fetch(:page,1)), false)
@@ -51,6 +51,11 @@ class Admin::BaseController < AdminController
   end
 
   def show
+    if params[:id] == 'preview'
+      set_object_variable(klass.new(object_params))
+    else
+      get_object
+    end
   end
 
   def destroy

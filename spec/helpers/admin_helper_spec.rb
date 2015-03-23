@@ -45,5 +45,24 @@ describe WelcomeHelper, type: :helper do
 
   end
 
+  context 'on generate preview session' do
+
+    let(:user) {FactoryGirl.create(:user)}
+
+    before(:each) {
+      @time_test = Time.local(2015,1,1)
+      Time.stub(:current).and_return(@time_test)
+
+      controller.stub(:current_user).and_return(user)
+    }
+
+    it 'generate hash for logged user' do
+      expected_hash = 
+        Digest::SHA1.hexdigest(user.username + @time_test.to_i.to_s)
+      expect(helper.generate_preview_session()).to eql(expected_hash)
+    end
+
+  end
+
 end
 

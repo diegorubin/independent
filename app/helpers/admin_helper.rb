@@ -22,5 +22,10 @@ module AdminHelper
     end.collect{|c| c.name.underscore.pluralize}
   end
 
+  def generate_preview_session
+    input = "#{current_user.username}#{Time.current.to_i}"
+    Digest::SHA1.hexdigest(input).to_s
+  end
+
 end
 

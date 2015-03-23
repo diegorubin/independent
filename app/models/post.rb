@@ -16,7 +16,7 @@ class Post
   field :title,        type: String
   field :resume,       type: String
   field :author,       type: String
-  field :body,         type: String
+  field :body,         type: String, default: ''
 
   field :external_js,  type: String
   field :external_css, type: String

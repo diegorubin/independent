@@ -26,7 +26,10 @@
 //= require codemirror/mode/xml/xml
 //= require codemirror/mode/yaml/yaml
 //
+//= require utils
 //= require rest_in_place
+//= require preview
+//
 //= require_tree ./admin
 //= require_self
 //

@@ -8,6 +8,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def show
+    super
     render 'posts/show', layout: set_current_theme
   end
 

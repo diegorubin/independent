@@ -1,6 +1,7 @@
 class Admin::WidgetsController < Admin::BaseController
 
   def show
+    get_object
     @config = @widget.config
   end
 
