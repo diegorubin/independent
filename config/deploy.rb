@@ -19,6 +19,14 @@ namespace :deploy do
     end
   end
 
+  desc 'update npm'
+  task :update_npm do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :npm, 'install'
+    end
+  end
+
+  after :deploy, 'deploy:update_npm'
   after :deploy, 'deploy:restart'
 
 end
