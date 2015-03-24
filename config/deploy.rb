@@ -22,7 +22,7 @@ namespace :deploy do
   desc 'update npm'
   task :update_npm do
     on roles(:app), in: :sequence, wait: 5 do
-      execute :npm, 'install'
+      execute "cd '#{release_path}'; npm install"
     end
   end
 
