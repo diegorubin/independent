@@ -1,10 +1,6 @@
 .well
   .btn-toolbar{role: "toolbar"}
   
-    - unless in_action?('new')
-      .btn-group
-        = menu_button(:new.t(:scope => [:admin, :widgets, :menu]), new_admin_widget_path, 'btn-primary')
-  
     - unless in_action?('index')
       .btn-group
         = menu_button(:list.t(:scope => [:admin, :widgets, :menu]), admin_widgets_path, 'btn-default')

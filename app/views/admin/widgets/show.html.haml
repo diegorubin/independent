@@ -17,6 +17,8 @@
           - n.object.fields.keys.each do |nested_field|
             - next if nested_field == '_id'
             = n.input nested_field
+          = n.check_box '_destroy'
+          = n.label '_destroy'
 
   = f.actions :submit, :cancel
 
