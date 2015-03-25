@@ -9,7 +9,7 @@ set :linked_files, %w{
   config/initializers/setup_mail.rb
 }
 
-set :linked_dirs, %w{log public/uploads themes uploads}
+set :linked_dirs, %w{log public/uploads themes uploads node_modules}
 
 namespace :deploy do
 
@@ -50,12 +50,11 @@ namespace :deploy do
 end
 
 def forever_service(command)
-  forever_cmd = 'node_modules/.bin/forever'
-  if File.exists?(File.join(release_path, forever_cmd))
-    execute %Q{
-      cd '#{release_path}'; 
-      #{forever_cmd} #{command} lib/node/preview/server.js
-    }
+  begin
+    forever_cmd = File.join(shared_path, 'node_modules/.bin/forever')
+    execute "cd '#{release_path}'; #{forever_cmd} #{command} lib/node/preview/server.js -p #{current_path}"
+  rescue
+    warn "preview server not started"
   end
 end
 
