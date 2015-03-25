@@ -3,6 +3,7 @@
   %head
     %title= "#{yield(:title)} | Independent Admin"
     = stylesheet_link_tag 'admin', media: 'all'
+    %meta{content: Figaro.env.preview_host, name: 'preview_host'}
     = csrf_meta_tags
 
   %body

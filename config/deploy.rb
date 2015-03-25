@@ -5,7 +5,8 @@ set :application, 'independent'
 set :repo_url, 'git@github.com:diegorubin/independent.git'
 
 set :linked_files, %w{
-  config/mongoid.yml config/initializers/devise.rb config/initializers/setup_mail.rb
+  config/application.yml config/mongoid.yml config/initializers/devise.rb 
+  config/initializers/setup_mail.rb
 }
 
 set :linked_dirs, %w{log public/uploads themes uploads}

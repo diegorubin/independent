@@ -7,7 +7,7 @@ module Searchable
       options[:category] = params[:category] if params[:category]
 
       if params[:tag]
-        options[:tags] = Regexp.new("(,|\\A)#{params[:tag]}(,|\\z)") 
+        options[:tags] = Regexp.new("(,|\\A)#{params[:tag].strip}(,|\\z)") 
       end
 
       if !params[:s].blank?

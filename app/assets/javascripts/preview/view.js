@@ -5,7 +5,7 @@ PreviewView.prototype.connect = function(session) {
   var _this = this;
 
   this.session = session;
-  this.connection = new WebSocket('ws://localhost:8080');
+  this.connection = new WebSocket($('meta[name="preview_host"]').attr('content'));
   this.connection.onopen = function() {
     var message = JSON.stringify({'event': 'view', 'session': session});
     _this.connection.send(message);  
