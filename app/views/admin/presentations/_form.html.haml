@@ -2,7 +2,9 @@
 
   .row
     .col-md-8
-      = f.inputs :title, :slug, :author, :category, :tags
+      = f.inputs :title, :slug, :author, :category
+
+      = f.input :tags, input_html: {'data-role' => 'tagsinput'}
 
       = f.input :resume, as: 'text', input_html: {class: 'short-text'}
 

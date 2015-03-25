@@ -3,7 +3,7 @@
   .row
     .col-md-8
       = f.inputs :title, :slug
-      = f.input :tags
+      = f.input :tags, input_html: {'data-role' => 'tagsinput'}
       = f.input :file
 
     .col-md-4
