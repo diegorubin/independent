@@ -27,8 +27,35 @@ namespace :deploy do
     end
   end
 
+  desc 'stop preview server'
+  task :stop_preview_server do
+    on roles(:app), in: :sequence, wait: 5 do
+      forever_service('stop')
+    end
+  end
+
+  desc 'start preview server'
+  task :start_preview_server do
+    on roles(:app), in: :sequence, wait: 5 do
+      forever_service('start')
+    end
+  end
+
+  before :deploy, 'deploy:stop_preview_server'
+
   after :deploy, 'deploy:update_npm'
   after :deploy, 'deploy:restart'
+  after :deploy, 'deploy:start_preview_server'
 
+end
+
+def forever_service(command)
+  forever_cmd = 'node_modules/.bin/forever'
+  if File.exists?(File.join(release_path, forever_cmd))
+    execute %Q{
+      cd '#{release_path}'; 
+      #{forever_cmd} #{command} lib/node/preview/server.js
+    }
+  end
 end
 
