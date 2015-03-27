@@ -234,6 +234,10 @@ pt-BR:
     'true': Sim
     'false': Não
 
+    published:
+      'true': Publicado
+      'false': Rascunho
+
   will_paginate:
     previous_label: Anterior
     next_label: Próxima

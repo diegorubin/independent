@@ -10,6 +10,9 @@ body {
   padding-top: 50px;
 }
 
+/* list resources */
+table.table tr td img {max-width: 466px;}
+
 /* common form */
 textarea.short-text {height: 100px;}
 

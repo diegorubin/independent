@@ -22,7 +22,7 @@ module Publishable
   end
 
   def published_str
-    published.to_s.to_sym.t(scope: ['options'])
+    published.to_s.to_sym.t(scope: ['options', 'published'])
   end
 
   def generate_date
