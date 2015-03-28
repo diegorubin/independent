@@ -24,7 +24,8 @@
           = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
         %P 
-          = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
+          - unless @post.new_record?
+            = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
           = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path((@post.new_record? ? 'preview' : @post.id), preview_session: preview_session), 'btn-info', target: 'blank')
 
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]

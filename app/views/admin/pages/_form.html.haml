@@ -13,10 +13,15 @@
 
     .col-md-4{data:{'focus-mode' => 'off'}}
       .well
-        = menu_button(:show.t(:scope => [:admin, :pages, :menu]), admin_page_path((@page.new_record? ? 'preview' : @page.id), preview_session: preview_session), 'btn-info', target: 'blank')
-        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+        %p
+          = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+          = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+          = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+
+        %p
+          - unless @page.new_record?
+            = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
+          = menu_button(:show.t(:scope => [:admin, :pages, :menu]), admin_page_path((@page.new_record? ? 'preview' : @page.id), preview_session: preview_session), 'btn-info', target: 'blank')
 
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 

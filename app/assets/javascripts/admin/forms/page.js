@@ -12,6 +12,7 @@ PageForm.prototype.init = function(form) {
 
   _this.loadFields();
 
+  _this.loadAutoSave();
   _this.loadFocusMode();
   _this.loadCodeMirror();
   _this.connectPreviewServer();
