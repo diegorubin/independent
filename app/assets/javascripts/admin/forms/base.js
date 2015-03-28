@@ -4,6 +4,30 @@ var BaseForm = function() {
 BaseForm.prototype.refresh = function(resource) {
 }
 
+BaseForm.prototype.loadFocusMode = function() {
+  var _this = this;
+  $('.focus-mode-btn').click(_this.focusMode);
+}
+
+BaseForm.prototype.focusMode = function(event) {
+  event.preventDefault();
+  var _this = this;
+
+  if(_this.focused) {
+    _this.focused = false;
+    $("[data-focus-mode='off']").css('display', 'block');
+
+    $('#main-column').removeClass('col-md-12');
+    $('#main-column').addClass('col-md-8');
+  } else {
+    _this.focused = true;
+    $("[data-focus-mode='off']").css('display', 'none');
+
+    $('#main-column').removeClass('col-md-8');
+    $('#main-column').addClass('col-md-12');
+  }
+}
+
 BaseForm.prototype.save = function() {
   var _this = this;
 
@@ -45,6 +69,7 @@ BaseForm.prototype.loadCodeMirror = function() {
   var textareas = _this.form.find('textarea');
   $.each(textareas, function(index, textarea) {
     var editor = CodeMirror.fromTextArea(textarea, _this.getOptions());
+    editor.setSize('100%',600);
     editor.on('change', function() {
       $.ajax({
         url: "/admin/api/v1/markdown",

@@ -3,19 +3,29 @@
   html: {id: 'post', data: {'preview-session' => preview_session}}) do |f|
 
   .row
-    .col-md-8
-      = f.inputs :title, :slug
-      = f.input :body, as: 'text'
-      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
-      = f.inputs :category, :author
-      = f.input :tags, input_html: {'data-role' => 'tagsinput'}
+    #main-column.col-md-8
+      %div{data:{'focus-mode' => 'off'}}
+        = f.inputs :title, :slug
 
-    .col-md-4
+      %div{data:{'focus-mode' => 'on'}}
+        %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
+        = f.input :body, as: 'text', input_html: {rows: 80}
+
+      %div{data:{'focus-mode' => 'off'}}
+        = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+        = f.inputs :category, :author
+        = f.input :tags, input_html: {'data-role' => 'tagsinput'}
+
+    .col-md-4{data:{'focus-mode' => 'off'}}
       .well
-        = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path((@post.new_record? ? 'preview' : @post.id), preview_session: preview_session), 'btn-info', target: 'blank')
-        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+        %p
+          = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+          = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+          = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+
+        %P 
+          = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
+          = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path((@post.new_record? ? 'preview' : @post.id), preview_session: preview_session), 'btn-info', target: 'blank')
 
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 

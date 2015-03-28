@@ -3,12 +3,15 @@
   html: {id: 'page', data: {'preview-session' => preview_session}}) do |f|
 
   .row
-    .col-md-8
-      = f.inputs :title, :slug
+    #main-column.col-md-8
+      %div{data:{'focus-mode' => 'off'}}
+        = f.inputs :title, :slug
 
-      = f.input :body, as: 'text'
+      %div{data:{'focus-mode' => 'on'}}
+        %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
+        = f.input :body, as: 'text'
 
-    .col-md-4
+    .col-md-4{data:{'focus-mode' => 'off'}}
       .well
         = menu_button(:show.t(:scope => [:admin, :pages, :menu]), admin_page_path((@page.new_record? ? 'preview' : @page.id), preview_session: preview_session), 'btn-info', target: 'blank')
         = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }

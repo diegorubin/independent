@@ -13,6 +13,7 @@ PostForm.prototype.init = function(form) {
 
   _this.loadFields();
 
+  _this.loadFocusMode();
   _this.loadCodeMirror();
   _this.connectPreviewServer();
 

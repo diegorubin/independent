@@ -95,6 +95,7 @@ pt-BR:
         list: Listar Páginas
         new: Novo Página
         show: Ver
+        save_and_continue: Salvar e continuar editando
       new:
         h1: Novo Página
         title: Novo Página
@@ -114,6 +115,7 @@ pt-BR:
         list: Listar Artigos
         new: Novo Artigo
         show: Ver
+        save_and_continue: Salvar e continuar editando
       new:
         h1: Novo Artigo
         title: Novo Artigo

@@ -15,6 +15,7 @@ table.table tr td img {max-width: 466px;}
 
 /* common form */
 textarea.short-text {height: 100px;}
+.focus-mode-btn {cursor: pointer;}
 
 /* comments */
 h3.reply-title {
