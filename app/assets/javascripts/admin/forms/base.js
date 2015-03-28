@@ -1,7 +1,26 @@
 var BaseForm = function() {
 }
 
+BaseForm.prototype.refresh = function(resource) {
+}
+
 BaseForm.prototype.save = function() {
+  var _this = this;
+
+  $.ajax({
+    type: options['method'] || 'POST',
+    dataType: options['type'] || 'json',
+    data: options['data'] || {},
+    url: _this.url,
+
+    success: function(data, textStatus, xhr) {
+      if(self.refresh) self.refresh(data);
+    },
+
+    error: function(data) {
+      location.reload();
+    }
+  });
 }
 
 BaseForm.prototype.loadFields = function() {
@@ -37,6 +56,50 @@ BaseForm.prototype.loadCodeMirror = function() {
       });
     });
   });
+}
+
+BaseForm.prototype.loadAttributes = function() {
+
+  var attrs = {};
+  var field_types = ["input", "select", "textarea", "hidden"];
+
+  for(var j = 0; j < field_types.length; j++){
+    var inputs = form.find(field_types[j]);
+
+    for(var i = 0; i < inputs.length; i++) {
+      var input = $(inputs[i]);
+      attrs[input.attr("name")] = input.val();
+    }
+
+  }
+
+  /* get values of radio and checkbox */
+  var radios = $("input[type='radio']:checked");
+
+  for(var i = 0; i < radios.length; i++) {
+    var name = $(radios[i]).attr('name');
+    attrs[name] = $(radios[i]).val();
+  }
+
+  var checkboxes = $("input[type='checkbox']");
+  for(var i = 0; i < checkboxes.length; i++) {
+    var name = $(checkboxes[i]).attr('name') || '';
+
+    if(name.match(/\[\]$/)) {
+
+      if((typeof attrs[name]) == 'string') {attrs[name] = [];}
+      if($(checkboxes[i]).is(":checked"))
+        attrs[name].push($(checkboxes[i]).val());
+
+    } else {
+
+      attrs[name] =
+        ($(checkboxes[i]).is(":checked") ? $(checkboxes[i]).val() : '');
+
+    }
+  }
+
+  return attrs;
 }
 
 // form functions utils

@@ -7,6 +7,7 @@ PostForm.prototype.constructor = PostForm;
 PostForm.prototype.init = function(form) {
   var _this = this;
 
+  _this.api = '/admin/api/v1/posts';
   _this.content = {};
   _this.form = $(form);
 
