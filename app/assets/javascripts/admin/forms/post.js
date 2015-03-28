@@ -7,12 +7,12 @@ PostForm.prototype.constructor = PostForm;
 PostForm.prototype.init = function(form) {
   var _this = this;
 
-  _this.api = '/admin/api/v1/posts';
   _this.content = {};
   _this.form = $(form);
 
   _this.loadFields();
 
+  _this.loadAutoSave();
   _this.loadFocusMode();
   _this.loadCodeMirror();
   _this.connectPreviewServer();

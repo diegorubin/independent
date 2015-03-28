@@ -16,9 +16,17 @@ class Admin::BaseController < AdminController
     if get_object_variable.save
       save_success_action
     else
-      render :action => :new
-      flash[:alert] = 
-        :alert.t(:scope => [instance_variable_name, :admin, :create])
+      respond_to do |format|
+        format.html do
+          render :action => :new
+          flash[:alert] = 
+            :alert.t(:scope => [instance_variable_name, :admin, :create])
+        end
+
+        format.json do
+          render json: get_object_variable
+        end
+      end
     end
   end
 
@@ -104,8 +112,16 @@ class Admin::BaseController < AdminController
   end
 
   def save_success_action(act = :create)
-    redirect_to action: :index
-    flash[:notice] = :notice.t(:scope => [instance_variable_name, :admin, act])
+    respond_to do |format|
+      format.html do
+        redirect_to action: :index
+        flash[:notice] = :notice.t(:scope => [instance_variable_name, :admin, act])
+      end
+
+      format.json do
+        render json: get_object_variable
+      end
+    end
   end
 
 end

@@ -1,7 +1,34 @@
 var BaseForm = function() {
 }
 
-BaseForm.prototype.refresh = function(resource) {
+BaseForm.prototype.loadAutoSave = function() {
+  var _this = this;
+  $('.save-and-continue').click(function(event){
+    event.preventDefault();
+
+    var method = $("input[name='_method']").val() || 'post';
+
+    $.ajax({
+      type: method,
+      dataType: 'json',
+      data: _this.loadAttributes(),
+      url: _this.form.attr('action'),
+
+      success: function(data, textStatus, xhr) {
+        if(method == 'post') {
+
+          if(data.id) {
+            _this.form.append('<input name="_method" value="patch" type="hidden" />');
+            _this.form.attr('action', _this.form.attr('action') + '/' + data.id);
+          }
+        }
+      },
+
+      error: function(data) {
+        location.reload();
+      }
+    });
+  });
 }
 
 BaseForm.prototype.loadFocusMode = function() {
@@ -28,25 +55,6 @@ BaseForm.prototype.focusMode = function(event) {
   }
 }
 
-BaseForm.prototype.save = function() {
-  var _this = this;
-
-  $.ajax({
-    type: options['method'] || 'POST',
-    dataType: options['type'] || 'json',
-    data: options['data'] || {},
-    url: _this.url,
-
-    success: function(data, textStatus, xhr) {
-      if(self.refresh) self.refresh(data);
-    },
-
-    error: function(data) {
-      location.reload();
-    }
-  });
-}
-
 BaseForm.prototype.loadFields = function() {
   var _this = this;
   $.each(this.fieldIds(), function(position, fieldId){
@@ -71,6 +79,7 @@ BaseForm.prototype.loadCodeMirror = function() {
     var editor = CodeMirror.fromTextArea(textarea, _this.getOptions());
     editor.setSize('100%',600);
     editor.on('change', function() {
+      textarea.value = editor.getValue();
       $.ajax({
         url: "/admin/api/v1/markdown",
         method: "POST",
@@ -84,12 +93,13 @@ BaseForm.prototype.loadCodeMirror = function() {
 }
 
 BaseForm.prototype.loadAttributes = function() {
+  var _this = this;
 
   var attrs = {};
   var field_types = ["input", "select", "textarea", "hidden"];
 
   for(var j = 0; j < field_types.length; j++){
-    var inputs = form.find(field_types[j]);
+    var inputs = _this.form.find(field_types[j]);
 
     for(var i = 0; i < inputs.length; i++) {
       var input = $(inputs[i]);

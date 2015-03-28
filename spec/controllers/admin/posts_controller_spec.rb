@@ -52,6 +52,19 @@ describe Admin::PostsController, type: :controller do
       expect(response).to be_success
     end
 
+    context 'on result as json' do
+      it 'save post' do
+        post :create, :post => post_attributes, format: 'json'
+        expect(response).to be_success
+        expect(response.body).to be_kind_of(String)
+      end
+
+      it 'not save post' do
+        post :create, :post => post_attributes_invalid, format: 'json'
+        expect(response).to be_success
+      end
+    end
+
   end
 
   context 'on edit post' do
