@@ -7,9 +7,12 @@
       %div{data:{'focus-mode' => 'off'}}
         = f.inputs :title, :slug
 
-      %div{data:{'focus-mode' => 'on'}}
-        %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
-        = f.input :body, as: 'text'
+      %div.hidden{data:{'focus-mode' => 'on'}}
+        - unless @page.new_record?
+          = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
+          .clear
+      %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
+      = f.input :body, as: 'text'
 
     .col-md-4{data:{'focus-mode' => 'off'}}
       .well

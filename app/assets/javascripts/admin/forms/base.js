@@ -42,13 +42,15 @@ BaseForm.prototype.focusMode = function(event) {
 
   if(_this.focused) {
     _this.focused = false;
-    $("[data-focus-mode='off']").css('display', 'block');
+    $("[data-focus-mode='off']").removeClass('hidden');
+    $("[data-focus-mode='on']").addClass('hidden');
 
     $('#main-column').removeClass('col-md-12');
     $('#main-column').addClass('col-md-8');
   } else {
     _this.focused = true;
-    $("[data-focus-mode='off']").css('display', 'none');
+    $("[data-focus-mode='off']").addClass('hidden');
+    $("[data-focus-mode='on']").removeClass('hidden');
 
     $('#main-column').removeClass('col-md-8');
     $('#main-column').addClass('col-md-12');
