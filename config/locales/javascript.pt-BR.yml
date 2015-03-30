@@ -1,0 +1,6 @@
+pt-BR:
+  javascript:
+    messages:
+      save:
+        success: "Salvo com sucesso."
+        error: "Falha ao tentar salvar."

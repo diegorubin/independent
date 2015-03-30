@@ -1,0 +1,33 @@
+{
+  "name": "polyglot",
+  "description": "Give your JavaScript the ability to speak many languages.",
+  "version": "0.4.1",
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "internationalisation",
+    "translation",
+    "interpolation",
+    "translate",
+    "polyglot"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "BSD",
+  "main": "lib/polyglot.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/airbnb/polyglot.js",
+  "_release": "0.4.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.1",
+    "commit": "39c65219e54b1e6b63d2ddb6817e7224cd991113"
+  },
+  "_source": "git://github.com/airbnb/polyglot.js.git",
+  "_target": "0.4.1",
+  "_originalSource": "polyglot"
+}

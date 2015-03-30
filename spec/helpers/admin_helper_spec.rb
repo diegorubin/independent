@@ -64,5 +64,17 @@ describe WelcomeHelper, type: :helper do
 
   end
 
+  context 'on tranlstes for javascript' do
+
+    it 'get messages.save.success' do
+      expect(helper.javascript_translates).to match(/messages.save.success/)
+    end
+
+    it 'get translate for messages.save.success' do
+      expect(helper.javascript_translates).to match(/Salvo com sucesso./)
+    end
+
+  end
+
 end
 

@@ -15,6 +15,7 @@ BaseForm.prototype.loadAutoSave = function() {
       url: _this.form.attr('action'),
 
       success: function(data, textStatus, xhr) {
+        $.bootstrapGrowl(polyglot.t("messages.save.success"), {type: 'success'});
         if(method == 'post') {
 
           if(data.id) {
@@ -25,6 +26,7 @@ BaseForm.prototype.loadAutoSave = function() {
       },
 
       error: function(data) {
+        $.bootstrapGrowl(polyglot.t("messages.save.error"), {type: 'danger'});
         location.reload();
       }
     });

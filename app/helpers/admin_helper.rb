@@ -27,5 +27,26 @@ module AdminHelper
     Digest::SHA1.hexdigest(input).to_s
   end
 
+  def javascript_translates
+    phrases = get_phrases(I18n.t(:javascript))
+    content_tag 'script' do
+      raw "var polyglot = new Polyglot({phrases: #{phrases.to_json}});"
+    end
+  end
+
+  private
+
+  def get_phrases(entry, current_path = '', keys = {})
+    if entry.is_a?(Hash)
+      entry.each do |key, value|
+        new_path = current_path.blank? ? key : "#{current_path}.#{key}"
+        keys = get_phrases(value, new_path, keys)
+      end
+    else
+      keys[current_path] = entry
+    end
+    keys
+  end
+
 end
 
