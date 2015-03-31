@@ -26,7 +26,6 @@ gem 'kaminari'
 gem 'devise'
 
 # database
-gem 'sqlite3'
 gem 'mongoid', '~> 4.0.1'
 gem 'mongo'
 gem 'redis'
