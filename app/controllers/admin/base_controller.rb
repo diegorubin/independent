@@ -16,17 +16,7 @@ class Admin::BaseController < AdminController
     if get_object_variable.save
       save_success_action
     else
-      respond_to do |format|
-        format.html do
-          render :action => :new
-          flash[:alert] = 
-            :alert.t(:scope => [instance_variable_name, :admin, :create])
-        end
-
-        format.json do
-          render json: get_object_variable
-        end
-      end
+      error_with_format(:new, :create)
     end
   end
 
@@ -36,25 +26,9 @@ class Admin::BaseController < AdminController
   def update
     yield(get_object_variable) if block_given?
     if get_object_variable.update(object_params)
-      respond_to do |format|
-        format.html do
-          save_success_action(:update)
-        end
-        format.json do 
-          render json: get_object_variable
-        end
-      end
+      save_success_action(:update)
     else
-      respond_to do |format|
-        format.html do
-          render action: :edit 
-          flash[:alert] = 
-            :alert.t(scope: [instance_variable_name, :admin, :udpate])
-        end
-        format.json do
-          render json: {nothing: true}
-        end
-      end
+      error_with_format(:edit, :update)
     end
   end
 
@@ -116,6 +90,20 @@ class Admin::BaseController < AdminController
       format.html do
         redirect_to action: :index
         flash[:notice] = :notice.t(:scope => [instance_variable_name, :admin, act])
+      end
+
+      format.json do
+        render json: get_object_variable
+      end
+    end
+  end
+
+  def error_with_format(action, alert)
+    respond_to do |format|
+      format.html do
+        render :action => action
+        flash[:alert] = 
+          :alert.t(:scope => [instance_variable_name, :admin, alert])
       end
 
       format.json do
