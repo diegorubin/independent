@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
   get "/category/:category" => "welcome#index", :as => "category"
   get "/tag/:tag" => "welcome#index", :as => "tag"
+  get "/:date" => "welcome#index", 
+        :as => "date", 
+        :date => /\d{4}(\/\d{2}){0,2}/
 
   resources :pageviews, only: ['create']
 
@@ -47,7 +50,7 @@ Rails.application.routes.draw do
   # Posts
   get "/posts" => "posts#index", :as => "posts"
   get "/posts/:page" => "posts#index"
-  get ":date" => "posts#index", 
+  get "/posts/:date" => "posts#index", 
         :as => "post_date", 
         :date => /\d{4}(\/\d{2}){0,2}/
   get ":date/:slug" => "posts#show", 
