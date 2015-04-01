@@ -4,14 +4,16 @@ describe Admin::SnippetsController, type: :controller do
 
   before(:each) {@user = authenticate_user}
 
-  let(:snippet_created) {FactoryGirl.create(:snippet)}
+  let!(:snippet_created) {FactoryGirl.create(:snippet)}
 
   context 'on list snippets' do
+    render_views
 
     before(:each) {get :index}
 
     it 'render template' do
       expect(response).to be_success
+      expect(response.body).to match(/#{snippet_created.language}/)
     end
 
     it 'variable with list of snippets' do
