@@ -155,6 +155,8 @@ pt-BR:
       new:
         h1: Novo Snippet
         title: Novo Snippet
+      not_found: Não informada
+      resume: "Linguagem: %s"
 
     settings:
       index:

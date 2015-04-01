@@ -41,11 +41,11 @@ class Snippet
   end
 
   def language_name
-    LANGUAGES[language] || "Não informada"
+    LANGUAGES[language] || I18n.t('admin.snippets.not_found')
   end
 
   def resume
-    "Linguagem: #{language_name}"
+    I18n.t('admin.snippets.not_found')%(language_name)
   end
 
   def self.admin_attributes

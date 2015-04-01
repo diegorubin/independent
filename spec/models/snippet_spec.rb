@@ -27,5 +27,16 @@ describe Snippet do
     expect(snippet.to_html).to eql("<pre class='sh_c'>#include&lt;stdio.h&gt;\nint main(){\n return 0;\n}</pre>")
   end
 
+  it 'language_name' do
+    snippet = FactoryGirl.create(:snippet)
+    expect(snippet.language_name).to eql(Snippet::LANGUAGES[snippet.language])
+  end
+
+  it 'resume' do
+    snippet = FactoryGirl.create(:snippet)
+    expect(snippet.resume).to eql(
+      I18n.t('admin.snippets.not_found')%(snippet.language_name))
+  end
+
 end
 

@@ -14,6 +14,10 @@ module Searchable
         options[:words_index.in] = (params[:s].split.collect{|w| w.no_accent.downcase } - STOPWORDS)
       end
 
+      if params[:date]
+        options[:date] = Regexp.new("^#{params[:date].strip}") 
+      end
+
       options.length > 0 ? where(options) : {}
     }
   end
