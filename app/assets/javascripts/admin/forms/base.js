@@ -84,14 +84,18 @@ BaseForm.prototype.loadCodeMirror = function() {
     editor.setSize('100%',600);
     editor.on('change', function() {
       textarea.value = editor.getValue();
-      $.ajax({
-        url: "/admin/api/v1/markdown",
-        method: "POST",
-        data: {markdown:editor.getValue()}
-      }).done(function(result) {
-        _this.content[textarea.id] = result;
-        _this.connection.send(_this.content);
-      });
+
+      clearTimeout(_this.callRenderMarkdown);
+      _this.callRenderMarkdown = setTimeout(function() {
+        $.ajax({
+          url: "/admin/api/v1/markdown",
+          method: "POST",
+          data: {markdown:editor.getValue()}
+        }).done(function(result) {
+          _this.content[textarea.id] = result;
+          _this.connection.send(_this.content);
+        });
+      }, 300);
     });
   });
 }
