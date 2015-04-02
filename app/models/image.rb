@@ -10,9 +10,6 @@ class Image
 
   # Attributes
   field :title, type: String
-
-  embeds_many :images
-
   mount_uploader :file, ImageUploader
 
   validates :title, presence: true

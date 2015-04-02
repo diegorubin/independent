@@ -14,15 +14,16 @@ pt-BR:
       links: Links
       link_lists: Lista de Links
       list_items: Lista de Itens
+      logout: Sair
       posts: Posts
       pages: Páginas
       presentations: Apresentaçãoes
+      resources: Recursos
       settings: Configurações
       snippets: Snippets
       themes: Temas
       users: Usuários
       widgets: Widgets
-      logout: Sair
 
     api_keys:
       destroy:

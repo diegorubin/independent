@@ -3,7 +3,12 @@ class ImagesInput
   include ActionView::Helpers::FormTagHelper
 
   def input_html_options
-    super
+    # [TODO] - change id in future.
+    { 
+      :id => 'images',
+      :required => required_attribute?,
+      :autofocus => autofocus?
+    }.merge(options[:input_html] || {})
   end
 
   def to_html

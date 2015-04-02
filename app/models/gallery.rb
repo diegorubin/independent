@@ -7,7 +7,9 @@ class Gallery
 
   # Fields
   field :title, type: String
-  field :images, type: Array
+
+  embeds_many :images
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   # Validations
   validates :title, presence: true
