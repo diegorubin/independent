@@ -30,7 +30,7 @@ class Snippet
   validates_presence_of :language
 
   # Scopes
-  scope :admin_list, lambda {}
+  scope :admin_list, lambda { order([['title', 'asc']]) }
 
   def to_html
     result = code

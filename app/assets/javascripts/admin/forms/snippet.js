@@ -18,7 +18,6 @@ SnippetForm.prototype.init = function(form) {
 }
 
 SnippetForm.prototype.setLanguage = function(language) {
-  console.log(language);
   this.editor.setOption("mode", language);
 }
 
