@@ -16,7 +16,7 @@ describe Admin::ImagesController, type: :controller do
     context 'as json' do
       it 'list all images' do
         get :index, format: 'json'
-        expect(JSON.load(response.body)).to be_kind_of(Hash)
+        expect(JSON.load(response.body)).to be_kind_of(Array)
       end
     end
 
