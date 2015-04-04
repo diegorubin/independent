@@ -13,6 +13,13 @@ describe Admin::ImagesController, type: :controller do
       expect(assigns(:images)).to be_kind_of(Mongoid::Criteria)
     end
 
+    context 'as json' do
+      it 'list all images' do
+        get :index, format: 'json'
+        expect(JSON.load(response.body)).to be_kind_of(Hash)
+      end
+    end
+
   end
 
   context 'on create image' do

@@ -4,6 +4,12 @@ class Admin::BaseController < AdminController
 
   def index
     set_object_variable(klass.admin_list.page(params.fetch(:page,1)), false)
+    respond_to do |format|
+      format.html {}
+      format.json do
+        render json: get_object_variable(false)
+      end
+    end
   end
 
   def new
@@ -71,8 +77,12 @@ class Admin::BaseController < AdminController
     instance_variable_set("@#{variable_name}", value)
   end
 
-  def get_object_variable
-    instance_variable_get("@#{instance_variable_name}")
+  def get_object_variable(singularized = true)
+    if singularized
+      instance_variable_get("@#{instance_variable_name}")
+    else
+      instance_variable_get("@#{instance_variable_name_pluralized}")
+    end
   end
 
   def object_params
