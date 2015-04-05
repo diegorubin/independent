@@ -11,36 +11,23 @@ var ImageSelectComponent = function(content) {
   }
 
   $(this.content).on('click', function(event){
+    _this.loadStructure();
+    _this.getImages();
+    $('#dialog').modal('show');
+  });
 
-    $.ajax({
-      type: 'GET',
-      dataType: 'json',
-      url: '/admin/images',
+  $(document).on('click', '#dialog-previous', function(event){
+    event.preventDefault();
+    if(_this.page > 1) {
+      _this.page = _this.page - 1;
+      _this.getImages();
+    }
+  });
 
-      success: function(data, textStatus, xhr) {
-
-        $('#dialog-title').html(polyglot.t("dialogs.image_select.title"));
-        $('#dialog-cancel').html(polyglot.t("dialogs.image_select.cancel"));
-        $('#dialog-ok').html(polyglot.t("dialogs.image_select.ok"));
-        $('#dialog-ok').prop("disabled", true);
-
-        // load structure
-        $('#dialog-body').html('');
-        $('#dialog-body').append('<ul id="list-images"></ul>');
-
-        _this.loadImages(data);
-
-        $('#dialog-body').append('<div class="clear"></div>');
-
-        // show modal
-        $('#dialog').modal('show');
-
-      },
-
-      error: function(data) {
-        location.reload();
-      }
-    });
+  $(document).on('click', '#dialog-next', function(event){
+    event.preventDefault();
+    _this.page = _this.page + 1;
+    _this.getImages();
   });
 
   // set image
@@ -54,6 +41,62 @@ var ImageSelectComponent = function(content) {
 
     $('#dialog').modal('hide');
   });
+}
+
+ImageSelectComponent.prototype.loadStructure = function() {
+  var _this = this;
+
+  $('#dialog-title').html(polyglot.t("dialogs.image_select.title"));
+  $('#dialog-cancel').html(polyglot.t("dialogs.image_select.cancel"));
+  $('#dialog-ok').html(polyglot.t("dialogs.image_select.ok"));
+  $('#dialog-ok').prop("disabled", true);
+
+  // load structure
+  $('#dialog-body').html('');
+  $('#dialog-body').append('<ul id="list-images"></ul>');
+
+  $('#dialog-body').append('<div class="clear"></div>');
+
+  _this.loadPagination();
+}
+
+ImageSelectComponent.prototype.loadPagination = function() {
+  var _this = this;
+  _this.page = 1;
+
+  var pagination = $('<div id="dialog-pagination"></div>');
+
+  var previous = $('<a href="#" id="dialog-previous">-</a>');
+  pagination.append(previous);
+
+  var current = $('<span id="dialog-current">1</span>');
+  pagination.append(current);
+
+  var next = $('<a href="#" id="dialog-next">+</a>');
+  pagination.append(next);
+
+  $('#dialog-body').append(pagination);
+}
+
+ImageSelectComponent.prototype.getImages = function() {
+  var _this = this;
+
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: '/admin/images',
+    data: {page: _this.page},
+
+    success: function(data, textStatus, xhr) {
+      _this.loadImages(data);
+      $("#dialog-current").html(_this.page);
+    },
+
+    error: function(data) {
+      location.reload();
+    }
+  });
+
 }
 
 ImageSelectComponent.prototype.loadImages = function(data) {
