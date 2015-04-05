@@ -2,6 +2,7 @@
  *= require bootstrap
  *= require bootstrap-tagsinput
  *= require codemirror
+ *= require admin/components
 
  *= require formtastic-bootstrap
  */

@@ -16,7 +16,10 @@
         = f.semantic_fields_for r do |n|
           - n.object.fields.keys.each do |nested_field|
             - next if nested_field == '_id'
-            = n.input nested_field
+            - if n.object.form_field_defined?(nested_field)
+              = n.input nested_field, {as: n.object.form_field_type(nested_field), input_html: {'data-image-size' => 'small'}}
+            - else
+              = n.input nested_field
           = n.check_box '_destroy'
           = n.label '_destroy'
 

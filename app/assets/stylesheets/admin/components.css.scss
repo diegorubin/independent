@@ -1,0 +1,41 @@
+/* image select */
+div.image-select-content {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+#list-images {
+  list-style: none;
+}
+
+#list-images li {
+  float: left;
+  min-width: 100px;
+  min-height: 100px;
+  margin: 10px;
+}
+
+#list-images img {
+  cursor: pointer;
+}
+
+#dialog-pagination {
+  text-align: center;
+}
+
+#dialog-current {
+  font-weight: bolder;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#dialog-previous {
+  font-size: larger;
+}
+
+#dialog-next {
+  font-size: larger;
+}
+

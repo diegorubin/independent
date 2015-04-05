@@ -13,6 +13,22 @@ describe Admin::ImagesController, type: :controller do
       expect(assigns(:images)).to be_kind_of(Mongoid::Criteria)
     end
 
+    context 'as json' do
+      
+      let!(:image) {FactoryGirl.create(:image)}
+
+      before(:each) do 
+        get :index, format: 'json'
+        @json = JSON.load(response.body)
+      end
+
+      it('result as hash') {expect(@json).to be_kind_of(Hash)}
+      it('have total') {expect(@json['total']).to eql(1)}
+      it('have page') {expect(@json['page']).to eql(1)}
+      it('have list of images') {expect(@json['result']).to be_kind_of(Array)}
+
+    end
+
   end
 
   context 'on create image' do

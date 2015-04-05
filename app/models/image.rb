@@ -5,6 +5,8 @@ class Image
   include Taggable
   include Slugable
 
+  paginates_per 12
+
   # Attributes
   field :title, type: String
 

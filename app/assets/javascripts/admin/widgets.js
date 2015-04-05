@@ -16,6 +16,7 @@ $(document).ready(function(){
       success: function(data){
         var content = self.parent();
         content.append(data);
+        loadImageSelects();
       }
     });
 
