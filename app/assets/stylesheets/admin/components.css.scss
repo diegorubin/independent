@@ -10,6 +10,13 @@ div.image-select-content {
   list-style: none;
 }
 
+#list-images li {
+  float: left;
+  min-width: 100px;
+  min-height: 100px;
+  margin: 10px;
+}
+
 #list-images img {
   cursor: pointer;
 }

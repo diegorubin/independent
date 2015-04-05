@@ -4,3 +4,9 @@ pt-BR:
       save:
         success: "Salvo com sucesso."
         error: "Falha ao tentar salvar."
+    dialogs:
+      image_select:
+        cancel: "Fechar"
+        title: "Selecione uma imagem"
+        ok: "Selecionar"
+

@@ -3,11 +3,16 @@ class Admin::BaseController < AdminController
   before_filter :get_object, :only => [:edit, :update, :destroy]
 
   def index
-    set_object_variable(klass.admin_list.page(params.fetch(:page,1)), false)
+    @page = params.fetch(:page,1)
+    set_object_variable(klass.admin_list.page(@page), false)
     respond_to do |format|
       format.html {}
       format.json do
-        render json: get_object_variable(false)
+        render json: {
+          'page' => @page,
+          'total' => get_object_variable(false).count,
+          'result' => get_object_variable(false)
+        }
       end
     end
   end

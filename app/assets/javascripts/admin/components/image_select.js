@@ -19,15 +19,18 @@ var ImageSelectComponent = function(content) {
 
       success: function(data, textStatus, xhr) {
 
+        $('#dialog-title').html(polyglot.t("dialogs.image_select.title"));
+        $('#dialog-cancel').html(polyglot.t("dialogs.image_select.cancel"));
+        $('#dialog-ok').html(polyglot.t("dialogs.image_select.ok"));
+        $('#dialog-ok').prop("disabled", true);
+
         // load structure
         $('#dialog-body').html('');
-        $('#dialog-body').append('<ul id="list-images"></li>');
+        $('#dialog-body').append('<ul id="list-images"></ul>');
 
-        // load images
-        _this.images = data;
-        $.each(data, function(index, image){
-          $('#list-images').append(_this.renderImage(image, index));
-        });
+        _this.loadImages(data);
+
+        $('#dialog-body').append('<div class="clear"></div>');
 
         // show modal
         $('#dialog').modal('show');
@@ -50,6 +53,16 @@ var ImageSelectComponent = function(content) {
     $(_this.container).find('input').val(url);
 
     $('#dialog').modal('hide');
+  });
+}
+
+ImageSelectComponent.prototype.loadImages = function(data) {
+  var _this = this;
+
+  _this.images = data.result;
+  $('#list-images').html('');
+  $.each(_this.images, function(index, image){
+    $('#list-images').append(_this.renderImage(image, index));
   });
 }
 

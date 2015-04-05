@@ -14,10 +14,19 @@ describe Admin::ImagesController, type: :controller do
     end
 
     context 'as json' do
-      it 'list all images' do
+      
+      let!(:image) {FactoryGirl.create(:image)}
+
+      before(:each) do 
         get :index, format: 'json'
-        expect(JSON.load(response.body)).to be_kind_of(Array)
+        @json = JSON.load(response.body)
       end
+
+      it('result as hash') {expect(@json).to be_kind_of(Hash)}
+      it('have total') {expect(@json['total']).to eql(1)}
+      it('have page') {expect(@json['page']).to eql(1)}
+      it('have list of images') {expect(@json['result']).to be_kind_of(Array)}
+
     end
 
   end
