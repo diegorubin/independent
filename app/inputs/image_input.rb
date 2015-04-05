@@ -6,8 +6,11 @@ class ImageInput
     form_group_wrapping do
       label_html << 
       template.content_tag(:span, class: 'form-wrapper') do
-        template.content_tag(:div, '', 
-          {class: 'image-select-content', 'data-image-size' => 'micro'}) <<
+
+        options = {class: 'image-select-content'}
+        options['data-image-size'] = input_html_options['data-image-size'] || 'small'
+
+        template.content_tag(:div, '', options) <<
         builder.hidden_field(method, input_html_options)
       end
     end

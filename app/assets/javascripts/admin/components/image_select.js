@@ -4,6 +4,12 @@ var ImageSelectComponent = function(content) {
   this.image_size = $(content).attr('data-image-size');
   this.container = $(content).closest('.form-wrapper');
   this.content = content;
+
+  var originalValue = this.container.find('input').val();
+  if(originalValue) {
+    this.loadImage(originalValue.replace(this.image_size, 'thumb'));
+  }
+
   $(this.content).on('click', function(event){
 
     $.ajax({
@@ -38,15 +44,21 @@ var ImageSelectComponent = function(content) {
   $(document).on('click', '.image-value',  function(event){
     var position = $(this).attr('data-position');
 
-    var img = $('<img />');
-    img.attr('src',_this.images[position].file.thumb.url);
-    $(_this.container).find('.image-select-content').html(img);
+    _this.loadImage(_this.images[position].file.thumb.url);
 
     var url = _this.images[position].file[_this.image_size].url;
     $(_this.container).find('input').val(url);
 
     $('#dialog').modal('hide');
   });
+}
+
+ImageSelectComponent.prototype.loadImage = function(url) {
+  var _this = this;
+
+  var img = $('<img />');
+  img.attr('src',url);
+  $(_this.container).find('.image-select-content').html(img);
 }
 
 ImageSelectComponent.prototype.renderImage = function(image, index) {
@@ -63,8 +75,12 @@ ImageSelectComponent.prototype.renderImage = function(image, index) {
 
 /* load image select */
 $(document).ready(function(){
+  loadImageSelects();
+});
+
+function loadImageSelects() {
   $.each($('.image-select-content'), function(index, element){
     new ImageSelectComponent(element);
   });
-});
+}
 

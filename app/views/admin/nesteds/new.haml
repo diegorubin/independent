@@ -2,7 +2,10 @@
 
 - @object.fields.keys.each do |field|
   - next if field == '_id'
-  = form.input field
+  - if form.object.form_field_defined?(field)
+    = form.input field, {as: form.object.form_field_type(field), input_html: {'data-image-size' => 'small'}}
+  - else
+    = form.input field
 
 = form.check_box '_destroy'
 = form.label '_destroy'
