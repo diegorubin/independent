@@ -4,7 +4,7 @@ describe ApplicationHelper, type: :helper do
 
   context 'return class' do
 
-    before(:each) { controller.stub(:controller_name).and_return('posts')}
+    before(:each) { allow(controller).to receive(:controller_name).and_return('posts')}
 
     it 'return klass if current controller' do
       expect(helper.return_if_active('posts', 'current_page_item')).to(
