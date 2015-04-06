@@ -25,7 +25,8 @@ class Comment
                       :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   # Callbacks
-  before_save    :generate_created_at
+  before_save  :generate_created_at
+  after_create :send_notification
 
   def publish
     write_attribute(:published, true)
@@ -69,6 +70,12 @@ class Comment
     end
 
   end
+
+  def send_notification
+    author = User.where(username: commentable.author).first
+    NotifyComment.notify(author, commentable, self).deliver if author
+  end
+  handle_asynchronously :send_notification, :priority => 20
 
 end
 

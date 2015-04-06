@@ -1,7 +1,9 @@
 %li{:class => "comment well"}
+
   = hidden_field_tag "comment_id", comment["_id"]
   = hidden_field_tag "comment_parent_id", comment["parent_id"]
   .comment-header
+    = link_to("Em #{comment["title"]}", action: 'show', controller: "admin/#{content.underscore.pluralize}", id: comment["parent_id"])
     %div{:class => "left comment-image"}
       = image_tag Comment.new(email: comment["email"]).gravatar_url 
     %p

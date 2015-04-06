@@ -19,7 +19,7 @@ describe WelcomeHelper, type: :helper do
 
   context 'current action' do
 
-    before(:each) { controller.stub(:action_name).and_return('new')}
+    before(:each) { allow(controller).to receive(:action_name).and_return('new')}
 
     it 'return true if current action' do
       expect(helper.in_action?('new')).to be_truthy
@@ -33,7 +33,7 @@ describe WelcomeHelper, type: :helper do
 
   context 'set menu item active' do
 
-    before(:each) { controller.stub(:controller_name).and_return('posts')}
+    before(:each) { allow(controller).to receive(:controller_name).and_return('posts')}
 
     it 'return true if current controller' do
       expect(helper.set_active('posts')).to eql('active')
@@ -51,9 +51,9 @@ describe WelcomeHelper, type: :helper do
 
     before(:each) {
       @time_test = Time.local(2015,1,1)
-      Time.stub(:current).and_return(@time_test)
+      allow(Time).to receive(:current).and_return(@time_test)
 
-      controller.stub(:current_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
     }
 
     it 'generate hash for logged user' do

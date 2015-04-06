@@ -14,6 +14,14 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 Mongoid.logger = nil
 
+# Fake smtp
+ActionMailer::Base.smtp_settings = {
+  user_name: 'from@example.com'
+}
+
+# Delayed_job
+Delayed::Worker.delay_jobs = false
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.mock_with :rspec
