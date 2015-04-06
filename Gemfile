@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'rubyzip'
 gem 'zip-zip'
 gem 'figaro'
+gem 'delayed_job_mongoid'
 
 gem 'jquery-rails'
 

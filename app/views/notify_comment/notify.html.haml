@@ -1,2 +1,8 @@
 %h1
   = t('mailer.notify_comment.header')%(@author.name)
+
+%p
+  = t('mailer.notify_comment.notification')%([@comment.name,@comment.email,@resource.title])
+
+%p
+  = render_comment @comment.body

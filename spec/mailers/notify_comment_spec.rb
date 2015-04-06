@@ -16,10 +16,20 @@ describe NotifyComment do
       expect(mail.to).to eql([author.email])
     end
  
-    it 'assigns @name' do
+    it 'assigns author name' do
       expect(mail.body.encoded).to match(author.name)
     end
- 
+
+     it 'assigns user name and resource title' do
+      expect(mail.body.encoded).to match(comment.name)
+      expect(mail.body.encoded).to match(comment.email)
+      expect(mail.body.encoded).to match(resource.title)
+    end
+
+     it 'assings comment body' do
+      expect(mail.body.encoded).to match(comment.body)
+     end
+
   end
 end
 

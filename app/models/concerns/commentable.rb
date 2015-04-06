@@ -13,6 +13,7 @@ module Commentable
 
               new_comment = comment;
               new_comment.parent_id = content._id;
+              new_comment.title = content.title;
 
               emit(comment._id, comment); 
             }

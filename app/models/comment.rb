@@ -75,6 +75,7 @@ class Comment
     author = User.where(username: commentable.author).first
     NotifyComment.notify(author, commentable, self).deliver if author
   end
+  handle_asynchronously :send_notification, :priority => 20
 
 end
 

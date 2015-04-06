@@ -7,5 +7,5 @@
   %ul.comments
     = hidden_field_tag :content_type, content
     - comments.each do |comment|
-      = render 'comment', comment: comment["value"]
+      = render 'comment', comment: comment["value"], content: content
 

@@ -1,4 +1,6 @@
 class NotifyComment < ActionMailer::Base
+  add_template_helper(ApplicationHelper)
+
   default from: ActionMailer::Base.smtp_settings[:user_name]
 
   def notify(author, resource, comment)

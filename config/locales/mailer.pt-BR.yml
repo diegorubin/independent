@@ -3,3 +3,4 @@ pt-BR:
     notify_comment:
       subject: "[Independent] - Novo comentário em %s"
       header: "Olá, %s"
+      notification: "O leitor %s(%s) deixou um comentário em %s"
