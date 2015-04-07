@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:diegorubin/independent.git'
 
 set :linked_files, %w{
   config/application.yml config/mongoid.yml config/initializers/devise.rb 
-  config/initializers/setup_mail.rb
+  config/initializers/setup_mail.rb config/newrelic.yml
 }
 
 set :linked_dirs, %w{log public/uploads themes uploads node_modules}
