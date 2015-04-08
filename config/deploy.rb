@@ -16,14 +16,14 @@ namespace :delayed_job do
   desc 'stop delayed job'
   task :stop do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd '#{release_path}'; bin/delayed_job stop"
+      execute "cd '#{release_path}';RAILS_ENV=production bin/delayed_job stop"
     end
   end
 
   desc 'start delayed job'
   task :start do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd '#{release_path}'; bin/delayed_job start"
+      execute "cd '#{release_path}';RAILS_ENV=production bin/delayed_job start"
     end
   end
 
