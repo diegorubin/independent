@@ -10,13 +10,14 @@ class User
   field :blocked,            type: Boolean, default: false
 
   # Devise attributes
-  field :reset_password_token, type: String
-  field :encrypted_password,   type: String
-  field :current_sign_in_at,   type: DateTime
-  field :last_sign_in_at,      type: DateTime
-  field :current_sign_in_ip,   type: String
-  field :last_sign_in_ip,      type: String
-  field :sign_in_count,        type: Integer
+  field :reset_password_token,   type: String
+  field :reset_password_sent_at, type: DateTime
+  field :encrypted_password,     type: String
+  field :current_sign_in_at,     type: DateTime
+  field :last_sign_in_at,        type: DateTime
+  field :current_sign_in_ip,     type: String
+  field :last_sign_in_ip,        type: String
+  field :sign_in_count,          type: Integer
 
   # Validations
   validates :username, presence: true, uniqueness: true
