@@ -10,6 +10,7 @@ class User
   field :blocked,            type: Boolean, default: false
 
   # Devise attributes
+  field :reset_password_token, type: String
   field :encrypted_password,   type: String
   field :current_sign_in_at,   type: DateTime
   field :last_sign_in_at,      type: DateTime

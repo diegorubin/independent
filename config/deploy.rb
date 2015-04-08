@@ -11,6 +11,24 @@ set :linked_files, %w{
 
 set :linked_dirs, %w{log public/uploads themes uploads node_modules}
 
+namespace :delayed_job do
+
+  desc 'stop delayed job'
+  task :stop do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "cd '#{release_path}'; bin/delayed_job stop"
+    end
+  end
+
+  desc 'start delayed job'
+  task :start do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "cd '#{release_path}'; bin/delayed_job start"
+    end
+  end
+
+end
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -42,9 +60,11 @@ namespace :deploy do
   end
 
   before :deploy, 'deploy:stop_preview_server'
+  before :deploy, 'delayed_job:stop'
 
   after :deploy, 'deploy:update_npm'
   after :deploy, 'deploy:restart'
+  after :deploy, 'delayed_job:start'
   after :deploy, 'deploy:start_preview_server'
 
 end
