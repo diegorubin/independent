@@ -25,6 +25,7 @@ class Comment
                       :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   # Callbacks
+  after_save   :check_commentator
   before_save  :generate_created_at
   after_create :send_notification
 
@@ -69,6 +70,10 @@ class Comment
       find_parent(comment.commentable)
     end
 
+  end
+
+  def check_commentator
+    CreateCommentator.new(self).create
   end
 
   def send_notification

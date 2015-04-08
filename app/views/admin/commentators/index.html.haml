@@ -1,0 +1,8 @@
+= content_for :title, :title.t(scope: [:admin, :commentators, :index])
+
+%h1= :h1.t(scope: [:admin, :commentators, :index])
+
+- @commentators.each do |commentator|
+  %h2= commentator.name
+  %span.commentator-email= commentator.email
+

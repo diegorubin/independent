@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     resources :api_keys
     resources :assets
+    resources :commentators, only: [:index, :update]
     resources :comments, only: [:index, :update, :destroy]
     resources :images
     resources :pages
