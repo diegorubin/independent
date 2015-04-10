@@ -42,6 +42,7 @@
                   %li.divider
                     %li=link_to(:users.t(scope: [:admin, :navebar]), admin_users_path)
                     %li=link_to(:api_keys.t(scope: [:admin, :navebar]), admin_api_keys_path)
+                    %li=link_to(:commentators.t(scope: [:admin, :navebar]), admin_commentators_path)
                     %li=link_to(:logout.t(scope: [:admin, :navebar]), destroy_user_session_path, {method: 'delete'})
         / /.nav-collapse
     .container
