@@ -1,6 +1,7 @@
 /*
  *= require bootstrap
  *= require bootstrap-tagsinput
+ *= require bootstrap-toggle
  *= require codemirror
  *= require admin/components
 
@@ -17,6 +18,16 @@ table.table tr td img {max-width: 466px;}
 /* common form */
 textarea.short-text {height: 100px;}
 .focus-mode-btn {cursor: pointer;}
+
+/* commentators */
+
+.commentator-entry {
+  margin-bottom: 10px;
+}
+
+.commentator-name {
+  font-weight: bold;
+}
 
 /* comments */
 h3.reply-title {

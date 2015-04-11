@@ -5,6 +5,7 @@ pt-BR:
     navebar:
       api_keys: Chaves
       assets: Arquivos
+      commentators: Comentaristas
       comments: Comentários
       home: Home
       images: Imagens
@@ -53,6 +54,11 @@ pt-BR:
       new:
         h1: Novo Arquivo
         title: Novo Arquivo
+
+    commentators:
+      index:
+        h1: Lista de Comentaristas
+        title: Lista de Comentaristas
 
     comments:
       index:

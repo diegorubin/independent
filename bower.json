@@ -3,7 +3,8 @@
     "name": "bower-rails generated lib assets",
     "dependencies": {
       "codemirror" : "5.0.0",
-      "polyglot" : "0.4.1"
+      "polyglot" : "0.4.1",
+      "bootstrap-toggle" : "2.2.0"
     }
   }
 }
