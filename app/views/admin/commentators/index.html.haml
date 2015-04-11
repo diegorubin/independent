@@ -3,6 +3,16 @@
 %h1= :h1.t(scope: [:admin, :commentators, :index])
 
 - @commentators.each do |commentator|
-  %h2= commentator.name
-  %span.commentator-email= commentator.email
+  .row.commentator-entry
+    .col-md-4
+      = image_tag commentator.gravatar_url 
+  
+    .col-md-6
+      %p
+        %span.commentator-name= commentator.name
+      %p
+        %span.commentator-email= commentator.email
+  
+    .col-md-2
+      = check_box_tag('active', true, commentator.active, {'data-toggle' => 'toggle', class: 'commentator-toggle', rel: commentator.id})
 

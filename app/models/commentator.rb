@@ -1,5 +1,8 @@
 class Commentator
   include Mongoid::Document
+  include Gravtastic
+
+  gravtastic :size => 60
 
   # Attributes
   field :name,               type: String
@@ -10,6 +13,6 @@ class Commentator
   validates :email, presence: true, uniqueness: true
 
   # Scopes
-  scope :admin_list, lambda {}
+  scope :admin_list, lambda { order([['name', 'asc']]) }
 
 end

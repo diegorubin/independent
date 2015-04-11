@@ -78,9 +78,8 @@ class Comment
 
   def send_notification
     author = User.where(username: commentable.author).first
-    NotifyComment.notify(author, commentable, self).deliver if author
+    NotifyComment.delay.notify(author, commentable, self) if author
   end
-  handle_asynchronously :send_notification, :priority => 20
 
 end
 

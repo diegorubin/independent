@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-tagsinput
+//= require bootstrap-toggle
 //= require polyglot
 //= require codemirror
 //
