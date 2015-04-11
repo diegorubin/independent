@@ -6,14 +6,14 @@
         %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
           %span{'aria-hidden' => 'true'}
             &times;
-        %h4.modal-title#dialog-title
+        %h4.modal-title.dialog-title
           Modal Title
 
-      .modal-body#dialog-body
+      .modal-body.dialog-body
 
       .modal-footer
-        %button#dialog-cancel.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'}
+        %button.dialog-cancel.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'}
           Close
-        %button#dialog-ok.btn.btn-primary{type: 'button'}
+        %button.dialog-ok.btn.btn-primary{type: 'button'}
           Save changes
 

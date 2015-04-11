@@ -10,6 +10,7 @@ class ImageInput
         options = {class: 'image-select-content'}
         options['data-image-size'] = input_html_options['data-image-size'] || 'small'
 
+        template.content_tag(:div, '', {class: 'modal-select'}) <<
         template.content_tag(:div, '', options) <<
         builder.hidden_field(method, input_html_options)
       end

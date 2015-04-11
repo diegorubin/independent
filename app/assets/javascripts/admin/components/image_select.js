@@ -11,12 +11,16 @@ var ImageSelectComponent = function(content) {
   }
 
   $(this.content).on('click', function(event){
+    $('#dialog').clone().appendTo($($(_this.container).find('.modal-select')));
+    _this.dialog = $($(_this.container).find('.modal'));
+
     _this.loadStructure();
     _this.getImages();
-    $('#dialog').modal('show');
+
+    _this.dialog.modal('show');
   });
 
-  $(document).on('click', '#dialog-previous', function(event){
+  $(_this.container).on('click', '.dialog-previous', function(event){
     event.preventDefault();
     if(_this.page > 1) {
       _this.page = _this.page - 1;
@@ -24,14 +28,14 @@ var ImageSelectComponent = function(content) {
     }
   });
 
-  $(document).on('click', '#dialog-next', function(event){
+  $(_this.container).on('click', '.dialog-next', function(event){
     event.preventDefault();
     _this.page = _this.page + 1;
     _this.getImages();
   });
 
   // set image
-  $(document).on('click', '.image-value',  function(event){
+  $(_this.container).on('click', '.image-value',  function(event){
     var position = $(this).attr('data-position');
 
     _this.loadImage(_this.images[position].file.thumb.url);
@@ -39,23 +43,23 @@ var ImageSelectComponent = function(content) {
     var url = _this.images[position].file[_this.image_size].url;
     $(_this.container).find('input').val(url);
 
-    $('#dialog').modal('hide');
+    _this.dialog.modal('hide');
   });
 }
 
 ImageSelectComponent.prototype.loadStructure = function() {
   var _this = this;
 
-  $('#dialog-title').html(polyglot.t("dialogs.image_select.title"));
-  $('#dialog-cancel').html(polyglot.t("dialogs.image_select.cancel"));
-  $('#dialog-ok').html(polyglot.t("dialogs.image_select.ok"));
-  $('#dialog-ok').prop("disabled", true);
+  $(_this.dialog.find('.dialog-title')).html(polyglot.t("dialogs.image_select.title"));
+  $(_this.dialog.find('.dialog-cancel')).html(polyglot.t("dialogs.image_select.cancel"));
+  $(_this.dialog.find('.dialog-ok')).html(polyglot.t("dialogs.image_select.ok"));
+  $(_this.dialog.find('.dialog-ok')).prop("disabled", true);
 
   // load structure
-  $('#dialog-body').html('');
-  $('#dialog-body').append('<ul id="list-images"></ul>');
+  $(_this.dialog.find('.dialog-body')).html('');
+  $(_this.dialog.find('.dialog-body')).append('<ul class="list-images"></ul>');
 
-  $('#dialog-body').append('<div class="clear"></div>');
+  $(_this.dialog.find('.dialog-body')).append('<div class="clear"></div>');
 
   _this.loadPagination();
 }
@@ -64,18 +68,18 @@ ImageSelectComponent.prototype.loadPagination = function() {
   var _this = this;
   _this.page = 1;
 
-  var pagination = $('<div id="dialog-pagination"></div>');
+  var pagination = $('<div class="dialog-pagination"></div>');
 
-  var previous = $('<a href="#" id="dialog-previous">-</a>');
+  var previous = $('<a href="#" class="dialog-previous">-</a>');
   pagination.append(previous);
 
-  var current = $('<span id="dialog-current">1</span>');
+  var current = $('<span class="dialog-current">1</span>');
   pagination.append(current);
 
-  var next = $('<a href="#" id="dialog-next">+</a>');
+  var next = $('<a href="#" class="dialog-next">+</a>');
   pagination.append(next);
 
-  $('#dialog-body').append(pagination);
+  $(_this.dialog.find('.dialog-body')).append(pagination);
 }
 
 ImageSelectComponent.prototype.getImages = function() {
@@ -89,7 +93,7 @@ ImageSelectComponent.prototype.getImages = function() {
 
     success: function(data, textStatus, xhr) {
       _this.loadImages(data);
-      $("#dialog-current").html(_this.page);
+      $(_this.dialog.find('.dialog-current')).html(_this.page);
     },
 
     error: function(data) {
@@ -103,9 +107,9 @@ ImageSelectComponent.prototype.loadImages = function(data) {
   var _this = this;
 
   _this.images = data.result;
-  $('#list-images').html('');
+  $(_this.dialog.find('.list-images')).html('');
   $.each(_this.images, function(index, image){
-    $('#list-images').append(_this.renderImage(image, index));
+    $(_this.dialog.find('.list-images')).append(_this.renderImage(image, index));
   });
 }
 

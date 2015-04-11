@@ -1,0 +1,10 @@
+widget:
+  name: IconList
+  label: icon_list
+
+  config_model: IconList
+
+  models:
+    - Icon
+    - IconList
+

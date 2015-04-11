@@ -6,36 +6,36 @@ div.image-select-content {
   cursor: pointer;
 }
 
-#list-images {
+.list-images {
   list-style: none;
 }
 
-#list-images li {
+.list-images li {
   float: left;
   min-width: 100px;
   min-height: 100px;
   margin: 10px;
 }
 
-#list-images img {
+.list-images img {
   cursor: pointer;
 }
 
-#dialog-pagination {
+.dialog-pagination {
   text-align: center;
 }
 
-#dialog-current {
+.dialog-current {
   font-weight: bolder;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-#dialog-previous {
+.dialog-previous {
   font-size: larger;
 }
 
-#dialog-next {
+.dialog-next {
   font-size: larger;
 }
 
