@@ -78,7 +78,7 @@ class Comment
 
   def send_notification
     author = User.where(username: commentable.author).first
-    NotifyComment.delay.notify(author, commentable, self) if author
+    NotifyComment.delay.notify(author, commentable, id) if author
   end
 
 end

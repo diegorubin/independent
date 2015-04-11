@@ -5,8 +5,8 @@ describe NotifyComment do
 
     let(:author) { FactoryGirl.build(:user) }
     let(:resource) { FactoryGirl.build(:post) }
-    let(:comment) { FactoryGirl.build(:comment) }
-    let(:mail) {NotifyComment.notify(author, resource, comment)}
+    let(:comment) { FactoryGirl.build(:comment, commentable: resource) }
+    let(:mail) {NotifyComment.notify(author, resource, comment.id)}
  
     it 'renders the subject' do
       expect(mail.subject).to match(resource.title)
