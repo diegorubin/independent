@@ -4,6 +4,7 @@ class Post
   include ActAsDocument
 
   include Commentable
+  include Filterable
   include Listable
   include Publishable
   include Rankable
@@ -44,6 +45,14 @@ class Post
       :title, :resume, :author, :body, :tags, :metadescription, 
       :slug, :published, :category, :external_js, :external_css
     ]
+  end
+
+  def self.admin_filters
+    {
+      'title' => {type: 'regex'}, 'author' => {type: 'regex'},
+      'slug' => {type: 'regex'}, 'body' => {type: 'regex'},
+      'resume' => {type: 'regex'}
+    }
   end
 
   private

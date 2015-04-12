@@ -169,5 +169,18 @@ describe Post do
 
   end
 
+  context 'on filter' do
+    context 'title as regex' do
+
+      let!(:post_matched) {FactoryGirl.create(:post, title: 'for filter')}
+      let!(:post_not_matched) {FactoryGirl.create(:post, title: 'title')}
+
+      it 'get one post' do
+        expect(Post.filter_by('title' => 'for fil').count).to eq(1)
+      end
+
+    end
+  end
+
 end
 

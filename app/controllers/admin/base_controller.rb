@@ -4,7 +4,13 @@ class Admin::BaseController < AdminController
 
   def index
     @page = params.fetch(:page,1)
-    set_object_variable(klass.admin_list.page(@page), false)
+
+    relation = klass.admin_list
+    if defined? klass.filter_by
+      relation = relation.filter_by(params.fetch(:filters, {}))  
+    end
+
+    set_object_variable(relation.page(@page), false)
     respond_to do |format|
       format.html {}
       format.json do

@@ -62,6 +62,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'rspec-rails'
+  gem 'rspec-expectations'
   gem 'mongoid-rspec'
   gem 'factory_girl_rails'
   gem 'faker'
@@ -73,6 +74,7 @@ group :development, :test do
 
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-byebug'
 
   gem 'quiet_assets'
 

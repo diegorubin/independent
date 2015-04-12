@@ -85,3 +85,8 @@ ul li.comment {
   margin: 5px 0;
 }
 
+/* filters */
+div.filter-field {
+  float: left;
+}
+
