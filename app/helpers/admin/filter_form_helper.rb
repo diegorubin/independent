@@ -4,6 +4,7 @@ module Admin::FilterFormHelper
       resource.admin_filters.collect do |name, attributes|
         render_filters_field(resource, name, attributes).html_safe
       end.join("\n").html_safe <<
+      content_tag('div', '', class: 'clear') <<
       button_tag('Filtrar')
     end
   end
@@ -15,7 +16,7 @@ module Admin::FilterFormHelper
 
   def render_filters_regex_field(resource, name, attributes)
     s = resource.name.underscore
-    content_tag('div', {clss: 'filter-field'}) do
+    content_tag('div', {class: 'filter-field'}) do
       text = name.to_sym.t(:scope => [:mongoid, :attributes, s])
       label_tag("filters_#{name}", text) << 
       ": " <<
