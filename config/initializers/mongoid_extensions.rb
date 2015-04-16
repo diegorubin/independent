@@ -8,7 +8,7 @@ module MongoidExtenions
 
         criteria = case admin_filters[filter][:type]
                    when 'regex'
-                     criteria.where(filter => /#{value}/)
+                     criteria.where(filter => /#{value}/i)
                    else
                      criteria.where(filter => value)
                    end
