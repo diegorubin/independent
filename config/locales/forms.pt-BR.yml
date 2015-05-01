@@ -1,0 +1,6 @@
+pt-BR:
+  admin:
+    forms:
+      filters:
+        clear: Limpar
+        filter: Filtrar

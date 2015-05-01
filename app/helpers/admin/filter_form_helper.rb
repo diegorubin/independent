@@ -5,7 +5,10 @@ module Admin::FilterFormHelper
         render_filters_field(resource, name, attributes).html_safe
       end.join("\n").html_safe <<
       content_tag('div', '', class: 'clear') <<
-      button_tag('Filtrar')
+      content_tag('div', class: 'filter-buttons') do
+        button_tag(I18n.t('admin.forms.filters.clear'), type: 'reset', class: 'btn btn-default clear-filter-form') <<
+        button_tag(I18n.t('admin.forms.filters.filter'), class: 'btn btn-default')
+      end
     end
   end
 
