@@ -26,4 +26,26 @@ module Admin::FilterFormHelper
       text_field_tag("filters[#{name}]", params.fetch(:filters, {})[name])
     end
   end
+
+  def render_filters_datetime_field(resource, name, attributes)
+    s = resource.name.underscore
+
+    if attributes[:interval]
+      fields = ["#{name}_starts_in", "#{name}_ends_in"]
+    else
+      fields = [name]
+    end
+
+    content = ''
+    fields.each do |field|
+      content << content_tag('div', {class: 'filter-field'}) do
+        text = field.to_sym.t(:scope => [:mongoid, :attributes, s])
+        label_tag("filters_#{field}", text) << 
+        ": " <<
+        text_field_tag("filters[#{field}]", params.fetch(:filters, {})[field], class: 'datetime-filter')
+      end
+    end
+    content
+  end
+
 end

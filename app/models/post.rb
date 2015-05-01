@@ -51,7 +51,8 @@ class Post
     {
       'title' => {type: 'regex'}, 'author' => {type: 'regex'},
       'slug' => {type: 'regex'}, 'body' => {type: 'regex'},
-      'resume' => {type: 'regex'}
+      'resume' => {type: 'regex'}, 
+      'published_at' => {type: 'datetime', interval: true}
     }
   end
 

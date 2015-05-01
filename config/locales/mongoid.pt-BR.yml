@@ -40,6 +40,8 @@ pt-BR:
         resume: Resumo
         slug: Slug
         title: Título
+        published_at_starts_in: Publicado a partir de
+        published_at_ends_in: Publicado até
 
       presentation:
         file: Arquivo
