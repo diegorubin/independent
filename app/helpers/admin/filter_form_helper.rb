@@ -7,7 +7,7 @@ module Admin::FilterFormHelper
       content_tag('div', '', class: 'clear') <<
       content_tag('div', class: 'filter-buttons') do
         button_tag(I18n.t('admin.forms.filters.clear'), type: 'reset', class: 'btn btn-default clear-filter-form') <<
-        button_tag(I18n.t('admin.forms.filters.filter'), class: 'btn btn-default')
+        button_tag(I18n.t('admin.forms.filters.filter'), class: 'btn btn-default submit-filter-form')
       end
     end
   end
