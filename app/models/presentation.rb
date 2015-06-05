@@ -1,5 +1,6 @@
 class Presentation
   include Mongoid::Document
+  include AdminForm::Settings
 
   include Commentable
   include Listable
@@ -11,14 +12,18 @@ class Presentation
 
   paginates_per 10
 
-  field :title,  :type => String
-  field :resume, :type => String
-  field :author, :type => String
+  field :title,  type: String
+  field :resume, type: String
+  field :author, type: String
 
-  field :category, :type => String
+  field :image,  type: String
+
+  field :category, type: String
 
   # Field for SEO
-  field :metadescription,  :type => String
+  field :metadescription,  type: String
+
+  form_field :icon, 'image'
 
   mount_uploader :file, PresentationUploader
 
