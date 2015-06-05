@@ -11,6 +11,8 @@ class ListItem
   field :title,              type: String
   field :resume,             type: String
 
+  field :image,              type: String
+
   field :number_of_comments, type: Integer
   field :pageviews,          type: Integer
 

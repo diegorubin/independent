@@ -1,5 +1,6 @@
 class Post
   include Mongoid::Document
+  include AdminForm::Settings
 
   include ActAsDocument
 
@@ -18,6 +19,7 @@ class Post
   field :resume,       type: String
   field :author,       type: String
   field :body,         type: String, default: ''
+  field :image,        type: String
 
   field :external_js,  type: String
   field :external_css, type: String
@@ -26,6 +28,8 @@ class Post
 
   # Field for SEO
   field :metadescription, type: String
+
+  form_field :icon, 'image'
 
   embeds_many :comments, as: :commentable
 
