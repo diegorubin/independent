@@ -19,6 +19,7 @@ class Post
   field :resume,       type: String
   field :author,       type: String
   field :body,         type: String, default: ''
+  field :header_image, type: String
   field :image,        type: String
 
   field :external_js,  type: String
@@ -29,7 +30,8 @@ class Post
   # Field for SEO
   field :metadescription, type: String
 
-  form_field :icon, 'image'
+  form_field :image, 'image'
+  form_field :header_image, 'image'
 
   embeds_many :comments, as: :commentable
 
