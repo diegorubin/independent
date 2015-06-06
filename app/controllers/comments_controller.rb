@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy]
+  layout :set_current_theme
+  prepend_before_filter :prepend_view_paths
+
 
   def create
     content_type = params[:content_type]
