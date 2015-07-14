@@ -1,0 +1,9 @@
+widget:
+  name: HTMLContainer
+  label: html_container
+
+  config_model: HTMLContainer
+
+  models:
+    - HTMLContainer
+

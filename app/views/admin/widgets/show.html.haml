@@ -6,7 +6,10 @@
 = semantic_form_for @config, url: admin_widget_path(@widget) do |f|
   - @config.fields.keys.each do |field|
     - next if field == '_id'
-    = f.input field
+    - if f.object.form_field_defined?(field)
+      = f.input field, {as: f.object.form_field_type(field), input_html: {'data-image-size' => 'small'}}
+    - else
+      = f.input field
 
   - @config.relations.keys.each do |r|
     - if @config.nested_attributes.keys.include?( r + "_attributes")
