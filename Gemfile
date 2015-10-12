@@ -11,6 +11,7 @@ gem 'figaro'
 gem 'delayed_job_mongoid'
 gem 'daemons'
 gem 'newrelic_rpm'
+gem 'raspell'
 
 gem 'jquery-rails'
 
@@ -79,7 +80,6 @@ group :development, :test do
   gem 'quiet_assets'
 
   gem 'database_cleaner'
-
 
   gem 'coveralls', require: false
 end
