@@ -11,7 +11,6 @@ gem 'figaro'
 gem 'delayed_job_mongoid'
 gem 'daemons'
 gem 'newrelic_rpm'
-gem 'raspell'
 
 gem 'jquery-rails'
 

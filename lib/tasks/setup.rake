@@ -28,12 +28,6 @@ namespace :setup do
     current_theme = Setting.where({theme: 'global', title: 'current_theme'}).first
     current_theme.update({value: 'default'})
 
-    # load spellchecker
-    r = Redis.get_connection
-    r.del "words"
-    File.open(File.join(Rails.root.to_s, 'db/words/pt_BR.wl')).entries.each do |word|
-      r.rpush "words", word.chop.gsub(/\/.*/,'')
-    end
   end
 
 end
