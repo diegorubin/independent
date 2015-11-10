@@ -13,6 +13,7 @@ module Independent
 
     config.autoload_paths += %W{
       #{Rails.root}/themes/lib #{Rails.root}/lib/admin_form
+      #{Rails.root}/lib/spellchecker
     }
 
     I18n.enforce_available_locales = false

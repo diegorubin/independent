@@ -11,6 +11,7 @@ gem 'figaro'
 gem 'delayed_job_mongoid'
 gem 'daemons'
 gem 'newrelic_rpm'
+gem "faraday_middleware"
 
 gem 'jquery-rails'
 
