@@ -36,6 +36,8 @@
 
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 
+      = render "admin/shared/spellchecker"
+
       = render "admin/shared/markdown_table"
 
       = f.inputs :external_js, :external_css

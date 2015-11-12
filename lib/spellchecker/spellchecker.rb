@@ -6,7 +6,7 @@ class Spellchecker
     @word = word
     @service ||= Spellchecker.connection
     response = @service.get do |req|
-      req.url CHECK_API % [word] 
+      req.url CHECK_API % [CGI.escape(word)] 
     end
     load_response response
   end
@@ -25,6 +25,15 @@ class Spellchecker
 
   def word
     @word
+  end
+
+  def to_json
+    {
+      word: word,
+      suggestion: suggestion,
+      candidates: candidates,
+      wrong: wrong?
+    }
   end
 
   private

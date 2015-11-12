@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       namespace :v1 do
         resources :markdown, only: [:create]
         resources :posts, only: [:index, :create, :update, :destroy]
-        resources :spellchecker, only: [:index]
+        get '/spellchecker/:word', to: 'spellchecker#show', as: 'spellchecker'
       end
     end
 

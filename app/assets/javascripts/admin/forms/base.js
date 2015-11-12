@@ -100,6 +100,20 @@ BaseForm.prototype.loadCodeMirror = function() {
   });
 }
 
+BaseForm.prototype.loadSpellchecker = function() {
+  var _this = this;
+  var textareas = _this.form.find('textarea');
+
+  _this.spellcheckers = [];
+
+  $.each(textareas, function(index, textarea) {
+    var spellchecker = new Spellchecker();
+    spellchecker.loadFromTextarea($(textarea));
+
+    _this.spellcheckers.push(spellchecker);
+  });
+}
+
 BaseForm.prototype.loadAttributes = function() {
   var _this = this;
 

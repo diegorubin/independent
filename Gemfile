@@ -73,6 +73,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
 
+  gem 'vcr'
+
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-byebug'

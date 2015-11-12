@@ -17,6 +17,8 @@ PostForm.prototype.init = function(form) {
   _this.loadCodeMirror();
   _this.connectPreviewServer();
 
+  _this.loadSpellchecker();
+
 }
 
 PostForm.prototype.getOptions = function() {
