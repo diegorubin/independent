@@ -1,12 +1,23 @@
 class Spellchecker
 
   CHECK_API = '/check/%s'
+  CHECK_TEXT_API = '/check_text'
 
-  def initialize(word)
-    @word = word
+  def check(word)
+    @text = false
     @service ||= Spellchecker.connection
     response = @service.get do |req|
       req.url CHECK_API % [CGI.escape(word)] 
+    end
+    load_response response
+  end
+
+  def check_text(text)
+    @text = true
+    @service ||= Spellchecker.connection
+    response = @service.post do |req|
+      req.url CHECK_TEXT_API
+      req.body = text
     end
     load_response response
   end
@@ -27,7 +38,16 @@ class Spellchecker
     @word
   end
 
+  def wrongs
+    @wrongs
+  end
+
   def to_json
+    @text ? to_json_text : to_json_word
+  end
+
+  private
+  def to_json_word
     {
       word: word,
       suggestion: suggestion,
@@ -36,7 +56,13 @@ class Spellchecker
     }
   end
 
-  private
+  def to_json_text
+    {
+      original: original,
+      wrongs: wrongs,
+      wrong: wrong?
+    }
+  end
 
   def self.connection
     Faraday.new(url: Figaro.env.spellchecker_entrypoint) do |faraday|
@@ -48,9 +74,18 @@ class Spellchecker
 
   def load_response(response)
     body = response.body
+    @text ? load_response_for_text(body) : load_response_for_word(body)
+  end
+
+  def load_response_for_word(body)
     @suggestion = body['suggestion']
     @candidates = body['candidates']
     @wrong = body['wrong'] == 'true'
+  end
+
+  def load_response_for_text(body)
+    @wrong = body['wrongs'].size > 0
+    @wrongs = body['wrongs']
   end
 
 end

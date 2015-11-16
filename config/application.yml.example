@@ -1,0 +1,12 @@
+test:
+  preview_host: "ws://diegorubin.com:8080"
+  spellchecker_entrypoint: "http://localhost:8084"
+
+development:
+  preview_host: "ws://diegorubin.com:8080"
+  spellchecker_entrypoint: "http://localhost:8084"
+
+production:
+  preview_host: "ws://diegorubin.com:8080"
+  spellchecker_entrypoint: "http://localhost:8084"
+
