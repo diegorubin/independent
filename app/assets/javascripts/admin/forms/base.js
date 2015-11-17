@@ -79,6 +79,9 @@ BaseForm.prototype.connectPreviewServer = function() {
 BaseForm.prototype.loadCodeMirror = function() {
   var _this = this;
   var textareas = _this.form.find('textarea');
+
+  _this.editors = [];
+
   $.each(textareas, function(index, textarea) {
     var editor = CodeMirror.fromTextArea(textarea, _this.getOptions());
     editor.setSize('100%',600);
@@ -93,22 +96,23 @@ BaseForm.prototype.loadCodeMirror = function() {
           data: {markdown:editor.getValue()}
         }).done(function(result) {
           _this.content[textarea.id] = result;
-          _this.connection.send(_this.content);
+          if(_this.connection) 
+            _this.connection.send(_this.content);
         });
       }, 300);
     });
+    _this.editors.push(editor);
   });
 }
 
 BaseForm.prototype.loadSpellchecker = function() {
   var _this = this;
-  var textareas = _this.form.find('textarea');
 
   _this.spellcheckers = [];
 
-  $.each(textareas, function(index, textarea) {
+  $.each(_this.editors, function(index, editor) {
     var spellchecker = new Spellchecker();
-    spellchecker.loadFromTextarea($(textarea));
+    spellchecker.loadFromCodemirror(editor);
 
     _this.spellcheckers.push(spellchecker);
   });

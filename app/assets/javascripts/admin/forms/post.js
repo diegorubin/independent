@@ -15,9 +15,10 @@ PostForm.prototype.init = function(form) {
   _this.loadAutoSave();
   _this.loadFocusMode();
   _this.loadCodeMirror();
-  _this.connectPreviewServer();
 
   _this.loadSpellchecker();
+
+  _this.connectPreviewServer();
 
 }
 
