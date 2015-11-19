@@ -1,8 +1,8 @@
-#spellchecker.well
+.spellchecker.well{data:{field: field}}
   %strong.spellchecker-title
     Spellchecker
 
-  #spellchecker-navigation
+  .spellchecker-navigation
     %strong.spellchecker-current
       0
     %strong.spellchecker-separator
@@ -10,14 +10,14 @@
     %strong.spellchecker-total
       0
 
-  #spellchecker-content
-    %input#spellchecker-word{value: 'palavra'}
+  .spellchecker-content
+    %input.spellchecker-word{value: ''}
 
-    #spellchecker-commands
-      %button.btn
+    .spellchecker-commands
+      %button.spellchecker-add.btn
         Adicionar
-      %button#spellchecker-ignore.btn
+      %button.spellchecker-ignore.btn
         Ignorar
-      %button.btn
+      %button.spellchecker-change.btn
         Trocar
 

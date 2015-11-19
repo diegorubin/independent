@@ -78,11 +78,11 @@ BaseForm.prototype.connectPreviewServer = function() {
 
 BaseForm.prototype.loadCodeMirror = function() {
   var _this = this;
-  var textareas = _this.form.find('textarea');
+  _this.textareas = _this.form.find('textarea');
 
   _this.editors = [];
 
-  $.each(textareas, function(index, textarea) {
+  $.each(_this.textareas, function(index, textarea) {
     var editor = CodeMirror.fromTextArea(textarea, _this.getOptions());
     editor.setSize('100%',600);
     editor.on('change', function() {
@@ -111,7 +111,7 @@ BaseForm.prototype.loadSpellchecker = function() {
   _this.spellcheckers = [];
 
   $.each(_this.editors, function(index, editor) {
-    var spellchecker = new Spellchecker();
+    var spellchecker = new Spellchecker($(_this.textareas[index]).attr('id'));
     spellchecker.loadFromCodemirror(editor);
 
     _this.spellcheckers.push(spellchecker);

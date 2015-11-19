@@ -1,4 +1,5 @@
 var PostForm = function() {
+  var _this = this;
 }
 
 PostForm.prototype = new BaseForm();

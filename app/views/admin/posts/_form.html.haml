@@ -36,7 +36,7 @@
 
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 
-      = render "admin/shared/spellchecker"
+      = render "admin/shared/spellchecker", field: 'post_body'
 
       = render "admin/shared/markdown_table"
 
