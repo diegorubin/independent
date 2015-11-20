@@ -60,7 +60,14 @@ Spellchecker.prototype.changeWord = function(newWord) {
 
 Spellchecker.prototype.ignoreWord = function() {
   var _this = this;
-  _this._showWord(++_this.currentWord);
+
+  if(_this.currentWord < (_this.dictionary.length -1)) {
+    _this.currentWord++;
+  } else {
+    _this.currentWord = 0;
+  }
+
+  _this._showWord(_this.currentWord);
 }
 
 Spellchecker.prototype._loadUI = function() {
