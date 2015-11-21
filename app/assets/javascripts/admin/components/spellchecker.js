@@ -12,16 +12,20 @@ Spellchecker.prototype.loadFromCodemirror = function(codemirrorObject) {
   codemirrorObject.on('change', function() {
     clearTimeout(_this.callCheckText);
     _this.callCheckText = setTimeout(function(){
-      $.ajax({
-        url: "/admin/api/v1/spellchecker",
-        method: "POST",
-        data: {text:codemirrorObject.getValue()}
-      }).done(function(result){
-        _this.setDictionary(result);
-      });
+      _this.reloadDictionary();
     }, 400);
   });
+}
 
+Spellchecker.prototype.reloadDictionary = function() {
+  var _this = this;
+  $.ajax({
+    url: "/admin/api/v1/spellchecker/check",
+    method: "POST",
+    data: {text: _this.codemirrorObject.getValue()}
+  }).done(function(result){
+    _this.setDictionary(result);
+  });
 }
 
 Spellchecker.prototype.setDictionary = function(value) {
@@ -30,7 +34,6 @@ Spellchecker.prototype.setDictionary = function(value) {
   if (_this.dictionary.length) {
     _this._showWord(_this.currentWord);
   } else {
-    console.log(value);
     _this._clearFields();
   }
 }
@@ -41,6 +44,16 @@ Spellchecker.prototype.getDictionary = function() {
 }
 
 Spellchecker.prototype.addWord = function(word) {
+  var _this = this;
+
+  $.ajax({
+    url: "/admin/api/v1/spellchecker/add",
+    method: "POST",
+    data: {word: _this._findField('.spellchecker-word').val() }
+  }).done(function(result){
+    _this.reloadDictionary();
+  });
+
 }
 
 Spellchecker.prototype.changeWord = function(newWord) {
@@ -72,6 +85,11 @@ Spellchecker.prototype.ignoreWord = function() {
 
 Spellchecker.prototype._loadUI = function() {
   var _this = this;
+
+  _this._findField('.spellchecker-add').click(function(event){
+    event.preventDefault();
+    _this.addWord();
+  });
 
   _this._findField('.spellchecker-ignore').click(function(event){
     event.preventDefault();

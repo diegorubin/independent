@@ -2,6 +2,7 @@ class Spellchecker
 
   CHECK_API = '/check/%s'
   CHECK_TEXT_API = '/check_text'
+  ADD_WORD_API = '/add'
 
   def check(word)
     @text = false
@@ -18,6 +19,15 @@ class Spellchecker
     response = @service.post do |req|
       req.url CHECK_TEXT_API
       req.body = text
+    end
+    load_response response
+  end
+
+  def add(word, author)
+    @service ||= Spellchecker.connection
+    response = @service.post do |req|
+      req.url ADD_WORD_API
+      req.body = {word: word, author: author}
     end
     load_response response
   end
