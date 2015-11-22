@@ -1,5 +1,5 @@
 var BaseForm = function() {
-}
+};
 
 BaseForm.prototype.loadAutoSave = function() {
   var _this = this;
@@ -31,12 +31,12 @@ BaseForm.prototype.loadAutoSave = function() {
       }
     });
   });
-}
+};
 
 BaseForm.prototype.loadFocusMode = function() {
   var _this = this;
   $('.focus-mode-btn').click(_this.focusMode);
-}
+};
 
 BaseForm.prototype.focusMode = function(event) {
   event.preventDefault();
@@ -57,7 +57,7 @@ BaseForm.prototype.focusMode = function(event) {
     $('#main-column').removeClass('col-md-8');
     $('#main-column').addClass('col-md-12');
   }
-}
+};
 
 BaseForm.prototype.loadFields = function() {
   var _this = this;
@@ -67,14 +67,14 @@ BaseForm.prototype.loadFields = function() {
       _this.connection.send(_this.content);
     });
   }); 
-}
+};
 
 BaseForm.prototype.connectPreviewServer = function() {
   if(this.form.attr('data-preview-session')) {
     this.connection = new PreviewForm();
     this.connection.connect(this.form.attr('data-preview-session'));
   }
-}
+};
 
 BaseForm.prototype.loadCodeMirror = function() {
   var _this = this;
@@ -103,7 +103,7 @@ BaseForm.prototype.loadCodeMirror = function() {
     });
     _this.editors.push(editor);
   });
-}
+};
 
 BaseForm.prototype.loadSpellchecker = function() {
   var _this = this;
@@ -116,18 +116,19 @@ BaseForm.prototype.loadSpellchecker = function() {
 
     _this.spellcheckers.push(spellchecker);
   });
-}
+};
 
 BaseForm.prototype.loadAttributes = function() {
   var _this = this;
 
   var attrs = {};
   var field_types = ["input", "select", "textarea", "hidden"];
+  var i = 0;
 
   for(var j = 0; j < field_types.length; j++){
     var inputs = _this.form.find(field_types[j]);
 
-    for(var i = 0; i < inputs.length; i++) {
+    for(i = 0; i < inputs.length; i++) {
       var input = $(inputs[i]);
       attrs[input.attr("name")] = input.val();
     }
@@ -136,15 +137,16 @@ BaseForm.prototype.loadAttributes = function() {
 
   /* get values of radio and checkbox */
   var radios = $("input[type='radio']:checked");
+  var name;
 
-  for(var i = 0; i < radios.length; i++) {
-    var name = $(radios[i]).attr('name');
+  for(i = 0; i < radios.length; i++) {
+    name = $(radios[i]).attr('name');
     attrs[name] = $(radios[i]).val();
   }
 
   var checkboxes = $("input[type='checkbox']");
-  for(var i = 0; i < checkboxes.length; i++) {
-    var name = $(checkboxes[i]).attr('name') || '';
+  for(i = 0; i < checkboxes.length; i++) {
+    name = $(checkboxes[i]).attr('name') || '';
 
     if(name.match(/\[\]$/)) {
 
@@ -161,7 +163,7 @@ BaseForm.prototype.loadAttributes = function() {
   }
 
   return attrs;
-}
+};
 
 // form functions utils
 function loadForm(selector, callback) {

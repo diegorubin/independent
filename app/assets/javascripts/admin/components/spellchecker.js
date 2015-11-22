@@ -3,7 +3,7 @@ var Spellchecker = function(forField) {
   _this.currentWord = 0;
   _this._forField = forField;
   _this._loadUI();
-}
+};
 
 Spellchecker.prototype.loadFromCodemirror = function(codemirrorObject) {
   var _this = this;
@@ -15,7 +15,7 @@ Spellchecker.prototype.loadFromCodemirror = function(codemirrorObject) {
       _this.reloadDictionary();
     }, 400);
   });
-}
+};
 
 Spellchecker.prototype.reloadDictionary = function() {
   var _this = this;
@@ -26,7 +26,7 @@ Spellchecker.prototype.reloadDictionary = function() {
   }).done(function(result){
     _this.setDictionary(result);
   });
-}
+};
 
 Spellchecker.prototype.setDictionary = function(value) {
   var _this = this;
@@ -36,12 +36,12 @@ Spellchecker.prototype.setDictionary = function(value) {
   } else {
     _this._clearFields();
   }
-}
+};
 
 Spellchecker.prototype.getDictionary = function() {
   var _this = this;
   return _this.dictionary;
-}
+};
 
 Spellchecker.prototype.addWord = function(word) {
   var _this = this;
@@ -54,14 +54,14 @@ Spellchecker.prototype.addWord = function(word) {
     _this.reloadDictionary();
   });
 
-}
+};
 
 Spellchecker.prototype.changeWord = function(newWord) {
   var _this = this;
 
   var start = _this.getDictionary()[_this.currentWord].column;
   var end = start + (_this.getDictionary()[_this.currentWord].word).length;
-  var line = _this.getDictionary()[_this.currentWord].line
+  var line = _this.getDictionary()[_this.currentWord].line;
 
   _this.codemirrorObject.setSelection(
     {line: line, ch: start}, {line: line, ch: end}
@@ -69,7 +69,7 @@ Spellchecker.prototype.changeWord = function(newWord) {
 
   _this.codemirrorObject.replaceSelection(newWord);
 
-}
+};
 
 Spellchecker.prototype.ignoreWord = function() {
   var _this = this;
@@ -81,7 +81,7 @@ Spellchecker.prototype.ignoreWord = function() {
   }
 
   _this._showWord(_this.currentWord);
-}
+};
 
 Spellchecker.prototype._loadUI = function() {
   var _this = this;
@@ -100,7 +100,7 @@ Spellchecker.prototype._loadUI = function() {
     event.preventDefault();
     _this.changeWord(_this._findField('.spellchecker-word').val());
   });
-}
+};
 
 Spellchecker.prototype._showWord = function(position) {
   var _this = this;
@@ -110,18 +110,18 @@ Spellchecker.prototype._showWord = function(position) {
     _this._findField('.spellchecker-word')
       .val(_this.getDictionary()[_this.currentWord].word);
   }
-}
+};
 
 Spellchecker.prototype._clearFields = function() {
   var _this = this;
   _this._findField('.spellchecker-current').html('0');
   _this._findField('.spellchecker-total').html('0');
   _this._findField('.spellchecker-word').val('');
-}
+};
 
 Spellchecker.prototype._findField = function(klass) {
   var _this = this;
   var field = $('.spellchecker[data-field="' + _this._forField + '"]').find(klass);
   return $(field);
-}
+};
 
