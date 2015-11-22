@@ -106,16 +106,16 @@ BaseForm.prototype.loadCodeMirror = function() {
 };
 
 BaseForm.prototype.loadSpellchecker = function() {
-  //var _this = this;
+  var _this = this;
 
-  //_this.spellcheckers = [];
+  _this.spellcheckers = [];
 
-  //$.each(_this.editors, function(index, editor) {
-  //  var spellchecker = new Spellchecker($(_this.textareas[index]).attr('id'));
-  //  spellchecker.loadFromCodemirror(editor);
+  $.each(_this.editors, function(index, editor) {
+    var spellchecker = new Spellchecker($(_this.textareas[index]).attr('id'));
+    spellchecker.loadFromCodemirror(editor);
 
-  //  _this.spellcheckers.push(spellchecker);
-  //});
+    _this.spellcheckers.push(spellchecker);
+  });
 };
 
 BaseForm.prototype.loadAttributes = function() {
