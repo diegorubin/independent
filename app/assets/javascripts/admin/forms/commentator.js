@@ -6,7 +6,7 @@ $('.commentator-toggle').change(function(){
   var client = new RestClient('/admin/commentators/' + commentator_id);
   client.success = function(){
     $.bootstrapGrowl(polyglot.t("messages.save.success"), {type: 'success'});
-  }
+  };
 
   client.call('patch', {'commentator[active]': active});
 

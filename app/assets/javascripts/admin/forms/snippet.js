@@ -1,5 +1,5 @@
 var SnippetForm = function() {
-}
+};
 
 SnippetForm.prototype = new BaseForm();
 SnippetForm.prototype.constructor = SnippetForm;
@@ -15,15 +15,15 @@ SnippetForm.prototype.init = function(form) {
   this.form.find('#snippet_language').change(function(event){
     _this.setLanguage($(this).val());
   });
-}
+};
 
 SnippetForm.prototype.setLanguage = function(language) {
   this.editor.setOption("mode", language);
-}
+};
 
 SnippetForm.prototype.getOptions = function() {
   return {lineNumbers: true, mode: 'ruby'};
-}
+};
 
 //load SnippetForm
 loadForm('form#snippet', function(formElem){

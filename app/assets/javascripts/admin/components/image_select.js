@@ -52,7 +52,7 @@ var ImageSelectComponent = function(content) {
 
     _this.dialog.modal('hide');
   });
-}
+};
 
 ImageSelectComponent.prototype.loadStructure = function() {
   var _this = this;
@@ -70,7 +70,7 @@ ImageSelectComponent.prototype.loadStructure = function() {
   $(_this.dialog.find('.dialog-body')).append('<div class="clear"></div>');
 
   _this.loadPagination();
-}
+};
 
 ImageSelectComponent.prototype.loadPagination = function() {
   var _this = this;
@@ -88,13 +88,13 @@ ImageSelectComponent.prototype.loadPagination = function() {
   pagination.append(next);
 
   $(_this.dialog.find('.dialog-body')).append(pagination);
-}
+};
 
 ImageSelectComponent.prototype.getImages = function() {
   var _this = this;
 
   var data = _this.getFilters();
-  data['page'] = _this.page;
+  data.page = _this.page;
 
   $.ajax({
     type: 'GET',
@@ -112,7 +112,7 @@ ImageSelectComponent.prototype.getImages = function() {
     }
   });
 
-}
+};
 
 ImageSelectComponent.prototype.getFormFilter = function() {
   var _this = this;
@@ -131,7 +131,7 @@ ImageSelectComponent.prototype.getFormFilter = function() {
     }
   });
 
-}
+};
 
 ImageSelectComponent.prototype.getFilters = function() {
   var _this = this;
@@ -144,7 +144,7 @@ ImageSelectComponent.prototype.getFilters = function() {
   });
 
   return filters;
-}
+};
 
 ImageSelectComponent.prototype.loadImages = function(data) {
   var _this = this;
@@ -154,7 +154,7 @@ ImageSelectComponent.prototype.loadImages = function(data) {
   $.each(_this.images, function(index, image){
     $(_this.dialog.find('.list-images')).append(_this.renderImage(image, index));
   });
-}
+};
 
 ImageSelectComponent.prototype.loadImage = function(url) {
   var _this = this;
@@ -162,7 +162,7 @@ ImageSelectComponent.prototype.loadImage = function(url) {
   var img = $('<img />');
   img.attr('src',url);
   $(_this.container).find('.image-select-content').html(img);
-}
+};
 
 ImageSelectComponent.prototype.renderImage = function(image, index) {
   var liObject = $('<li/>');
@@ -174,7 +174,7 @@ ImageSelectComponent.prototype.renderImage = function(image, index) {
   liObject.append(imageObject);
 
   return liObject;
-}
+};
 
 /* load image select */
 $(document).ready(function(){

@@ -17,6 +17,6 @@ function RestClient(api) {
         if(_this.error) _this.error(data);
       }
     });
-  }
+  };
 }
 
