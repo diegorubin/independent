@@ -8,7 +8,7 @@ var Utils = {
     return queryDict;
   },
 
-  cloneObject(obj){
+  cloneObject: function(obj){
     if (obj === null || typeof obj !== 'object') {
         return obj;
     }
