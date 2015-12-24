@@ -15,9 +15,11 @@
 
     .spellchecker-commands
       %button.spellchecker-add.btn
-        Adicionar
+        = :add.t(:scope => [:admin, :spellchecker, :commands])
       %button.spellchecker-ignore.btn
-        Ignorar
+        = :ignore.t(:scope => [:admin, :spellchecker, :commands])
       %button.spellchecker-change.btn
-        Trocar
+        = :change.t(:scope => [:admin, :spellchecker, :commands])
+      %button.spellchecker-check.btn
+        = :check.t(:scope => [:admin, :spellchecker, :commands])
 

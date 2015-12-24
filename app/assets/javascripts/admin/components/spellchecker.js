@@ -13,7 +13,7 @@ Spellchecker.prototype.loadFromCodemirror = function(codemirrorObject) {
     clearTimeout(_this.callCheckText);
     _this.callCheckText = setTimeout(function(){
       _this.reloadDictionary();
-    }, 400);
+    }, 60000);
   });
 };
 
@@ -99,6 +99,11 @@ Spellchecker.prototype._loadUI = function() {
   _this._findField('.spellchecker-change').click(function(event){
     event.preventDefault();
     _this.changeWord(_this._findField('.spellchecker-word').val());
+  });
+
+  _this._findField('.spellchecker-check').click(function(event){
+    event.preventDefault();
+    _this.reloadDictionary();
   });
 };
 

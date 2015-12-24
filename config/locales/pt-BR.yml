@@ -169,6 +169,13 @@ pt-BR:
         h1: Configurações
         title: Configurações
 
+    spellchecker:
+      commands:
+        add: Adicionar
+        ignore: Ignorar
+        change: Trocar
+        check: Checar
+
     themes:
       destroy:
         confirm: Tem certeza que deseja remover o tema?
