@@ -56,7 +56,7 @@ module ApplicationHelper
       list = items.collect.with_index do |item, i|
         p = content_tag :p  do
           span = content_tag :span  do
-            link_to "[#{i+1}]", "#", name: "citation-#{i + 1}"
+            link_to "[#{i+1}]", "#reference-#{i + 1}", name: "citation-#{i + 1}"
           end
           span + " " + raw(item.to_s.gsub(/<\/?p>/,''))
         end

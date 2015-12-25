@@ -20,11 +20,11 @@ describe ApplicationHelper, type: :helper do
 
   context 'on return correct link of item' do
 
-    it 'to post' do
+    xit 'to post' do
       item = FactoryGirl.create(:list_item, 
         resource_type: 'Post', date: '01/01/2014', slug: 'item'
       )
-      #expect(helper.item_path(item)).to eql('/posts/01/01/2014/item')
+      expect(helper.item_path(item)).to eql('/posts/01/01/2014/item')
     end
 
   end
@@ -38,7 +38,7 @@ describe ApplicationHelper, type: :helper do
 
     it 'with simple text' do
       footnotes = helper.render_footnotes(['foo bar'])
-      expect(footnotes).to eql('<h2>Notas</h2><div class="footnotes"><p><span><a href="#" name="citation-1">[1]</a></span> foo bar</p></div>')
+      expect(footnotes).to eql('<h2>Notas</h2><div class="footnotes"><p><span><a href="#reference-1" name="citation-1">[1]</a></span> foo bar</p></div>')
     end
 
   end
