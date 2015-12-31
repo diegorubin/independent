@@ -37,7 +37,7 @@ gem 'redis'
 # view
 gem 'haml'
 gem 'cells'
-gem 'bluecloth'
+gem 'redcarpet'
 gem 'gravtastic'
 gem 'formtastic', '2.2.1'
 gem 'formtastic-bootstrap', '~> 3.0.0'

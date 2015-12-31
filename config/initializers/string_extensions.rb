@@ -26,7 +26,8 @@ module StringExtensions
       "<a name='reference-#{i}' href='#citation-#{i}'>[#{i}]</a>"
     end
 
-    BlueCloth::new(r).to_html
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true)
+    markdown.render(r)
   end
 
   def sanitize(options = {})

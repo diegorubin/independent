@@ -119,13 +119,13 @@ describe Post do
 
     it 'change citation to link' do
       expect(post.body.from_markdown_to_html).to(
-        eql("<p>blablabla<a name='reference-1' href='#citation-1'>[1]</a>. bla</p>")
+        eql("<p>blablabla<a name='reference-1' href='#citation-1'>[1]</a>. bla</p>\n")
       )
     end
 
     it 'show footnotes' do
       expect(post.footnotes).to(
-        eql(["<p>\"content\"</p>"])
+        eql(["<p>&quot;content&quot;</p>\n"])
       )
 
     end
