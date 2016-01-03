@@ -8,6 +8,7 @@ set :linked_files, %w{
   config/application.yml config/mongoid.yml config/initializers/devise.rb 
   config/initializers/setup_mail.rb config/newrelic.yml
   config/environments/production.rb config/unicorn.rb
+  config/secrets.yml
 }
 
 set :linked_dirs, %w{pids log public/uploads themes uploads node_modules}
