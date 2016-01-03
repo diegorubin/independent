@@ -7,10 +7,10 @@ set :repo_url, 'git@github.com:diegorubin/independent.git'
 set :linked_files, %w{
   config/application.yml config/mongoid.yml config/initializers/devise.rb 
   config/initializers/setup_mail.rb config/newrelic.yml
-  config/environments/production.rb
+  config/environments/production.rb config/unicorn.rb
 }
 
-set :linked_dirs, %w{log public/uploads themes uploads node_modules}
+set :linked_dirs, %w{pids log public/uploads themes uploads node_modules}
 
 namespace :delayed_job do
 
