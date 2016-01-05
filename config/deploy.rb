@@ -13,12 +13,17 @@ set :linked_files, %w{
 
 set :linked_dirs, %w{pids log public/uploads themes uploads node_modules}
 
+set :unicorn_pid, "#{shared_path}/pids/unicorn.pid"
+set :unicorn_config_path, "#{shared_path}/config/unicorn.rb"
+
 namespace :delayed_job do
 
   desc 'stop delayed job'
   task :stop do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd '#{release_path}';RAILS_ENV=production bin/delayed_job stop"
+      if Dir.exists?(release_path)
+        execute "cd '#{release_path}';RAILS_ENV=production bin/delayed_job stop"
+      end
     end
   end
 
@@ -34,9 +39,9 @@ end
 namespace :deploy do
 
   desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
+  namespace :deploy do
+    task :restart do
+      invoke 'unicorn:restart'
     end
   end
 
@@ -65,9 +70,10 @@ namespace :deploy do
   before :deploy, 'delayed_job:stop'
 
   after :deploy, 'deploy:update_npm'
-  after :deploy, 'deploy:restart'
   after :deploy, 'delayed_job:start'
   after :deploy, 'deploy:start_preview_server'
+
+  after 'deploy:publishing', 'deploy:restart'
 
 end
 

@@ -59,6 +59,7 @@ group :development, :test do
   gem 'capistrano', '3.2.1'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
 
   gem 'byebug'
 
