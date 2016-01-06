@@ -13,8 +13,8 @@ set :linked_files, %w{
 
 set :linked_dirs, %w{pids log public/uploads themes uploads node_modules}
 
-set :unicorn_pid, "#{shared_path}/pids/unicorn.pid"
-set :unicorn_config_path, "#{shared_path}/config/unicorn.rb"
+set :unicorn_pid, -> { "#{shared_path}/pids/unicorn.pid" }
+set :unicorn_config_path, -> { "#{shared_path}/config/unicorn.rb" }
 
 namespace :delayed_job do
 
