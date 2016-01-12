@@ -54,18 +54,24 @@ module ApplicationHelper
 
     result += content_tag :div, class: 'footnotes' do
       list = items.collect.with_index do |item, i|
-        p = content_tag :p  do
-          span = content_tag :span  do
-            link_to "[#{i+1}]", "#reference-#{i + 1}", name: "citation-#{i + 1}"
-          end
-          span + " " + raw(item.to_s.gsub(/<\/?p>/,''))
-        end
-        p
+        render_footnotes_item(item, i)
       end
       raw(list.join(''))
     end
 
     raw(result)
+  end
+
+  private
+
+  def render_footnotes_item(item, index)
+    content_tag :p  do
+      span = content_tag :span  do
+        link_to "[#{index+1}]", "#reference-#{index + 1}", 
+          name: "citation-#{index + 1}"
+      end
+      span + " " + raw(item.to_s.gsub(/<\/?p>/,''))
+    end
   end
 
 end
