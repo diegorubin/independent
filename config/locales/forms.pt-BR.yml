@@ -1,6 +1,11 @@
 pt-BR:
   admin:
     forms:
+
       filters:
         clear: Limpar
         filter: Filtrar
+
+      gallery:
+        add: 'Adicionar'
+

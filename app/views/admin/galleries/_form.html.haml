@@ -1,10 +1,10 @@
-= semantic_form_for([:admin, @gallery]) do |f|
+= semantic_form_for([:admin, @gallery], html: {id: 'gallery'}) do |f|
 
   .row
     .col-md-8
       = f.inputs :title, :slug
       = f.input :tags
-      = f.input :images, as: 'images'
+
 
 
     .col-md-4
@@ -13,4 +13,34 @@
         = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
         = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
+
+  .row
+    .col-md-12
+      %a.btn.gallery-add-button{href: '#'}
+        = :add.t(scope: [:admin, :forms, :gallery])
+
+      .gallery-content
+
+  #gallery-dialog
+  %template#gallery-image-modal
+    .modal.fade{tabindex: "-1", role: "dialog", 'aria-labelledby' => "dialog", 'aria-hidden' => "true"}
+      .modal-dialog
+        .modal-content
+    
+          .modal-header
+            %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
+              %span{'aria-hidden' => 'true'}
+                &times;
+            %h4.modal-title.dialog-title
+              Modal Title
+    
+          .modal-body.dialog-body
+    
+          .modal-footer
+            %button.dialog-cancel.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'}
+              Close
+            %button.dialog-ok.btn.btn-primary{type: 'button'}
+              Save changes
+    
+  
 
