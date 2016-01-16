@@ -3,7 +3,9 @@
  *= require bootstrap-tagsinput
  *= require bootstrap-toggle
  *= require codemirror
+
  *= require admin/components
+ *= require admin/gallery
 
  *= require formtastic-bootstrap
  */

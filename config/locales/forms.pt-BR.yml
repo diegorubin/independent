@@ -8,4 +8,9 @@ pt-BR:
 
       gallery:
         add: 'Adicionar'
+        close: 'Fechar'
+        drop: 'Arraste uma imagem para cá!'
+        images: 'Imagens para a galeria'
+        select: 'Selecionar imagens'
+        upload: 'Enviar imagens'
 

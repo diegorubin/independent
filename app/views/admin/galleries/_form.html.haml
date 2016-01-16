@@ -32,15 +32,27 @@
               %span{'aria-hidden' => 'true'}
                 &times;
             %h4.modal-title.dialog-title
-              Modal Title
+              = :images.t(scope: [:admin, :forms, :gallery])
     
           .modal-body.dialog-body
+            %ul.tabs.nav.nav-pills{role: 'tablist'}
+              %li{role: 'presentation'}
+                %a{href: '#select'}
+                  = :select.t(scope: [:admin, :forms, :gallery])
+              %li{role: 'presentation'}
+                %a{href: '#upload'}
+                  = :upload.t(scope: [:admin, :forms, :gallery])
+            .tab-content
+              #select.tab-pane{role: 'tabpanel'}
+                select
+              #upload.tab-pane{role: 'tabpanel'}
+
+                #image-upload-area
+                  %span.drop-message
+                    = :drop.t(scope: [:admin, :forms, :gallery])
     
           .modal-footer
             %button.dialog-cancel.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'}
-              Close
-            %button.dialog-ok.btn.btn-primary{type: 'button'}
-              Save changes
-    
+              = :close.t(scope: [:admin, :forms, :gallery])
   
 
