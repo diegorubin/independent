@@ -32,16 +32,21 @@ GalleryForm.prototype.onLoadFile = function(f) {
   _this.addImageToGallery(f);
 };
 
-GalleryForm.prototype.addImageToGallery = function(f) {
+GalleryForm.prototype.addImageToGallery = function(file) {
+  var _this = this;
+  _this.photosContainer.append(_this.createImageItem(file));
+};
+
+GalleryForm.prototype.createImageItem = function(file) {
   var _this = this;
 
-  var image = $('<img/>');
-  image.addClass('gallery-item');
-  image.attr('height', 100);
-  image.attr('width', 100);
-  image.attr('src', f.target.result);
+  var imageContainer = $($('#gallery-image-template').html());
 
-  _this.photosContainer.append(image);
+  var image = imageContainer.find('img');
+  image.attr('src', file.target.result);
+  image.attr('height', '75');
+
+  return imageContainer;
 };
 
 GalleryForm.prototype.loadAddButton = function() {

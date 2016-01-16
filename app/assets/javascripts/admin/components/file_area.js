@@ -19,8 +19,12 @@ function FileArea(fileArea) {
 
   self.drop = function(e) {
     self.dragHover(e);  
-    self.file = e.dataTransfer.files[0];  
-    self.read(self.file);
+
+    var i;
+    for (i in e.dataTransfer.files) {
+      var file = e.dataTransfer.files[i];
+      self.read(file);
+    }
   };
 
   self.read = function(file) {

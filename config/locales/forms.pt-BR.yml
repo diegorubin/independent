@@ -11,6 +11,7 @@ pt-BR:
         close: 'Fechar'
         drop: 'Arraste uma imagem para cá!'
         images: 'Imagens para a galeria'
+        remove: 'remover'
         select: 'Selecionar imagens'
         upload: 'Enviar imagens'
 

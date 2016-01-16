@@ -22,6 +22,17 @@
       .gallery-content
 
   #gallery-dialog
+
+  %template#gallery-image-template
+    .gallery-image-container
+      %img.gallery-item
+      .gallery-image-commands
+        %a{href: '#'}
+          = :remove.t(scope: [:admin, :forms, :gallery])
+      .gallery-image-metadata{style: 'display:none;'}
+
+
+    
   %template#gallery-image-modal
     .modal.fade{tabindex: "-1", role: "dialog", 'aria-labelledby' => "dialog", 'aria-hidden' => "true"}
       .modal-dialog
