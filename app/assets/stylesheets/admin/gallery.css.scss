@@ -25,6 +25,21 @@
 
 .gallery-image-container {
   float: left;
-  margin: 3px;
+  margin: 10px;
+  background-color: #eee;
+  border: 1px solid #aaa;
+}
+
+.gallery-image-container-ghost {
+  width: 100px;
+}
+
+.gallery-image-commands a {
+  margin: 10px;
+  float: right;
+}
+
+.gallery-image-commands .glyphicon-remove {
+  color: red;
 }
 

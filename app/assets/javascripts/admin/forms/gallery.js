@@ -14,6 +14,15 @@ GalleryForm.prototype.init = function(form) {
 
   _this.loadAddButton();
 
+  _this.loadSortable();
+
+};
+
+GalleryForm.prototype.loadSortable = function() {
+  $('.gallery-content').sortable({
+    forcePlaceholderSize: true,
+		placeholderClass: 'gallery-image-container gallery-image-container-ghost'
+  });
 };
 
 GalleryForm.prototype.loadImageUploader = function() {
@@ -35,6 +44,7 @@ GalleryForm.prototype.onLoadFile = function(f) {
 GalleryForm.prototype.addImageToGallery = function(file) {
   var _this = this;
   _this.photosContainer.append(_this.createImageItem(file));
+  _this.loadSortable();
 };
 
 GalleryForm.prototype.createImageItem = function(file) {

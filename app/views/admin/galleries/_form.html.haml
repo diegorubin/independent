@@ -24,12 +24,7 @@
   #gallery-dialog
 
   %template#gallery-image-template
-    .gallery-image-container
-      %img.gallery-item
-      .gallery-image-commands
-        %a{href: '#'}
-          = :remove.t(scope: [:admin, :forms, :gallery])
-      .gallery-image-metadata{style: 'display:none;'}
+    = render 'template_gallery_image'
 
 
     

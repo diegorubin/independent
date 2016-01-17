@@ -1,0 +1,8 @@
+.gallery-image-container
+  %img.gallery-item
+  .gallery-image-commands
+    %a{href: '#'}
+      %span.glyphicon.glyphicon-remove{'aria-hidden' => true}
+      = :remove.t(scope: [:admin, :forms, :gallery])
+  .gallery-image-metadata{style: 'display:none;'}
+

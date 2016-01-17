@@ -28,7 +28,7 @@ function FileArea(fileArea) {
   };
 
   self.read = function(file) {
-    if (file.type.match('image.*')) {
+    if (file.type && file.type.match('image.*')) {
       var reader = new FileReader();
 
       reader.onload = function(f) {
