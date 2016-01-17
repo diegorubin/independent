@@ -4,7 +4,7 @@ FactoryGirl.define do
     title Faker::Commerce.product_name
 
     factory :gallery_with_image do
-      images {build_list :image, 1}
+      items {build_list :gallery_item, 1}
     end
 
   end

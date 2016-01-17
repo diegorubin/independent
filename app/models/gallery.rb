@@ -8,8 +8,8 @@ class Gallery
   # Fields
   field :title, type: String
 
-  embeds_many :images
-  accepts_nested_attributes_for :images, allow_destroy: true
+  embeds_many :items, class_name: 'GalleryItem'
+  accepts_nested_attributes_for :items, allow_destroy: true
 
   # Validations
   validates :title, presence: true
