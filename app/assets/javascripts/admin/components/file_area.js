@@ -31,8 +31,8 @@ function FileArea(fileArea) {
     if (file.type && file.type.match('image.*')) {
       var reader = new FileReader();
 
-      reader.onload = function(f) {
-        self.onLoadFile(f);
+      reader.onload = function(event) {
+        self.onLoadFile(event, file);
       }
 
       reader.readAsDataURL(file);

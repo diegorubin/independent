@@ -1,5 +1,13 @@
 .gallery-image-container
-  %img.gallery-item
+  %p
+    %img.gallery-item
+
+  %p.gallery-item-title
+    = defined?(image) ? image.title : :add_title.t(scope: [:admin, :forms, :gallery])
+
+  %p.gallery-item-slug
+    = defined?(image) ? image.slug : :add_slug.t(scope: [:admin, :forms, :gallery])
+
   .gallery-image-commands
     %a{href: '#'}
       %span.glyphicon.glyphicon-remove{'aria-hidden' => true}

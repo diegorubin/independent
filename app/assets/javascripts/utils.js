@@ -19,6 +19,15 @@ var Utils = {
     }
  
     return temp;
+  },
+
+  slug: function(text) {
+    return text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+  },
+
+  removeExtension: function(filename) {
+    return filename.replace(/\.[^/.]+$/, "");
   }
+
 }
 

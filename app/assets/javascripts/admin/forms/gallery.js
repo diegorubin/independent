@@ -30,31 +30,43 @@ GalleryForm.prototype.loadImageUploader = function() {
 
   var imageUploadArea = _this.form.find('#image-upload-area').get(0);
   _this.fileArea = new FileArea(imageUploadArea);
-  _this.fileArea.onLoadFile = function(f) {
-    _this.onLoadFile(f);
+  _this.fileArea.onLoadFile = function(event, file) {
+    _this.onLoadFile(event, file);
   };
   _this.fileArea.init();
 };
 
-GalleryForm.prototype.onLoadFile = function(f) {
+GalleryForm.prototype.onLoadFile = function(event, file) {
   var _this = this;
-  _this.addImageToGallery(f);
+  _this.addImageToGallery(event, file);
 };
 
-GalleryForm.prototype.addImageToGallery = function(file) {
+GalleryForm.prototype.addImageToGallery = function(event, file) {
   var _this = this;
-  _this.photosContainer.append(_this.createImageItem(file));
+  _this.photosContainer.append(_this.createImageItem(event, file));
   _this.loadSortable();
 };
 
-GalleryForm.prototype.createImageItem = function(file) {
+GalleryForm.prototype.createImageItem = function(event, file) {
   var _this = this;
 
   var imageContainer = $($('#gallery-image-template').html());
 
   var image = imageContainer.find('img');
-  image.attr('src', file.target.result);
+  image.attr('src', event.target.result);
   image.attr('height', '75');
+
+  var title = imageContainer.find('.gallery-item-title');
+  title.html(Utils.removeExtension(file.name));
+
+  var slug = imageContainer.find('.gallery-item-slug');
+  slug.html(Utils.slug(Utils.removeExtension(file.name)));
+
+  var metadata = imageContainer.find('.gallery-image-metadata');
+
+  var input = $('<input type="file"/>');
+  input.get(0).value = event.target.result;
+  metadata.append(input);
 
   return imageContainer;
 };

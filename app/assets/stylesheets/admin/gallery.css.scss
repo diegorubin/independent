@@ -24,10 +24,12 @@
 }
 
 .gallery-image-container {
+  padding: 10px;
   float: left;
   margin: 10px;
   background-color: #eee;
   border: 1px solid #aaa;
+  text-align: center;
 }
 
 .gallery-image-container-ghost {
