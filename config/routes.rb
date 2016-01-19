@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   namespace :admin do
     namespace :api do
       namespace :v1 do
-        resources :images, only: [:create]
         resources :markdown, only: [:create]
         resources :posts, only: [:index, :create, :update, :destroy]
         post '/spellchecker/check', to: 'spellchecker#check', as: 'spellchecker'

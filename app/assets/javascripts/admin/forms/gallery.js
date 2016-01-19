@@ -43,30 +43,35 @@ GalleryForm.prototype.onLoadFile = function(event, file) {
 
 GalleryForm.prototype.addImageToGallery = function(event, file) {
   var _this = this;
-  _this.photosContainer.append(_this.createImageItem(event, file));
-  _this.loadSortable();
+
+  var sendFile = new SendFile('/admin/images.json');
+  var attributes = {
+    'image[title]': Utils.removeExtension(file.name),
+    'image[slug]': Utils.slug(Utils.removeExtension(file.name))
+  };
+
+  sendFile.success = function(response) {
+    _this.photosContainer.append(_this.createImageItem(event, response));
+    _this.loadSortable();
+  };
+  sendFile.send('image[file]', file, attributes);
+
 };
 
-GalleryForm.prototype.createImageItem = function(event, file) {
+GalleryForm.prototype.createImageItem = function(event, response) {
   var _this = this;
 
   var imageContainer = $($('#gallery-image-template').html());
 
   var image = imageContainer.find('img');
-  image.attr('src', event.target.result);
+  image.attr('src', response.image.file.thumb.url);
   image.attr('height', '75');
 
   var title = imageContainer.find('.gallery-item-title');
-  title.html(Utils.removeExtension(file.name));
+  title.html(response.image.title);
 
   var slug = imageContainer.find('.gallery-item-slug');
-  slug.html(Utils.slug(Utils.removeExtension(file.name)));
-
-  var metadata = imageContainer.find('.gallery-image-metadata');
-
-  var input = $('<input type="file"/>');
-  input.get(0).value = event.target.result;
-  metadata.append(input);
+  slug.html(response.image.slug);
 
   return imageContainer;
 };
