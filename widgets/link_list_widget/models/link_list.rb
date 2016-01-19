@@ -1,5 +1,6 @@
 class LinkList
   include Mongoid::Document
+  include AdminForm::Settings
 
   field :title, type: String
 

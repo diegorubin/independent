@@ -9,11 +9,11 @@ module AdminForm
     end
 
     def form_field_defined?(attribute)
-      self.class.form_fields.with_indifferent_access.has_key?(attribute)
+      (self.class.form_fields || {}).with_indifferent_access.has_key?(attribute)
     end
 
     def form_field_type(attribute)
-      self.class.form_fields.with_indifferent_access[attribute]
+      (self.class.form_fields || {}).with_indifferent_access[attribute]
     end
 
     module ClassMethods
