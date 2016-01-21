@@ -73,7 +73,30 @@ GalleryForm.prototype.createImageItem = function(event, response) {
   var slug = imageContainer.find('.gallery-item-slug');
   slug.html(response.image.slug);
 
+  var imageMetadata =  imageContainer.find('.gallery-image-metadata');
+  imageMetadata.append(_this.createImageItemMetadata(response));
+
   return imageContainer;
+};
+
+GalleryForm.prototype.createImageItemMetadata = function(response, imageContainer) {
+  var index = new Date().getTime();
+  var container = $('<div></div>');
+
+  var titleField = $('<input type="hidden"/>');
+  titleField.addClass('gallery-item-title');
+  titleField.attr('name', '[gallery][items_attributes][' + index + '][title]');
+  titleField.attr('value', response.image.title);
+  container.append(titleField);
+
+  var slugField = $('<input type="hidden"/>');
+  slugField.addClass('gallery-item-slug');
+  slugField.attr('name', '[gallery][items_attributes][' + index + '][slug]');
+  slugField.attr('value', response.image.slug);
+  container.append(slugField);
+
+  return container;
+
 };
 
 GalleryForm.prototype.loadAddButton = function() {

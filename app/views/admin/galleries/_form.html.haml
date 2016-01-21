@@ -21,6 +21,10 @@
 
       .gallery-content
 
+        - @gallery.items.each_with_index do |item, index|
+          = render 'template_gallery_image', {item: item, index: index}
+
+
   #gallery-dialog
 
   %template#gallery-image-template

@@ -14,20 +14,20 @@ describe Gallery do
 
   context 'on associate images' do
     let(:gallery) { FactoryGirl.build(:gallery) }
-    let(:image) { FactoryGirl.build(:image) }
+    let(:item) { FactoryGirl.build(:gallery_item) }
     
-    context 'insert image' do
+    context 'insert item' do
       it 'from object' do
-        gallery.images << image
-        expect(gallery.images.first).to eql(image)
+        gallery.items << item 
+        expect(gallery.items.first).to eql(item)
       end
 
       it 'from hash parameters' do
-        image_attributes = image.attributes
-        image_attributes['_id'] = nil
+        item_attributes = item.attributes
+        item_attributes['_id'] = nil
 
-        gallery = Gallery.new(images_attributes: [image_attributes])
-        expect(gallery.images.first).to eql(image)
+        gallery = Gallery.new(items_attributes: [item_attributes])
+        expect(gallery.items.first).to eql(item)
       end
     end
 
