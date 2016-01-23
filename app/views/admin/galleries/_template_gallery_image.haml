@@ -1,17 +1,29 @@
 .gallery-image-container
   %p
-    %img.gallery-item
+    - if defined?(item)
+      = image_tag(item.object.image_url('thumb'), class: 'gallery-item')
+    - else
+      %img.gallery-item
 
   %p.gallery-item-title
-    = defined?(item) ? item.title : :add_title.t(scope: [:admin, :forms, :gallery])
+    - if defined?(item)
+      = item.object.title
+    - else 
+      = :add_title.t(scope: [:admin, :forms, :gallery])
 
   %p.gallery-item-slug
-    = defined?(item) ? item.slug : :add_slug.t(scope: [:admin, :forms, :gallery])
+    - if defined?(item) 
+      = item.object.slug
+    - else 
+      = :add_slug.t(scope: [:admin, :forms, :gallery])
 
   .gallery-image-commands
     %a{href: '#'}
       %span.glyphicon.glyphicon-remove{'aria-hidden' => true}
       = :remove.t(scope: [:admin, :forms, :gallery])
   .gallery-image-metadata{style: 'display:none;'}
+    - if defined?(item)
+      = item.input :title, as: 'hidden'
+      = item.input :slug, as: 'hidden'
 
 
