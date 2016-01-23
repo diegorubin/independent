@@ -13,6 +13,7 @@ GalleryForm.prototype.init = function(form) {
   _this.photosContainer = _this.form.find('.gallery-content');
 
   _this.loadAddButton();
+  _this.loadDelButton();
 
   _this.loadSortable();
 
@@ -115,6 +116,14 @@ GalleryForm.prototype.loadAddButton = function() {
     _this.dialog.modal('show');
 
     _this.loadImageUploader();
+  });
+};
+
+GalleryForm.prototype.loadDelButton = function() {
+  $('.gallery-content').on('click', '.gallery-del-button', function(event){
+    event.preventDefault();
+    $(this).closest('.gallery-image-container').hide();
+    $(this).closest('.gallery-image-container').find('.destroy').val(true);
   });
 };
 

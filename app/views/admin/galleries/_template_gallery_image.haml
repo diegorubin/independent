@@ -18,12 +18,13 @@
       = :add_slug.t(scope: [:admin, :forms, :gallery])
 
   .gallery-image-commands
-    %a{href: '#'}
+    %a.gallery-del-button{href: '#'}
       %span.glyphicon.glyphicon-remove{'aria-hidden' => true}
       = :remove.t(scope: [:admin, :forms, :gallery])
   .gallery-image-metadata{style: 'display:none;'}
     - if defined?(item)
       = item.input :title, as: 'hidden'
       = item.input :slug, as: 'hidden'
+      = item.input :_destroy, as: 'hidden', :input_html => { class: "destroy" }
 
 
