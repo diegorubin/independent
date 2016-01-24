@@ -15,17 +15,51 @@ describe Admin::ImagesController, type: :controller do
 
     context 'as json' do
       
-      let!(:image) {FactoryGirl.create(:image)}
+      context 'when list images' do
+        let!(:image) {FactoryGirl.create(:image)}
 
-      before(:each) do 
-        get :index, format: 'json'
-        @json = JSON.load(response.body)
+        before(:each) do 
+          get :index, format: 'json'
+          @json = JSON.load(response.body)
+        end
+
+        it('result as hash') {expect(@json).to be_kind_of(Hash)}
+        it('have total') {expect(@json['total']).to eql(1)}
+        it('have page') {expect(@json['page']).to eql(1)}
+        it('have list of images') {expect(@json['result']).to be_kind_of(Array)}
       end
 
-      it('result as hash') {expect(@json).to be_kind_of(Hash)}
-      it('have total') {expect(@json['total']).to eql(1)}
-      it('have page') {expect(@json['page']).to eql(1)}
-      it('have list of images') {expect(@json['result']).to be_kind_of(Array)}
+      context 'when create images' do
+
+        context 'when success' do
+
+          let(:image_attributes) {FactoryGirl.attributes_for(:image)}
+
+          before(:each) do 
+            get :create, format: 'json', image: image_attributes
+            @json = JSON.load(response.body)
+          end
+
+          it('result as hash') {expect(@json).to be_kind_of(Hash)}
+          it('have status') {expect(response.status).to eql(200)}
+
+        end
+
+        context 'when error' do
+
+          let(:image_attributes) {FactoryGirl.attributes_for(:image, title: '')}
+
+          before(:each) do 
+            get :create, format: 'json', image: image_attributes
+            @json = JSON.load(response.body)
+          end
+
+          it('result as hash') {expect(@json).to be_kind_of(Hash)}
+          it('have status') {expect(response.status).to eql(422)}
+
+        end
+
+      end
 
     end
 

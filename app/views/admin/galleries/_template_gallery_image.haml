@@ -1,0 +1,32 @@
+.gallery-image-container
+  %p
+    - if defined?(item)
+      = image_tag(item.object.image_url('thumb'), class: 'gallery-item')
+    - else
+      %img.gallery-item
+
+  %p.gallery-item-title.gallery-edit-field{data: {field: 'title', type: 'text'}}
+    - if defined?(item)
+      = item.object.title
+    - else 
+      = :add_title.t(scope: [:admin, :forms, :gallery])
+
+  %p.gallery-item-description.gallery-edit-field{data: {field: 'description', type: 'textarea'}}
+    - if defined?(item) && !item.object.description.blank?
+      = item.object.description
+    - else 
+      = :add_description.t(scope: [:admin, :forms, :gallery])
+
+  .gallery-image-commands
+    %a.gallery-del-button{href: '#'}
+      %span.glyphicon.glyphicon-remove{'aria-hidden' => true}
+      = :remove.t(scope: [:admin, :forms, :gallery])
+  .gallery-image-metadata{style: 'display:none;'}
+    - if defined?(item)
+      = item.input :title, as: 'hidden', :input_html => { class: "title" }
+      = item.input :slug, as: 'hidden'
+      = item.input :description, as: 'hidden', :input_html => { class: "description" }
+      = item.input :position, as: 'hidden', :input_html => { class: "position" }
+      = item.input :_destroy, as: 'hidden', :input_html => { class: "destroy" }
+
+

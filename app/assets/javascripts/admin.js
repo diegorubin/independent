@@ -50,6 +50,28 @@ $(document).ready(function(){
     modify_comment($(this), 'DELETE');
   });
 
+  /* nested attributes */
+  $('form').on('click', '.add-embeds', function(event){
+    event.preventDefault();
+    var self = $(this);
+
+    var url = self.attr('href');
+    var data = {
+      parent: self.attr('data-parent'),
+      klass: self.attr('data-class'),
+      partial: self.attr('data-partial')
+    }
+
+    $.ajax({
+      type: 'GET',
+      url: url,
+      data: data,
+      success: function(result) {
+        self.closest('.embeds-container').append(result);
+      }
+    });
+  });
+
 });
 
 

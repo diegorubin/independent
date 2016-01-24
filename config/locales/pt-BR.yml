@@ -7,20 +7,23 @@ pt-BR:
       assets: Arquivos
       commentators: Comentaristas
       comments: Comentários
+      galleries: Galerias
       home: Home
       images: Imagens
+      media: Mídia
       links: Links
       link_lists: Lista de Links
       list_items: Lista de Itens
+      logout: Sair
       posts: Posts
       pages: Páginas
       presentations: Apresentaçãoes
+      resources: Recursos
       settings: Configurações
       snippets: Snippets
       themes: Temas
       users: Usuários
       widgets: Widgets
-      logout: Sair
 
     api_keys:
       destroy:
@@ -67,6 +70,27 @@ pt-BR:
         post: Artigos
         presentation: Apresentações
 
+    galleries:
+      destroy:
+        confirm: Tem certeza que deseja remover a galeria?
+      edit:
+        h1: Editar Galeria
+        title: Editar Galeria
+      index:
+        h1: Lista de Galerias
+        title: Galerias
+      menu:
+        destroy: Remover Galeria
+        edit: Editar
+        list: Listar Galerias
+        new: Nova Galeria
+        original: Baixar
+        show: Ver
+      new:
+        h1: Nova Galeria
+        title: Nova Galeria
+
+
     images:
       destroy:
         confirm: Tem certeza que deseja remover a imagem?
@@ -80,11 +104,11 @@ pt-BR:
         destroy: Remover Imagem
         edit: Editar
         list: Listar Imagens
-        new: Novo Imagem
+        new: Nova Imagem
         original: Baixar
       new:
-        h1: Novo Imagem
-        title: Novo Imagem
+        h1: Nova Imagem
+        title: Nova Imagem
 
     pages:
       destroy:

@@ -16,16 +16,12 @@ class Post
   paginates_per 10
 
   field :title,        type: String
-  field :resume,       type: String
-  field :author,       type: String
   field :body,         type: String, default: ''
   field :header_image, type: String
   field :image,        type: String
 
   field :external_js,  type: String
   field :external_css, type: String
-
-  field :category,     type: String
 
   # Field for SEO
   field :metadescription, type: String

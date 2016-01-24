@@ -13,12 +13,7 @@ class Presentation
   paginates_per 10
 
   field :title,  type: String
-  field :resume, type: String
-  field :author, type: String
-
   field :image,  type: String
-
-  field :category, type: String
 
   # Field for SEO
   field :metadescription,  type: String
@@ -32,10 +27,6 @@ class Presentation
 
   # validations
   validates_presence_of :title, :resume, :author, :category
-
-  validates_format_of :tags, 
-                      :with => /\A([^,]+,)*[^,]+\z/i,
-                      :allow_blank => true
 
   # Callbacks
   after_create :export_images

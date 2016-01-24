@@ -18,9 +18,11 @@ Rails.application.routes.draw do
     resources :commentators, only: [:index, :update]
     resources :comments, only: [:index, :update, :destroy]
     resources :filters, only: [:show]
+    resources :galleries
     resources :images
     resources :pages
     resources :posts
+    resources :partials, only: [:index]
     resources :presentations
     resources :settings, only: ['index', 'update']
     resources :snippets
@@ -47,6 +49,11 @@ Rails.application.routes.draw do
 
   # Comments
   resources :comments, only: [:create]
+
+  # Galleries
+  get "/galleries/:date/:slug" => "galleries#show", 
+        :as => "gallery", 
+        :date => /\d{4}(\/\d{2}){2}/ 
 
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"

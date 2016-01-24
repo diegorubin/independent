@@ -1,6 +1,19 @@
 pt-BR:
   admin:
     forms:
+
       filters:
         clear: Limpar
         filter: Filtrar
+
+      gallery:
+        add: 'Adicionar'
+        add_description: 'Sem descrição'
+        add_title: 'Sem título'
+        close: 'Fechar'
+        drop: 'Arraste uma imagem para cá!'
+        images: 'Imagens para a galeria'
+        remove: 'remover'
+        select: 'Selecionar imagens'
+        upload: 'Enviar imagens'
+

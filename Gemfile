@@ -62,6 +62,8 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 
   gem 'byebug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
   gem 'rspec-rails'
   gem 'rspec-expectations'

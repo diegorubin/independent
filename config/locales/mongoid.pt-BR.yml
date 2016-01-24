@@ -19,6 +19,12 @@ pt-BR:
         name: Nome
         site: Site
 
+      gallery:
+        published: Status
+        slug: Slug
+        title: Título
+        add_image: Adicionar Imagem
+
       image:
         file: Imagem
         published: Status

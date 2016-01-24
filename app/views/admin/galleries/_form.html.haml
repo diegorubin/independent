@@ -1,0 +1,70 @@
+= semantic_form_for([:admin, @gallery], html: {id: 'gallery'}) do |f|
+
+  .row
+    .col-md-8
+      = f.inputs :title, :slug
+
+      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+
+
+
+    .col-md-4
+      .well
+        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+
+        = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
+
+        = f.inputs :author, :category, :tags
+
+  .row
+    .col-md-12
+      %a.btn.gallery-add-button{href: '#'}
+        %span.glyphicon.glyphicon-plus{'aria-hidden' => true}
+        = :add.t(scope: [:admin, :forms, :gallery])
+
+      .gallery-content
+
+        = f.fields_for :items do |item|
+          = render 'template_gallery_image', {item: item}
+
+
+  #gallery-dialog
+
+  %template#gallery-image-template
+    = render 'template_gallery_image'
+
+  %template#gallery-image-modal
+    .modal.fade{tabindex: "-1", role: "dialog", 'aria-labelledby' => "dialog", 'aria-hidden' => "true"}
+      .modal-dialog
+        .modal-content
+    
+          .modal-header
+            %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-label' => 'Close'}
+              %span{'aria-hidden' => 'true'}
+                &times;
+            %h4.modal-title.dialog-title
+              = :images.t(scope: [:admin, :forms, :gallery])
+    
+          .modal-body.dialog-body
+            %ul.tabs.nav.nav-pills{role: 'tablist'}
+              %li{role: 'presentation'}
+                %a{href: '#select'}
+                  = :select.t(scope: [:admin, :forms, :gallery])
+              %li{role: 'presentation'}
+                %a{href: '#upload'}
+                  = :upload.t(scope: [:admin, :forms, :gallery])
+            .tab-content
+              #select.tab-pane{role: 'tabpanel'}
+                select
+              #upload.tab-pane{role: 'tabpanel'}
+
+                #image-upload-area
+                  %span.drop-message
+                    = :drop.t(scope: [:admin, :forms, :gallery])
+    
+          .modal-footer
+            %button.dialog-cancel.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'}
+              = :close.t(scope: [:admin, :forms, :gallery])
+  
+

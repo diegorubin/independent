@@ -34,6 +34,12 @@ module AdminHelper
     end
   end
 
+  def add_embeds_button(title, klass, parent, partial)
+    link_to(title, admin_partials_path, 
+      {class: "btn btn-default add-embeds", 'data-class' => klass, 
+       'data-parent' => parent, 'data-partial' => partial})
+  end
+
   private
 
   def get_phrases(entry, current_path = '', keys = {})
