@@ -11,7 +11,7 @@
     - else 
       = :add_title.t(scope: [:admin, :forms, :gallery])
 
-  %p.gallery-item-description.gallery-edit-field{data: {field: 'description'}}
+  %p.gallery-item-description.gallery-edit-field{data: {field: 'description', type: 'textarea'}}
     - if defined?(item) && !item.object.description.blank?
       = item.object.description
     - else 

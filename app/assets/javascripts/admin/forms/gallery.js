@@ -29,26 +29,42 @@ GalleryForm.prototype.loadSortable = function() {
   });
 };
 
+GalleryForm.prototype.getInputField = function(type, originalValue, blurEvent) {
+
+    var input; 
+
+    if(type == 'textarea') {
+      input = $('<textarea></textarea>');
+      input.html(originalValue);
+    } else {
+      input = $('<input type="text"/>');
+      input.val(originalValue);
+    }
+
+    input.blur(blurEvent);
+
+    input.dblclick(function(event){
+      event.stopPropagation();
+    });
+
+    return input;
+};
+
 GalleryForm.prototype.setEditFieldEvent = function() {
   var _this = this;
 
   $('.gallery-content').on('dblclick', '.gallery-edit-field', function(event){
     var elem = $(this);
     var field = elem.data('field');
+    var type = elem.data('type');
 
     var item = $(this).closest('.gallery-image-container');
     var originalValue = item.find('.' + field).val();
 
-    var input = $('<input type="text"/>');
-    input.val(originalValue);
-    input.blur(function(event){
+    var input = _this.getInputField(type, originalValue,function(event){
       var value = $(this).val();
       item.find('.' + field).val(value);
       elem.html(value);
-    });
-
-    input.dblclick(function(event){
-      event.stopPropagation();
     });
 
     elem.html('');

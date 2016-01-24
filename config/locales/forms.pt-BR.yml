@@ -8,6 +8,8 @@ pt-BR:
 
       gallery:
         add: 'Adicionar'
+        add_description: 'Sem descrição'
+        add_title: 'Sem título'
         close: 'Fechar'
         drop: 'Arraste uma imagem para cá!'
         images: 'Imagens para a galeria'
