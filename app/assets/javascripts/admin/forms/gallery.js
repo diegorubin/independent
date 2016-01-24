@@ -19,12 +19,42 @@ GalleryForm.prototype.init = function(form) {
 
   _this.setPostionsBeforeSubmit();
 
+  _this.setEditFieldEvent();
 };
 
 GalleryForm.prototype.loadSortable = function() {
   $('.gallery-content').sortable({
     forcePlaceholderSize: true,
 		placeholderClass: 'gallery-image-container gallery-image-container-ghost'
+  });
+};
+
+GalleryForm.prototype.setEditFieldEvent = function() {
+  var _this = this;
+
+  $('.gallery-content').on('dblclick', '.gallery-edit-field', function(event){
+    var elem = $(this);
+    var field = elem.data('field');
+
+    var item = $(this).closest('.gallery-image-container');
+    var originalValue = item.find('.' + field).val();
+
+    var input = $('<input type="text"/>');
+    input.val(originalValue);
+    input.blur(function(event){
+      var value = $(this).val();
+      item.find('.' + field).val(value);
+      elem.html(value);
+    });
+
+    input.dblclick(function(event){
+      event.stopPropagation();
+    });
+
+    elem.html('');
+    elem.append(input);
+    input.focus();
+
   });
 };
 
