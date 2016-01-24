@@ -1,12 +1,16 @@
 class Gallery
   include Mongoid::Document
 
+  include Commentable
+  include Listable
   include Publishable
-  include Taggable
+  include Rankable
   include Slugable
+  include Taggable
 
   # Fields
   field :title, type: String
+  field :image, type: String
 
   embeds_many :items, class_name: 'GalleryItem', order: :position.asc
   accepts_nested_attributes_for :items, allow_destroy: true

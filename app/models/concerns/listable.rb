@@ -4,6 +4,10 @@ module Listable
   included do
     after_save :create_or_update_item_in_list
     after_destroy :destroy_item_in_list
+
+    field :resume, type: String
+    field :author, type: String
+    field :category, type: String
   end
 
   def resource_type

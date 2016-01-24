@@ -25,9 +25,9 @@
           = gallery.slug
         %td
           = gallery.published_str
-          (#{link_to "Link", gallery_path(gallery.slug)})
         %td
           .btn-group
+            = menu_button(:show.t(:scope => [:admin, :galleries, :menu]), admin_gallery_path(gallery), 'btn-info')
             = menu_button(:original.t(:scope => [:admin, :galleries, :menu]), admin_gallery_path(gallery), 'btn-info')
 
             = menu_button(:edit.t(:scope => [:admin, :galleries, :menu]), edit_admin_gallery_path(gallery), 'btn-info')

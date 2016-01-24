@@ -3,7 +3,8 @@
   .row
     .col-md-8
       = f.inputs :title, :slug
-      = f.input :tags
+
+      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
 
 
 
@@ -13,6 +14,8 @@
         = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
         = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
+
+        = f.inputs :author, :category, :tags
 
   .row
     .col-md-12

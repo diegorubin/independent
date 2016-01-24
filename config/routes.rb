@@ -50,11 +50,13 @@ Rails.application.routes.draw do
   # Comments
   resources :comments, only: [:create]
 
+  # Galleries
+  get "/galleries/:date/:slug" => "galleries#show", 
+        :as => "gallery", 
+        :date => /\d{4}(\/\d{2}){2}/ 
+
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"
-
-  # Galleries
-  get "/galleries/:slug" => "galleries#show", :as => "gallery"
 
   # Posts
   get "/posts" => "posts#index", :as => "posts"
