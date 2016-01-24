@@ -8,7 +8,7 @@ class Gallery
   # Fields
   field :title, type: String
 
-  embeds_many :items, class_name: 'GalleryItem'
+  embeds_many :items, class_name: 'GalleryItem', order: :position.asc
   accepts_nested_attributes_for :items, allow_destroy: true
 
   # Validations

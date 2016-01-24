@@ -17,6 +17,8 @@ GalleryForm.prototype.init = function(form) {
 
   _this.loadSortable();
 
+  _this.setPostionsBeforeSubmit();
+
 };
 
 GalleryForm.prototype.loadSortable = function() {
@@ -96,6 +98,12 @@ GalleryForm.prototype.createImageItemMetadata = function(response, imageContaine
   slugField.attr('value', response.image.slug);
   container.append(slugField);
 
+  var positionField = $('<input type="hidden"/>');
+  positionField.addClass('gallery-item-position');
+  positionField.attr('name', '[gallery][items_attributes][' + index + '][position]');
+  positionField.attr('value', 0);
+  container.append(positionField);
+
   return container;
 
 };
@@ -124,6 +132,21 @@ GalleryForm.prototype.loadDelButton = function() {
     event.preventDefault();
     $(this).closest('.gallery-image-container').hide();
     $(this).closest('.gallery-image-container').find('.destroy').val(true);
+  });
+};
+
+GalleryForm.prototype.setPostionsBeforeSubmit = function() {
+  var _this = this;
+  _this.form.submit(function() {
+    _this.setPositions();
+  });
+};
+
+GalleryForm.prototype.setPositions = function() {
+  var _this = this;
+
+  $.each(_this.form.find('.gallery-image-container'), function(index, item){
+    $(item).find('.position').val(index);
   });
 };
 

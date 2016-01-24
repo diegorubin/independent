@@ -1,8 +1,10 @@
 class GalleryItem
   include Mongoid::Document
 
-  field :title, type: String
-  field :slug, type: String
+  field :title,       type: String
+  field :description, type: String
+  field :slug,        type: String
+  field :position,    type: Integer
 
   embedded_in :gallery
 
