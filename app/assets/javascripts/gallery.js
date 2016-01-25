@@ -18,6 +18,10 @@ function Gallery(total) {
         _this.loadItem(++_this.current);
       }
     });
+
+    $('.gallery-item').click(function(event){
+      _this.loadItem($(this).data('position'));
+    });
   };
 
   _this.loadItem = function(position) {

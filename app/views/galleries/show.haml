@@ -3,8 +3,8 @@
 %h1= @gallery.title
 
 %ul.gallery-carousel
-  - @gallery.items.each do |item|
-    %li{data: {slide: item.image_url(:body), description: item.description.from_markdown_to_html, title: item.title}}
+  - @gallery.items.each_with_index do |item, position|
+    %li{data: {slide: item.image_url(:body), description: item.description.from_markdown_to_html, title: item.title, position: position}}
       = image_tag item.image_url(:thumb)
 
 = render 'comments/form', {content_id: @gallery.id, content_type: 'Gallery'}
