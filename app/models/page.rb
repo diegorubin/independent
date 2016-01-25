@@ -7,9 +7,12 @@ class Page
 
   paginates_per 10
 
-  field :title,     type: String
-  field :body,      type: String,  default: ''
-  field :pageviews, type: Integer, default: 0
+  field :title,        type: String
+  field :body,         type: String,  default: ''
+  field :pageviews,    type: Integer, default: 0
+
+  field :external_js,  type: String
+  field :external_css, type: String
 
   # Validates
   validates_presence_of :title

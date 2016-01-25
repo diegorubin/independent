@@ -56,7 +56,21 @@
                   = :upload.t(scope: [:admin, :forms, :gallery])
             .tab-content
               #select.tab-pane{role: 'tabpanel'}
-                select
+
+                .image-filters
+
+                .list-images
+
+                .clear
+                  
+                .dialog-pagination
+                  %a.btn.btn-default.dialog-previous{href: '#'}
+                    = '-'
+                  %span.dialog-current
+                    = '1'
+                  %a.btn.btn-default.dialog-next{href: '#'}
+                    = '+'
+
               #upload.tab-pane{role: 'tabpanel'}
 
                 #image-upload-area

@@ -1,0 +1,39 @@
+.gallery-carousel {
+  overflow: hidden;
+  height: 120px;
+  position: absolute;
+  width: 80%;
+}
+
+.gallery-carousel li {
+  float: left;
+  list-style: none;
+  min-height: 100px;
+  min-width: 100px;
+  margin: 10px;
+}
+
+.gallery-arrow {
+  font-size: 50px;
+  height: 120px;
+  width: 50px;
+  z-index:3;
+  position: absolute;
+  padding-top: 24px;
+  cursor: pointer;
+}
+
+
+.left-gallery-item {
+  float: left;
+}
+
+.right-gallery-item {
+  float: right;
+  left: 90%;
+}
+
+.gallery-carousel-wrapper {
+  height: 130px;
+}
+

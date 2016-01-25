@@ -14,12 +14,14 @@ GalleryForm.prototype.init = function(form) {
 
   _this.loadAddButton();
   _this.loadDelButton();
+  _this.loadInsertButton();
 
   _this.loadSortable();
 
   _this.setPostionsBeforeSubmit();
 
   _this.setEditFieldEvent();
+
 };
 
 GalleryForm.prototype.loadSortable = function() {
@@ -100,48 +102,48 @@ GalleryForm.prototype.addImageToGallery = function(event, file) {
   };
 
   sendFile.success = function(response) {
-    _this.photosContainer.append(_this.createImageItem(event, response));
+    _this.photosContainer.append(_this.createImageItem(event, response.image));
     _this.loadSortable();
   };
   sendFile.send('image[file]', file, attributes);
 
 };
 
-GalleryForm.prototype.createImageItem = function(event, response) {
+GalleryForm.prototype.createImageItem = function(event, imageData) {
   var _this = this;
 
   var imageContainer = $($('#gallery-image-template').html());
 
   var image = imageContainer.find('img');
-  image.attr('src', response.image.file.thumb.url);
+  image.attr('src', imageData.file.thumb.url);
   image.attr('height', '75');
 
   var title = imageContainer.find('.gallery-item-title');
-  title.html(response.image.title);
+  title.html(imageData.title);
 
   var slug = imageContainer.find('.gallery-item-slug');
-  slug.html(response.image.slug);
+  slug.html(imageData.slug);
 
   var imageMetadata =  imageContainer.find('.gallery-image-metadata');
-  imageMetadata.append(_this.createImageItemMetadata(response));
+  imageMetadata.append(_this.createImageItemMetadata(imageData));
 
   return imageContainer;
 };
 
-GalleryForm.prototype.createImageItemMetadata = function(response, imageContainer) {
+GalleryForm.prototype.createImageItemMetadata = function(imageData, imageContainer) {
   var index = new Date().getTime();
   var container = $('<div></div>');
 
   var titleField = $('<input type="hidden"/>');
   titleField.addClass('gallery-item-title');
   titleField.attr('name', '[gallery][items_attributes][' + index + '][title]');
-  titleField.attr('value', response.image.title);
+  titleField.attr('value', imageData.title);
   container.append(titleField);
 
   var slugField = $('<input type="hidden"/>');
   slugField.addClass('gallery-item-slug');
   slugField.attr('name', '[gallery][items_attributes][' + index + '][slug]');
-  slugField.attr('value', response.image.slug);
+  slugField.attr('value', imageData.slug);
   container.append(slugField);
 
   var positionField = $('<input type="hidden"/>');
@@ -167,6 +169,8 @@ GalleryForm.prototype.loadAddButton = function() {
       event.preventDefault();
       $(this).tab('show');
     });
+
+    _this.getImages();
     _this.dialog.modal('show');
 
     _this.loadImageUploader();
@@ -179,6 +183,18 @@ GalleryForm.prototype.loadDelButton = function() {
     $(this).closest('.gallery-image-container').hide();
     $(this).closest('.gallery-image-container').find('.destroy').val(true);
   });
+};
+
+GalleryForm.prototype.loadInsertButton = function() {
+  var _this = this;
+
+  $('body').on('click', '.image-value',  function(event){
+    event.preventDefault();
+    var position = $(this).data('position');
+    _this.photosContainer.append(_this.createImageItem(event, _this.images[position]));
+    _this.loadSortable();
+  });
+
 };
 
 GalleryForm.prototype.setPostionsBeforeSubmit = function() {
@@ -194,6 +210,42 @@ GalleryForm.prototype.setPositions = function() {
   $.each(_this.form.find('.gallery-image-container'), function(index, item){
     $(item).find('.position').val(index);
   });
+};
+
+GalleryForm.prototype.getImages = function() {
+  var _this = this;
+
+  var data = {};
+  data.page = _this.page;
+
+  var client = new RestClient('/admin/images');
+  client.success = function(data) {
+    _this.loadImages(data);
+  };
+  client.call('GET', data);
+
+};
+
+GalleryForm.prototype.loadImages = function(data) {
+  var _this = this;
+
+  _this.images = data.result;
+  $(_this.dialog.find('.list-images')).html('');
+  $.each(_this.images, function(index, image){
+    $(_this.dialog.find('.list-images')).append(_this.renderImage(image, index));
+  });
+};
+
+GalleryForm.prototype.renderImage = function(image, index) {
+  var liObject = $('<li/>');
+
+  var imageObject = $('<img class="image-value" />');
+  imageObject.attr('src', image.file.thumb.url);
+  imageObject.data('position', index);
+
+  liObject.append(imageObject);
+
+  return liObject;
 };
 
 //load GalleryForm

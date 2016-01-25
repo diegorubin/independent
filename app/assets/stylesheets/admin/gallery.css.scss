@@ -30,6 +30,9 @@
   background-color: #eee;
   border: 1px solid #aaa;
   text-align: center;
+  height: 200px;
+  overflow-y: auto;
+  min-width: 200px;
 }
 
 .gallery-image-container-ghost {

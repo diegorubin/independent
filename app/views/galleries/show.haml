@@ -1,8 +1,14 @@
 - content_for(:title, @gallery.title)
 
-%h1= @post.title
+%h1= @gallery.title
 
-= render 'comments/form', {content_id: @post.id, content_type: 'Post'}
+%ul.gallery-carousel
+  - @gallery.items.each do |item|
+    %li{data: {slide: item.image_url(:body), description: item.description.from_markdown_to_html, title: item.title}}
+      = image_tag item.image_url(:thumb)
 
-= render 'comments/list', {nivel: 0, comments: @post.comments}
+= render 'comments/form', {content_id: @gallery.id, content_type: 'Gallery'}
+
+= render 'comments/list', {nivel: 0, comments: @gallery.comments}
+
 

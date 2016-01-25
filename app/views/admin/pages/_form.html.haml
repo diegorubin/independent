@@ -28,5 +28,7 @@
 
         = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 
+        = f.inputs :external_js, :external_css
+
       = render "admin/shared/markdown_table"
 
