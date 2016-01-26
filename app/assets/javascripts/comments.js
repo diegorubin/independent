@@ -1,5 +1,4 @@
 function get_attributes_in_form(form) {
-  console.log(form);
 
   var attrs = {};
   var field_types = ["input", "select", "textarea", "hidden"];
@@ -35,7 +34,6 @@ function Comment(content_type, content_id) {
     self.attrs = get_attributes_in_form(self.form);
     self.attrs['content_type'] = self.content_type;
     self.attrs['content_id'] = self.content_id;
-    console.log(self.attrs);
 
     $.ajax({
       url: "/comments", type: "POST", data: self.attrs,

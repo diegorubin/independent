@@ -2,7 +2,7 @@ class Comment
   include Mongoid::Document
   include Gravtastic
 
-  COMMENTABLES = ['Post', 'Presentation']
+  COMMENTABLES = ['Post', 'Presentation', 'Gallery']
 
   gravtastic :size => 60
 

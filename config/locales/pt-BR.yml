@@ -69,6 +69,7 @@ pt-BR:
         title: Comentários 
         post: Artigos
         presentation: Apresentações
+        gallery: Galerias
 
     galleries:
       destroy:

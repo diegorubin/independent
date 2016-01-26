@@ -24,6 +24,7 @@ pt-BR:
         slug: Slug
         title: Título
         add_image: Adicionar Imagem
+        resume: Resumo
 
       image:
         file: Imagem

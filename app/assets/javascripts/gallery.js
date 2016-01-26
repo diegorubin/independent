@@ -30,11 +30,11 @@ function Gallery(total) {
   };
 
   _this.showNextItems = function() {
-    $(_this.items[_this.current]).hide('slow');
+    $(_this.items[_this.current]).hide();
   };
 
   _this.showPreviousItems = function() {
-    $(_this.items[_this.current]).show('slow');
+    $(_this.items[_this.current]).show();
   };
 
   _this.loadItem = function(position) {
