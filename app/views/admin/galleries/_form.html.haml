@@ -15,7 +15,8 @@
 
         = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
 
-        = f.inputs :author, :category, :tags
+        = f.inputs :author, :category
+        = f.input :tags, input_html: {data: {role: 'tagsinput'}}
 
   .row
     .col-md-12
