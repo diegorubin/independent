@@ -9,8 +9,12 @@ class GalleryItem
   embedded_in :gallery
 
   def image_url(version)
-    @image ||= Image.find_by(slug: slug)
-    @image.file.send(version).url
+    @image ||= Image.where(slug: slug).first
+    if @image
+      @image.file.send(version).url
+    else
+      "/images/#{version}_fallback.png"
+    end
   end
 
 end

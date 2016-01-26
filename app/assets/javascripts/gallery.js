@@ -3,6 +3,7 @@ function Gallery(total) {
 
   _this.total = total;
   _this.current = 0;
+  _this.showed = 4;
   _this.items = $('.gallery-carousel > li');
 
   _this.start = function() {
@@ -10,11 +11,13 @@ function Gallery(total) {
     $('.left-gallery-item').click(function(event){
       if (_this.current > 0) {
         _this.loadItem(--_this.current);
+        _this.showPreviousItems();
       }
     });
 
     $('.right-gallery-item').click(function(event){
       if (_this.current < _this.total - 1) {
+        _this.showNextItems();
         _this.loadItem(++_this.current);
       }
     });
@@ -22,11 +25,20 @@ function Gallery(total) {
     $('.gallery-item').click(function(event){
       _this.loadItem($(this).data('position'));
     });
+
+    $(_this.items[0]).click();
+  };
+
+  _this.showNextItems = function() {
+    $(_this.items[_this.current]).hide('slow');
+  };
+
+  _this.showPreviousItems = function() {
+    $(_this.items[_this.current]).show('slow');
   };
 
   _this.loadItem = function(position) {
     var item = $(_this.items[position]);
-    console.log(item);
     $('#gallery-item-image').attr('src', item.data('slide'));
     $('#gallery-item-title').html(item.data('title'));
     $('#gallery-item-description').html(item.data('description'));
@@ -36,7 +48,6 @@ function Gallery(total) {
 
 $(document).ready(function(){ 
   var wrapper = $('.gallery-carousel-wrapper');
-  console.log(wrapper);
 
   if(wrapper) {
     var gallery = new Gallery(wrapper.data('total'));
