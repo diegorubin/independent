@@ -7,6 +7,7 @@ describe Admin::CommentsController, type: :controller do
 
     FactoryGirl.create(:post)
     FactoryGirl.create(:presentation)
+    FactoryGirl.create(:gallery)
 
     @user = authenticate_user
   }
