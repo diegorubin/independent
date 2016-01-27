@@ -1,11 +1,34 @@
 - content_for(:title, @gallery.title)
 
+- content_for(:javascript) do
+  = javascript_include_tag 'gallery'
+
+- content_for(:stylesheet) do
+  = stylesheet_link_tag 'gallery'
+
 %h1= @gallery.title
 
-%ul.gallery-carousel
-  - @gallery.items.each_with_index do |item, position|
-    %li{data: {slide: item.image_url(:body), description: item.description.from_markdown_to_html, title: item.title, position: position}}
-      = image_tag item.image_url(:thumb)
+.gallery-carousel-wrapper{data: {total: @gallery.items.size}}
+  %span.gallery-arrow.left-gallery-item
+    %span.gallery-arrow-symbol{'data-icon' => "D"}
+      = '<'
+  %ul.gallery-carousel
+    - @gallery.items.each_with_index do |item, position|
+      %li.gallery-item{data: {slide: item.image_url(:body), description: item.description.from_markdown_to_html, title: item.title, position: position}}
+        = image_tag item.image_url(:thumb)
+  %span.gallery-arrow.right-gallery-item
+    %span.gallery-arrow-symbol{'data-icon' => "E"}
+      = '>'
+.clear
+
+.gallery-content
+  %p
+    %img#gallery-item-image
+
+  %h2#gallery-item-title
+
+  %p#gallery-item-description
+
 
 = render 'comments/form', {content_id: @gallery.id, content_type: 'Gallery'}
 
