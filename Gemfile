@@ -53,6 +53,8 @@ gem 'nokogiri'
 # pdf manipulation
 gem 'rghost'
 
+gem 'kindlerb'
+
 group :development, :test do
   gem 'thin'
 

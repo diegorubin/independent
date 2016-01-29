@@ -162,6 +162,9 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    kindlerb (1.0.1)
+      mustache
+      nokogiri
     listen (2.8.5)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -193,6 +196,7 @@ GEM
       optionable (~> 0.2.0)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    mustache (1.0.2)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -364,6 +368,7 @@ DEPENDENCIES
   jquery-rails
   json-schema
   kaminari
+  kindlerb
   mongo
   mongoid (~> 4.0.1)
   mongoid-rspec
