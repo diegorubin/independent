@@ -12,12 +12,21 @@ class KindleBook
   def generate!
     create_structure
     Kindlerb.run(@structure_path, true, 'c1') 
+    @mobi = File.join(@structure_path, file_name + '.mobi')
     true
+  end
+
+  def send_book_to(email)
+    KindleMail.delay.send_book(@mobi, email)
   end
 
   private
   def file_name
     "#{@resource_klass}-#{@slug}"
+  end
+
+  def bookfile
+    file_name + '.mobi'
   end
 
   def create_structure
@@ -74,15 +83,15 @@ class KindleBook
 
   def default_metadata
     {
-      doc_uuid: "kindlerb.#{@resource.id}",
-      title: @resource.title,
-      author: User.find_by(username: @resource.author).name,
-      date: Time.now.strftime("%Y-%m-%d"),
-      publisher: 'Indepedent',
-      subject: 'Article',
-      mobi_outfile: File.join(BOOKS_PATH, 'books', "#{file_name}.mobi"),
-      masthead: File.join(Rails.root.to_s, 'public', @resource.header_image),
-      cover: File.join(Rails.root.to_s, 'public',@resource.image)
+      'doc_uuid' => "kindlerb.#{@resource.id}",
+      'title' => @resource.title,
+      'author' => User.find_by(username: @resource.author).name,
+      'date' => Time.now.strftime("%Y-%m-%d"),
+      'publisher' => 'Indepedent',
+      'subject' => 'Article',
+      'mobi_outfile' => "#{file_name}.mobi",
+      'masthead' => File.join(Rails.root.to_s, 'public', @resource.kindle_cover),
+      'cover' => File.join(Rails.root.to_s, 'public',@resource.kindle_cover)
     }
   end
 
