@@ -8,7 +8,7 @@
   = stylesheet_link_tag 'kindle'
 
 %a#send-kindle{href: '#'}
-  Enviar Para Kindle
+  = image_tag '/images/ereader-icon.png', {id: 'send-kindle-icon'}
 
 - unless flash[:kindle].blank?
   %span.alert

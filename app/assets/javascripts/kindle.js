@@ -1,11 +1,22 @@
 //= require_self
 function Kindle(resource, slug) {
   var _this = this;
+  var closed = true;
 
   _this.init = function() {
     document.getElementById("send-kindle").onclick = function(event) {
       event.preventDefault();
-      _this.getForm();
+
+      var image = document.getElementById("send-kindle-icon");
+
+      if(closed) {
+        _this.getForm();
+        image.setAttribute('src', '/images/ereader-icon-red.png');
+      } else {
+        _this.closeDialog();
+        image.setAttribute('src', '/images/ereader-icon.png');
+      }
+      closed = !closed;
 
     };
   };
@@ -15,6 +26,11 @@ function Kindle(resource, slug) {
     overlay.innerHTML = html;
   };
 
+  _this.closeDialog = function() {
+    var overlay = document.getElementById('overlay-kindle');
+    overlay.innerHTML = '';
+  };
+
   _this.getForm = function() {
 
     var xmlhttp = new XMLHttpRequest();
@@ -22,7 +38,6 @@ function Kindle(resource, slug) {
     
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        console.log(xmlhttp.responseText);
         _this.openDialog(xmlhttp.responseText);
       }
     };
