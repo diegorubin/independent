@@ -93,17 +93,19 @@ class KindleBook
   end
 
   def default_metadata
-    {
+    metadata = {
       'doc_uuid' => "kindlerb.#{@resource.id}",
       'title' => @resource.title,
       'author' => User.find_by(username: @resource.author).name,
       'date' => Time.now.strftime("%Y-%m-%d"),
       'publisher' => 'Indepedent',
       'subject' => 'Article',
-      'mobi_outfile' => "#{file_name}.mobi",
-      'masthead' => File.join(Rails.root.to_s, 'public', @resource.kindle_cover),
-      'cover' => File.join(Rails.root.to_s, 'public',@resource.kindle_cover)
+      'mobi_outfile' => "#{file_name}.mobi"
     }
+    metadata['masthead'] = File.join(Rails.root.to_s, 'public', @resource.kindle_cover) if @resource.kindle_cover
+    metadata['cover'] = File.join(Rails.root.to_s, 'public', @resource.kindle_cover) if @resource.kindle_cover
+
+    metadata
   end
 
 end
