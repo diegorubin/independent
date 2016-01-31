@@ -12,6 +12,7 @@ gem 'delayed_job_mongoid'
 gem 'daemons'
 gem 'newrelic_rpm'
 gem "faraday_middleware"
+gem 'kindlerb', require: true
 
 gem 'jquery-rails'
 
@@ -52,8 +53,6 @@ gem 'nokogiri'
 
 # pdf manipulation
 gem 'rghost'
-
-gem 'kindlerb'
 
 group :development, :test do
   gem 'thin'
