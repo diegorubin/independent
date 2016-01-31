@@ -1,3 +1,5 @@
+require 'kindlerb'
+
 class KindleBook
   include ApplicationHelper
   include ActionView::Context
