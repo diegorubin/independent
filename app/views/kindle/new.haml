@@ -1,0 +1,12 @@
+%h3
+  Enviar artigo para o Kindle
+
+Para que o arquivo possa ser enviado é preciso autorizar o email:
+= ActionMailer::Base.smtp_settings[:user_name]
+
+%form{action: '/kindle', method: 'post'}
+  %label
+    Seu email kindle:
+  %input{type: 'email', placeholder: 'user@kindle.com'}
+  %input#send-kindle-button{type: 'submit'}
+

@@ -1,0 +1,14 @@
+- content_for(:javascript) do
+  = javascript_include_tag 'kindle'
+  %script
+    var kindle = new Kindle();
+    kindle.init();
+
+- content_for(:stylesheet) do
+  = stylesheet_link_tag 'kindle'
+
+%a#send-kindle{href: '#'}
+  Enviar Para Kindle
+
+#overlay-kindle
+
