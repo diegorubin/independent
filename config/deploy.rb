@@ -11,7 +11,9 @@ set :linked_files, %w{
   config/secrets.yml
 }
 
-set :linked_dirs, %w{pids log public/uploads themes uploads node_modules}
+set :linked_dirs, %w{
+  pids log public/uploads themes uploads node_modules kindle
+}
 
 set :unicorn_pid, -> { "#{shared_path}/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{shared_path}/config/unicorn.rb" }

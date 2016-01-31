@@ -1,0 +1,18 @@
+- content_for(:javascript) do
+  = javascript_include_tag 'kindle'
+  %script
+    var kindle = new Kindle('#{resource}', '#{slug}');
+    kindle.init();
+
+- content_for(:stylesheet) do
+  = stylesheet_link_tag 'kindle'
+
+%a#send-kindle{href: '#'}
+  = image_tag '/images/ereader-icon.png', {id: 'send-kindle-icon'}
+
+- unless flash[:kindle].blank?
+  %span.alert
+    = flash[:kindle]
+
+#overlay-kindle
+

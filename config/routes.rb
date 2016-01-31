@@ -55,6 +55,9 @@ Rails.application.routes.draw do
         :as => "gallery", 
         :date => /\d{4}(\/\d{2}){2}/ 
 
+  # Kindle
+  resources :kindle, only: [:new, :create]
+
   # Pages
   get "/pages/:slug" => "pages#show", :as => "page"
 

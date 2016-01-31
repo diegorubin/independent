@@ -117,9 +117,9 @@ describe Post do
 
     let(:post) {FactoryGirl.create(:post, body: 'blablabla[cite "content"]. bla')}
 
-    it 'change citation to link' do
+    it 'change footnote to link' do
       expect(post.body.from_markdown_to_html).to(
-        eql("<p>blablabla<a name='reference-1' href='#citation-1'>[1]</a>. bla</p>\n")
+        eql("<p>blablabla<a name='reference-1' href='#footnote1'>[1]</a>. bla</p>\n")
       )
     end
 

@@ -4,6 +4,8 @@ Rails.application.config.assets.precompile += %w(
 
   gallery.css gallery.js
 
+  kindle.css kindle.js
+
   presentation.css presentation.js
   comments.js
 )

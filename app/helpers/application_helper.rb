@@ -68,7 +68,7 @@ module ApplicationHelper
     content_tag :p  do
       span = content_tag :span  do
         link_to "[#{index+1}]", "#reference-#{index + 1}", 
-          name: "citation-#{index + 1}"
+          name: "footnote#{index + 1}"
       end
       span + " " + raw(item.to_s.gsub(/<\/?p>/,''))
     end

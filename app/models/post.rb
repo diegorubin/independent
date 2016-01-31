@@ -19,6 +19,7 @@ class Post
   field :body,         type: String, default: ''
   field :header_image, type: String
   field :image,        type: String
+  field :kindle_cover, type: String
 
   field :external_js,  type: String
   field :external_css, type: String
@@ -28,6 +29,7 @@ class Post
 
   form_field :image, 'image'
   form_field :header_image, 'image'
+  form_field :kindle_cover, 'image'
 
   embeds_many :comments, as: :commentable
 
