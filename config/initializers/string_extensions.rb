@@ -23,7 +23,7 @@ module StringExtensions
     # Citacao
     r.gsub!(/\[cite ((.|\n)+?)\]/).with_index do |citation, i|
       i += 1
-      "<a name='reference-#{i}' href='#citation-#{i}'>[#{i}]</a>"
+      "<a name='reference-#{i}' href='#footnote#{i}'>[#{i}]</a>"
     end
 
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true)

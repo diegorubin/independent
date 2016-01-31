@@ -1,4 +1,9 @@
 class KindleBook
+  include ApplicationHelper
+  include ActionView::Context
+  include ActionView::Helpers::OutputSafetyHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::UrlHelper 
 
   BOOKS_PATH = "#{Rails.root}/kindle"
 
@@ -79,7 +84,8 @@ class KindleBook
             <title>#{@resource.title}</title>
           </head>
           <body>
-                 #{@resource.body.sanitize.from_markdown_to_html}
+            #{@resource.body.sanitize.from_markdown_to_html}
+            #{render_footnotes @resource.footnotes}
           </body>
         </html>
       })
