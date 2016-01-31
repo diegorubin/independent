@@ -1,5 +1,5 @@
 //= require_self
-function Kindle() {
+function Kindle(resource, slug) {
   var _this = this;
 
   _this.init = function() {
@@ -13,23 +13,12 @@ function Kindle() {
   _this.openDialog = function(html) {
     var overlay = document.getElementById('overlay-kindle');
     overlay.innerHTML = html;
-    _this.setSendButton();
-  };
-
-  _this.setSendButton = function() {
-    var button = document.getElementById('send-kindle-button');
-    button.onclick = function(event) {
-      event.preventDefault();
-    };
-  }
-
-  _this.sendData = function() {
   };
 
   _this.getForm = function() {
 
     var xmlhttp = new XMLHttpRequest();
-    var url = "/kindle/new";
+    var url = "/kindle/new?resource=" + resource + "&slug=" + slug + "&location=" + window.location;
     
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

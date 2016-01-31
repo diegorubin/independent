@@ -4,9 +4,14 @@
 Para que o arquivo possa ser enviado é preciso autorizar o email:
 = ActionMailer::Base.smtp_settings[:user_name]
 
-%form{action: '/kindle', method: 'post'}
+= form_tag('/kindle') do
+
+  = hidden_field_tag 'location', @location
+  = hidden_field_tag 'resource', @resource
+  = hidden_field_tag 'slug', @slug
+
   %label
     Seu email kindle:
-  %input{type: 'email', placeholder: 'user@kindle.com'}
-  %input#send-kindle-button{type: 'submit'}
+  %input{type: 'email', placeholder: 'user@kindle.com', name: 'email'}
+  = submit_tag 'Enviar'
 

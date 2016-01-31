@@ -1,0 +1,15 @@
+pt-BR:
+
+  mailer:
+    kindle:
+      subject: Enviando artigo do Independent
+
+  kindle:
+
+    message:
+      email_blank: É preciso fornecer um email
+
+    mail:
+      header: Email enviado pelo sistema Independent
+      body: O anexo contém um artigo do site
+
