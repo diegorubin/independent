@@ -1,5 +1,6 @@
 var GalleryForm = function() {
   var _this = this;
+  _this.page = 1;
 };
 
 GalleryForm.prototype = new BaseForm();
@@ -14,6 +15,8 @@ GalleryForm.prototype.init = function(form) {
 
   _this.loadAddButton();
   _this.loadDelButton();
+  _this.loadNextButton();
+  _this.loadPreviousButton();
   _this.loadInsertButton();
 
   _this.loadSortable();
@@ -28,6 +31,26 @@ GalleryForm.prototype.loadSortable = function() {
   $('.gallery-content').sortable({
     forcePlaceholderSize: true,
 		placeholderClass: 'gallery-image-container gallery-image-container-ghost'
+  });
+};
+
+GalleryForm.prototype.loadNextButton = function(){
+  var _this = this;
+  $(document).on('click', '.dialog-next', function(event){
+    event.preventDefault();
+    _this.page++;
+    _this.getImages();
+  });
+};
+
+GalleryForm.prototype.loadPreviousButton = function(){
+  var _this = this;
+  $(document).on('click', '.dialog-previous',  function(event){
+    event.preventDefault();
+    if(_this.page > 1) {
+      _this.page--;
+      _this.getImages();
+    }
   });
 };
 
@@ -221,6 +244,7 @@ GalleryForm.prototype.getImages = function() {
   var client = new RestClient('/admin/images');
   client.success = function(data) {
     _this.loadImages(data);
+    $(_this.dialog.find('.dialog-current')).html(_this.page);
   };
   client.call('GET', data);
 
