@@ -1,31 +1,36 @@
 = content_for :title, :title.t(:scope => [:admin, :pages, :index])
 
-%h1= :h1.t(:scope => [:admin, :pages, :index])
+.row
+  .span12
+    .widget
+      .widget-content
 
-= render 'menu'
-
-%table.table.table-striped
-  %thead
-    %tr
-      %td
-        = :title.t(:scope => [:mongoid, :attributes, :page])
-      %td
-        = :published.t(:scope => [:mongoid, :attributes, :page])
-      %td
-        &nbsp;
-
-  %tbody
-    - @pages.each do |page|
-      %tr
-        %td
-          = page.title
-        %td
-          = page.published_str
-        %td
-          .btn-group
-            = menu_button(:edit.t(:scope => [:admin, :pages, :menu]), edit_admin_page_path(page), 'btn-info')
-
-            = menu_button(:destroy.t(:scope => [:admin, :pages, :menu]), admin_page_path(page), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :pages, :destroy])}})
-
-= paginate @pages
+        %h1= :h1.t(:scope => [:admin, :pages, :index])
+        
+        = render 'menu'
+        
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %td
+                = :title.t(:scope => [:mongoid, :attributes, :page])
+              %td
+                = :published.t(:scope => [:mongoid, :attributes, :page])
+              %td
+                &nbsp;
+        
+          %tbody
+            - @pages.each do |page|
+              %tr
+                %td
+                  = page.title
+                %td
+                  = page.published_str
+                %td
+                  .btn-group
+                    = menu_button(:edit.t(:scope => [:admin, :pages, :menu]), edit_admin_page_path(page), 'btn-info')
+        
+                    = menu_button(:destroy.t(:scope => [:admin, :pages, :menu]), admin_page_path(page), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :pages, :destroy])}})
+        
+        = paginate @pages
 

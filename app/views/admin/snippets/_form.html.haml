@@ -1,16 +1,19 @@
-= semantic_form_for([:admin, @snippet], html: {id: 'snippet'}) do |f|
+.row
+  = semantic_form_for([:admin, @snippet], html: {id: 'snippet'}) do |f|
 
-  .row
-    .col-md-8
-      = f.inputs :title, :language, :slug
+    .span8
+      .widget
+        .widget-content
+          = f.inputs :title, :language, :slug
+          = f.input :code, as: 'text'
 
-      = f.input :code, as: 'text'
+    .span4
+      .widget
+        .widget-content
+          .well
+            = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+            = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+            = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
-    .col-md-4
-      .well
-        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-
-        = f.input :public,   :as => :radio,  :collection => [['Sim',true], ['Não', false]]
+            = f.input :public,   :as => :radio,  :collection => [['Sim',true], ['Não', false]]
 

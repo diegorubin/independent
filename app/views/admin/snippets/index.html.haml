@@ -1,35 +1,39 @@
 = content_for :title, :title.t(:scope => [:admin, :snippets, :index])
 
-%h1= :h1.t(:scope => [:admin, :snippets, :index])
-
-= render 'menu'
-
-%table.table.table-striped
-  %thead
-    %tr
-      %td
-        = :title.t(:scope => [:mongoid, :attributes, :snippet])
-      %td
-        = :language.t(:scope => [:mongoid, :attributes, :snippet])
-      %td
-        = :slug.t(:scope => [:mongoid, :attributes, :snippet])
-      %td
-        &nbsp;
-
-  %tbody
-    - @snippets.each do |snippet|
-      %tr
-        %td
-          = snippet.title
-        %td
-          = snippet.language
-        %td
-          = snippet.slug
-        %td
-          .btn-group
-            = menu_button(:edit.t(:scope => [:admin, :snippets, :menu]), edit_admin_snippet_path(snippet), 'btn-info')
-
-            = menu_button(:destroy.t(:scope => [:admin, :snippets, :menu]), admin_snippet_path(snippet), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :snippets, :destroy])}})
-
-= paginate @snippets
+.row
+  .span12
+    .widget
+      .widget-content
+        %h1= :h1.t(:scope => [:admin, :snippets, :index])
+        
+        = render 'menu'
+        
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %td
+                = :title.t(:scope => [:mongoid, :attributes, :snippet])
+              %td
+                = :language.t(:scope => [:mongoid, :attributes, :snippet])
+              %td
+                = :slug.t(:scope => [:mongoid, :attributes, :snippet])
+              %td
+                &nbsp;
+        
+          %tbody
+            - @snippets.each do |snippet|
+              %tr
+                %td
+                  = snippet.title
+                %td
+                  = snippet.language
+                %td
+                  = snippet.slug
+                %td
+                  .btn-group
+                    = menu_button(:edit.t(:scope => [:admin, :snippets, :menu]), edit_admin_snippet_path(snippet), 'btn-info')
+        
+                    = menu_button(:destroy.t(:scope => [:admin, :snippets, :menu]), admin_snippet_path(snippet), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :snippets, :destroy])}})
+        
+        = paginate @snippets
 

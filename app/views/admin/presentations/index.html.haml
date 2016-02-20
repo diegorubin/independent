@@ -1,31 +1,35 @@
 = content_for :title, :title.t(:scope => [:admin, :presentations, :index])
 
-%h1= :h1.t(:scope => [:admin, :presentations, :index])
-
-= render 'menu'
-
-%table.table.table-striped
-  %thead
-    %tr
-      %td
-        = :title.t(:scope => [:mongoid, :attributes, :presentation])
-      %td
-        = :published.t(:scope => [:mongoid, :attributes, :presentation])
-      %td
-        &nbsp;
-
-  %tbody
-    - @presentations.each do |presentation|
-      %tr
-        %td
-          = presentation.title
-        %td
-          = presentation.published_str
-        %td
-          .btn-group
-            = menu_button(:edit.t(:scope => [:admin, :presentations, :menu]), edit_admin_presentation_path(presentation), 'btn-info')
-
-            = menu_button(:destroy.t(:scope => [:admin, :presentations, :menu]), admin_presentation_path(presentation), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :presentations, :destroy])}})
-
-= paginate @presentations
+.row
+  .span12
+    .widget
+      .widget-content
+        %h1= :h1.t(:scope => [:admin, :presentations, :index])
+        
+        = render 'menu'
+        
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %td
+                = :title.t(:scope => [:mongoid, :attributes, :presentation])
+              %td
+                = :published.t(:scope => [:mongoid, :attributes, :presentation])
+              %td
+                &nbsp;
+        
+          %tbody
+            - @presentations.each do |presentation|
+              %tr
+                %td
+                  = presentation.title
+                %td
+                  = presentation.published_str
+                %td
+                  .btn-group
+                    = menu_button(:edit.t(:scope => [:admin, :presentations, :menu]), edit_admin_presentation_path(presentation), 'btn-info')
+        
+                    = menu_button(:destroy.t(:scope => [:admin, :presentations, :menu]), admin_presentation_path(presentation), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :presentations, :destroy])}})
+        
+        = paginate @presentations
 

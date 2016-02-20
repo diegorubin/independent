@@ -1,19 +1,19 @@
-%h2= :sign_in.t(scope: [:login])
 = semantic_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  %h1= :sign_in.t(scope: [:login])
+  .login-fields
+    %p Please provide your details
 
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit :submit.t(scope: [:login])
+    .field
+      %label{:for => "username"} Username
+      = f.label :email
+      = f.email_field :email, autofocus: true, :placeholder => "Username", :class => "login username-field", :id => "username"
 
-= render "devise/shared/links"
+    .field
+      = f.label :password
+      = f.password_field :password, autocomplete: "off", :placeholder => "Password", :class => "login password-field", :id => "password"
 
+  .login-actions
+    %span.login-checkbox
+      = f.check_box :remember_me, :tabindex => "4", :class => "field login-checkbox"
+      = f.label :remember_me, :class => 'choice'
+    = f.submit :submit.t(scope: [:login]), :class => "button btn btn-success btn-large"

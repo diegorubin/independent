@@ -1,15 +1,14 @@
-.well
-  .btn-toolbar{role: "toolbar"}
-  
-    - unless in_action?('new')
-      .btn-group
-        = menu_button(:new.t(:scope => [:admin, :galleries, :menu]), new_admin_gallery_path, 'btn-primary')
-  
-    - unless in_action?('index')
-      .btn-group
-        = menu_button(:list.t(:scope => [:admin, :galleries, :menu]), admin_galleries_path, 'btn-default')
+.btn-toolbar{role: "toolbar"}
 
-    - if in_action?('edit')
-      .btn-group
-        = menu_button(:destroy.t(:scope => [:admin, :galleries, :menu]), admin_gallery_path(params[:id]), 'btn-danger', {method: 'delete', data:{confirm: :confirm.t(:scope => [:admin, :galleries, :destroy])}})
+  - unless in_action?('new')
+    .btn-group
+      = menu_button(:new.t(:scope => [:admin, :galleries, :menu]), new_admin_gallery_path, 'btn-primary')
+
+  - unless in_action?('index')
+    .btn-group
+      = menu_button(:list.t(:scope => [:admin, :galleries, :menu]), admin_galleries_path, 'btn-default')
+
+  - if in_action?('edit')
+    .btn-group
+      = menu_button(:destroy.t(:scope => [:admin, :galleries, :menu]), admin_gallery_path(params[:id]), 'btn-danger', {method: 'delete', data:{confirm: :confirm.t(:scope => [:admin, :galleries, :destroy])}})
 

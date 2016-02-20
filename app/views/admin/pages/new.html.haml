@@ -1,8 +1,11 @@
 = content_for :title, :title.t(:scope => [:admin, :pages, :new])
 
-%h1= :h1.t(:scope => [:admin, :pages, :new])
-
-= render 'menu'
+.row
+  .span12
+    .widget
+      .widget-content
+        %h1= :h1.t(:scope => [:admin, :pages, :new])
+        = render 'menu'
 
 = render 'form'
 

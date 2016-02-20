@@ -1,73 +1,113 @@
 !!!
-%html{:lang => "pt-BR"}
+%html{:lang => "en"}
   %head
-    %title= "#{yield(:title)} | Independent Admin"
-    = stylesheet_link_tag 'admin', media: 'all'
-    %meta{content: Figaro.env.preview_host, name: 'preview_host'}
     = csrf_meta_tags
 
+    %title= "#{yield(:title)} | Independent Admin"
+
+    = stylesheet_link_tag 'admin', media: 'all'
+
+    %meta{content: Figaro.env.preview_host, name: 'preview_host'}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   %body
-    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
-      .container
-        .navbar-header
-          %a.navbar-brand{:href => "#"} Independent
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "/"} Independent
+          .nav-collapse
+            %ul.nav.pull-right
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  %i.icon-cog
+                  Account
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:;"} Help
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  %i.icon-user
+                    = current_user.name
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to t('admin.navbar.logout'), destroy_user_session_path, {method: 'delete'}
+            %form.navbar-search.pull-right
+              %input.search-query{:placeholder => "Search", :type => "text"}/
+
+    .subnavbar
+      .subnavbar-inner
+        .container
+          %ul.mainnav
+
             %li{class: set_active('welcome')}
-              %a{:href => admin_root_path}= :home.t(scope: [:admin, :navebar])
+              %a{:href => "/admin"}
+                %i.icon-dashboard
+                %span Dashboard
 
-            %ul.nav.navbar-nav
-              %li.dropdown
-                %a.dropdown-toggle{href: "#", 'data-toggle' => :dropdown}
-                  = :resources.t(scope: [:admin, :navebar])
-                  %b.caret
-                %ul.dropdown-menu
-                  %li{class: set_active('pages')}
-                    %a{:href => admin_pages_path}= :pages.t(scope: [:admin, :navebar])
-                  %li{class: set_active('posts')}
-                    %a{:href => admin_posts_path}= :posts.t(scope: [:admin, :navebar])
-                  %li{class: set_active('presentations')}
-                    %a{:href => admin_presentations_path}= :presentations.t(scope: [:admin, :navebar])
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-list-alt
+                %span= :resources.t(scope: [:admin, :navebar])
+                %b.caret
+              %ul.dropdown-menu
+                %li{class: set_active('pages')}
+                  = link_to :pages.t(scope: [:admin, :navebar]), admin_pages_path
+                %li{class: set_active('posts')}
+                  = link_to :posts.t(scope: [:admin, :navebar]), admin_posts_path
+                %li{class: set_active('presentations')}
+                  = link_to :presentations.t(scope: [:admin, :navebar]), admin_presentations_path
+                %li{class: set_active('snippets')}
+                  = link_to :snippets.t(scope: [:admin, :navebar]), admin_snippets_path
 
-                  %li{class: set_active('snippets')}
-                    %a{:href => admin_snippets_path}= :snippets.t(scope: [:admin, :navebar])
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-picture
+                %span= :media.t(scope: [:admin, :navebar])
+                %b.caret
+              %ul.dropdown-menu
+                %li{class: set_active('assets')}
+                  = link_to :assets.t(scope: [:admin, :navebar]), admin_assets_path
+                %li{class: set_active('galleries')}
+                  = link_to :galleries.t(scope: [:admin, :navebar]), admin_galleries_path
+                %li{class: set_active('images')}
+                  = link_to :images.t(scope: [:admin, :navebar]), admin_images_path
 
-            %ul.nav.navbar-nav
-              %li.dropdown
-                %a.dropdown-toggle{href: "#", 'data-toggle' => :dropdown}
-                  = :media.t(scope: [:admin, :navebar])
-                  %b.caret
-                %ul.dropdown-menu
-                  %li{class: set_active('assets')}
-                    %a{:href => admin_assets_path}= :assets.t(scope: [:admin, :navebar])
-                  %li{class: set_active('galleries')}
-                    %a{:href => admin_galleries_path}= :galleries.t(scope: [:admin, :navebar])
-                  %li{class: set_active('images')}
-                    %a{:href => admin_images_path}= :images.t(scope: [:admin, :navebar])
-            %li{class: set_active('themes')}
-              %a{:href => admin_themes_path}= :themes.t(scope: [:admin, :navebar])
-            %li{class: set_active('widgets')}
-              %a{:href => admin_widgets_path}= :widgets.t(scope: [:admin, :navebar])
-            %li{class: set_active('settings')}
-              %a{:href => admin_settings_path}= :settings.t(scope: [:admin, :navebar])
-            %ul.nav.navbar-nav.navbar-right
-              %li.dropdown
-                %a.dropdown-toggle{href: "#", 'data-toggle' => :dropdown}
-                  Usuário
-                  %b.caret
-                %ul.dropdown-menu
-                  %li.divider
-                    %li=link_to(:users.t(scope: [:admin, :navebar]), admin_users_path)
-                    %li=link_to(:api_keys.t(scope: [:admin, :navebar]), admin_api_keys_path)
-                    %li=link_to(:commentators.t(scope: [:admin, :navebar]), admin_commentators_path)
-                    %li=link_to(:logout.t(scope: [:admin, :navebar]), destroy_user_session_path, {method: 'delete'})
-        / /.nav-collapse
-    .container
-      .starter-template
-        = yield
-    / /.container
+    .main
+      .main-inner
+        .container
+          = yield
+
     = render 'admin/shared/modal'
+    .extra
+      .extra-inner
+        .container
+          .row
+            .span3
+              %h4
+                Independent
+              %ul
+                %li
+                  %a{:href => "javascript:;"} Independent
+    .footer
+      .footer-inner
+        .container
+          .row
+            .span12
+              © 2013
+              = succeed "." do
+                %a{:href => "http://www.egrappler.com/"} Bootstrap Responsive Admin Template
 
-  = javascript_include_tag 'admin'
-  = javascript_translates
+    = javascript_include_tag 'admin'
+    = javascript_translates
 

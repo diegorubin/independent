@@ -1,7 +1,8 @@
 class User
   include Mongoid::Document
 
-  devise :database_authenticatable, :recoverable, :trackable
+  devise :database_authenticatable, :recoverable, :trackable,
+    :rememberable
 
   # Attributes
   field :email,              type: String
@@ -18,6 +19,7 @@ class User
   field :current_sign_in_ip,     type: String
   field :last_sign_in_ip,        type: String
   field :sign_in_count,          type: Integer
+  field :remember_created_at,    type: DateTime
 
   # Validations
   validates :username, presence: true, uniqueness: true

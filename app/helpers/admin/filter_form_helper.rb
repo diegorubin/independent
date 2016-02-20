@@ -22,7 +22,6 @@ module Admin::FilterFormHelper
     content_tag('div', {class: 'filter-field'}) do
       text = name.to_sym.t(:scope => [:mongoid, :attributes, s])
       label_tag("filters_#{name}", text) << 
-      ": " <<
       text_field_tag("filters[#{name}]", params.fetch(:filters, {})[name])
     end
   end
@@ -41,7 +40,6 @@ module Admin::FilterFormHelper
       content << content_tag('div', {class: 'filter-field'}) do
         text = field.to_sym.t(:scope => [:mongoid, :attributes, s])
         label_tag("filters_#{field}", text) << 
-        ": " <<
         text_field_tag("filters[#{field}]", params.fetch(:filters, {})[field], class: 'datetime-filter')
       end
     end
@@ -49,3 +47,4 @@ module Admin::FilterFormHelper
   end
 
 end
+

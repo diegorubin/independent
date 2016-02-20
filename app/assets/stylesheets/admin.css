@@ -1,18 +1,21 @@
 /*
- *= require bootstrap
- *= require bootstrap-tagsinput
+ *= require admin/bootstrap.min
+ *= require admin/bootstrap-responsive.min
+ *= require admin/components
+ *= require admin/dashboard
+ *= require admin/faq
+ *= require admin/font-awesome
+ *= require admin/gallery
+ *= require admin/plans
+ *= require admin/reports
+ *= require admin/style
+
  *= require bootstrap-toggle
  *= require codemirror
-
- *= require admin/components
- *= require admin/gallery
-
+ *= require bootstrap-tagsinput
  *= require formtastic-bootstrap
+ *= require_self 
  */
-
-body {
-  padding-top: 50px;
-}
 
 /* list resources */
 table.table tr td img {max-width: 466px;}

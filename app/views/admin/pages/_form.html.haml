@@ -1,34 +1,38 @@
-- preview_session = generate_preview_session
-= semantic_form_for([:admin, @page], 
-  html: {id: 'page', data: {'preview-session' => preview_session}}) do |f|
-
-  .row
-    #main-column.col-md-8
-      %div{data:{'focus-mode' => 'off'}}
-        = f.inputs :title, :slug
-
-      %div.hidden{data:{'focus-mode' => 'on'}}
-        - unless @page.new_record?
-          = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
-          .clear
-      %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
-      = f.input :body, as: 'text'
-
-    .col-md-4{data:{'focus-mode' => 'off'}}
-      .well
-        %p
-          = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-          = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-          = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-
-        %p
-          - unless @page.new_record?
-            = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
-          = menu_button(:show.t(:scope => [:admin, :pages, :menu]), admin_page_path((@page.new_record? ? 'preview' : @page.id), preview_session: preview_session), 'btn-info', target: 'blank')
-
-        = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
-
-        = f.inputs :external_js, :external_css
-
-      = render "admin/shared/markdown_table"
-
+.row
+  - preview_session = generate_preview_session
+  = semantic_form_for([:admin, @page], 
+    html: {id: 'page', data: {'preview-session' => preview_session}}) do |f|
+  
+    #main-column.span8
+      .widget
+        .widget-content
+          %div{data:{'focus-mode' => 'off'}}
+            = f.inputs :title, :slug
+  
+          %div.hidden{data:{'focus-mode' => 'on'}}
+            - unless @page.new_record?
+              = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
+              .clear
+          %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
+          = f.input :body, as: 'text'
+  
+    .span4{data:{'focus-mode' => 'off'}}
+      .widget
+        .widget-content
+          .well
+            %p
+              = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+              = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+              = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+  
+            %p
+              - unless @page.new_record?
+                = menu_button(:save_and_continue.t(:scope => [:admin, :posts, :menu]), "#", 'btn-primary save-and-continue')
+              = menu_button(:show.t(:scope => [:admin, :pages, :menu]), admin_page_path((@page.new_record? ? 'preview' : @page.id), preview_session: preview_session), 'btn-info', target: 'blank')
+  
+            = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
+  
+            = f.inputs :external_js, :external_css
+  
+          = render "admin/shared/markdown_table"
+  

@@ -1,12 +1,35 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %title Login - Bootstrap Admin Template
+
     %title Login | Independent
-    = stylesheet_link_tag    'login', media: 'all'
     = csrf_meta_tags
+    = stylesheet_link_tag    'login', media: 'all'
+
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600", :rel => "stylesheet"}/
   %body
-    .container
-      .login-wrap
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "#"}
+            Independent
+          .nav-collapse
+            %ul.nav.pull-right
+              %li
+                %a{:href => "/"}
+                  %i.icon-chevron-left
+                  Back to Homepage
+    .account-container
+      .content.clearfix
 
         - if flash[:notice]
           .alert.alert-success=flash[:notice]

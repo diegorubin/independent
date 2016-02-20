@@ -1,48 +1,53 @@
 = content_for :title, :title.t(:scope => [:admin, :posts, :index])
 
-%h1= :h1.t(:scope => [:admin, :posts, :index])
+.row
+  .span12
+    .widget
+      .widget-content
 
-= render 'menu'
+        %h1= :h1.t(:scope => [:admin, :posts, :index])
+        
+        = render 'menu'
 
-.well
-  = render_filters_form(Post)
-
-%table.table.table-striped
-  %thead
-    %tr
-      %td
-        = :title.t(:scope => [:mongoid, :attributes, :post])
-      %td
-        = :category.t(:scope => [:mongoid, :attributes, :post])
-      %td
-        = :resume.t(:scope => [:mongoid, :attributes, :post])
-      %td
-        = :author.t(:scope => [:mongoid, :attributes, :post])
-      %td
-        = :published.t(:scope => [:mongoid, :attributes, :post])
-      %td
-        &nbsp;
-
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td
-          = post.title
-        %td
-          = post.category
-        %td
-          = raw post.resume.from_markdown_to_html
-        %td
-          = post.author
-        %td
-          = post.published_str
-        %td
-          .btn-group
-            = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-info')
-
-            = menu_button(:edit.t(:scope => [:admin, :posts, :menu]), edit_admin_post_path(post), 'btn-info')
-
-            = menu_button(:destroy.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :posts, :destroy])}})
-
-= paginate @posts
-
+        .well
+          = render_filters_form(Post)
+        
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %td
+                = :title.t(:scope => [:mongoid, :attributes, :post])
+              %td
+                = :category.t(:scope => [:mongoid, :attributes, :post])
+              %td
+                = :resume.t(:scope => [:mongoid, :attributes, :post])
+              %td
+                = :author.t(:scope => [:mongoid, :attributes, :post])
+              %td
+                = :published.t(:scope => [:mongoid, :attributes, :post])
+              %td
+                &nbsp;
+        
+          %tbody
+            - @posts.each do |post|
+              %tr
+                %td
+                  = post.title
+                %td
+                  = post.category
+                %td
+                  = raw post.resume.from_markdown_to_html
+                %td
+                  = post.author
+                %td
+                  = post.published_str
+                %td
+                  .btn-group
+                    = menu_button(:show.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-info')
+        
+                    = menu_button(:edit.t(:scope => [:admin, :posts, :menu]), edit_admin_post_path(post), 'btn-info')
+        
+                    = menu_button(:destroy.t(:scope => [:admin, :posts, :menu]), admin_post_path(post), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :posts, :destroy])}})
+        
+        = paginate @posts
+    

@@ -1,22 +1,25 @@
-= semantic_form_for([:admin, @presentation]) do |f|
+.row
+  = semantic_form_for([:admin, @presentation]) do |f|
+    .span8
+      .widget
+        .widget-content
+          = f.inputs :title, :slug, :author, :category
 
-  .row
-    .col-md-8
-      = f.inputs :title, :slug, :author, :category
+          = f.input :tags, input_html: {'data-role' => 'tagsinput'}
 
-      = f.input :tags, input_html: {'data-role' => 'tagsinput'}
+          = f.input :resume, as: 'text', input_html: {class: 'short-text'}
 
-      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+          = f.input :file, as: 'file'
 
-      = f.input :file, as: 'file'
+    .span4
+      .widget
+        .widget-content
+          .well
+            = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+            = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+            = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
-    .col-md-4
-      .well
-        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-        = f.action :reset, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
-        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+            = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
 
-        = f.input :published,   :as => :radio,  :collection => [['Publicado',true], ['Rascunho', false]]
-
-      = render "admin/shared/markdown_table"
+          = render "admin/shared/markdown_table"
 
