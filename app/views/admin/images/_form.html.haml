@@ -1,12 +1,12 @@
 = semantic_form_for([:admin, @image]) do |f|
 
   .row
-    .col-md-8
+    .span8
       = f.inputs :title, :slug
       = f.input :tags, input_html: {'data-role' => 'tagsinput'}
       = f.input :file
 
-    .col-md-4
+    .span4
       .well
         = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
         = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
