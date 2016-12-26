@@ -11,7 +11,7 @@ default: &default
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - <%= ENV['INDEPENDENT_MONGODB_HOST'] || 'localhost:21017' %>
+        - <%= ENV['INDEPENDENT_MONGODB_HOST'] || 'localhost:27017' %>
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
@@ -76,7 +76,7 @@ development:
     default:
       database: <%= ENV['INDEPENDENT_MONGODB_DATABASE'] || 'independent_development' %>
       hosts:
-        - <%= ENV['INDEPENDENT_MONGODB_HOST'] || 'localhost:21017' %>
+        - <%= ENV['INDEPENDENT_MONGODB_HOST'] || 'localhost:27017' %>
 
 production:
   <<: *default

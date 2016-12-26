@@ -10,29 +10,25 @@ RUN gem install bundler
 RUN mkdir /application
 RUN mkdir /application/kindle
 RUN mkdir /application/log
-
-# copy directories
-ADD app /application/app
-ADD bin /application/bin
-ADD config /application/config
-ADD lib /application/lib
-ADD public /application/public
-ADD widgets /application/widgets
-
-# copy config files
-ADD config.ru /application/config.ru
-ADD Gemfile /application/Gemfile
-ADD Gemfile.lock /application/Gemfile.lock
-ADD Rakefile /application/Rakefile
-
 WORKDIR /application
 
 # install gems
+ADD Gemfile /application/Gemfile
+ADD Gemfile.lock /application/Gemfile.lock
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle install --without development test
 
-# compile assets
-RUN rake assets:precompile
+# copy config files
+ADD config.ru /application/config.ru
+ADD Rakefile /application/Rakefile
+
+# copy directories
+ADD bin /application/bin
+ADD public /application/public
+ADD widgets /application/widgets
+ADD lib /application/lib
+ADD config /application/config
+ADD app /application/app
 
 CMD rails server
 
