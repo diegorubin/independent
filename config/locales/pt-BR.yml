@@ -269,6 +269,7 @@ pt-BR:
   footnotes: Notas
 
   login:
+    create_admin_user: Criar um adminstrador
     sign_in: Entrar
     submit: Entrar
 

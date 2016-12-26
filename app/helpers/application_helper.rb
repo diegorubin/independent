@@ -62,6 +62,10 @@ module ApplicationHelper
     raw(result)
   end
 
+  def admin_exists?
+    User.count > 0
+  end
+
   private
 
   def render_footnotes_item(item, index)

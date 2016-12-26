@@ -16,4 +16,7 @@
   %div= f.submit :submit.t(scope: [:login])
 
 = render "devise/shared/links"
+- unless admin_exists?
+  = link_to :create_admin_user.t(scope: [:login]), new_admin_user_path
+
 
