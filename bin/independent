@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rake assets:precompile;
+puma &
+
+tail -f log/$RAILS_ENV.log
+

@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'spring',        group: :development
 
 gem 'unicorn'
+gem 'puma'
 
 # file upload
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'

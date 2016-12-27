@@ -30,7 +30,7 @@ ADD lib /application/lib
 ADD config /application/config
 ADD app /application/app
 
-CMD rails server
+CMD bin/independent
 
-EXPOSE 3000
+EXPOSE 9292
 
