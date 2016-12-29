@@ -1,7 +1,8 @@
 #!/bin/bash
 
 rake assets:precompile;
-puma &
+puma -p $INDEPENDENT_PORT &
+rake jobs:work &
 
 tail -f log/$RAILS_ENV.log
 

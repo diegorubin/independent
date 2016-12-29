@@ -3,7 +3,7 @@ MAINTAINER rubin.diego@gmail.com
 
 # dependences
 RUN dnf -y install ruby ruby-devel make gcc redhat-rpm-config \
-  ImageMagick-devel libxml2-devel libxslt-devel nodejs
+  ImageMagick-devel libxml2-devel libxslt-devel nodejs tar
 RUN gem install bundler
 
 # make directories
@@ -17,6 +17,10 @@ ADD Gemfile /application/Gemfile
 ADD Gemfile.lock /application/Gemfile.lock
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle install --without development test
+
+# install kindlerb
+RUN bundle binstubs kindlerb --force
+RUN bin/setupkindlerb
 
 # copy config files
 ADD config.ru /application/config.ru
