@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rake assets:precompile;
+node_modules/.bin/forever lib/node/preview/server.js &
 puma -p $INDEPENDENT_PORT &
 rake jobs:work &
 

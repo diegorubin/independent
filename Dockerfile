@@ -12,6 +12,10 @@ RUN mkdir /application/kindle
 RUN mkdir /application/log
 WORKDIR /application
 
+# dependences for preview websocket server
+ADD package.json /application/package.json
+RUN npm install
+
 # install gems
 ADD Gemfile /application/Gemfile
 ADD Gemfile.lock /application/Gemfile.lock

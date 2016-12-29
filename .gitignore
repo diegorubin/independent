@@ -33,6 +33,5 @@ node_modules
 /themes
 
 # Ignore application configuration
-/config/application.yml
 /config/initializers/setup_mail.rb
 

@@ -1,0 +1,13 @@
+default: &default_settings
+  preview_host: <%= ENV['PREVIEW_HOST'] || 'ws://diegorubin.com:8080' %>
+  spellchecker_entrypoint: <%= ENV['SPELLCHECKER_HOST'] || 'http://localhost:8084' %>
+
+test:
+  <<: *default_settings
+
+development:
+  <<: *default_settings
+
+production:
+  <<: *default_settings
+
