@@ -1,34 +1,33 @@
 = semantic_form_for([:admin, @gallery], html: {id: 'gallery'}) do |f|
 
   .row
-    .col-md-8
-      = f.inputs :title, :slug
+    .span8
+      .widget
+        .widget-content
+          = f.inputs :title, :slug
 
-      = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+          = f.input :resume, as: 'text', input_html: {class: 'short-text'}
 
+          %a.btn.gallery-add-button{href: '#'}
+            %span.glyphicon.glyphicon-plus{'aria-hidden' => true}
+            = :add.t(scope: [:admin, :forms, :gallery])
 
+          .gallery-content
 
-    .col-md-4
-      .well
-        = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
-        = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
+            = f.fields_for :items do |item|
+              = render 'template_gallery_image', {item: item}
 
-        = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
+    .span4
+      .widget
+        .widget-content
+          .well
+            = f.action :submit, :button_html => { :class => "btn btn-primary", :disable_with => '...' }
+            = f.action :cancel, :button_html => { :class => "btn btn-danger", :disable_with => '...' }
 
-        = f.inputs :author, :category
-        = f.input :tags, input_html: {data: {role: 'tagsinput'}}
+            = f.input :published,   :as => :radio,  :collection => [['Público',true], ['Privado', false]]
 
-  .row
-    .col-md-12
-      %a.btn.gallery-add-button{href: '#'}
-        %span.glyphicon.glyphicon-plus{'aria-hidden' => true}
-        = :add.t(scope: [:admin, :forms, :gallery])
-
-      .gallery-content
-
-        = f.fields_for :items do |item|
-          = render 'template_gallery_image', {item: item}
-
+            = f.inputs :author, :category
+            = f.input :tags, input_html: {data: {role: 'tagsinput'}}
 
   #gallery-dialog
 

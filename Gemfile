@@ -18,7 +18,7 @@ gem 'jquery-rails'
 
 gem 'spring',        group: :development
 
-gem 'unicorn'
+gem 'puma'
 
 # file upload
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
@@ -55,8 +55,6 @@ gem 'nokogiri'
 gem 'rghost'
 
 group :development, :test do
-  gem 'thin'
-
   gem 'capistrano', '3.2.1'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
