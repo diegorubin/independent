@@ -5,6 +5,8 @@ Independent CMS Blog
 
 ## Usage With Docker
 
+The image can be found in [Docker Hub](https://hub.docker.com/r/diegorubin/independent/) as `diegorubin/independent`.
+
 ### Volumes
 
 | Container Path              | Description                                         |
