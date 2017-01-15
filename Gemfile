@@ -53,13 +53,19 @@ gem 'nokogiri'
 gem 'rghost'
 
 group :development, :test do
+  # web application and reload
   gem 'spring'
   gem 'thin'
 
+  # debugger
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 
+  # unit tests
   gem 'rspec-rails'
   gem 'rspec-expectations'
   gem 'mongoid-rspec'
@@ -70,17 +76,11 @@ group :development, :test do
   gem 'simplecov-rcov'
   gem 'guard'
   gem 'guard-rspec'
-
-  gem 'vcr'
-
-  gem 'pry'
-  gem 'pry-rails'
-  gem 'pry-byebug'
-
-  gem 'quiet_assets'
-
+  gem 'coveralls', require: false
   gem 'database_cleaner'
 
-  gem 'coveralls', require: false
+  # assets pipeline
+  gem 'quiet_assets'
+
 end
 
