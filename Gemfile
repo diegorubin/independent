@@ -14,11 +14,7 @@ gem 'newrelic_rpm'
 gem "faraday_middleware"
 gem 'kindlerb', require: true
 
-gem 'jquery-rails'
-
-gem 'spring',        group: :development
-
-gem 'unicorn'
+# web server
 gem 'puma'
 
 # file upload
@@ -45,6 +41,7 @@ gem 'formtastic', '2.2.1'
 gem 'formtastic-bootstrap', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'rest_in_place', '~> 2.5.0'
+gem 'jquery-rails'
 
 # javascript dependences control
 gem 'bower-rails'
@@ -56,12 +53,8 @@ gem 'nokogiri'
 gem 'rghost'
 
 group :development, :test do
+  gem 'spring'
   gem 'thin'
-
-  gem 'capistrano', '3.2.1'
-  gem 'capistrano-rails'
-  gem 'capistrano-rvm'
-  gem 'capistrano3-unicorn'
 
   gem 'byebug'
   gem 'better_errors'
