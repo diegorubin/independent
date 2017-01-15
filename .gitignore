@@ -17,8 +17,6 @@ node_modules
 /log/*.log
 /tmp
 
-/config/database.yml
-/config/mongoid.yml
 /config/redis.yml
 
 /config/deploy
@@ -31,7 +29,4 @@ node_modules
 /uploads
 
 /themes
-
-# Ignore application configuration
-/config/initializers/setup_mail.rb
 
