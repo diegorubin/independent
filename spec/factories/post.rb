@@ -2,12 +2,17 @@ FactoryGirl.define do
 
   factory :post do
     title {(0..5).map{('a'..'z').to_a[rand(26)]}.join }
-    body "Apenas um corpo"
-    author 'autor'
-    category 'categoria'
+    body 'a simple body'
+    author 'author'
+    category 'category'
 
     factory :post_invalid do
-      body ""
+      body ''
+    end
+
+    factory :simple_post do
+      title 'Simple post'
+      published true
     end
   end
 
