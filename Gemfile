@@ -79,6 +79,12 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'database_cleaner'
 
+  # acceptance tests - used to validate new theme
+  gem 'cucumber-rails', require: false
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+
   # assets pipeline
   gem 'quiet_assets'
 
