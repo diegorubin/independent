@@ -27,5 +27,8 @@ describe SettingsHelper, type: :helper do
 
   end
 
+  context 'on check feature' do
+  end
+
 end
 

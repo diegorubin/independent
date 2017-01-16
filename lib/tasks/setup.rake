@@ -5,13 +5,19 @@ namespace :setup do
   desc 'Install Settings'
   task :settings => :environment do
     global = {
-      :system => ['current_theme', 'meta_description', 'meta_author', 'blog_title', 'analytics_code']
+      :features => [
+        'comments'
+      ],
+      :system => [
+        'current_theme', 'meta_description', 'meta_author', 
+        'blog_title', 'analytics_code'
+      ]
     }
     
     default = {
       :header => ['title', 'subtitle']
     }
-    
+
     global.each do |category, settings|
       settings.each do |setting|
         Setting.create(title: setting, category: category, theme: 'global')

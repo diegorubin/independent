@@ -1,8 +1,6 @@
 - unless @comment
   %h3.reply-title
-    Novo comentário
-
-- @comment ||= Comment.new
+    = :new.t(scope: [:site, :comments, :create])
 
 .comment-wrap
   = semantic_form_for(@comment) do |f|
