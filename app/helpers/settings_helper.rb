@@ -12,5 +12,8 @@ module SettingsHelper
     get_setting_value('global.current_theme')
   end
 
+  def feature_enabled?(feature)
+  end
+
 end
 

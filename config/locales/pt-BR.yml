@@ -281,6 +281,14 @@ pt-BR:
       'true': Publicado
       'false': Rascunho
 
+  site:
+    comments:
+      create:
+        new: Novo Comentário
+        success:
+          title: Comentário enviado com sucesso.
+          description: Seu comentário foi enviado com sucesso e está aguardando moderação. Assim que o mesmo for aprovado será exibido nesta página.
+
   will_paginate:
     previous_label: Anterior
     next_label: Próxima
