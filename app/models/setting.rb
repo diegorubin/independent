@@ -31,5 +31,11 @@ class Setting
     Setting.where({theme: 'global', title: 'current_theme'}).first.try(:value)
   end
 
+  def self.features
+    settings = {}
+    Setting.where({category: 'feature'}).each {|s| settings[s.title] = s.value }
+    settings
+  end
+
 end
 

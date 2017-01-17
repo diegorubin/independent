@@ -28,6 +28,23 @@ describe SettingsHelper, type: :helper do
   end
 
   context 'on check feature' do
+    before(:each) do
+      Setting.destroy_all
+      FactoryGirl.create(
+        :setting, theme: 'global', category: 'feature', title: 'feature_enabled', value: 'enabled'
+      )
+      FactoryGirl.create(
+        :setting, theme: 'global', category: 'feature', title: 'feature_disabled', value: ''
+      )
+    end
+
+    it 'return true if enabled' do
+      expect(helper.feature_enabled?('feature_enabled')).to be_truthy
+    end
+
+    it 'return false if has another value' do
+      expect(helper.feature_enabled?('feature_disabled')).to be_falsey
+    end
   end
 
 end
