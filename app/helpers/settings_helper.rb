@@ -13,6 +13,8 @@ module SettingsHelper
   end
 
   def feature_enabled?(feature)
+    features = Setting.features
+    features[feature] == 'enabled'
   end
 
 end
