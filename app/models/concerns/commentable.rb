@@ -34,8 +34,14 @@ module Commentable
     embeds_many :comments, :as => :commentable
 
     def self.unpublished_comments
-      with(collection: self.name.underscore.pluralize)
-        .map_reduce(MAP_FUNCTION, REDUCE_FUNCTION).out(inline: 1)
+      begin
+        with(collection: self.name.underscore.pluralize)
+          .map_reduce(MAP_FUNCTION, REDUCE_FUNCTION)
+          .out(inline: 1)
+          .to_a
+      rescue Moped::Errors::OperationFailure
+        []
+      end
     end
   end
 
