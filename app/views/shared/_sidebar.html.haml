@@ -1,0 +1,42 @@
+.col-md-3.visible-lg.visible-md
+  .primary-sidebar.info.sidebar
+    #search-2.widget.widget_search
+      %form.search-form{:action => "/", :method => "get", :role => "search"}
+        %label
+          %span.screen-reader-text Buscar por:
+          %input.search-field{:name => "s", :placeholder => "Search ...", :title => "Search for:", :type => "search", :value => params[:s]}/
+        %input.search-submit{:type => "submit", :value => "Search"}/
+
+    - icon_list = IconList.first
+    - if icon_list.icons.count > 0
+      #widget-1.widget.widget_icons
+        %ul.icon-list
+          - icon_list.icons.each do |icon|
+            %li.icon
+              = link_to image_tag(icon.icon), icon.url, {target: '_blank'}
+        .clear
+
+    - link_list = LinkList.first
+    - if link_list.links.count > 0
+      #widget-1.widget.widget_links
+        %h4.widget-title= link_list.title
+        %ul
+          - link_list.links.each do |link|
+            %li.cat-item
+              = link_to link.description, link.url, {target: '_blank'}
+
+    #recent-posts-2.widget.widget_recent_entries
+      %h4.widget-title Últimos Artigos
+      %ul
+        - Post.publisheds.order([['published_at', 'desc']]).limit(5).each do |post|
+          %li
+            = link_to post.title, post_path(post.date, post.slug).gsub('%2F', '/')
+
+    #categories-2.widget.widget_categories
+      %h4.widget-title Categorias
+      %ul
+        %li.cat-item
+          = link_to "Computação", category_path('Computação')
+        %li.cat-item
+          = link_to "Pessoal", category_path('Pessoal')
+

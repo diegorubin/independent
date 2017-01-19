@@ -65,6 +65,20 @@ describe PostsController, type: :controller do
 
     end
 
+    context 'use widgets' do
+
+      let!(:html_container) {FactoryGirl.create(:html_container)}
+
+      before(:each) do
+
+        it 'assign widgets for page' do
+          get 'show', date: published.date, slug: published.slug
+          expect(assings(:html_container)).to eql(html_container)
+        end
+        
+      end
+    end
+
   end
 
 end

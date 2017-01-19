@@ -1,0 +1,29 @@
+.col-sm-3.meta.info.hidden-xs
+  %a{:href => item_path(item), :rel => "bookmark", :title => item.title}
+    %span.metaicon{"data-icon" => ""}
+  %hr.metaline/
+  .additional-meta
+    .meta-post
+      %a{:href => page_path(slug: item.author || 'preview')}
+        %span.info-icon{"data-icon" => ""}>
+        = item.author
+    .meta-post
+      %a{:href => date_path(item.date || '0000/00/00').gsub('%2F', '/'), :rel => "bookmark", :title => item.title}
+        %span.info-icon{"data-icon" => ""}>
+        = l item.published_at || Time.now, format: :long
+    .meta-post
+      %a{:href => item_path(item, anchor: 'comments'), :rel => "bookmark", :title => "comentários"}
+        %span.info-icon{"data-icon" => ""}>
+        #{item.number_of_comments} comentários
+    .meta-post
+      Categoria:
+      %ul.post-categories
+        %li{'data-preview-attribute' => 'post_category'}
+          = link_to item.category, category_path(item.category || 'preview')
+    .meta-post
+      Tags:
+      %ul.post-categories
+        - (item.tags || '').split(',').sort.each do |tag|
+          %li
+            = link_to tag, tag_path(tag)
+

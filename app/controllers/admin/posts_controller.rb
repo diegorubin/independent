@@ -1,6 +1,9 @@
 class Admin::PostsController < Admin::BaseController
+  include WidgetsRecover
 
   prepend_before_filter :prepend_view_paths, only: [:show]
+
+  before_filter :widgets, only: [:show]
 
   def new
     super

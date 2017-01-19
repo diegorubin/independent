@@ -1,31 +1,33 @@
 - if nivel == 0
-  #comments
-    %h3.reply-title
-      Comentários
+  #comments.comments-area
+    .row
+      .col-md-8.col-md-offset-2.col-xs-offset-1.col-xs-10
+        .comments-title
+          .comments-title
+            Comentários  
 
-%ul.comments
-  - comments.each do |comment|
-    - if !comment.removed && (comment.published || user_signed_in?)
-      %li{:class => "comment well"}
-        = hidden_field_tag "comment-id", comment.id
-        .comment-header
-          %div{:class => "left comment-image"}
-            = image_tag comment.gravatar_url 
-          %p
-            %i
-              = render_name comment.name, comment.site, comment.email
-            disse:
-          %p
-            = I18n.localize(comment.created_at, :format => :long)
-  
-        .comment-body
-          = render_comment comment.body
-  
-        .respond-options
-          - if user_signed_in?
-            = link_to "Remover Comentário", "#", :class => "red remove_comment"
-  
-          .comment-form
-  
-        = render 'comments/list', {nivel: nivel + 1, comments: comment.child_comments}
+  .commentlist.comment-content
+                
+      
+- comments.each do |comment|
+  - if !comment.removed && (comment.published || user_signed_in?)
+    .comment.row.new-comment.even.thread-even{class: "depth-#{nivel + 1}"}
+      .li-comment-2
+        .meta.col-sm-3.info
+          %div{id: "comment-#{comment.id}"}
+            .comment-author.vcard
+              .meta-item.hidden-xs
+                = image_tag comment.gravatar_url, class: "author_gravatar img-circle avatar-48 photo", width: 48, height: 48
+              .meta-item
+                %span.info-icon{'data-icon' => ""}
+                  = render_name comment.name, comment.site, comment.email
+              .hidden-xs
+                .meta-item
+                  %span.info-icon{'data-icon' => ""}= link_to I18n.localize(comment.created_at, :format => :long), "comment-#{comment.id}"
+
+        .comment-content.col-sm-9
+          %div{id: "comment-content-#{comment.id}"}
+            = render_comment comment.body
+
+    = render 'comments/list', {nivel: nivel + 1, comments: comment.child_comments}
   

@@ -33,7 +33,7 @@ class Setting
 
   def self.features
     settings = {}
-    Setting.where({category: 'feature'}).each {|s| settings[s.title] = s.value }
+    Setting.where({category: 'features'}).each {|s| settings[s.title] = s.value }
     settings
   end
 

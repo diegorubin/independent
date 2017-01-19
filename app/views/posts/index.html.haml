@@ -1,5 +1,24 @@
-- @posts.each do |post|
-  %h1=link_to post.title, post_path(post.date, post.slug)
-  %p
-    =post.resume
+
+- content_for(:title, 'Artigos')
+
+.row
+  .col-md-9.indexpage
+    - @posts.each do |post|
+      %div.post.type-post.status-publish.format-standard.hentry.row.post-roll{id: "post-#{post.id}"}
+        = render 'shared/details', item: post
+        .col-sm-9.content.format-
+          %h2.entry-title
+            = link_to post.title, post_path(post.date, post.slug).gsub('%2F', '/'), {rel: "bookmark", title: post.title} 
+          .entry
+            = raw(post.resume.from_markdown_to_html)
+            %p
+              %a.more-link{:href => post_path(post.date, post.slug).gsub('%2F', '/')}
+                Ver o artigo
+                %span.glyphicon.glyphicon-chevron-right
+
+    .col-sm-3.meta.info.hidden-xs
+    .col-sm-9.content.format-
+      = paginate @posts
+
+  = render 'shared/sidebar'
 

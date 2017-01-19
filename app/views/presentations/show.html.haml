@@ -1,5 +1,67 @@
 - content_for(:title, @presentation.title)
 
-%h1= @presentation.title
+- content_for(:javascript) do
+  = javascript_include_tag 'presentation'
 
+- content_for(:stylesheet) do
+  = stylesheet_link_tag 'presentation'
+
+.row
+  .col-md-9.indexpage
+    %div.presentation.type-presentation.status-publish.format-standard.hentry.row.presentation-roll{id: "presentation-#{@presentation.id}"}
+      = render 'shared/details', item: @presentation
+      .col-sm-9.content.format-
+        %h2.entry-title
+          = @presentation.title
+        .entry
+          #presentation
+            = hidden_field_tag :pid, @presentation.id
+            .presentation-nav
+              %div{:class => "prevSlide" }
+              %div{:class => "nextSlide" }
+          
+          #loading-bar
+            #loading-current
+          
+          #pmenu
+            .commands
+              = link_to "Anterior", "#", {:id => "mPrevSlide",
+                                          :class => "prevSlide"}
+          
+              = link_to "Próximo", "#",  {:id => "mNextSlide",
+                                          :class => "nextSlide"}
+          
+            %a{:class => "download", 
+               :title => "Baixar apresentação em pdf",
+               :href => @presentation.file.url}
+              .download-presentation
+                &nbsp;
+          
+            %a{:href => "#", :title => "Exibiar em Tela Cheia"}
+              .fullscreen-button
+                &nbsp;
+          
+            .pages
+              #slide-loading.hidden
+              %span#current_page
+              = "/"
+              %span#last_page
+                = @presentation.slides.size
+
+          = render 'comments/form', {content_id: @presentation.id, content_type: 'Presentation'}
+          
+
+    = render 'comments/list', {nivel: 0, comments: @presentation.comments}
+  = render 'shared/sidebar'
+
+- content_for :javascript do
+  :javascript
+    var slides = 
+      #{@presentation.slides.collect{|s| s.file.presentation.url }.to_json};
+
+    var lenPresentation = 
+      #{@presentation.slides.size - 1};
+
+    var presentation = new Presentation(slides, lenPresentation, '#{@presentation.slug}');
+    presentation.setSlide(0);
 

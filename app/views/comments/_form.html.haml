@@ -1,19 +1,20 @@
-- unless @comment
-  %h3.reply-title
-    = :new.t(scope: [:site, :comments, :create])
-
-.comment-wrap
-  = semantic_form_for(@comment) do |f|
-    = f.inputs :name, :email, :site
-    = f.input :body, as: :text, input_html: {class: 'short-text'}
-
-    = f.action :submit, :button_html => { :class => "btn btn-primary save-comment", :disable_with => '...' }
+- if @comment
+  - if @comment.errors.empty?
+    %h3.reply-title
+      = :new.t(scope: [:site, :comments, :create])
   
-    .loading.hidden
-      = image_tag "loading.gif"
-      Enviando
-
-- content_for(:javascript) do 
-  :javascript
-    var comment = new Comment('#{content_type}', '#{content_id}');
-
+  .comment-wrap
+    = semantic_form_for(@comment) do |f|
+      = f.inputs :name, :email, :site
+      = f.input :body, as: :text, input_html: {class: 'short-text'}
+  
+      = f.action :submit, :button_html => { :class => "btn btn-primary save-comment", :disable_with => '...' }
+    
+      .loading.hidden
+        = image_tag "loading.gif"
+        Enviando
+  
+  - content_for(:javascript) do 
+    :javascript
+      var comment = new Comment('#{content_type}', '#{content_id}');
+  

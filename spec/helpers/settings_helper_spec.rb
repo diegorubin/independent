@@ -31,10 +31,10 @@ describe SettingsHelper, type: :helper do
     before(:each) do
       Setting.destroy_all
       FactoryGirl.create(
-        :setting, theme: 'global', category: 'feature', title: 'feature_enabled', value: 'enabled'
+        :setting, theme: 'global', category: 'features', title: 'feature_enabled', value: 'enabled'
       )
       FactoryGirl.create(
-        :setting, theme: 'global', category: 'feature', title: 'feature_disabled', value: ''
+        :setting, theme: 'global', category: 'features', title: 'feature_disabled', value: ''
       )
     end
 

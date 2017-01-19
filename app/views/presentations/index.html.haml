@@ -1,5 +1,24 @@
-- @presentations.each do |presentation|
-  %h1=presentation.title
-  %p
-    =presentation.resume
+
+- content_for(:title, 'Apresentações')
+
+.row
+  .col-md-9.indexpage
+    - @presentations.each do |presentation|
+      %div.presentation.type-post.status-publish.format-standard.hentry.row.post-roll{id: "post-#{presentation.id}"}
+        = render 'shared/details', item: presentation
+        .col-sm-9.content.format-
+          %h2.entry-title
+            = link_to presentation.title, presentation_path(presentation.date, presentation.slug).gsub('%2F', '/'), {rel: "bookmark", title: presentation.title} 
+          .entry
+            = raw(presentation.resume.from_markdown_to_html)
+            %p
+              %a.more-link{:href => presentation_path(presentation.date, presentation.slug).gsub('%2F', '/')}
+                Ver o artigo
+                %span.glyphicon.glyphicon-chevron-right
+
+    .col-sm-3.meta.info.hidden-xs
+    .col-sm-9.content.format-
+      = paginate @presentations
+
+  = render 'shared/sidebar'
 

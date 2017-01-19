@@ -1,53 +1,73 @@
 !!!
 %html{:lang => "pt-BR"}
   %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %meta{:content => get_setting_value('global.meta_description'), :name => "description"}/
-    %meta{:content => get_setting_value('global.meta_author'), :name => "author"}/
+    %meta{:charset => "UTF-8"}/
+    %meta{content: Figaro.env.preview_host, name: 'preview_host'}
     %title
       #{yield(:title)} | #{get_setting_value('global.blog_title')}
-    = stylesheet_link_tag 'application', media: 'all'
+
     = stylesheet_link_tag 'default', media: 'all'
+    = yield(:stylesheet)
+
+    = auto_discovery_link_tag :rss, "/feed" 
+
+    %link{:rel => "shortcut icon", :type => "image/x-icon", 
+          :href => get_setting_value('global.metadata_shortcut_icon'),
+          :sizes => "16x16"}
+            
+    %link{:rel => "icon", :type => "image/x-icon", 
+          :href => get_setting_value('global.metadata_icon'),
+          :sizes => "16x16"}
+
+    %meta{:name => "description",
+          :content => yield(:description).blank? ? "" : yield(:description)}
+
     = csrf_meta_tags
-  %body
-    .brand= get_setting_value('theme.title')
-    .address-bar= get_setting_value('theme.subtitle')
-    %nav.navbar.navbar-default{:role => "navigation"}
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{:href => "index.html"} Business Casual
+    - if !user_signed_in?
+      :javascript
+        #{get_setting_value('global.analytics_code')}
 
-        .collapse.navbar-collapse.navbar-ex1-collapse
-          %ul.nav.navbar-nav
-            %li
-              %a{:href => "index.html"} Home
-            %li
-              %a{:href => "about.html"} About
-            %li
-              %a{:href => "blog.html"} Blog
-            %li
-              %a{:href => "contact.html"} Contact
-        / /.navbar-collapse
-      / /.container
+  %body.home.blog
     .container
-      .row
-        .box
-          .col-lg-12.text-center
-            = yield
+      #header.header.row{:role => "banner"}
+        %header
+          .site-branding
+            %h1#site-title
+              = link_to get_setting_value('theme.title'), root_path
 
-    %footer
-      .container
-        .row
-          .col-lg-12.text-center
-            %p Copyright &copy; Company 2013
+            %h2#site-description= get_setting_value('theme.subtitle')
+        .navi-wrap
+          .flexnav
+            %ul
+              %li{class: return_if_active('welcome', :current_page_item)}
+                = link_to 'Home', root_path
+              %li{class: return_if_active('posts', :current_page_item)}
+                = link_to 'Artigos', posts_path
+              %li{class: return_if_active('presentations', :current_page_item)}
+                = link_to 'Apresentações', presentations_path
+              %li{class: return_if_active('pages/diegorubin', :current_page_item)}
+                = link_to 'Sobre Mim', page_path('diegorubin')
+        / /navi-wrap
+        %br.clear/
+      / /header
 
-    = javascript_include_tag 'application'
-    = javascript_include_tag 'default'
-    = yield(:javascript)
+      = yield
+
+      .footer.row
+        .col-md-3.col-md-offset-1.col-sm-4.info.sidebar
+        .col-md-3.col-md-offset-1.col-sm-4.info.sidebar
+        .col-md-3.col-md-offset-1.col-sm-4.info.sidebar
+      .siteinfo.row
+        .col-xs-10.col-xs-offset-1
+          %p
+            Powered by
+            %a{:href => "http://github.com/diegorubin/independent"} Independent
+            \&amp;
+            = succeed "." do
+              %a{:href => "http://themes.tobscore.com/romangie/"} Romangie Theme
+    / /footer
+
+  = javascript_include_tag 'default'
+  = javascript_include_tag 'comments'
+  = yield(:javascript)
 

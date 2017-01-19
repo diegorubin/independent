@@ -1,12 +1,28 @@
 - content_for(:title, @post.title)
 
-%h1= @post.title
+- unless @post.external_js.blank?
+  - content_for(:javascript) do
+    = javascript_include_tag @post.external_js
 
-= raw(@post.body.from_markdown_to_html)
+- unless @post.external_css.blank?
+  - content_for(:stylesheet) do
+    = stylesheet_link_tag @post.external_css
 
-= render_footnotes(@post.footnotes)
+.row
+  .col-md-9.indexpage
+    %div.post.type-post.status-publish.format-standard.hentry.row.post-roll{id: "post-#{@post.id}"}
+      = render 'shared/details', item: @post
+      .col-sm-9.content.format-
+        %h2.entry-title{'data-preview-attribute' => 'post_title'}
+          = @post.title
+        = render 'kindle/button', resource: 'Post', slug: @post.slug
+        .entry{'data-preview-attribute' => 'post_body'}
+          = raw(@post.body.from_markdown_to_html)
 
-= render 'comments/form', {content_id: @post.id, content_type: 'Post'}
+          = render_footnotes(@post.footnotes)
 
-= render 'comments/list', {nivel: 0, comments: @post.comments}
+          = render 'comments/form', {content_id: @post.id, content_type: 'Post'}
+
+    = render 'comments/list', {nivel: 0, comments: @post.comments}
+  = render 'shared/sidebar'
 
