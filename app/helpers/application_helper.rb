@@ -23,7 +23,8 @@ module ApplicationHelper
   def item_path(item, options = {})
     resource_path = item.resource_type.underscore
     args = [item.date || '0000/00/00', item.slug || 'preview']
-    send("#{resource_path}_path", *args, options).gsub('%2F', '/')
+    Rails.application.routes.url_helpers.
+      send("#{resource_path}_path", *args, options).gsub('%2F', '/')
   end
 
   # Render helpers
