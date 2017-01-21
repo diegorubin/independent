@@ -103,7 +103,7 @@ describe Post do
     context 'on generate index word list' do
 
       it 'remove stopwords' do
-        FactoryGirl.create(:post, published:true, body: 'uma casa')
+        FactoryGirl.create(:post, published:true, body: 'uma casa', resume: 'casa')
 
         item = ListItem.last
         expect(item.words_index).to eql(['casa'])

@@ -34,7 +34,7 @@ class Post
   embeds_many :comments, as: :commentable
 
   # Validates
-  validates_presence_of :category, :title, :body, :author
+  validates_presence_of :category, :title, :body, :author, :resume
 
   # Callbacks
   before_validation :sanitize_texts

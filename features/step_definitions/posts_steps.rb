@@ -3,13 +3,14 @@ Given(/^that exists the post "([^"]*)"$/) do |factory_name|
 end
 
 When(/^I open blog post "([^"]*)"$/) do |slug|
-  post = Post.find_by(slug: slug)
-  path = Rails.application.routes.url_helpers.
-    post_path(post.date, post.slug).gsub('%2F', '/')
+  @resource = Post.find_by(slug: slug)
+  @path = Rails.application.routes.url_helpers.
+    post_path(@resource.date, @resource.slug).gsub('%2F', '/')
 
-  visit(path)
+  visit(@path)
 end
 
-Then(/^I should view "([^"]*)" as title$/) do |title|
-  expect(page).to have_content title
+Then(/^I should view body post$/) do
+  expect(page).to have_content @resource.body
 end
+

@@ -5,6 +5,7 @@ FactoryGirl.define do
     body 'a simple body'
     author 'author'
     category 'category'
+    resume 'a simple resume'
 
     factory :post_invalid do
       body ''
@@ -12,6 +13,7 @@ FactoryGirl.define do
 
     factory :simple_post do
       title 'Simple post'
+      tags 'example,test'
       published true
     end
   end
