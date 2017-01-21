@@ -1,21 +1,3 @@
-function get_attributes_in_form(form) {
-
-  var attrs = {};
-  var field_types = ["input", "select", "textarea", "hidden"];
-
-  for(var j = 0; j < field_types.length; j++){
-    var inputs = form.find(field_types[j]);
-
-    for(var i = 0; i < inputs.length; i++) {
-      var input = $(inputs[i]);
-      attrs[input.attr("name")] = input.val();
-    }
-
-  }
-
-  return attrs;
-}
-
 function Comment(content_type, content_id) {
   var self = this;
 
@@ -31,9 +13,11 @@ function Comment(content_type, content_id) {
 
     self.wrap.find(".loading").removeClass("hidden");
 
-    self.attrs = get_attributes_in_form(self.form);
+    self.attrs = self.get_attributes_in_form(self.form);
     self.attrs['content_type'] = self.content_type;
     self.attrs['content_id'] = self.content_id;
+
+    console.log(self.attrs);
 
     $.ajax({
       url: "/comments", type: "POST", data: self.attrs,
@@ -42,7 +26,25 @@ function Comment(content_type, content_id) {
         self.wrap.find(".loading").addClass("hidden");
       }
     });
-  };
+  }
+
+  this.get_attributes_in_form = function(form) {
+  
+    var attrs = {};
+    var field_types = ["input", "select", "textarea", "hidden"];
+  
+    for(var j = 0; j < field_types.length; j++){
+      var inputs = form.find(field_types[j]);
+  
+      for(var i = 0; i < inputs.length; i++) {
+        var input = $(inputs[i]);
+        attrs[input.attr("name")] = input.val();
+      }
+  
+    }
+  
+    return attrs;
+  }
 
 }
 
@@ -51,24 +53,5 @@ $(document).ready(function(){
     event.preventDefault();
     comment.create();
   });
-
-  $('a.remove_comment').click(function(event) {
-    event.preventDefault();
-    if(confirm("Você tem certeza?")) {
-      var pid = $("#pid").attr('value');
-    
-      var _parent = $(this).parent();
-      var _id = _parent.closest("li.comment").find("#comment-id").attr('value');
-
-      $.ajax({
-        type: "DELETE",
-        url: "/comments/"+ _id +"?pid="+pid,
-        success: function(data){
-          _parent.closest("li.comment").html(data);
-        }
-      });
-    }
-  });
-
 });
 

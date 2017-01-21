@@ -28,8 +28,5 @@ class Admin::CommentsController < Admin::BaseController
     @comment = @object.find_comment_by_id(params[:id])
   end
 
-  def get_object
-  end
-
 end
 

@@ -7,21 +7,19 @@
           %input.search-field{:name => "s", :placeholder => "Search ...", :title => "Search for:", :type => "search", :value => params[:s]}/
         %input.search-submit{:type => "submit", :value => "Search"}/
 
-    - icon_list = IconList.first
-    - if icon_list.icons.count > 0
+    - if @icon_list && !@icon_list.icons.blank?
       #widget-1.widget.widget_icons
         %ul.icon-list
-          - icon_list.icons.each do |icon|
+          - @icon_list.icons.each do |icon|
             %li.icon
               = link_to image_tag(icon.icon), icon.url, {target: '_blank'}
         .clear
 
-    - link_list = LinkList.first
-    - if link_list.links.count > 0
+    - if @link_list && @link_list.links.blank?
       #widget-1.widget.widget_links
-        %h4.widget-title= link_list.title
+        %h4.widget-title= @link_list.title
         %ul
-          - link_list.links.each do |link|
+          - @link_list.links.each do |link|
             %li.cat-item
               = link_to link.description, link.url, {target: '_blank'}
 

@@ -5,6 +5,13 @@ FactoryGirl.define do
     category 'categoria'
     theme 'default'
     value 'value'
+
+    factory :feature_comments do
+      title 'comments'
+      category 'features'
+      theme 'global'
+      value 'enabled'
+    end
   end
 
 end
