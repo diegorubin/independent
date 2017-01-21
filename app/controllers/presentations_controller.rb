@@ -1,8 +1,4 @@
-class PresentationsController < ApplicationController
-
-  layout :set_current_theme
-
-  prepend_before_filter :prepend_view_paths
+class PresentationsController < SiteController
 
   def index
     @presentations = Presentation.publisheds.ordered_by_published_at.

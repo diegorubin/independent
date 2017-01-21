@@ -1,8 +1,4 @@
-class WelcomeController < ApplicationController
-
-  layout :set_current_theme
-  
-  prepend_before_filter :prepend_view_paths
+class WelcomeController < SiteController
 
   def index
     @search = params.fetch(:s, '').split.join('|')
