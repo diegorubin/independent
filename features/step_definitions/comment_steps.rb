@@ -1,4 +1,4 @@
-Given(/^this post have a comment$/) do
+Given(/^this resource have a comment$/) do
   @comment = FactoryGirl.build(:comment_published)
   @resource.comments << @comment
   @resource.save

@@ -10,6 +10,12 @@ FactoryGirl.define do
     factory :presentation_invalid do
       title ''
     end
+
+    factory :simple_presentation do
+      title 'Simple presentation'
+      file File.open(File.dirname(__FILE__) + "/../models/examples/presentation.pdf")
+      tags 'example,test'
+    end
   end
 
 end
