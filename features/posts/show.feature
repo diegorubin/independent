@@ -42,3 +42,10 @@ Scenario: Not create invalid comment for post
   And I click in button to save comment
   Then I should see the comment form
 
+Scenario: Show approved comment
+  Given that exists the post "simple_post"
+  And this post have a comment
+  And feature "comment" is "enabled"
+  When I open blog post "simple-post"
+  Then I should see the approved comment
+

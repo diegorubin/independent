@@ -23,7 +23,7 @@
                   = render_name comment.name, comment.site, comment.email
               .hidden-xs
                 .meta-item
-                  %span.info-icon{'data-icon' => ""}= link_to I18n.localize(comment.created_at, :format => :long), "comment-#{comment.id}"
+                  %span.info-icon{'data-icon' => ""}= link_to I18n.localize(comment.created_at, :format => :long), "#"
 
         .comment-content.col-sm-9
           %div{id: "comment-content-#{comment.id}"}

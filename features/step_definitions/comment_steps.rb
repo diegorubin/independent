@@ -1,11 +1,7 @@
-Then(/^I should not see the comment form$/) do
-  comment_path = Rails.application.routes.url_helpers.comments_path
-  expect(page).to_not have_selector("form[action=\"#{comment_path}\"][method=\"post\"]")
-end
-
-Then(/^I should see the comment form$/) do
-  comment_path = Rails.application.routes.url_helpers.comments_path
-  expect(page).to have_selector("form[action=\"#{comment_path}\"][method=\"post\"]")
+Given(/^this post have a comment$/) do
+  @comment = FactoryGirl.build(:comment_published)
+  @resource.comments << @comment
+  @resource.save
 end
 
 When(/^I put "([^"]*)" in name field in comment form$/) do |name|
@@ -30,5 +26,25 @@ end
 
 Then(/^I should see comment successful created$/) do
   expect(page).to have_content(/#{:title.t(scope: [:site, :comments, :create, :success])}/i)
+end
+
+Then(/^I should see the approved comment$/) do
+  expect(page).to have_content(@comment.body)
+
+  link = find_link(@comment.name)
+  expect(link[:href]).to include(@comment.site)
+
+  formated_date = I18n.l @comment.created_at, format: :long
+  expect(page).to have_content(formated_date)
+end
+
+Then(/^I should not see the comment form$/) do
+  comment_path = Rails.application.routes.url_helpers.comments_path
+  expect(page).to_not have_selector("form[action=\"#{comment_path}\"][method=\"post\"]")
+end
+
+Then(/^I should see the comment form$/) do
+  comment_path = Rails.application.routes.url_helpers.comments_path
+  expect(page).to have_selector("form[action=\"#{comment_path}\"][method=\"post\"]")
 end
 
