@@ -14,39 +14,40 @@
         %h2.entry-title
           = @presentation.title
         .entry
-          #presentation
-            = hidden_field_tag :pid, @presentation.id
-            .presentation-nav
-              %div{:class => "prevSlide" }
-              %div{:class => "nextSlide" }
-          
-          #loading-bar
-            #loading-current
-          
-          #pmenu
-            .commands
-              = link_to "Anterior", "#", {:id => "mPrevSlide",
-                                          :class => "prevSlide"}
-          
-              = link_to "Próximo", "#",  {:id => "mNextSlide",
-                                          :class => "nextSlide"}
-          
-            %a{:class => "download", 
-               :title => "Baixar apresentação em pdf",
-               :href => @presentation.file.url}
-              .download-presentation
-                &nbsp;
-          
-            %a{:href => "#", :title => "Exibiar em Tela Cheia"}
-              .fullscreen-button
-                &nbsp;
-          
-            .pages
-              #slide-loading.hidden
-              %span#current_page
-              = "/"
-              %span#last_page
-                = @presentation.slides.size
+          #presentation-component
+            #presentation
+              = hidden_field_tag :pid, @presentation.id
+              .presentation-nav
+                %div{:class => "prevSlide" }
+                %div{:class => "nextSlide" }
+            
+            #loading-bar
+              #loading-current
+            
+            #pmenu
+              .commands
+                = link_to "Anterior", "#", {:id => "mPrevSlide",
+                                            :class => "prevSlide"}
+            
+                = link_to "Próximo", "#",  {:id => "mNextSlide",
+                                            :class => "nextSlide"}
+            
+              %a{:class => "download", 
+                 :title => "Baixar apresentação em pdf",
+                 :href => @presentation.file.url}
+                %span.download-presentation
+                  &nbsp;
+            
+              .commands-right            
+                %span.pages
+                  #slide-loading.hidden
+                  %span#current_page
+                  = "/"
+                  %span#last_page
+                    = @presentation.slides.size
+                %a{:href => "#", :title => "Exibiar em Tela Cheia"}
+                  %span.fullscreen-button
+                    &nbsp;
 
           = render 'comments/form', {content_id: @presentation.id, content_type: 'Presentation'}
           

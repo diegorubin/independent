@@ -9,6 +9,10 @@
   background-color: #000;
 }
 
+#presentation-component {
+  margin-left: 6%;
+}
+
 #presentation {
   border: 1px solid #aaa;
   margin: 0px;
@@ -66,7 +70,7 @@ div.nextSlide {
 #pmenu {
   color: #535459;
 
-  width: 537px;
+  width: 550px;
   height: 27px;
   text-align: center;
   padding: 0px 6px;
@@ -103,13 +107,9 @@ div.nextSlide {
 
 .download-presentation {
   background: image-url("icons.png") repeat scroll -198px 0 transparent;
-
-  height: 27px;
-  width: 27px;
-
+  padding-left: 22px;
   float: left;
-
-  margin: 0px 160px;
+  margin: 0px 130px;
 }
 
 .download-presentation:hover {
@@ -118,13 +118,7 @@ div.nextSlide {
 
 .fullscreen-button {
   background: image-url("icons.png") repeat scroll -198px -106px transparent;
-
-  height: 27px;
-  width: 27px;
-
-  float: right;
-
-  margin: 0px 0px 0px 6px;
+  padding: 0px 2px 2px 18px;
 }
 
 .fullscreen-button:hover {
@@ -135,7 +129,7 @@ div.nextSlide {
   float: left;
 }
 
-#pmenu .pages {
+#pmenu .commands-right {
   float: right;
 }
 
