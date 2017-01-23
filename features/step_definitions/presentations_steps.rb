@@ -9,8 +9,18 @@ When(/^I open blog presentation "([^"]*)"$/) do |slug|
   visit(@path)
 end
 
+When(/^I click in next button$/) do
+  all(".nextSlide")[0].click
+end
+
 Then(/^I should view first slide$/) do
   filename = @resource.slides.first.file.filename
+  style = find("#presentation")[:style]
+  expect(style).to include(filename)
+end
+
+Then(/^I should see second slide$/) do
+  filename = @resource.slides[1].file.filename
   style = find("#presentation")[:style]
   expect(style).to include(filename)
 end
