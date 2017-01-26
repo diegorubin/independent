@@ -1,0 +1,14 @@
+- content_for(:title, :new.t(scope: [:site, :comments, :create]))
+
+.row
+  .col-md-2
+  .col-md-8
+    %h3
+      = :new.t(scope: [:site, :comments, :create])
+
+    = semantic_form_for(@contact, url: contact_path) do |f|
+      = f.inputs :name, :email
+      = f.input :body, as: :text, input_html: {class: 'short-text'}
+    
+      = f.action :submit, :button_html => { :class => "btn btn-primary save-contact", :disable_with => '...' }
+    

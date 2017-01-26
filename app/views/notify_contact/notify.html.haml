@@ -1,0 +1,9 @@
+%h1
+  = t('mailer.notify_contact.header')%(@user.name)
+
+%p
+  = t('mailer.notify_contact.notification')%([@contact.name,@contact.email])
+
+%p
+  = render_comment @contact.body
+

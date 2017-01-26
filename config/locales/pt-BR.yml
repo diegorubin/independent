@@ -288,6 +288,12 @@ pt-BR:
         success:
           title: Comentário enviado com sucesso.
           description: Seu comentário foi enviado com sucesso e está aguardando moderação. Assim que o mesmo for aprovado será exibido nesta página.
+    contacts:
+      create:
+        success:
+          flash: Sua mensagem foi enviada.
+        alert:
+          flash: Verifique todos os campos do formulário. Deve ter algo errado.
 
   will_paginate:
     previous_label: Anterior

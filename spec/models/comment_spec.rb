@@ -17,7 +17,7 @@ describe Comment do
       expect(@post.save).to be_truthy
     end
 
-    it "sends an email to author" do
+    it "send an email to author" do
       comment = FactoryGirl.build(:comment, commentable: @post)
       expect { comment.save }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end 

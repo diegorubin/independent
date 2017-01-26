@@ -50,6 +50,10 @@ Rails.application.routes.draw do
   # Comments
   resources :comments, only: [:create]
 
+  # Contacts
+  get '/contact' => 'contact#index', :as => 'contact'
+  post '/contact' => 'contact#create'
+
   # Galleries
   get "/galleries/:date/:slug" => "galleries#show", 
         :as => "gallery", 

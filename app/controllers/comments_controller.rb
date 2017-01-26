@@ -28,26 +28,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    begin
-      post = Post.find(params[:pid])
-    rescue
-      post = Presentation.find(params[:pid])
-    end
-
-    comment = post.find_comment_by_id(params[:id])
-
-    comment.removed = true
-
-    alert = CommentAlert.find_by_postuid_and_commentid(post.id,comment.id)
-    
-    if comment.save && alert.destroy
-      render :text => "Comentário removido com sucesso."
-    else
-      render :text => "Não foi possível remover o comentário."
-    end
-  end
-
   private
   def comment_params
     params.require(:comment).permit([:name, :site, :email, :body])

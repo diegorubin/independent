@@ -13,6 +13,11 @@ pt-BR:
         slug: Slug
         title: Título
 
+      contact:
+        body: Mensagem
+        email: E-mail
+        name: Nome
+
       comment:
         body: Mensagem
         email: E-mail

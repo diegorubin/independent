@@ -4,3 +4,8 @@ pt-BR:
       subject: "[Independent] - Novo comentário em %s"
       header: "Olá, %s"
       notification: "O leitor %s(%s) deixou um comentário em %s"
+    notify_contact:
+      subject: "[Independent] - Um novo contato realizado"
+      header: "Olá, %s"
+      notification: "Alguém chamado %s(%s) entrou em contato pelo formulário do site"
+
