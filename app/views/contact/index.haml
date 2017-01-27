@@ -1,14 +1,27 @@
 - content_for(:title, :new.t(scope: [:site, :comments, :create]))
 
 .row
-  .col-md-2
-  .col-md-8
-    %h3
-      = :new.t(scope: [:site, :comments, :create])
+  .col-md-9
+    .col-sm-3
+    .col-sm-9.content
+      %h3
+        = :new.t(scope: [:site, :contacts, :create])
 
-    = semantic_form_for(@contact, url: contact_path) do |f|
-      = f.inputs :name, :email
-      = f.input :body, as: :text, input_html: {class: 'short-text'}
-    
-      = f.action :submit, :button_html => { :class => "btn btn-primary save-contact", :disable_with => '...' }
+      %p
+        = :description.t(scope: [:site, :contacts, :create])
+
+      - if flash[:alert]
+        %span.help-block
+          = flash[:alert]
+
+      - if flash[:notice]
+        %span.help-block
+          = flash[:notice]
+
+      = semantic_form_for(@contact, url: contact_path) do |f|
+        = f.inputs :name, :email
+        = f.input :body, as: :text, input_html: {class: 'short-text'}
+      
+        = f.action :submit, :button_html => { :class => "btn btn-primary save-contact", :disable_with => '...' }
+  = render 'shared/sidebar'
     

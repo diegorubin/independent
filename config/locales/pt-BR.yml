@@ -290,6 +290,8 @@ pt-BR:
           description: Seu comentário foi enviado com sucesso e está aguardando moderação. Assim que o mesmo for aprovado será exibido nesta página.
     contacts:
       create:
+        new: Formulário de Contato
+        description: Você pode entrar em contato através do formulário
         success:
           flash: Sua mensagem foi enviada.
         alert:

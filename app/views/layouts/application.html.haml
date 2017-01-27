@@ -1,5 +1,5 @@
 !!!
-%html{:lang => "pt-BR"}
+%html
   %head
     %meta{:charset => "UTF-8"}/
     %meta{content: Figaro.env.preview_host, name: 'preview_host'}
@@ -47,6 +47,8 @@
                 = link_to 'Apresentações', presentations_path
               %li{class: return_if_active('pages/diegorubin', :current_page_item)}
                 = link_to 'Sobre Mim', page_path('diegorubin')
+              %li{class: return_if_active('contact', :current_page_item)}
+                = link_to 'Contato', contact_path
         / /navi-wrap
         %br.clear/
       / /header
