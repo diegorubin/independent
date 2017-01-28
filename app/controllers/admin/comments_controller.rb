@@ -1,5 +1,6 @@
 class Admin::CommentsController < Admin::BaseController
 
+  skip_before_filter :get_object, :only => [:update, :destroy]
   before_filter :get_objects, only: [:update, :destroy]
 
   def index

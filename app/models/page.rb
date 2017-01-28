@@ -4,6 +4,7 @@ class Page
   include Publishable
   include Rankable
   include Slugable
+  include Taggable
 
   paginates_per 10
 

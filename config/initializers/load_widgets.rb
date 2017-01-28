@@ -14,7 +14,7 @@ Widget.all.each do |widget|
 
     next if m =~ /^\.{1,2}$/
 
-    puts "carregando model: #{m}"
+    puts "loading model: #{m}"
     require File.join(Rails.root.to_s, "widgets", widget.label + "_widget", "models", m.underscore + ".rb")
 
   end
