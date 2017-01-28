@@ -2,7 +2,7 @@ module Slugable
   extend ActiveSupport::Concern
 
   included do
-    field :slug,         :type => String
+    field :slug, :type => String
     validates :slug, uniqueness: true, presence: true
 
     before_validation :generate_slug
@@ -14,7 +14,6 @@ module Slugable
     scope :find_by_simple_slug, lambda { |slug|
       where(:slug => slug) 
     }
-
   end
 
   def generate_slug
@@ -24,6 +23,11 @@ module Slugable
     slug.downcase!
     slug.gsub!(/[\s_]/,'-')
     slug.gsub!(/[^A-Za-z-]/,'')
+
+    usage = self.class.where(slug: /#{slug}($|-\d+)/).count
+    if usage > 0
+      slug += "-#{usage + 1}"
+    end
 
     write_attribute(:slug, slug)
   end

@@ -32,6 +32,14 @@ describe Post do
         expect(@post.slug).to eql(slug)
       end
 
+      it "increment slug if already exists" do
+        @post.save
+
+        post = FactoryGirl.build(:post, title: 'teste de post')
+        expect(post.save).to be_truthy
+        expect(post.slug).to eql("teste-de-post-2")
+      end
+
       it "create a date index" do
         date = Time.current.strftime("%Y/%m/%d")
         @post.published = true
