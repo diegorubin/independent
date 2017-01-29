@@ -11,6 +11,7 @@ class Page
   field :title,        type: String
   field :body,         type: String,  default: ''
   field :pageviews,    type: Integer, default: 0
+  field :resume,       type: String,  default: ''
 
   field :external_js,  type: String
   field :external_css, type: String

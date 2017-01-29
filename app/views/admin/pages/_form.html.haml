@@ -14,6 +14,7 @@
       %span.glyphicon.glyphicon-eye-open.focus-mode-btn.right
       = f.input :body, as: 'text'
       %div{data:{'focus-mode' => 'off'}}
+        = f.input :resume, as: 'text', input_html: {class: 'short-text'}
         = f.input :tags, input_html: {'data-role' => 'tagsinput'}
 
     .col-md-4{data:{'focus-mode' => 'off'}}
