@@ -35,9 +35,10 @@ Rails.application.routes.draw do
     root :to => "welcome#index"
   end
 
-  get "/category/:category" => "welcome#index", :as => "category"
-  get "/tag/:tag" => "welcome#index", :as => "tag"
-  get "/:date" => "welcome#index", 
+  get "/search" => "filters#index", :as => "search"
+  get "/category/:category" => "filters#index", :as => "category"
+  get "/tag/:tag" => "filters#index", :as => "tag"
+  get "/:date" => "filters#index", 
         :as => "date", 
         :date => /\d{4}(\/\d{2}){0,2}/
 

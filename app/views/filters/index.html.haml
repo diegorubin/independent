@@ -1,0 +1,26 @@
+- content_for(:title, 'Filtro')
+
+.row
+  .col-md-9.indexpage
+    - @list_items.each do |item|
+      %div.type-post.status-publish.format-standard.hentry.row.post-roll{id: "post-#{item.id}"}
+        = render 'shared/details', item: item
+        .col-sm-9.content.format-
+          %h2.entry-title
+            = link_to item.title, item_path(item), {rel: "bookmark", title: item.title} 
+          .entry
+            - resume = item.resume.from_markdown_to_html
+            - unless @search.blank?
+              - resume.gsub!(/(#{@search})/, '<strong>\1</strong>')
+            = raw(resume)
+            %p
+              %a.more-link{:href => item_path(item)}
+                Ver o artigo
+                %span.glyphicon.glyphicon-chevron-right
+
+    .col-sm-3.meta.info.hidden-xs
+    .col-sm-9.content.format-
+      = paginate @list_items
+
+  = render 'shared/sidebar'
+

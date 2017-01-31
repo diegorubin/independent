@@ -1,7 +1,7 @@
 .col-md-3.visible-lg.visible-md
   .primary-sidebar.info.sidebar
     #search-2.widget.widget_search
-      %form.search-form{:action => "/", :method => "get", :role => "search"}
+      %form.search-form{:action => search_path, :method => "get", :role => "search"}
         %label
           %span.screen-reader-text Buscar por:
           %input.search-field{:name => "s", :placeholder => "Search ...", :title => "Search for:", :type => "search", :value => params[:s]}/
