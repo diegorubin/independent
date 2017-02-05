@@ -1,0 +1,8 @@
+= content_for :title, :title.t(:scope => [:admin, params[:resource_type], :new])
+
+%h1= :h1.t(:scope => [:admin, params[:resource_type], :new])
+
+= render 'menu'
+
+= render "#{params[:resource_type].pluralize}/form"
+

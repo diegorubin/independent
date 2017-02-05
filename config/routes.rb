@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :assets
     resources :commentators, only: [:index, :update]
     resources :comments, only: [:index, :update, :destroy]
+    resources :custom_resources, path: '/resources/:resource_type'
     resources :filters, only: [:show]
     resources :galleries
     resources :images

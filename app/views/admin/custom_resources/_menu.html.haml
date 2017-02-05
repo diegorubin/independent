@@ -1,0 +1,17 @@
+.well
+  .btn-toolbar{role: "toolbar"}
+  
+    - unless in_action?('new')
+      .btn-group
+        = menu_button(:new.t(:scope => [:admin, params[:resource_type], :menu]), new_admin_custom_resource_path(resource_type: params[:resource_type]), 'btn-primary')
+  
+    - unless in_action?('index')
+      .btn-group
+        = menu_button(:list.t(:scope => [:admin, params[:resource_type], :menu]), admin_custom_resources_path(resource_type: params[:resource_type]), 'btn-default')
+
+    - if in_action?('edit')
+      .btn-group
+        = menu_button(:destroy.t(:scope => [:admin, params[:resource_type], :menu]), admin_custom_resource_path(resource_type: params[:resource_type], id: params[:id]), 'btn-danger', {method: 'delete', data:{confirm: :confirm.t(:scope => [:admin, params[:resource_type], :destroy])}})
+
+
+  

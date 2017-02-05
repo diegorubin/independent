@@ -1,5 +1,8 @@
 module LoadThemeExtensions
   extend SettingsHelper
+
+  CUSTOM_RESOURCES = []
+
   def self.load
     begin
       theme = current_theme

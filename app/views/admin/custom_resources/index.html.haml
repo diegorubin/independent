@@ -1,0 +1,29 @@
+= content_for :title, :title.t(:scope => [:admin, params[:resource_type], :index])
+
+%h1= :h1.t(:scope => [:admin, params[:resource_type], :index])
+
+= render 'menu'
+
+%table.table.table-striped
+  %thead
+    %tr
+      - params[:resource_type].camelize.constantize.admin_attributes.each do |attribute|
+        %td
+          = attribute.t(scope: [:mongoid, :attributes, params[:resource_type]])
+      %td
+        &nbsp;
+
+  %tbody
+    - @custom_resources.each do |custom_resource|
+      %tr
+        - params[:resource_type].camelize.constantize.admin_attributes.each do |attribute|
+          %td
+            = custom_resource.send(attribute)
+        %td
+          .btn-group
+            = menu_button(:edit.t(:scope => [:admin, params[:resource_type], :menu]), edit_admin_custom_resource_path(resource_type: params[:resource_type], id: custom_resource.id), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, params[:resource_type], :menu]), admin_custom_resource_path(resource_type: params[:resource_type], id: custom_resource.id), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, params[:resource_type], :destroy])}})
+
+= paginate @custom_resources
+
