@@ -1,7 +1,7 @@
 /* list of commentators */
 $('.commentator-toggle').change(function(){
   var commentator_id = $(this).attr('rel');
-  var active = !($(this).prop('checked'));
+  var active = $(this).prop('checked');
 
   var client = new RestClient('/admin/commentators/' + commentator_id);
   client.success = function(){
