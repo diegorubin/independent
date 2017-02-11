@@ -4,7 +4,12 @@ class ImagesController < ApplicationController
     image = Image.publisheds.find_by_simple_slug(params[:slug]).first
     raise RecordNotFound unless image 
 
-    redirect_to image.file.url(params.fetch(:size, :list))
+    size = params.fetch(:size, :list)
+    if size == 'original'
+      redirect_to image.file.url
+    else
+      redirect_to image.file.url(size)
+    end
   end
 
 end
