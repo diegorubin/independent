@@ -10,6 +10,8 @@
       %td
         = :title.t(:scope => [:mongoid, :attributes, :presentation])
       %td
+        = :resume.t(:scope => [:mongoid, :attributes, :presentation])
+      %td
         = :published.t(:scope => [:mongoid, :attributes, :presentation])
       %td
         &nbsp;
@@ -20,9 +22,12 @@
         %td
           = presentation.title
         %td
+          = presentation.resume
+        %td
           = presentation.published_str
         %td
           .btn-group
+            = menu_button(:show.t(:scope => [:admin, :presentations, :menu]), admin_presentation_path(presentation), 'btn-info')
             = menu_button(:edit.t(:scope => [:admin, :presentations, :menu]), edit_admin_presentation_path(presentation), 'btn-info')
 
             = menu_button(:destroy.t(:scope => [:admin, :presentations, :menu]), admin_presentation_path(presentation), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :presentations, :destroy])}})

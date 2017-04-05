@@ -34,9 +34,11 @@ function Presentation(slides, lenPresentation, slug) {
 
       if(self.fullscreen)
         self.image.attr("src", self.slides[position]);
-      else
+      else {
+        self.presentation.css("background-repeat", "no-repeat"); 
         self.presentation.css("background-image", 
           "url(" + self.slides[position] + ")");  
+      }
 
       self.loading.addClass("hidden");
     });
