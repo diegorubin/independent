@@ -30,11 +30,3 @@
           %li
             = link_to post.title, post_path(post.date, post.slug).gsub('%2F', '/')
 
-    #categories-2.widget.widget_categories
-      %h4.widget-title Categorias
-      %ul
-        %li.cat-item
-          = link_to "Computação", category_path('Computação')
-        %li.cat-item
-          = link_to "Pessoal", category_path('Pessoal')
-

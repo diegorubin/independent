@@ -39,16 +39,9 @@
         .navi-wrap
           .flexnav
             %ul
-              %li{class: return_if_active('welcome', :current_page_item)}
-                = link_to 'Home', root_path
-              %li{class: return_if_active('posts', :current_page_item)}
-                = link_to 'Artigos', posts_path
-              %li{class: return_if_active('presentations', :current_page_item)}
-                = link_to 'Apresentações', presentations_path
-              %li{class: return_if_active('pages/diegorubin', :current_page_item)}
-                = link_to 'Sobre Mim', page_path('diegorubin')
-              %li{class: return_if_active('contact', :current_page_item)}
-                = link_to 'Contato', contact_path
+              - Menu.by_group('main').each do |item|
+                %li{class: return_if_active(item.link.sub('/', ''), :current_page_item)}
+                  = link_to item.title, item.link
         / /navi-wrap
         %br.clear/
       / /header

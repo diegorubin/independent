@@ -1,0 +1,38 @@
+= content_for :title, :title.t(:scope => [:admin, :menus, :index])
+
+%h1= :h1.t(:scope => [:admin, :menus, :index])
+
+= render 'menu'
+
+.well
+  = render_filters_form(Menu)
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        = :title.t(:scope => [:mongoid, :attributes, :menu])
+      %td
+        = :group.t(:scope => [:mongoid, :attributes, :menu])
+      %td
+        = :link.t(:scope => [:mongoid, :attributes, :menu])
+      %td
+        &nbsp;
+
+  %tbody
+    - @menus.each do |menu|
+      %tr
+        %td
+          = menu.title
+        %td
+          = menu.group
+        %td
+          #{link_to "Link", menu.link}
+        %td
+          .btn-group
+            = menu_button(:edit.t(:scope => [:admin, :menus, :menu]), edit_admin_menu_path(menu), 'btn-info')
+
+            = menu_button(:destroy.t(:scope => [:admin, :menus, :menu]), admin_menu_path(menu), 'btn-danger', {method: 'delete', data: {confirm: :confirm.t(:scope => [:admin, :menus, :destroy])}})
+
+= paginate @menus
+

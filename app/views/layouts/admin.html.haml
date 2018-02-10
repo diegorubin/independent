@@ -47,6 +47,8 @@
                     %a{:href => admin_galleries_path}= :galleries.t(scope: [:admin, :navebar])
                   %li{class: set_active('images')}
                     %a{:href => admin_images_path}= :images.t(scope: [:admin, :navebar])
+                  %li{class: set_active('menus')}
+                    %a{:href => admin_menus_path}= :menus.t(scope: [:admin, :navebar])
             %li{class: set_active('themes')}
               %a{:href => admin_themes_path}= :themes.t(scope: [:admin, :navebar])
             %li{class: set_active('widgets')}

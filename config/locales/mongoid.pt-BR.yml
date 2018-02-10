@@ -38,6 +38,11 @@ pt-BR:
         title: Título
         thumb: Thumb
 
+      menu:
+        group: Grupo
+        link: Link
+        title: Título
+
       page:
         body: Corpo
         published: Status

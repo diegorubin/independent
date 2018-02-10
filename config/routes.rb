@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :filters, only: [:show]
     resources :galleries
     resources :images
+    resources :menus, except: [:show]
     resources :pages
     resources :posts
     resources :partials, only: [:index]

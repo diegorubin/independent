@@ -11,6 +11,7 @@ pt-BR:
       home: Home
       images: Imagens
       media: Mídia
+      menus: Menus
       links: Links
       link_lists: Lista de Links
       list_items: Lista de Itens
@@ -110,6 +111,24 @@ pt-BR:
       new:
         h1: Nova Imagem
         title: Nova Imagem
+
+    menus:
+      destroy:
+        confirm: Tem certeza que deseja remover o link?
+      edit:
+        h1: Editar Link
+        title: Editar Link
+      index:
+        h1: Lista de Menus
+        title: Menus
+      menu:
+        destroy: Remover Menu
+        edit: Editar
+        list: Listar Menus
+        new: Novo Link
+      new:
+        h1: Novo Link
+        title: Novo Link
 
     pages:
       destroy:

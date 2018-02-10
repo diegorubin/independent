@@ -7,6 +7,12 @@ class PostsController < SiteController
 
   def show
     @post = Post.find_by_slug(params[:date], params[:slug]).first
+    respond_to do |format|
+      format.html {}
+      format.json do
+        render json: @post.to_json
+      end
+    end
   end
 
 end
