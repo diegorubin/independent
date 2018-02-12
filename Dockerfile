@@ -20,6 +20,9 @@ RUN npm install
 ADD Gemfile /application/Gemfile
 ADD Gemfile.lock /application/Gemfile.lock
 RUN bundle config build.nokogiri --use-system-libraries
+ENV LC_ALL C.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
 RUN bundle install --without development test
 
 # install kindlerb

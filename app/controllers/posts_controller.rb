@@ -10,6 +10,7 @@ class PostsController < SiteController
     respond_to do |format|
       format.html {}
       format.json do
+        @post.body = @post.body.from_markdown_to_html
         render json: @post.to_json
       end
     end
