@@ -20,12 +20,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   def prepend_view_paths
-     theme = current_theme
-     if !theme.blank? && theme != 'default'
-       prepend_view_path(Rails.root.join("themes/views/#{theme}"))
-     end
-   end
+  def current_domain
+    request.host
+  end
+
+  def is_multiple_domains_enabled?
+    feature_enabled? 'multiple_domains'
+  end
+
+  def prepend_view_paths
+    theme = current_theme
+    if !theme.blank? && theme != 'default'
+      prepend_view_path(Rails.root.join("themes/views/#{theme}"))
+    end
+  end
 
   def render_not_found
     render :template => 'error_pages/404', :status => :not_found

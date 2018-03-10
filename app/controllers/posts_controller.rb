@@ -1,7 +1,9 @@
 class PostsController < SiteController
 
   def index
-    @posts = Post.publisheds.ordered_by_published_at.
+    posts = Post.publisheds
+    posts = posts.filter_by_domain(current_domain) if is_multiple_domains_enabled?
+    @posts = posts.ordered_by_published_at.
       filters(params).page(params.fetch(:page, 1))
   end
 

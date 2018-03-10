@@ -14,6 +14,9 @@
         = :title.t(:scope => [:mongoid, :attributes, :post])
       %td
         = :category.t(:scope => [:mongoid, :attributes, :post])
+      - if feature_enabled? 'multiple_domains'
+        %td
+          = :domains.t(:scope => [:mongoid, :attributes, :post])
       %td
         = :resume.t(:scope => [:mongoid, :attributes, :post])
       %td
@@ -30,6 +33,9 @@
           = post.title
         %td
           = post.category
+        - if feature_enabled? 'multiple_domains'
+          %td
+            = post.domains
         %td
           = raw post.resume.from_markdown_to_html
         %td

@@ -53,6 +53,7 @@ pt-BR:
         author: Autor
         body: Corpo
         category: Categoria
+        domains: Domínios
         published: Status
         resume: Resumo
         slug: Slug

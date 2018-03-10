@@ -1,7 +1,7 @@
 module SettingsHelper
   def get_setting_value(setting)
     theme, title = setting.split('.')
-    settings = Setting.map_settings_by_category
+    settings = Setting.map_settings_by_category(request.host)
 
     theme = current_theme if theme == 'theme'
 

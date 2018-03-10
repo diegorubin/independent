@@ -17,6 +17,8 @@
 
       %div{data:{'focus-mode' => 'off'}}
         = f.input :resume, as: 'text', input_html: {class: 'short-text'}
+        - if feature_enabled? 'multiple_domains'
+          = f.input :domains, input_html: {'data-role' => 'tagsinput'}
         = f.inputs :category, :author
         = f.input :tags, input_html: {'data-role' => 'tagsinput'}
         = f.input :image, as: 'image', input_html: {'data-image-size' => 'front'}

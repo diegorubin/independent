@@ -10,6 +10,7 @@ class ListItem
   field :resource_id,        type: String
   field :title,              type: String
   field :resume,             type: String
+  field :domains,            type: String
 
   field :image,              type: String
 
@@ -34,5 +35,7 @@ class ListItem
     order([["published_at", "desc"]])
   }                     
 
+  scope :filter_by_domain, lambda { |domain|
+    where(domains: /(,|^)#{domain}(,|$)/)
+  }
 end
-

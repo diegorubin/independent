@@ -2,11 +2,13 @@
 
 %h1= :h1.t(:scope => [:admin, :settings, :index])
 
-- @settings.each do |category, settings|
+- @settings.each do |category, domains|
   %h2= category
-  - settings.each do |setting|
-    %p
-      %label= "#{setting.title}:"
-      %span.rest-in-place{'data-url' => admin_setting_path(setting), 'data-object' => "setting", 'data-attribute' => "value", 'data-placeholder' => "Não preenchido..."}
-        = setting.value
+  - domains.each do |domain, settings|
+    %h3= domain
+    - settings.each do |setting|
+      %p
+        %label= "#{setting.title}:"
+        %span.rest-in-place{'data-url' => admin_setting_path(setting), 'data-object' => "setting", 'data-attribute' => "value", 'data-placeholder' => "Não preenchido..."}
+          = setting.value
 

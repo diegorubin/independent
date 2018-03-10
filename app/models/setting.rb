@@ -6,8 +6,9 @@ class Setting
   field :value,      type: String
   field :input_type, type: String
   field :theme,      type: String
+  field :domain,     type: String
 
-  validates :title, presence: true, uniqueness: {scope: ['theme']}
+  validates :title, presence: true, uniqueness: {scope: ['theme', 'domain']}
   validates :category, presence: true
   validates :theme, presence: true
 
@@ -21,9 +22,11 @@ class Setting
     [:value]
   end
 
-  def self.map_settings_by_category
+  def self.map_settings_by_category(current_domain = nil)
     settings = 
-      Setting.where(:theme.in => ['global',current_theme]).group_by{|t| t.theme}
+      Setting.where(:theme.in => ['global',current_theme])
+        .where(:domain.in => [nil, current_domain].uniq)
+        .group_by{|t| t.theme}
     settings.each {|k, v| settings[k] = v.collect{|s| [s.title, s.value]}.to_h }
   end
 

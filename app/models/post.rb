@@ -24,6 +24,8 @@ class Post
   field :external_js,  type: String
   field :external_css, type: String
 
+  field :domains,      type: String
+
   # Field for SEO
   field :metadescription, type: String
 
@@ -42,6 +44,10 @@ class Post
   # Scopes
   scope :admin_list, lambda {
     order([['published', 'desc'], ['published_at', 'desc']])
+  }
+
+  scope :filter_by_domain, lambda { |domain|
+    where(domains: /(,|^)#{domain}(,|$)/)
   }
 
   def self.admin_attributes
