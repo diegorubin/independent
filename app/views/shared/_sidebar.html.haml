@@ -26,7 +26,10 @@
     #recent-posts-2.widget.widget_recent_entries
       %h4.widget-title Últimos Artigos
       %ul
-        - Post.publisheds.order([['published_at', 'desc']]).limit(5).each do |post|
+        - posts = Post.publisheds.order([['published_at', 'desc']])
+        - if feature_enabled? 'multiple_domains'
+          - posts = posts.filter_by_domain(request.host)
+        - posts.limit(5).each do |post|
           %li
             = link_to post.title, post_path(post.date, post.slug).gsub('%2F', '/')
 
